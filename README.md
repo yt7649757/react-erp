@@ -1,8 +1,8 @@
 # react-erp
 react+ant-design+redux
 ### 运行项目
-*npm isntall
-*npm start
+* npm isntall
+* npm start
 
 ![image](https://github.com/yt7649757/react-erp/blob/master/src/asset/img/1.gif)
 
