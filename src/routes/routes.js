@@ -3,10 +3,8 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 // import App from '../app';
 import '../style/app.css'
-import WrappedNormalLoginForm  from '../login/login'
+import { config } from './config'
 import PrivateRoute from '../common/privateRoute';
-import TableComponent from '../component/tableComponent';
-import Page from '../menu/page'
 
 class Routes extends Component {
 
@@ -14,11 +12,26 @@ class Routes extends Component {
         return(
             <Router>
                 <Switch>
-                    <Route exact path="/" component={WrappedNormalLoginForm} />
-                    <PrivateRoute exact path="/erp" component={Page} />
-                    <PrivateRoute path="/table" component={TableComponent} />
+                    {config.map((route, index) => (
+                        !route.private ? (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                exact={route.exact}
+                                component={route.component}
+                            />
+                        ) : (
+                            <PrivateRoute
+                                key={index}
+                                path={route.path}
+                                exact={route.exact}
+                                component={route.component}
+                            />
+                            )
+
+                    ))}
                     <Route render={ () => {
-                        return (<p>没有这个页面</p>)
+                        return (<p></p>)
                     } }/>
                 </Switch>
             </Router>

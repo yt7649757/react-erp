@@ -84,7 +84,7 @@ class Login extends Component {
                             valuePropName: 'checked',
                             initialValue: true,
                         })(
-                            <Checkbox>下 次 自 动 登 录</Checkbox>
+                            <Checkbox>下次自动登录</Checkbox>
                         )}
                         <a className="login-form-forgot" href="/resetPas">忘 记 密 码</a>
                         {

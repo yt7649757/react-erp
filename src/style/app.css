@@ -5,3 +5,43 @@
     zIndex: 1;
     width: 100%;
 }
+
+.ant-layout-header {
+    height: 60px;
+    line-height: 60px;
+    background-color: #FFFFFF;
+    padding:  0 37px;
+}
+
+.ant-layout-sider {
+    max-width: 252px!important;
+    width: 252px!important;
+    flex: 0 0 252px!important;
+}
+
+.sub-nav {
+    height: 50px;
+    line-height: 50px;
+    background-color: #FFFFFF;
+    margin-bottom: 23px;
+    padding-left: 20px;
+}
+
+.sub-nav span {
+    font-size: 16px;
+    color: #333333;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+}
+
+.sub-nav span:last-child {
+    width:86px;
+    height:30px;
+    line-height: 30px;
+    display: inline-block;
+    text-align: center;
+    background:rgba(255,255,255,1);
+    border:1px solid rgba(24,144,255,1);
+    border-radius:15px;
+    color: #1890FF;
+}

@@ -1,5 +1,6 @@
 .userInfo {
     float: right;
+    height: 60px;
 }
 
 .header {
@@ -15,8 +16,20 @@
     cursor: pointer;
     filter: grayscale(100%);
     vertical-align: middle;
-    height: 63px;
+    width: 177px;
+    height: 40px;
+    margin-top: 10px;
     float: left;
+}
+
+.header .bread-nav {
+    background: url(../asset/img/bread-icon.png) no-repeat center;
+    display: inline-block;
+    width: 24px;
+    height: 19px;
+    vertical-align: middle;
+    margin-left: 57px;
+    /*margin: 21px 0 0 10px;*/
 }
 
 .header .logo:hover {

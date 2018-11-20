@@ -6,6 +6,10 @@ import {withRouter} from 'react-router-dom';
 // import storage from '../utils/storage.js';
 // import axios from 'axios';
 // import { port } from '../common/port';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import * as userActions from '../redux/action/user';
+
 const {SubMenu, Item} = Menu;
 const {Sider} = Layout;
 
@@ -77,8 +81,16 @@ class Aside extends Component {
 
         const {openKeys, selectedKeys} = this.state;
         const {sidebarData} = this.props
+        console.log(sidebarData)
         const {collapsed, onCollapse} = this.props;
         const SideTree = sidebarData.map(item => (
+            !item.menus ? (
+                <Menu.Item key={item.menu_id}>
+                    <Icon type="pie-chart" />
+                    <span>{item.menu_name}</span>
+                    <Link to={{pathname:item.url,data:{name: item.menu_name }}} ></Link>
+                </Menu.Item>
+            ) : (
             <SubMenu
                 key={item.menu_id}
                 title={
@@ -120,6 +132,7 @@ class Aside extends Component {
                         </Item> )
                 ))}
             </SubMenu>
+            )
         ));
 
         return (
@@ -128,7 +141,8 @@ class Aside extends Component {
                 breakpoint="lg"
                 collapsed={collapsed}
                 onCollapse={onCollapse}
-                trigger={collapsed}>
+                trigger={null}
+            >
                 <Menu
                     subMenuOpenDelay={0.3}
                     theme="dark"
@@ -145,4 +159,18 @@ class Aside extends Component {
 }
 
 
-export default withRouter(Aside)
+const mapStateToProps = (state) => {
+    return {
+        user: state.user,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        userActions: bindActionCreators(userActions, dispatch)
+    }
+}
+
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(Aside))

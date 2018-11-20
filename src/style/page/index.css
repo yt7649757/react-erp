@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.sell-list li {
+    width: 404px;
+    height: 148px;
+    list-style: none;
+    float: left;
+}
+
+.sell-list li a {
+    height: 100%;
+    display: block;
+    position: relative;
+}
+
+.sell-list li>a>.info {
+    position: absolute;
+    top: 50px;
+    left: 35px;
+}
+
+.sell-list li>a>.info p {
+    margin-bottom: 0;
+    color: #ffffff;
+}
+
+.sell-list li:nth-child(1) a {
+    background: url(../../asset/img/sell1.png) no-repeat center;
+}
+
+.sell-list li:nth-child(2) a {
+    background: url(../../asset/img/sell2.png) no-repeat center;
+}
+
+.sell-list li:nth-child(3) a {
+    background: url(../../asset/img/sell3.png) no-repeat center;
+}
+
+.sell-list li:nth-child(4) a {
+    background: url(../../asset/img/sell4.png) no-repeat center;
+}
+
+.sell-list li p:nth-child(1) {
+    font-size:14px;
+}
+
+.sell-list li p:nth-child(2) {
+    font-size:22px;
+}
