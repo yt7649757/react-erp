@@ -1,12 +1,13 @@
 import * as types from '../constants/types';
-import axios from 'axios';
+// import axios from 'axios';
 import cookie from 'react-cookies';
 import {port} from '../../common/port'
 import { message } from 'antd'
+import axios  from '../../utils/checkToken'
 
 const token = cookie.load('access_token')
 //全局设置请求头(在请求头中携带token,这样下面的请求url无需写token了)
-axios.defaults.headers.common['Authorization'] = 'Bearer' + token;
+// axios.defaults.headers.common['Authorization'] = 'Bearer' + token;
 
 export const login = (username, password, remember) => {
     return (dispatch) => {
@@ -14,7 +15,7 @@ export const login = (username, password, remember) => {
                 type: types.LOGIN_LOADING,
                 status: 'loading'
             })
-            axios.post(port + 'api/auth/login', {
+            axios.post(port + '/api/auth/login', {
                 username: username,
                 password: password
             })
@@ -24,7 +25,7 @@ export const login = (username, password, remember) => {
                     dispatch({
                         type: types.USER_LOGIN,
                         status: 'success',
-                        data: res.data.access_token,
+                        data: res.data,
                         remember: remember
                     })
                 }
@@ -67,18 +68,12 @@ export const getUserInfo = () => {
 export const updatePas = (pas,newpas,newpas1) => {
     //直接返回,无需传入reducer
     return (dispatch) => {
-           return axios.put(port + 'api/erp/system/setpersonnelpassword', {
+           return axios.put(port + '/api/erp/system/setpersonnelpassword', {
                 password: pas,
                 new_password: newpas,
                 new_password_confirmation: newpas1
             })
             .then(function (res) {
-                console.log(res)
-                // dispatch({
-                //     type: types.UPDATE_PAS,
-                //     updatePas: res.data.status,
-                // })
-                // console.log(res)
                 return res.data
             })
             .catch(function (error) {
@@ -92,14 +87,15 @@ export const updatePas = (pas,newpas,newpas1) => {
 
 export const getSider = () => {
     return (dispatch) => {
-        const token = cookie.load('access_token')
-        axios.get(port + 'api/erp/index/getmenujson?token='+ token )
+        // const token = cookie.load('access_token')
+        // http://localhost:3000/sider.json
+        axios.get( port + '/api/erp/index/getmenujson')
             .then(function (res) {
                 res.data.unshift({
-                    menu_id: "index001",
+                    menu_id: "cccc123",
                     icon: "",
                     menu_name: "首页",
-                    pid: "0",
+                    pid: "12313123",
                     url: "erp"
                 })
                 var rootSubmenuKeys =res.data.map(item => item.menu_id)
@@ -109,7 +105,52 @@ export const getSider = () => {
                     rootSubmenuKeys: rootSubmenuKeys
                 })
             }).catch(error => {
-            alert('error' + '请求失败!')
+            console.log('error' + '请求失败!')
         })
     }
 }
+
+export const onlineUser = () => {
+    return(dispatch) => {
+        axios.get(port + '/api/erp/index/getuseronline')
+            .then(function (res) {
+                dispatch({
+                    type: types.ONLINE_USER,
+                    onlineUser: res.data.data
+                })
+            }).catch(error => {
+            console.log(error + '获取用户信息失败')
+        })
+    }
+}
+
+export const getUserWork = () => {
+    return(dispatch) => {
+        axios.get(port + '/api/erp/index/getuserwork')
+            .then(function (res) {
+                console.log(res);
+                dispatch({
+                    type: types.USER_WORKS,
+                    userWorks: res
+                })
+            }).catch(error => {
+            console.log(error + '获取失败')
+        })
+    }
+}
+
+
+export const getMessage = () => {
+    return(dispatch) => {
+        axios.get('http://localhost:3000/news.json')
+            .then(function (res) {
+              dispatch({
+                  type: types.COMPAYN_MESSAGE,
+                  companyMessage: res.data
+              })
+            }).catch(error => {
+            console.log(error + '获取失败')
+        })
+    }
+}
+

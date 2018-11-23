@@ -8,7 +8,10 @@ const initialState = {
     userInfo: null,
     sidebarData: [],
     rootSubmenuKeys: [],
-    updatePas: ''
+    updatePas: '',
+    onlineUser: [],
+    userWorks: [],
+    companyMessage: []
 }
 
 export const user = (state = initialState, action) => {
@@ -45,6 +48,21 @@ export const user = (state = initialState, action) => {
                    ...state,
                    sidebarData: action.sidebarData,
                    rootSubmenuKeys: action.rootSubmenuKeys
+               }
+           case types.ONLINE_USER:
+               return {
+                   ...state,
+                   onlineUser: action.onlineUser
+               }
+           case types.USER_WORKS:
+               return {
+                   ...state,
+                   userWorks: action.userWorks
+               }
+           case types.COMPAYN_MESSAGE:
+               return {
+                   ...state,
+                   companyMessage: action.companyMessage
                }
            default:
                return state

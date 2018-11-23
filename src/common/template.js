@@ -23,34 +23,42 @@ class Template extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            rootSubmenuKeys: '',
-            sidebarData: []
+            title: '加载中...'
         }
     }
 
 
     componentDidMount() {
-        this.props.userActions.getSider()
+
     }
 
+    //箭头函数的this总是和父级的上下文绑定在一起的
+    getTitle = (val) => {
+       this.setState({
+           title: val
+       })
+    }
 
     render() {
+        console.log(this.props.location)
         return (
             <Layout style={{ height:'100%' }}>
                 <HeaderComponent/>
-                <Layout style={{paddingTop: '60px', height: '100%'}}>
-                    <Aside sidebarData={this.props.user.sidebarData} rootSubmenuKeys={this.props.user.rootSubmenuKeys}/>
-                    <Layout style={{padding: '30px'}}>
+                <Layout style={{paddingTop: '60px', height: '100%', overflowY:'auto'}}>
+                    <Aside sidebarData={this.props.user.sidebarData} rootSubmenuKeys={this.props.user.rootSubmenuKeys}
+                     getTitle={this.getTitle}
+                    />
+                    <Layout style={{padding: '30px', marginLeft: '252px' }}>
                         <div className="sub-nav">
-                            <span>当前位置 > </span><span>{this.props.location.data ? this.props.location.data.name : '首页'}</span>
+                            <span>当前位置 > </span><span>{this.props.location.state ? this.props.location.state : this.state.title }</span>
                         </div>
                         {/*动态变化的部分,利用了react的props.children的特性*/}
-                        <Content style={{background: '#fff', padding: 30, margin: 0}}>
+                        <Content>
                             {this.props.children}
                         </Content>
-                        <Footer style={{textAlign: 'center',padding:0}}>
-                            Ant Design ©2018 Created by Ant UED
-                        </Footer>
+                        {/*<Footer style={{textAlign: 'center',padding:0}}>*/}
+                            {/*Ant Design ©2018 Created by Ant UED*/}
+                        {/*</Footer>*/}
                     </Layout>
                 </Layout>
             </Layout>

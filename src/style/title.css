@@ -1,0 +1,32 @@
+.more {
+    font-size: 15px;
+    color: #666666;
+}
+
+.message-title {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 2px solid #C6C6C6;
+}
+
+.message-title b {
+    width: 4px;
+    height: 22px;
+    margin-top: 9px;
+    float: left;
+    vertical-align: middle;
+}
+
+.message-title h6 {
+    float: left;
+    font-size: 18px;
+    color: #333333;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.message-title a {
+    font-size: 14px;
+    color: #666666;
+    float: right;
+}

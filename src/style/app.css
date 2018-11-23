@@ -1,5 +1,9 @@
 @import '~antd/dist/antd.css';
 
+body {
+    min-width: 1360px;
+}
+
 .header {
     position: fixed;
     zIndex: 1;
@@ -16,14 +20,24 @@
 .ant-layout-sider {
     max-width: 252px!important;
     width: 252px!important;
-    flex: 0 0 252px!important;
+    /*flex: 0 0 252px!important;*/
+    position: fixed;
+    left: 0;
+    top: 60px;
+    z-index: 999;
+    min-height: 1000px;
+}
+
+.ant-layout-sider,
+.ant-menu-dark, .ant-menu-dark .ant-menu-sub {
+    height: 100%;
+    background-color: #1F2B35;
 }
 
 .sub-nav {
     height: 50px;
     line-height: 50px;
     background-color: #FFFFFF;
-    margin-bottom: 23px;
     padding-left: 20px;
 }
 
@@ -35,8 +49,10 @@
 }
 
 .sub-nav span:last-child {
-    width:86px;
+    min-width: 86px;
+    width: auto;
     height:30px;
+    padding: 0 5px;
     line-height: 30px;
     display: inline-block;
     text-align: center;
@@ -44,4 +60,15 @@
     border:1px solid rgba(24,144,255,1);
     border-radius:15px;
     color: #1890FF;
+}
+
+clearfix:before,.clearfix:after{
+    content:"";
+    display:table;
+}
+.clearfix:after{
+    clear:both;
+}
+.clearfix{
+    *zoom:1;
 }

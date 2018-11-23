@@ -1,5 +1,6 @@
 .userInfo {
     float: right;
+    margin-right: 10px;
     height: 60px;
 }
 
@@ -14,7 +15,7 @@
 .header .logo {
     transition: all .5s;
     cursor: pointer;
-    filter: grayscale(100%);
+    /*filter: grayscale(100%);*/
     vertical-align: middle;
     width: 177px;
     height: 40px;

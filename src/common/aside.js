@@ -9,6 +9,7 @@ import {withRouter} from 'react-router-dom';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as userActions from '../redux/action/user';
+import '../style/aside.css'
 
 const {SubMenu, Item} = Menu;
 const {Sider} = Layout;
@@ -25,49 +26,77 @@ class Aside extends Component {
         this.state = {
             openKeys: [''],
             selectedKeys: [''],
-            rootSubmenuKeys: '',
+            rootSubmenuKeys: props.rootSubmenuKeys,
             itemName: '',
             sidebarData: []
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.sidebarData.length > 0) {
+            this.setState({
+                sidebarData: nextProps.sidebarData
+            }, () => {
+                this.setDefaultActiveItem(this.props.history)
+            })
 
-    // setDefaultActiveItem = ({location}) => {
-    //     const { pathname } = location;
-    //      this.state.sidebarData.map(item => {
-    //         if (item.pathname) {
-    //             // 做一些事情,这里只有二级菜单
-    //         }
-    //         // 因为菜单只有二级,简单的做个遍历就可以了
-    //         if (item.menus && item.menus.length > 0) {
-    //             item.menus.map(childitem => {
-    //                 // 为什么要用match是因为 url有可能带参数等,全等就不可以了
-    //                 // 若是match不到会返回null
-    //                 if (pathname.match(childitem.path)) {
-    //                     this.setState({
-    //                         openKeys: [item.menu_id],
-    //                         selectedKeys: [childitem.menu_id]
-    //                     });
-    //                     // 设置title
-    //                     document.title = childitem.menu_name;
-    //                 }
-    //             });
-    //         }
-    //     });
-    // };
-    //
-    // componentDidMount = () => {
-    //     // 设置菜单的默认值
-    //     this.setDefaultActiveItem(this.props.history);
-    // };
+        }
+    }
+
+    //等待修改，目前是三级目录
+    /**
+     *  selectedKeys   // 当前展开的 SubMenu 菜单项 key 数组
+     *  openKeys       // 当前选中的菜单项 key 数组
+     */
+    setDefaultActiveItem = ({location}) => {
+        const {pathname} = location;
+        this.state.sidebarData && this.state.sidebarData.map(item => {
+            //从一级目录开始查找
+            if (pathname === ('/' +  item.url)) {
+                console.log(item.menu_id)
+                this.setState({
+                    selectedKeys: [item.menu_id]
+                });
+                document.title = item.menu_name
+                this.props.getTitle(item.menu_name)
+            //一级目录没有找到，判断一级目录中是否存在二级菜单
+            }else if(item.menus && item.menus.length > 0) {
+                // 在二级目录中开始查找
+                 item.menus.map(childItem => {
+                     if(pathname === ('/' + childItem.url)) {
+                         this.setState({
+                             openKeys: [item.menu_id],
+                             selectedKeys: [childItem.menu_id]
+                         });
+                         document.title = childItem.menu_name
+                         this.props.getTitle(childItem.menu_name)
+                     //二级目录也没有，就查询三级目录
+                     }else if(childItem.menus && childItem.menus.length>0) {
+                          childItem.menus.map(subItem => {
+                              if(pathname === ('/' + subItem.url)) {
+                                  this.setState({
+                                      openKeys: [item.menu_id,childItem.menu_id],   //当前是三级菜单，所以需要同时展开二级和一级目录
+                                      selectedKeys: [subItem.menu_id]
+                                  });
+                                  document.title = subItem.menu_name
+                                  this.props.getTitle(subItem.menu_name)
+                              }
+                          })
+                     }
+                 })
+            }
+        });
+    };
+
+    componentDidMount = async () => {
+        await this.props.userActions.getSider()
+    };
 
     OpenChange = openKeys => {
-        console.log(openKeys);
         const latestOpenKey = openKeys.find(
             key => this.state.openKeys.indexOf(key) === -1
         );
-        console.log(latestOpenKey);
-        if (this.state.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+        if (this.props.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
             this.setState({openKeys});
         } else {
             this.setState({
@@ -78,30 +107,36 @@ class Aside extends Component {
 
 
     render() {
-
         const {openKeys, selectedKeys} = this.state;
-        const {sidebarData} = this.props
-        console.log(sidebarData)
+        const {sidebarData} = this.props.user
         const {collapsed, onCollapse} = this.props;
         const SideTree = sidebarData.map(item => (
             !item.menus ? (
-                <Menu.Item key={item.menu_id}>
-                    <Icon type="pie-chart" />
+                <Menu.Item key={item.menu_id}
+                           onClick={() => {
+                               // 设置高亮的item
+                               this.setState({selectedKeys: [item.menu_id]});
+                               // 设置文档标题
+                               document.title = item.menu_name;
+                           }}
+                 >
+                    <img src={item.icon} alt="icon"/>
                     <span>{item.menu_name}</span>
-                    <Link to={{pathname:item.url,data:{name: item.menu_name }}} ></Link>
+                    {/*出现url追加问题，在Link路径前加 '/' 代表根目录下的绝对路径 */}
+                    <Link to={{pathname: '/' + item.url, state: item.menu_name}} replace></Link>
                 </Menu.Item>
             ) : (
-            <SubMenu
-                key={item.menu_id}
-                title={
-                    <span>
-                        <Icon type={item.icon}/>
+                <SubMenu
+                    key={item.menu_id}
+                    title={
+                        <span>
+                            <img src={item.icon} alt="icon"/>
                         <span>{item.menu_name}</span>
                     </span>
-                }>
-                {item.menus &&
-                item.menus.map(menuItem => (
-                    menuItem.menus ? (
+                    }>
+                    {item.menus &&
+                    item.menus.map(menuItem => (
+                        menuItem.menus ? (
                             <SubMenu key={menuItem.menu_id} title={menuItem.menu_name}>
                                 {
                                     menuItem.menus.map(subItem => (
@@ -113,25 +148,25 @@ class Aside extends Component {
                                                        document.title = subItem.menu_name;
                                                    }}
                                         >
-                                            <Link to={subItem.url}>{subItem.menu_name}</Link>
+                                            <Link to={{pathname: '/' + subItem.url, state: subItem.menu_name}}> {subItem.menu_name} </Link>
                                         </Menu.Item>
-                                    ) )
+                                    ))
                                 }
                             </SubMenu>
                         ) : (
 
-                        <Item
-                            key={menuItem.menu_id}
-                            onClick={() => {
-                                // 设置高亮的item
-                                this.setState({selectedKeys: [menuItem.menu_id]});
-                                // 设置文档标题
-                                document.title = menuItem.menu_name;
-                            }}>
-                            <Link to={menuItem.url}>{menuItem.menu_name}</Link>
-                        </Item> )
-                ))}
-            </SubMenu>
+                            <Menu.Item
+                                key={menuItem.menu_id}
+                                onClick={() => {
+                                    // 设置高亮的item
+                                    this.setState({selectedKeys: [menuItem.menu_id]});
+                                    // 设置文档标题
+                                    document.title = menuItem.menu_name;
+                                }}>
+                                <Link to = {{pathname: '/' + menuItem.url, state: menuItem.menu_name}}> {menuItem.menu_name} </Link>
+                            </Menu.Item> )
+                    ))}
+                </SubMenu>
             )
         ));
 
@@ -172,5 +207,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-
-export default connect(mapStateToProps,mapDispatchToProps)(withRouter(Aside))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Aside))

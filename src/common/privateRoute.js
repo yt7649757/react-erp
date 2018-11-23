@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route,Redirect,withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import storage from '../utils/storage.js';
+// import storage from '../utils/storage.js';
 import cookie from 'react-cookies'
 
 // import WrappedNormalLoginForm  from '../login/login'
@@ -19,7 +19,7 @@ class PrivateRoute extends React.Component{
         }
     }
     render(){
-        let { component: Component,path="/erp",exact=false,strict=false} = this.props;
+        let { component: Component,path="/",exact=false,strict=false} = this.props;
         return this.state.isAuthenticated ?  (
             <Route  path={path} exact={exact}  strict={strict}  render={(props)=>( <Component {...props} /> )} />
         ) : (<Redirect to ="/" />);

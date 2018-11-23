@@ -34,12 +34,13 @@ class Login extends Component {
         if(nextProps.user.status == 'success') {
             var maxAge = 3600
             const { access_token, remember } = nextProps.user
+            console.log(nextProps.user)
             if(remember) {
                 maxAge = 3600 * 24 * 7
             }
             // storage.set('access_token', access_token)
-            cookie.save('access_token', access_token, {
-                    maxAge: maxAge
+            cookie.save('access_token', access_token.access_token, {
+                    maxAge: access_token.expires_in  //token过期时间
             })
             this.props.history.push('/erp')
             return false

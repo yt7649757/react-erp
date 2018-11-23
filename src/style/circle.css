@@ -1,0 +1,82 @@
+/*进度条*/
+
+.circle{
+    width: 160px;
+    height: 160px;
+    position: relative;
+    background-color: #ccc;
+    border-radius: 50%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+.clip {
+    width: 160px;
+    height: 160px;
+    position: absolute;
+    border: 10px solid #ccc;
+    border-radius: 50%;
+    clip: rect(0, 160px, 160px, 80px);
+}
+
+
+.circle .left {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 10px solid #7592FF;
+    position:absolute;
+    top: -10px;
+    left: -10px;
+    clip: rect(0 80px 160px 0);  /* 上面为0 右边到100px 下面200px 左边到0 这个区域的我们裁剪出来 */
+}
+
+.circle .right {
+    width: 160px;
+    height: 160px;
+    border: 10px solid #7592FF;
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    clip: rect(0 160px 160px 80px)
+}
+
+.circle-txt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #fff;
+    border-radius: 50%;
+    width: 140px;
+    height: 140px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    /*line-height: 140px;*/
+    color: #7592FF;
+}
+
+.circle-txt p {
+    margin-bottom: 0;
+}
+
+.circle-txt p:nth-child(1) {
+    height: 50px;
+    line-height: 50px;
+    margin-top: 30px;
+    font-size: 46px;
+}
+
+.circle-txt p:nth-child(2) {
+    font-size: 26px;
+    line-height: 30px;
+}
+
+.width-none {
+    width: 0!important;
+}
+
+.auto{
+    clip: auto;
+}
+

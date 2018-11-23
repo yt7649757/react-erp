@@ -110,7 +110,6 @@ class HeaderComponent extends Component {
         cookie.remove('access_token')
         cookie.remove('userInfo')
         message.success('注销成功', 1);
-        console.log(this.props.history)
         this.props.history.push('/')
         // const { pathname } = this.props.location;
         // //动态改变标题
