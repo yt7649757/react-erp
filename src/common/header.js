@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Layout, Menu, Avatar, Icon, Dropdown, message, Modal, Input } from 'antd';
 import {withRouter} from 'react-router-dom';
 // import storage from '../utils/storage.js';
+import emitter from "./ev"
 import cookie from 'react-cookies'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -118,6 +119,11 @@ class HeaderComponent extends Component {
         // }
     }
 
+    closeAside = () => {
+        emitter.emit("close");
+    }
+
+
     render() {
         console.log(this.props.user)
         const menu = (
@@ -139,7 +145,7 @@ class HeaderComponent extends Component {
             <Header className="header">
                 <div style={{float: 'left'}}>
                     <img className="logo" src={require('../asset/img/logo.png')} alt="logo"/>
-                    <span className="bread-nav"></span>
+                    <span className="bread-nav" onClick={this.closeAside}></span>
                 </div>
                 <div className="userInfo">
                     <Avatar size="large" icon="user"/>

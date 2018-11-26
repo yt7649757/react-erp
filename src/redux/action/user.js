@@ -5,7 +5,7 @@ import {port} from '../../common/port'
 import { message } from 'antd'
 import axios  from '../../utils/checkToken'
 
-const token = cookie.load('access_token')
+// const token = cookie.load('access_token')
 //全局设置请求头(在请求头中携带token,这样下面的请求url无需写token了)
 // axios.defaults.headers.common['Authorization'] = 'Bearer' + token;
 
@@ -93,8 +93,8 @@ export const getSider = () => {
             .then(function (res) {
                 res.data.unshift({
                     menu_id: "cccc123",
-                    icon: "",
-                    menu_name: "首页",
+                    icon: "http://localhost:3000/static/icon.png",
+                    menu_name: " 首页",
                     pid: "12313123",
                     url: "erp"
                 })
@@ -110,14 +110,15 @@ export const getSider = () => {
     }
 }
 
-export const onlineUser = () => {
+export const onlineUser = (page,size,callback) => {
     return(dispatch) => {
-        axios.get(port + '/api/erp/index/getuseronline')
+        axios.get(port + '/api/erp/index/getuseronline?page=' + page + '&per_page=' + size)
             .then(function (res) {
                 dispatch({
                     type: types.ONLINE_USER,
                     onlineUser: res.data.data
                 })
+                return res
             }).catch(error => {
             console.log(error + '获取用户信息失败')
         })
@@ -142,7 +143,7 @@ export const getUserWork = () => {
 
 export const getMessage = () => {
     return(dispatch) => {
-        axios.get('http://localhost:3000/news.json')
+        axios.get('http://localhost:3000/static/news.json')
             .then(function (res) {
               dispatch({
                   type: types.COMPAYN_MESSAGE,

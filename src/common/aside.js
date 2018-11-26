@@ -3,6 +3,7 @@ import {Layout, Menu, Icon} from 'antd';
 import {Link} from 'react-router-dom';
 // import { sidebarData, groupKey } from '../test/data'
 import {withRouter} from 'react-router-dom';
+import emitter from "./ev"
 // import storage from '../utils/storage.js';
 // import axios from 'axios';
 // import { port } from '../common/port';
@@ -18,6 +19,7 @@ const IconFont = Icon.createFromIconfontCN({
     scriptUrl: '//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js',
 });
 
+
 class Aside extends Component {
 
     constructor(props) {
@@ -28,7 +30,8 @@ class Aside extends Component {
             selectedKeys: [''],
             rootSubmenuKeys: props.rootSubmenuKeys,
             itemName: '',
-            sidebarData: []
+            sidebarData: [],
+            collapsed: false
         }
     }
 
@@ -42,6 +45,7 @@ class Aside extends Component {
 
         }
     }
+
 
     //等待修改，目前是三级目录
     /**
@@ -90,7 +94,16 @@ class Aside extends Component {
 
     componentDidMount = async () => {
         await this.props.userActions.getSider()
-    };
+        this.eventEmitter = emitter.addListener("close",()=>{
+            this.setState({
+                collapsed: !this.state.collapsed
+            })
+        })
+    }
+
+    componentWillUnMount() {
+        emitter.removeListener(this.eventEmitter);
+    }
 
     OpenChange = openKeys => {
         const latestOpenKey = openKeys.find(
@@ -174,9 +187,16 @@ class Aside extends Component {
             <Sider
                 collapsible
                 breakpoint="lg"
-                collapsed={collapsed}
-                onCollapse={onCollapse}
+                collapsedWidth="0"
+                onBreakpoint={(broken) => { console.log(broken); }}
+                onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
+                collapsed={this.state.collapsed}
                 trigger={null}
+                width="252"
+                style = {{
+                    overflow: 'auto', height: '100vh', paddingBottom: '10vh' ,position: 'fixed', left: 0, zIndex: 999,
+                    backgroundColor: "#1F2B35"
+                }}
             >
                 <Menu
                     subMenuOpenDelay={0.3}
@@ -184,7 +204,11 @@ class Aside extends Component {
                     openKeys={openKeys}
                     selectedKeys={selectedKeys}
                     mode="inline"
-                    onOpenChange={this.OpenChange}>
+                    onOpenChange={this.OpenChange}
+                    style = {{
+                        backgroundColor: "#1F2B35",
+                    }}
+                >
                     {SideTree}
                 </Menu>
             </Sider>

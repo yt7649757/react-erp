@@ -13,3 +13,8 @@ export const ONLINE_USER = 'ONLINE_USER'
 export const USER_WORKS = 'USER_WORKS'
 //获取公司公告
 export const COMPAYN_MESSAGE = 'COMPAYN_MESSAGE'
+
+
+
+//系统管理模块
+export const USER_LOGINLIST = 'USER_LOGINLIST'   //用户登录情况

@@ -10,6 +10,7 @@
     left: 0;
     z-index: 999;
     border-bottom: 1px solid #cccccc;
+    box-shadow:0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
 .header .logo {
@@ -30,7 +31,39 @@
     height: 19px;
     vertical-align: middle;
     margin-left: 57px;
+    transition: all .5s;
     /*margin: 21px 0 0 10px;*/
+}
+
+@keyframes move {
+    0% {
+        transform: scale(1);
+        transform: scale(1)
+    }
+
+    10%,20% {
+        transform: scale(0.9) rotate(-3deg);
+        transform: scale(0.9) rotate(-3deg)
+    }
+
+    30%,50%,70%,90% {
+        transform: scale(1.1) rotate(3deg);
+        transform: scale(1.1) rotate(3deg)
+    }
+
+    40%,60%,80% {
+        transform: scale(1.1) rotate(-3deg);
+        transform: scale(1.1) rotate(-3deg)
+    }
+
+    100% {
+        transform: scale(1) rotate(0);
+        transform: scale(1) rotate(0)
+    }
+}
+
+.bread-nav:hover {
+    animation: move 1s infinite;
 }
 
 .header .logo:hover {

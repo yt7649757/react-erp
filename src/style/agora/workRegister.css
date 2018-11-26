@@ -1,0 +1,37 @@
+.project-info .top {
+    height: 456px;
+    padding-top: 20px;
+    background-color: #fff;
+}
+
+.project-title p {
+    font-size: 18px;
+    color: #111111;
+}
+
+.project-title p:before {
+    content: '';
+    width: 22px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: -6px;
+    margin: 0 10px 0 20px;
+    background: url(../../asset/img/pt.png) no-repeat center;
+}
+
+.project-title.link-people p:before {
+    background: url(../../asset/img/pt1.png) no-repeat center;
+}
+
+.project-info .bottom {
+    height: 236px;
+    padding-top: 20px;
+    margin-top: 30px;
+    background-color: #fff;
+}
+
+.project-info button {
+    width: 112px;
+    height: 40px;
+    margin-right: 40px;
+}

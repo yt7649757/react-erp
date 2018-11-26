@@ -14,10 +14,10 @@ const columns = [{
     dataIndex: 'name',
 }, {
     title: '部门',
-    dataIndex: 'company.department.department_name',
+    dataIndex: 'department.department_name',
 }, {
     title: '职位',
-    dataIndex: 'company.jobs.jobs_name',
+    dataIndex: 'jobs.jobs_name',
 }, {
     title: '电话',
     dataIndex: 'mobile'
@@ -29,11 +29,12 @@ class Page extends Component {
         super(props)
         this.state = {
             value: 3,
+            pagination: {},
         };
     }
 
     componentDidMount() {
-        this.props.userActions.onlineUser()
+        this.props.userActions.onlineUser(1,5)
         this.props.userActions.getUserWork()
         this.props.userActions.getMessage()
     }
@@ -43,19 +44,39 @@ class Page extends Component {
     }
 
 
+    /*
+     * @param pagination
+     *
+     * pagination 分页的配置项
+     * pageSize   每页条数
+     * current    当前页数
+     */
+    handleTableChange = (pagination) => {
+        const pager = { ...this.state.pagination };
+        pager.current = pagination.current;
+        this.setState({
+            pagination: pager,
+            pageSize: 5,
+        });
+
+        this.props.userActions.onlineUser( pagination.current,pagination.pageSize)
+    }
+
+
     render() {
         const {value} = this.state;
+        const { user } = this.props
         return (
             <Template>
                 <div className="sell-box clearfix">
                     <ul className="sell-list">
                         <li><a href="#"><img src={require('../asset/img/sell1.png')}/><div className="info"><p>Sales champion</p><p>销售月冠</p></div></a></li>
-                        <li><a href="#"><img src={require('../asset/img/sell2.png')}/><div className="info"><p>Sales champion</p><p>销售月冠</p></div></a></li>
-                        <li><a href="#"><img src={require('../asset/img/sell3.png')}/><div className="info"><p>Sales champion</p><p>销售月冠</p></div></a></li>
-                        <li><a href="#"><img src={require('../asset/img/sell4.png')}/><div className="info"><p>Sales champion</p><p>销售月冠</p></div></a></li>
+                        <li><a href="#"><img src={require('../asset/img/sell2.png')}/><div className="info"><p>Design champion</p><p>设计月冠</p></div></a></li>
+                        <li><a href="#"><img src={require('../asset/img/sell3.png')}/><div className="info"><p>My business volume</p><p>我的业务量</p></div></a></li>
+                        <li><a href="#"><img src={require('../asset/img/sell4.png')}/><div className="info"><p>My design quantity</p><p>我的设计量</p></div></a></li>
                     </ul>
                 </div>
-                <div className="center-box">
+                <div className="center-box clearfix">
                     <div className="service-time">
                          <div className="sub-title">
                              <b></b>
@@ -74,12 +95,16 @@ class Page extends Component {
                              <span>在线人数</span>
                              <p><span>人数:</span><span>{this.props.user.onlineUser.length}</span></p>
                          </div>
-                        <Table rowKey="uuid" columns={columns} dataSource={this.props.user.onlineUser} size="middle"  pagination={{
-                            pageSize: 5
-                        }} />
+                        <Table
+                            columns={columns}
+                            rowKey={record => record.uuid}
+                            dataSource={user.onlineUser}
+                            pagination={this.state.pagination}
+                            onChange={this.handleTableChange}
+                        />
                     </div>
                 </div>
-                <div className="message-box">
+                <div className="message-box clearfix">
                     <div className="today-remind">
                         <Title title="今日提醒" color="#FF7A00" />
                         <div className="remind-list">

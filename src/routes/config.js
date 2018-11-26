@@ -1,7 +1,8 @@
 import WrappedNormalLoginForm  from '../login/login'
 import TableComponent from '../component/tableComponent';
-import Page from '../menu/page'
-import MessageList from '../menu/system/messageList'
+import Page from '../menu/page';
+import UserLoginList from '../menu/system/userLoginList';
+import WorkRegister from '../menu/agora/workRegister';
 
 export const config = [
     {
@@ -21,8 +22,13 @@ export const config = [
         private: true,
     },
     {
+        path:'/erp/Project/showProjectEntry',
+        component: WorkRegister,
+        private: true
+    },
+    {
         path: '/erp/System/messageList',
-        component: MessageList,
+        component: UserLoginList,
         private: true,
     }
 ]
