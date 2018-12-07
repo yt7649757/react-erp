@@ -16,7 +16,7 @@ react+ant-design+redux
 
 ### v.1.1
 
-> 修改侧边栏布局，因为侧边栏菜单过多，在多个菜单展开情况下显示滚动条，菜单改为fixed布局，增加一些功能
+> 修改侧边栏布局，因为侧边栏菜单过多，在多个菜单展开情况下显示滚动条，菜单改为fixed布局，页面的修改以及增加一些功能
 
 ![image](https://github.com/yt7649757/react-erp/blob/master/src/asset/img/v11.gif)
 
