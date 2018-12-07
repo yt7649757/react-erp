@@ -24,6 +24,6 @@ react+ant-design+redux
 ###### 存在问题
 
 > IE兼容性问题,以及没有充分组件化，下面是在react社区提出的问题
-![点击](http://react-china.org/t/react16-ie/27936)
+![点击](http://react-china.org/t/react16-ie/27936?u=yt7649757)
 
 
