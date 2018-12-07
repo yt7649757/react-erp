@@ -20,4 +20,9 @@ react+ant-design+redux
 
 ![image](https://github.com/yt7649757/react-erp/blob/master/src/asset/img/v11.gif)
 
+###### 存在问题
+
+> IE兼容性问题,以及没有充分组件化，下面是在react社区提出的问题
+![点击](http://react-china.org/t/react16-ie/27936)
+
 *或者参考另一个项目[点击这里](https://github.com/yt7649757/react-router)，可在本地运行的*
