@@ -15,7 +15,7 @@ export const login = (username, password, remember) => {
                 type: types.LOGIN_LOADING,
                 status: 'loading'
             })
-            axios.post(port + '/api/auth/login', {
+           return  axios.post(port + '/api/auth/login', {
                 username: username,
                 password: password
             })
@@ -28,6 +28,7 @@ export const login = (username, password, remember) => {
                         data: res.data,
                         remember: remember
                     })
+                    return Promise.resolve(res.data)
                 }
             })
             .catch(function (error) {
@@ -96,7 +97,8 @@ export const getSider = () => {
                     icon: "http://localhost:3000/static/icon.png",
                     menu_name: " 首页",
                     pid: "12313123",
-                    url: "erp"
+                    url: "erp",
+                    closable: false
                 })
                 var rootSubmenuKeys =res.data.map(item => item.menu_id)
                 dispatch({
@@ -110,7 +112,7 @@ export const getSider = () => {
     }
 }
 
-export const onlineUser = (page,size,callback) => {
+export const onlineUser = (page,size) => {
     return(dispatch) => {
         axios.get(port + '/api/erp/index/getuseronline?page=' + page + '&per_page=' + size)
             .then(function (res) {
@@ -129,7 +131,6 @@ export const getUserWork = () => {
     return(dispatch) => {
         axios.get(port + '/api/erp/index/getuserwork')
             .then(function (res) {
-                console.log(res);
                 dispatch({
                     type: types.USER_WORKS,
                     userWorks: res
@@ -143,7 +144,7 @@ export const getUserWork = () => {
 
 export const getMessage = () => {
     return(dispatch) => {
-        axios.get('http://localhost:3000/static/news.json')
+        axios.get('./static/news.json')
             .then(function (res) {
               dispatch({
                   type: types.COMPAYN_MESSAGE,

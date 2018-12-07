@@ -1,0 +1,277 @@
+
+body {
+
+}
+
+ol, ul {
+    list-style: none;
+}
+
+
+.login-container {
+    background:rgba(255,255,255,1);
+}
+
+.login-container a:hover {
+    color: #1890FF!important;
+}
+
+.bx {
+    /*position: relative;*/
+    margin: 0 280px;
+}
+
+.login-container .login-header {
+    height: 80px;
+}
+
+.login-header .logo {
+    float: left;
+    margin: 15px 0;
+}
+
+.apply-use {
+    width: 130px;
+    height: 40px;
+    background: url(../../asset/img/border-img.png) no-repeat center;
+    line-height: 40px;
+    margin: 20px 0;
+    text-align: center;
+    float: right;
+}
+
+.apply-use a {
+    font-size:16px;
+    font-weight:400;
+    color:rgba(24,144,255,1);
+    text-decoration: none;
+}
+
+.content {
+    width: 100%;
+    /*height: 740px;*/
+    position: relative;
+}
+
+.content>img {
+    float: left;
+    width: 100%;
+}
+
+.login-form {
+    width:376px;
+    height:466px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -233px;
+    margin-right: 280px;
+    z-index: 2;
+    border-radius:10px;
+    background:rgba(255,255,255,1);
+}
+
+.login-form .code {
+    width: 132px;
+    height: 132px;
+    background: url(../../asset/img/code.png) no-repeat center;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    cursor: pointer;
+}
+
+.login-form .code.pas {
+    top: 10px;
+    right: 7px;
+}
+
+.code .prompt {
+    width: 120px;
+    height: 29px;
+    text-align: center;
+    background: url(../../asset/img/prompt.png) no-repeat center;
+    position: absolute;
+    right: 46px;
+    top: 16px;
+}
+
+.code.pas .prompt {
+    top: 10px;
+}
+
+.prompt span {
+    font-size:11px;
+    line-height: 29px;
+    font-weight:400;
+    color:rgba(223,156,31,1);
+}
+
+.form-title {
+    margin-top: 117px;
+}
+
+.form-title i {
+    width: 6px;
+    height: 25px;
+    float: left;
+    margin-right: 10px;
+    background: url(../../asset/img/square.png) no-repeat center;
+}
+
+.form-title h6 {
+    font-size:22px;
+    font-family:SourceHanSansCN-Regular;
+    font-weight:400;
+    color:rgba(85,85,85,1);
+}
+
+.login-bx {
+    padding: 0 35px;
+}
+
+.login-form form {
+    margin-top: 39px;
+}
+
+.inputbox {
+    width: 100%;
+    /*margin-top: 35px;*/
+}
+
+.login-form form .inputbox input {
+    width: 297px;
+    /*margin: 40px auto;*/
+    padding-left: 8px;
+    line-height: 25px;
+    /*IE8*/
+    line-height: 0\0;
+    font-size: 14px;
+    color: #333;
+    display: block;
+    /*border: none;*/
+    /*outline: none;*/
+    /*border-bottom: 1px solid rgba(153,153,153,1);;*/
+}
+
+.extra {
+    margin-top: 9px;
+}
+
+.login-bx form .extra a,
+.login-bx form .extra label
+{
+    font-size:12px;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+}
+
+.login-bx form .extra label input {
+    margin-bottom: 1px;
+    /*兼容IE6，IE7*/
+    *margin-bottom: 1px;
+    vertical-align: text-bottom;
+}
+
+.login-bx form .extra .download {
+    margin: 0 57px;
+}
+
+
+.login-form .code.pas {
+    background: url(../../asset/img/pas.png) no-repeat center;
+}
+
+.form-erm {
+    margin: 0 auto;
+    margin-top: 34px;
+    text-align: center;
+}
+
+.form-erm img {
+    width: 166px;
+    height: 166px;
+}
+
+.other-login {
+    margin-top: 60px;
+    text-align: right;
+}
+
+.other-login a {
+    font-size:14px;
+    font-weight:400;
+    color:rgba(85,85,85,1);
+}
+
+.submit {
+    margin-top: 36px;
+}
+
+.submit>input {
+    width: 100%;
+    height:50px;
+    outline: none;
+    font-size:16px;
+    font-weight:400;
+    color:rgba(24,144,255,1);
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #1890FF;
+}
+
+.submit>input:hover {
+    color: #fff;
+    background-color: #1890FF;
+}
+
+.apply-account {
+    text-align: center;
+}
+
+.apply-account a {
+    font-size:12px;
+    font-weight:400;
+    color:rgba(85,85,85,1);
+    line-height:53px;
+}
+
+.footer {
+    width: 100%;
+    height: 259px;
+    /*background-color: rebeccapurple;*/
+}
+
+.link {
+    margin-top: 60px;
+    float: left;
+}
+
+ul li {
+    /*letter-spacing: 6px;*/
+    line-height: 30px;
+}
+
+.link-title {
+    color: #333333;
+    font-size: 18px;
+}
+.link-contact {
+    color: #999999;
+    font-size: 14px;
+}
+.erm {
+    width: 178px;
+    height: 178px;
+    margin-top: 43px;
+    float: right;
+    background: url(../../asset/img/erm.png) no-repeat center;
+}
+
+
+@media screen and (min-width: 1360px) and (max-width: 1680px)  {
+   .login-form {
+       top: 50%;
+       margin-top: -233px;
+   }
+}

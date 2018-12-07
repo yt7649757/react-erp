@@ -34,7 +34,7 @@ class Page extends Component {
     }
 
     componentDidMount() {
-        this.props.userActions.onlineUser(1,5)
+        this.props.userActions.onlineUser(1,4)
         this.props.userActions.getUserWork()
         this.props.userActions.getMessage()
     }
@@ -56,10 +56,9 @@ class Page extends Component {
         pager.current = pagination.current;
         this.setState({
             pagination: pager,
-            pageSize: 5,
+        },() => {
+            this.props.userActions.onlineUser( pagination.current,4)
         });
-
-        this.props.userActions.onlineUser( pagination.current,pagination.pageSize)
     }
 
 
@@ -125,9 +124,11 @@ class Page extends Component {
                     </div>
                     <div>
                         <Title title="部门公告" color="#B5BE00" more={true} />
+                        <ListItem />
                     </div>
                     <div>
                         <Title title="奖惩公告" color="#E63F52" more={true} />
+                        <ListItem />
                     </div>
                 </div>
             </Template>

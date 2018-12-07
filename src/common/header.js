@@ -66,7 +66,6 @@ class HeaderComponent extends Component {
         }else {
             //修改密码
             const status = await this.props.userActions.updatePas(pas,newpas,newpas1)
-            console.log(status)
             if(status && status.status ==='Success') {
                 message.info('修改密码成功')
                 this.setState({
@@ -108,6 +107,8 @@ class HeaderComponent extends Component {
     signOut = () => {
         // storage.remove('access_token')
         this.props.userActions.loginOut()
+        sessionStorage.clear()
+        //本地直接打开是读不了cookie的，因为不是http协议的，是file协议的
         cookie.remove('access_token')
         cookie.remove('userInfo')
         message.success('注销成功', 1);
@@ -125,7 +126,6 @@ class HeaderComponent extends Component {
 
 
     render() {
-        console.log(this.props.user)
         const menu = (
             <Menu>
                 {/*这里a标签要给/signOut，否则无法正常跳转*/}

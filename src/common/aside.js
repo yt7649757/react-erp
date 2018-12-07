@@ -19,6 +19,7 @@ const IconFont = Icon.createFromIconfontCN({
     scriptUrl: '//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js',
 });
 
+var arr = []
 
 class Aside extends Component {
 
@@ -46,6 +47,24 @@ class Aside extends Component {
         }
     }
 
+    componentWillUnmount() {
+        arr = []
+    }
+
+
+    setRoutes = (obj) => {
+        const routes = JSON.parse(sessionStorage.getItem('routes'))
+        routes && (arr = routes)
+        if (arr.length >= 1 && obj) {
+            if (JSON.stringify(arr).indexOf(JSON.stringify(obj)) === -1) {
+                arr.push(obj)
+            }
+        } else {
+            arr.push(obj)
+        }
+        sessionStorage.setItem('routes', JSON.stringify(arr))
+    }
+
 
     //等待修改，目前是三级目录
     /**
@@ -56,45 +75,47 @@ class Aside extends Component {
         const {pathname} = location;
         this.state.sidebarData && this.state.sidebarData.map(item => {
             //从一级目录开始查找
-            if (pathname === ('/' +  item.url)) {
-                console.log(item.menu_id)
+            if (pathname === ('/' + item.url)) {
                 this.setState({
                     selectedKeys: [item.menu_id]
                 });
                 document.title = item.menu_name
-                this.props.getTitle(item.menu_name)
-            //一级目录没有找到，判断一级目录中是否存在二级菜单
-            }else if(item.menus && item.menus.length > 0) {
+                this.setRoutes(item)
+                // sessionStorage.setItem('current', item.url)
+                //一级目录没有找到，判断一级目录中是否存在二级菜单
+            } else if (item.menus && item.menus.length > 0) {
                 // 在二级目录中开始查找
-                 item.menus.map(childItem => {
-                     if(pathname === ('/' + childItem.url)) {
-                         this.setState({
-                             openKeys: [item.menu_id],
-                             selectedKeys: [childItem.menu_id]
-                         });
-                         document.title = childItem.menu_name
-                         this.props.getTitle(childItem.menu_name)
-                     //二级目录也没有，就查询三级目录
-                     }else if(childItem.menus && childItem.menus.length>0) {
-                          childItem.menus.map(subItem => {
-                              if(pathname === ('/' + subItem.url)) {
-                                  this.setState({
-                                      openKeys: [item.menu_id,childItem.menu_id],   //当前是三级菜单，所以需要同时展开二级和一级目录
-                                      selectedKeys: [subItem.menu_id]
-                                  });
-                                  document.title = subItem.menu_name
-                                  this.props.getTitle(subItem.menu_name)
-                              }
-                          })
-                     }
-                 })
+                item.menus.map(childItem => {
+                    if (pathname === ('/' + childItem.url)) {
+                        this.setState({
+                            openKeys: [item.menu_id],
+                            selectedKeys: [childItem.menu_id]
+                        });
+                        document.title = childItem.menu_name
+                        this.setRoutes(childItem)
+                        // sessionStorage.setItem('current', childItem.url)
+                        //二级目录也没有，就查询三级目录
+                    } else if (childItem.menus && childItem.menus.length > 0) {
+                        childItem.menus.map(subItem => {
+                            if (pathname === ('/' + subItem.url)) {
+                                this.setState({
+                                    openKeys: [item.menu_id, childItem.menu_id],   //当前是三级菜单，所以需要同时展开二级和一级目录
+                                    selectedKeys: [subItem.menu_id]
+                                });
+                                document.title = subItem.menu_name
+                                this.setRoutes(subItem)
+                                // sessionStorage.setItem('current', subItem.url)
+                            }
+                        })
+                    }
+                })
             }
         });
     };
 
     componentDidMount = async () => {
         await this.props.userActions.getSider()
-        this.eventEmitter = emitter.addListener("close",()=>{
+        this.eventEmitter = emitter.addListener("close", () => {
             this.setState({
                 collapsed: !this.state.collapsed
             })
@@ -132,11 +153,11 @@ class Aside extends Component {
                                // 设置文档标题
                                document.title = item.menu_name;
                            }}
-                 >
+                >
                     <img src={item.icon} alt="icon"/>
                     <span>{item.menu_name}</span>
                     {/*出现url追加问题，在Link路径前加 '/' 代表根目录下的绝对路径 */}
-                    <Link to={{pathname: '/' + item.url, state: item.menu_name}} replace></Link>
+                    <Link to={{pathname: '/' + item.url, state: item}} replace></Link>
                 </Menu.Item>
             ) : (
                 <SubMenu
@@ -161,7 +182,10 @@ class Aside extends Component {
                                                        document.title = subItem.menu_name;
                                                    }}
                                         >
-                                            <Link to={{pathname: '/' + subItem.url, state: subItem.menu_name}}> {subItem.menu_name} </Link>
+                                            <Link to={{
+                                                pathname: '/' + subItem.url,
+                                                state: subItem
+                                            }}> {subItem.menu_name} </Link>
                                         </Menu.Item>
                                     ))
                                 }
@@ -176,7 +200,7 @@ class Aside extends Component {
                                     // 设置文档标题
                                     document.title = menuItem.menu_name;
                                 }}>
-                                <Link to = {{pathname: '/' + menuItem.url, state: menuItem.menu_name}}> {menuItem.menu_name} </Link>
+                                <Link to={{pathname: '/' + menuItem.url, state: menuItem}}> {menuItem.menu_name} </Link>
                             </Menu.Item> )
                     ))}
                 </SubMenu>
@@ -188,24 +212,29 @@ class Aside extends Component {
                 collapsible
                 breakpoint="lg"
                 collapsedWidth="0"
-                onBreakpoint={(broken) => { console.log(broken); }}
-                onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
+                onBreakpoint={(broken) => {
+
+                }}
+                onCollapse={(collapsed, type) => {
+
+                }}
                 collapsed={this.state.collapsed}
                 trigger={null}
                 width="252"
-                style = {{
-                    overflow: 'auto', height: '100vh', paddingBottom: '10vh' ,position: 'fixed', left: 0, zIndex: 999,
+                style={{
+                    overflow: 'auto', height: '100vh', paddingBottom: '10vh', position: 'fixed', left: 0, zIndex: 999,
                     backgroundColor: "#1F2B35"
                 }}
             >
                 <Menu
                     subMenuOpenDelay={0.3}
+                    inlineCollapsed={true}
                     theme="dark"
                     openKeys={openKeys}
                     selectedKeys={selectedKeys}
                     mode="inline"
                     onOpenChange={this.OpenChange}
-                    style = {{
+                    style={{
                         backgroundColor: "#1F2B35",
                     }}
                 >

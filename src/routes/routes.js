@@ -4,36 +4,15 @@ import { HashRouter as Router, Route, Switch } from "react-router-dom";
 // import App from '../app';
 import '../style/app.css'
 import { config } from './config'
-import PrivateRoute from '../common/privateRoute';
+// import PrivateRoute from '../common/privateRoute';
+import IndexPage from '../common/indexPage'
 
 class Routes extends Component {
 
     render() {
         return(
             <Router>
-                <Switch>
-                    {config.map((route, index) => (
-                        !route.private ? (
-                            <Route
-                                key={index}
-                                path={route.path}
-                                exact={route.exact}
-                                component={route.component}
-                            />
-                        ) : (
-                            <PrivateRoute
-                                key={index}
-                                path={route.path}
-                                exact={route.exact}
-                                component={route.component}
-                            />
-                            )
-
-                    ))}
-                    <Route render={ () => {
-                        return (<p>这个页面还在开发中...</p>)
-                    } }/>
-                </Switch>
+                <Route path="/" component={IndexPage}/>
             </Router>
         )
     }

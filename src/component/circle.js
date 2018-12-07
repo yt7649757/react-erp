@@ -32,7 +32,6 @@ export default class Circle extends Component {
 
 
     render() {
-        console.log(rotate)
         return (
             <div className="circle">
                 <div className={`clip ${this.state.c}`}>

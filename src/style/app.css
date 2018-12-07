@@ -2,7 +2,7 @@
 
 body {
     min-width: 1360px;
-    overflow-x: hidden;
+    /*overflow-x: scroll;*/
 }
 
 .header {
@@ -30,7 +30,7 @@ body {
     line-height: 50px;
     background-color: #FFFFFF;
     padding-left: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     box-shadow:0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
@@ -71,3 +71,6 @@ clearfix:before,.clearfix:after{
 }
 
 
+.ant-pagination.ant-table-pagination {
+    margin-right: 10px;
+}

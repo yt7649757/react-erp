@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import { Form, Row, Col, Input, Button, Icon, Select } from 'antd';
+import { Form, Row, Col, Input, Button, Select, message } from 'antd';
 import Template from '../../common/template';
 import '../../style/agora/workRegister.css'
+// import RegisterSelect from '../../component/registerSelect'
+
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import * as AgoraActions from '../../redux/action/agora/agora';
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -26,11 +31,33 @@ const styles = {
 
 class WorkRegister extends Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            loading: false
+        }
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                console.log(values)
+                this.setState({
+                    loading: true
+                });
+                //市场部
+                values.project_type = 0
+                this.props.agoraActions.addProject(values).then(val => {
+                    if(val) {
+                        this.setState({
+                            loading: false
+                        },() => {
+                            this.reset()
+                            message.info('提交成功')
+                        })
+                    }
+                })
             }
         });
     }
@@ -47,8 +74,22 @@ class WorkRegister extends Component {
           }
     }
 
+    handleChange = (value,params) => {
+        // this.setState({
+        //     params: value
+        // })
+    }
+
+
+    requestSelect = (params) => {
+        this.props.agoraActions.getSelects(params).then(val => {
+            // console.log(val)
+        })
+    }
+
     render() {
         const { getFieldDecorator } = this.props.form;
+        const { selectGroup } = this.props.agora
         return (
             <Template>
             <form className="project-info" onSubmit={this.handleSubmit} onReset={this.reset} >
@@ -62,11 +103,11 @@ class WorkRegister extends Component {
                                 {...formItemLayout}
                                 label="项目名称："
                             >
-                                {getFieldDecorator('projectName', {
+                                {getFieldDecorator('project_name', {
                                     rules: [{
                                         required:false,
-                                        pattern: new RegExp(/\S/, "g"),
-                                        message: '不能为空',
+                                        pattern: new RegExp(/^[\u4E00-\u9FA5]+$/, "g"),
+                                        message: '只允许汉字',
                                     }, {
                                         required: true, message: '请输入项目名称',
                                     }],
@@ -80,7 +121,7 @@ class WorkRegister extends Component {
                                 {...formItemLayout}
                                 label="装修面积："
                             >
-                                {getFieldDecorator('area', {
+                                {getFieldDecorator('decoration_area', {
                                     rules: [{
                                         required:false,
                                         pattern: new RegExp(/^[1-9]\d*$/, "g"),
@@ -101,7 +142,7 @@ class WorkRegister extends Component {
                                 {...formItemLayout}
                                 label="工程预算"
                             >
-                                {getFieldDecorator('budget', {
+                                {getFieldDecorator('project_budget', {
                                     rules: [{
                                         required:false,
                                         pattern: new RegExp(/\S/, "g"),
@@ -121,7 +162,7 @@ class WorkRegister extends Component {
                                 {...formItemLayout}
                                 label="预计总工期："
                             >
-                                {getFieldDecorator('timeLimit', {
+                                {getFieldDecorator('expected_duration', {
                                     rules: [{
                                         required:false,
                                         pattern: new RegExp(/\S/, "g"),
@@ -138,17 +179,29 @@ class WorkRegister extends Component {
                             <FormItem
                                 {...formItemLayout}
                                 label="装修档次"
+                                hasFeedback
                             >
-                                {getFieldDecorator('level', {
-                                    rules: [{
-                                        required:false,
-                                        pattern: new RegExp(/\S/, "g"),
-                                        message: '不能为空',
-                                    },  {
-                                        required: true, message: '请输入装修档次!',
-                                    }],
+                                {getFieldDecorator('decoration_grade', {
+                                    initialValue: '',
+                                    // rules: [{
+                                    //     required:false,
+                                    //     pattern: new RegExp(/\S/, "g"),
+                                    //     message: '不能为空',
+                                    // },  {
+                                    //     required: true, message: '请输入装修档次!',
+                                    // }],
                                 })(
-                                    <Input />
+                                    <Select  onFocus={this.requestSelect.bind(this,'decoration_grade')} onChange={this.handleChange.bind(this,'decoration_grade')}>
+                                        {
+                                            selectGroup['decoration_grade'] ? (
+                                                Object.keys(selectGroup['decoration_grade']).map(key => {
+                                                    return (
+                                                        <Option key={key} value={key}>{selectGroup['decoration_grade'][key]}</Option>
+                                                    )
+                                                })
+                                            ): null
+                                        }
+                                    </Select>
                                 )}
                             </FormItem>
                         </Col>
@@ -156,17 +209,29 @@ class WorkRegister extends Component {
                             <FormItem
                                 {...formItemLayout}
                                 label="装修风格"
+                                hasFeedback
                             >
-                                {getFieldDecorator('style', {
-                                    rules: [{
-                                        required:false,
-                                        pattern: new RegExp(/\S/, "g"),
-                                        message: '不能为空',
-                                    },  {
-                                        required: true, message: '请输入装修风格!',
-                                    }],
+                                {getFieldDecorator('decoration_style', {
+                                    initialValue: '',
+                                    // rules: [{
+                                    //     required:false,
+                                    //     pattern: new RegExp(/\S/, "g"),
+                                    //     message: '不能为空',
+                                    // },  {
+                                    //     required: true, message: '请输入装修风格!',
+                                    // }],
                                 })(
-                                    <Input />
+                                    <Select  onFocus={this.requestSelect.bind(this,'decoration_style')} onChange={this.handleChange.bind(this,'decoration_style')}>
+                                        {
+                                            selectGroup['decoration_style'] ? (
+                                                Object.keys(selectGroup['decoration_style']).map(key => {
+                                                    return (
+                                                        <Option key={key} value={key}>{selectGroup['decoration_style'][key]}</Option>
+                                                    )
+                                                })
+                                            ): null
+                                        }
+                                    </Select>
                                 )}
                             </FormItem>
                         </Col>
@@ -178,14 +243,22 @@ class WorkRegister extends Component {
                                 label="装修类型"
                                 hasFeedback
                             >
-                                {getFieldDecorator('type', {
-                                    rules: [
-                                        { required: true, message: '请选择装修类型!' },
-                                    ],
+                                {getFieldDecorator('decoration_type', {
+                                    initialValue: '',
+                                    // rules: [
+                                    //     { required: true, message: '请选择装修类型!' },
+                                    // ],
                                 })(
-                                    <Select placeholder="请选择装修类型">
-                                        <Option value="china">China</Option>
-                                        <Option value="usa">U.S.A</Option>
+                                    <Select  onFocus={this.requestSelect.bind(this,'decoration_type')} onChange={this.handleChange.bind(this,'decoration_type')}>
+                                        {
+                                            selectGroup['decoration_type'] ? (
+                                                Object.keys(selectGroup['decoration_type']).map(key => {
+                                                    return (
+                                                        <Option key={key} value={key}>{selectGroup['decoration_type'][key]}</Option>
+                                                    )
+                                                })
+                                            ): null
+                                        }
                                     </Select>
                                 )}
                             </FormItem>
@@ -196,14 +269,22 @@ class WorkRegister extends Component {
                                 label="色彩取向"
                                 hasFeedback
                             >
-                                {getFieldDecorator('color', {
-                                    rules: [
-                                        { required: true, message: '请选择色彩取向!' },
-                                    ],
+                                {getFieldDecorator('color_orientation', {
+                                    initialValue: '',
+                                    // rules: [
+                                    //     { required: true, message: '请选择色彩取向!' },
+                                    // ],
                                 })(
-                                    <Select placeholder="请选择色彩取向">
-                                        <Option value="china">China</Option>
-                                        <Option value="usa">U.S.A</Option>
+                                    <Select  onFocus={this.requestSelect.bind(this,'color_orientation')} onChange={this.handleChange.bind(this,'color_orientation')}>
+                                        {
+                                            selectGroup['color_orientation'] ? (
+                                                Object.keys(selectGroup['color_orientation']).map(key => {
+                                                    return (
+                                                        <Option key={key} value={key}>{selectGroup['color_orientation'][key]}</Option>
+                                                    )
+                                                })
+                                            ): null
+                                        }
                                     </Select>
                                 )}
                             </FormItem>
@@ -214,14 +295,22 @@ class WorkRegister extends Component {
                                 label="客户来源"
                                 hasFeedback
                             >
-                                {getFieldDecorator('origin', {
-                                    rules: [
-                                        { required: true, message: '请选择客户来源!' },
-                                    ],
+                                {getFieldDecorator('customer_source', {
+                                    initialValue: '',
+                                    // rules: [
+                                    //     { required: true, message: '请选择客户来源!' },
+                                    // ],
                                 })(
-                                    <Select placeholder="请选择客户来源">
-                                        <Option value="china">China</Option>
-                                        <Option value="usa">U.S.A</Option>
+                                    <Select onFocus={this.requestSelect.bind(this,'customer_source')} onChange={this.handleChange.bind(this,'customer_source')}>
+                                        {
+                                            selectGroup['customer_source'] ? (
+                                                Object.keys(selectGroup['customer_source']).map(key => {
+                                                    return (
+                                                        <Option key={key} value={key}>{selectGroup['customer_source'][key]}</Option>
+                                                    )
+                                                })
+                                            ): null
+                                        }
                                     </Select>
                                 )}
                             </FormItem>
@@ -232,14 +321,14 @@ class WorkRegister extends Component {
                             <FormItem
                                 {...formItemLayout}
                                 label="项目要求"
-                                hasFeedback
                             >
-                                {getFieldDecorator('ask', {
-                                    rules: [{
-                                        validator: this.validFunction
-                                    },
-                                        { required: true, message: '请输入项目要求!' },
-                                    ],
+                                {getFieldDecorator('project_description', {
+                                    initialValue: '',
+                                    // rules: [{
+                                    //     validator: this.validFunction
+                                    // },
+                                    //     { required: true, message: '请输入项目要求!' },
+                                    // ],
                                 })(
                                    <Input.TextArea rows={3} cols={10} style={{resize: 'none'}} />
                                 )}
@@ -249,17 +338,14 @@ class WorkRegister extends Component {
                             <FormItem
                                 {...formItemLayout}
                                 label="工程地址"
-                                hasFeedback
                             >
-                                {getFieldDecorator('address', {
-                                    rules: [
-                                        { required: true, message: '请选择工程地址!' },
-                                    ],
+                                {getFieldDecorator('project_address', {
+                                    initialValue: '',
+                                    // rules: [
+                                    //     { required: true, message: '请选择工程地址!' },
+                                    // ],
                                 })(
-                                    <Select placeholder="请选择工程地址">
-                                        <Option value="china">China</Option>
-                                        <Option value="usa">U.S.A</Option>
-                                    </Select>
+                                    <Input />
                                 )}
                             </FormItem>
                         </Col>
@@ -275,11 +361,11 @@ class WorkRegister extends Component {
                                 {...formItemLayout}
                                 label="姓名"
                             >
-                                {getFieldDecorator('username', {
+                                {getFieldDecorator('contact_name', {
                                     rules: [{
                                         required:false,
-                                        pattern: new RegExp(/\S/, "g"),
-                                        message: '不能为空',
+                                        pattern: new RegExp(/^[\u4E00-\u9FA5]+$/, "g"),
+                                        message: '只允许汉字',
                                     }, {
                                         required: true, message: '请输入你的姓名!',
                                     }],
@@ -293,7 +379,7 @@ class WorkRegister extends Component {
                                 {...formItemLayout}
                                 label="联系电话"
                             >
-                                {getFieldDecorator('phone', {
+                                {getFieldDecorator('contact_number', {
                                     rules: [{
                                         required:false,
                                         pattern: new RegExp(/^1(3|4|5|7|8)\d{9}$/, "g"),
@@ -317,9 +403,16 @@ class WorkRegister extends Component {
                                         { required: true, message: '请选择!' },
                                     ],
                                 })(
-                                    <Select placeholder="请选择性别">
-                                        <Option value="man">男</Option>
-                                        <Option value="women">女</Option>
+                                    <Select onFocus={this.requestSelect.bind(this,'sex')} onChange={this.handleChange.bind(this,'sex')}>
+                                        {
+                                            selectGroup['sex'] ? (
+                                                Object.keys(selectGroup['sex']).map(key => {
+                                                    return (
+                                                        <Option key={key} value={key}>{selectGroup['sex'][key]}</Option>
+                                                    )
+                                                })
+                                            ): null
+                                        }
                                     </Select>
                                 )}
                             </FormItem>
@@ -331,14 +424,15 @@ class WorkRegister extends Component {
                                 {...formItemLayout}
                                 label="QQ"
                             >
-                                {getFieldDecorator('qq', {
-                                    rules: [{
-                                        required:false,
-                                        pattern: new RegExp(/^[1-9]\d{4,10}$/, "g"),
-                                        message: '请输入正确格式的QQ',
-                                    }, {
-                                        required: true, message: '请输入QQ!',
-                                    }],
+                                {getFieldDecorator('customer_qq', {
+                                    initialValue: '',
+                                    // rules: [{
+                                    //     required:false,
+                                    //     pattern: new RegExp(/^[1-9]\d{4,10}$/, "g"),
+                                    //     message: '请输入正确格式的QQ',
+                                    // }, {
+                                    //     required: true, message: '请输入QQ!',
+                                    // }],
                                     // getValueFromEvent: (event) => {
                                     //     return event.target.value.replace(/\D/g,'')
                                     // }
@@ -352,12 +446,13 @@ class WorkRegister extends Component {
                                 {...formItemLayout}
                                 label="邮箱"
                             >
-                                {getFieldDecorator('email', {
-                                    rules: [{
-                                        type: 'email', message: '邮箱格式错误!',
-                                    }, {
-                                        required: true, message: '请输入你的邮箱!',
-                                    }],
+                                {getFieldDecorator('customer_email', {
+                                    initialValue: '',
+                                    // rules: [{
+                                    //     type: 'email', message: '邮箱格式错误!',
+                                    // }, {
+                                    //     required: true, message: '请输入你的邮箱!',
+                                    // }],
                                 })(
                                     <Input />
                                 )}
@@ -367,17 +462,28 @@ class WorkRegister extends Component {
                             <FormItem
                                 {...formItemLayout}
                                 label="与户主关系"
+                                hasFeedback
                             >
-                                {getFieldDecorator('username', {
+                                {getFieldDecorator('householder_relation', {
                                     rules: [{
                                         required:false,
                                         pattern: new RegExp(/\S/, "g"),
                                         message: '不能为空',
                                     }, {
-                                        required: true, message: '请填写与户主关系!',
+                                        required: true, message: '请选择!',
                                     }],
                                 })(
-                                    <Input />
+                                    <Select onFocus={this.requestSelect.bind(this,'householder_relation')} onChange={this.handleChange.bind(this,'householder_relation')}>
+                                        {
+                                            selectGroup['householder_relation'] ? (
+                                                Object.keys(selectGroup['householder_relation']).map(key => {
+                                                    return (
+                                                        <Option key={key} value={key}>{selectGroup['householder_relation'][key]}</Option>
+                                                    )
+                                                })
+                                            ): null
+                                        }
+                                    </Select>
                                 )}
                             </FormItem>
                         </Col>
@@ -386,7 +492,7 @@ class WorkRegister extends Component {
                 <FormItem style={{textAlign: 'center',marginTop: 40}}
                     wrapperCol={{ span: 24, offset: 0 }}
                 >
-                    <Button type="primary" htmlType="submit">提交</Button>
+                    <Button type="primary" htmlType="submit" loading={this.state.loading}>提交</Button>
                     <Button type="default" htmlType="reset">重置</Button>
                 </FormItem>
             </form>
@@ -396,5 +502,17 @@ class WorkRegister extends Component {
 
 }
 
+const mapStateToProps = (state) => {
+    return {
+        agora: state.agora,
+    }
+}
 
-export default Form.create()(WorkRegister)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        agoraActions: bindActionCreators(AgoraActions, dispatch)
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(WorkRegister))

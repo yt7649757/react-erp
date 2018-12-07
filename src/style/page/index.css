@@ -5,7 +5,6 @@
 
 .sell-box {
     height: 148px;
-    margin-top: -10px;
     margin-bottom: 20px;
 }
 
@@ -192,4 +191,21 @@
     /*height: 20px;*/
     display: block;
     margin-top: 13px;
+}
+
+.no-message {
+    width: 167px;
+    text-align: center;
+    margin: 56px auto;
+}
+
+.no-message>img {
+    display: block;
+    border: 1px dashed #ccc;
+}
+
+.no-message p {
+    font-size: 14px;
+    margin-top: 20px;
+    color: #666666;
 }

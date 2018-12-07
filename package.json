@@ -36,6 +36,10 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "babel-polyfill": "^6.26.0",
+    "classlist-polyfill": "^1.2.0",
+    "core-js": "^2.5.7",
+    "raf": "^3.4.1",
     "redux-logger": "^3.0.6"
   }
 }

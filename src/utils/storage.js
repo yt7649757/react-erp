@@ -2,15 +2,15 @@ var storage = {
 
     //存储
     set(key, value) {
-        localStorage.setItem(key, JSON.stringify(value));
+        sessionStorage.setItem(key, JSON.stringify(value));
     },
     //取出数据
     get(key) {
-        return JSON.parse(localStorage.getItem(key));
+        return JSON.parse(sessionStorage.getItem(key));
     },
     // 删除数据
     remove(key) {
-        localStorage.removeItem(key);
+        sessionStorage.removeItem(key);
     }
 
 }
