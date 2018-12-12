@@ -4,6 +4,8 @@ const initialState = {
     selectGroup: {},
     tableList: [],
     payment: [],
+    partment: [],
+    useLessList: []
 }
 
 export const agora = (state = initialState, action) => {
@@ -22,6 +24,16 @@ export const agora = (state = initialState, action) => {
             return {
                 ...state,
                 payment: action.payment
+            }
+        case types.PART_MENT:
+            return {
+                ...state,
+                partment: action.partment
+            }
+        case types.USELESS_LIST:
+            return {
+                ...state,
+                useLessList: action.useLessList
             }
         default:
             return state

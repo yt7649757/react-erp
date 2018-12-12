@@ -65,7 +65,7 @@ class UserLoginList extends Component {
 
     request = async(params = 1) => {
         const pagination = { ...this.state.pagination };
-        pagination.pageSize = 11
+        pagination.pageSize = 10
         this.setState({
             loading: true
         })
@@ -100,6 +100,7 @@ class UserLoginList extends Component {
                     loading = {this.state.loading}
                     pagination={this.state.pagination}
                     onChange={this.handleTableChange}
+                    size="middle"
                 />
             </Template>
         )

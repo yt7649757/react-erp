@@ -135,3 +135,52 @@ export const deleteProject = (params) => {
         })
     }
 }
+
+
+//获取废单列表
+export const getUselessList = (page= 1, size = 15, status = 1) => {
+    return dispatch => {
+       return axios.get(port + `/api/erp/project/wasteapplylistcopy?page=${page}&per_page=${size}&status=${status}`)
+            .then(res => {
+               dispatch({
+                   type: types.USELESS_LIST,
+                   useLessList: res.data
+               })
+               return res
+            }).catch(error => {
+                alert(error + '请求失败')
+        })
+    }
+}
+
+
+//获取部门
+export const getPartMent = () => {
+    return (dispatch) => {
+        axios.get(port + '/api/erp/project/showdepartmentjson')
+            .then(function (res) {
+                console.log(res)
+                dispatch({
+                    type: types.PART_MENT,
+                    partment: res.data
+                });
+            }).catch(error => {
+            console.log(error + '请求失败')
+        })
+    }
+}
+
+
+
+export const changeParment = (url,params) => {
+    return dispatch => {
+        return axios.post(port + url, {
+            into_department_id: params.into_department_id,
+            transfer_desc: params.transfer_desc
+        }).then(function (res) {
+            return res.data
+        }).catch(error => {
+            return error
+        })
+    }
+}

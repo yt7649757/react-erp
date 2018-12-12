@@ -32,3 +32,6 @@ export const TABLE_RENDER = 'TABLE_RENDER';
 
 //我的业务
 export const PAY_MENT = 'PAY_MENT';
+
+export const USELESS_LIST = 'USELESS_LIST';
+export const PART_MENT = 'PART_MENT';

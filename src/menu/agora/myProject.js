@@ -56,7 +56,7 @@ class MyProject extends Component {
             selectedRowKeys: [],
             selectedRows: [],
             visible: false,
-            settings: ['decoration_grade','decoration_style','decoration_type','color_orientation','customer_source','waste_single_type'],
+            settings: ['decoration_grade','decoration_style','decoration_type','color_orientation','customer_source','waste_single_type','department_type'],
             forms: '',
             title: '',
             //当前行
@@ -234,6 +234,9 @@ class MyProject extends Component {
       }else if(this.state.forms === 'UploadForm') {
           //附件上传
           url = `/api/erp/project/addfield/guid/${row.guid}`
+      }else if(this.state.forms === 'ApplyPartForm') {
+          //申请转部
+          url = `/api/erp/project/addprojectauditedit/${row.guid}/type/1`
       }
 
       this.formRef.getItemsValue().then(val => {

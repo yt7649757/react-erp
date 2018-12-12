@@ -269,9 +269,13 @@ ul li {
 }
 
 
-@media screen and (min-width: 1360px) and (max-width: 1680px)  {
+@media screen and (min-width: 1024px) and (max-width: 1680px)  {
    .login-form {
        top: 50%;
        margin-top: -233px;
+       margin-right: 200px;
    }
+    .bx {
+        margin: 0 200px;
+    }
 }

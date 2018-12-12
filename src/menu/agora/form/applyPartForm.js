@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {Form, Input, Select } from 'antd';
+import React, {Component} from 'react';
+import {Form, Input, Select} from 'antd';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as AgoraActions from '../../../redux/action/agora/agora';
@@ -13,20 +13,20 @@ const Option = Select.Option;
 class ApplyPartForm extends Component {
 
     componentDidMount() {
-        // this.props.agoraActions.getPayment()
-        const data = this.props.data
+        this.props.agoraActions.getPartMent()
+        const data = this.props.data;
         this.props.form.setFieldsValue({
             project_name: data.project_name
         })
     }
 
 
-    getItemsValue = ()=>{
-        const { form } = this.props
+    getItemsValue = () => {
+        const {form} = this.props
         //表单验证
         return new Promise(function (resolve) {
-            form.validateFields((err,values) => {
-                if(!err) {
+            form.validateFields((err, values) => {
+                if (!err) {
                     resolve(values)
                 }
             })
@@ -34,8 +34,8 @@ class ApplyPartForm extends Component {
 
     }
 
-    submit = (url,params) => {
-        return this.props.agoraActions.addPaymentForm(url,params)
+    submit = (url, params) => {
+        return this.props.agoraActions.changeParment(url, params)
     }
 
     render() {
@@ -51,7 +51,9 @@ class ApplyPartForm extends Component {
             },
         };
 
-        // const { payment } = this.props.agora
+        // const { selectGroup } = this.props.agora
+        const {partment} = this.props.agora
+
         return (
             <Form>
                 <FormItem
@@ -77,15 +79,15 @@ class ApplyPartForm extends Component {
                             required: true, message: '请选择!',
                         }],
                     })(
-                        <Select onChange={this.handleChange}>
+                        <Select>
                             {
-                                // payment? (
-                                //     payment.map(key => {
-                                //         return (
-                                //             <Option key={key.guid} value={key.guid}>{key.name}</Option>
-                                //         )
-                                //     })
-                                // ) : null
+                                partment ? (
+                                    Object.keys(partment).map(key => {
+                                        return (
+                                            <Option key={key} value={key}>{partment[key]}</Option>
+                                        )
+                                    })
+                                ) : null
                             }
                         </Select>
                     )}
@@ -94,7 +96,7 @@ class ApplyPartForm extends Component {
                     {...formItemLayout}
                     label="说明"
                 >
-                    {getFieldDecorator('apply_desc', {
+                    {getFieldDecorator('transfer_desc', {
                         // rules: [{
                         //     type: 'string', message: 'The input is not valid E-mail!',
                         // }, {

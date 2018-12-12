@@ -394,6 +394,7 @@ class NodeList extends Component {
                     loading={this.state.loading}
                     pagination={this.state.pagination}
                     onChange={this.handleTableChange}
+                    size="middle"
                 />
 
                 <Modal

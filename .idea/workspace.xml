@@ -2,67 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="09b2004f-e233-4dfd-8ab4-3d104b945428" name="Default" comment="修改主頁">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/agora/form/applyPartForm.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/agora/form/uploadForm.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/agora/projectDetail.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/agora/table/linkPeople.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/agora/table/projectImg.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/agora/table/projectPaper.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/agora/table/remindInfo.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/agora/table/roomInfo.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/agora/table/roomStructure.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/agora/table/trackingLog.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/finance/CollectPlanEdit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/finance/accountManage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/finance/collectCheck.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/finance/collectRevokeCheck.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/finance/collectStyleList.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/finance/contractDetail.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/finance/priceCheckList.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/finance/showContractProjectList.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/finance/showPayMentList.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/finance/showProjectDepositList.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/queto/achievement.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/queto/excellentOpus.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/queto/showApplyList.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/queto/showChangeList.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/queto/showCheckList.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/queto/showConProListByCom.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/queto/showContractProjectList.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/queto/showNoContract.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/queto/showNoContractByCom.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/queto/showNoContractByDep.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/queto/showProListByDep.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/queto/showProListByUser.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/queto/showProjectAudit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/queto/showProjectContAudit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/style/agora/projectDetail.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/style/agora/uploadForm.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/utils/changeTitle.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/serviceWorker.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/static/icon.png" afterPath="$PROJECT_DIR$/public/static/icon.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/aside.js" afterPath="$PROJECT_DIR$/src/common/aside.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/header.js" afterPath="$PROJECT_DIR$/src/common/header.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/indexPage.js" afterPath="$PROJECT_DIR$/src/common/indexPage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/component/listItem.js" afterPath="$PROJECT_DIR$/src/component/listItem.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/component/tableHoc.js" afterPath="$PROJECT_DIR$/src/component/tableHoc.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/component/title.js" afterPath="$PROJECT_DIR$/src/component/title.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/menu/agora/agoraList.js" afterPath="$PROJECT_DIR$/src/menu/agora/agoraList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/template.js" afterPath="$PROJECT_DIR$/src/common/template.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/menu/agora/form/applyPartForm.js" afterPath="$PROJECT_DIR$/src/menu/agora/form/applyPartForm.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/menu/agora/myProject.js" afterPath="$PROJECT_DIR$/src/menu/agora/myProject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/menu/agora/workRegister.js" afterPath="$PROJECT_DIR$/src/menu/agora/workRegister.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/menu/page.js" afterPath="$PROJECT_DIR$/src/menu/page.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/menu/agora/uselessList.js" afterPath="$PROJECT_DIR$/src/menu/agora/uselessList.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/menu/system/nodeList.js" afterPath="$PROJECT_DIR$/src/menu/system/nodeList.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/menu/system/roleList.js" afterPath="$PROJECT_DIR$/src/menu/system/roleList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/menu/system/treeList.js" afterPath="$PROJECT_DIR$/src/menu/system/treeList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/menu/system/userLoginList.js" afterPath="$PROJECT_DIR$/src/menu/system/userLoginList.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/redux/action/agora/agora.js" afterPath="$PROJECT_DIR$/src/redux/action/agora/agora.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/redux/action/system/systemManage.js" afterPath="$PROJECT_DIR$/src/redux/action/system/systemManage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/redux/action/user.js" afterPath="$PROJECT_DIR$/src/redux/action/user.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/config.js" afterPath="$PROJECT_DIR$/src/routes/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/routes.js" afterPath="$PROJECT_DIR$/src/routes/routes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/redux/constants/types.js" afterPath="$PROJECT_DIR$/src/redux/constants/types.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/redux/reducers/agora/agora.js" afterPath="$PROJECT_DIR$/src/redux/reducers/agora/agora.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/style/app.css" afterPath="$PROJECT_DIR$/src/style/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/style/aside.css" afterPath="$PROJECT_DIR$/src/style/aside.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/style/login/login.css" afterPath="$PROJECT_DIR$/src/style/login/login.css" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -87,11 +41,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.header</find>
-      <find>header</find>
-      <find>logo</find>
-      <find>circle</find>
-      <find>35</find>
       <find>46</find>
       <find>inputbox</find>
       <find>form-erm</find>
@@ -117,6 +66,11 @@
       <find>==</find>
       <find>request</find>
       <find>look</find>
+      <find>fixed</find>
+      <find>display</find>
+      <find>bx</find>
+      <find>login-form</find>
+      <find>addPaymentForm</find>
     </findStrings>
     <replaceStrings>
       <replace>newpas</replace>
@@ -133,16 +87,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/menu/finance/collectStyleList.js" />
-        <option value="$PROJECT_DIR$/src/menu/finance/showContractProjectList.js" />
-        <option value="$PROJECT_DIR$/src/menu/finance/accountManage.js" />
-        <option value="$PROJECT_DIR$/src/menu/finance/contractDetail.js" />
-        <option value="$PROJECT_DIR$/src/menu/finance/CollectPlanEdit.js" />
-        <option value="$PROJECT_DIR$/src/menu/finance/priceCheckList.js" />
-        <option value="$PROJECT_DIR$/src/menu/finance/collectCheck.js" />
-        <option value="$PROJECT_DIR$/src/menu/finance/collectRevokeCheck.js" />
-        <option value="$PROJECT_DIR$/src/menu/queto/designData.js" />
-        <option value="$PROJECT_DIR$/src/routes/config.js" />
         <option value="$PROJECT_DIR$/src/menu/queto/showProListByUser.js" />
         <option value="$PROJECT_DIR$/src/menu/queto/showNoContract.js" />
         <option value="$PROJECT_DIR$/src/menu/queto/showContractProjectList.js" />
@@ -164,16 +108,11 @@
         <option value="$PROJECT_DIR$/src/routes/routes.js" />
         <option value="$PROJECT_DIR$/src/common/indexPage.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
-        <option value="$PROJECT_DIR$/src/menu/agora/form/applyPartForm.js" />
         <option value="$PROJECT_DIR$/src/menu/agora/form/uploadForm.js" />
         <option value="$PROJECT_DIR$/src/style/agora/projectDetail.css" />
-        <option value="$PROJECT_DIR$/src/style/app.css" />
         <option value="$PROJECT_DIR$/src/style/aside.css" />
         <option value="$PROJECT_DIR$/src/redux/action/user.js" />
-        <option value="$PROJECT_DIR$/src/common/port.js" />
-        <option value="$PROJECT_DIR$/src/menu/agora/myProject.js" />
         <option value="$PROJECT_DIR$/src/component/tableHoc.js" />
-        <option value="$PROJECT_DIR$/src/redux/action/agora/agora.js" />
         <option value="$PROJECT_DIR$/src/menu/agora/table/roomStructure.js" />
         <option value="$PROJECT_DIR$/src/menu/agora/table/roomInfo.js" />
         <option value="$PROJECT_DIR$/src/menu/agora/table/TrackingLog.js" />
@@ -183,7 +122,22 @@
         <option value="$PROJECT_DIR$/src/menu/agora/table/remindInfo.js" />
         <option value="$PROJECT_DIR$/src/menu/agora/table/projectImg.js" />
         <option value="$PROJECT_DIR$/src/menu/agora/table/projectPaper.js" />
+        <option value="$PROJECT_DIR$/src/menu/agora/form/uselessForm.js" />
+        <option value="$PROJECT_DIR$/src/menu/system/roleList.js" />
+        <option value="$PROJECT_DIR$/src/menu/system/nodeList.js" />
+        <option value="$PROJECT_DIR$/src/menu/system/userLoginList.js" />
         <option value="$PROJECT_DIR$/src/common/aside.js" />
+        <option value="$PROJECT_DIR$/src/common/port.js" />
+        <option value="$PROJECT_DIR$/src/menu/agora/uselessList.js" />
+        <option value="$PROJECT_DIR$/src/common/template.js" />
+        <option value="$PROJECT_DIR$/src/style/app.css" />
+        <option value="$PROJECT_DIR$/src/style/login/login.css" />
+        <option value="$PROJECT_DIR$/src/menu/agora/myProject.js" />
+        <option value="$PROJECT_DIR$/src/redux/constants/types.js" />
+        <option value="$PROJECT_DIR$/src/redux/action/agora/agora.js" />
+        <option value="$PROJECT_DIR$/src/redux/reducers/agora/agora.js" />
+        <option value="$PROJECT_DIR$/src/menu/agora/form/orderForm.js" />
+        <option value="$PROJECT_DIR$/src/menu/agora/form/applyPartForm.js" />
       </list>
     </option>
   </component>
@@ -232,6 +186,75 @@
               <item name="react-erp" type="b2602c69:ProjectViewProjectNode" />
               <item name="react-erp" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="react-erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-erp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-erp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="menu" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-erp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="menu" type="462c0819:PsiDirectoryNode" />
+              <item name="agora" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-erp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="menu" type="462c0819:PsiDirectoryNode" />
+              <item name="agora" type="462c0819:PsiDirectoryNode" />
+              <item name="form" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-erp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="redux" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-erp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="redux" type="462c0819:PsiDirectoryNode" />
+              <item name="action" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-erp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="redux" type="462c0819:PsiDirectoryNode" />
+              <item name="action" type="462c0819:PsiDirectoryNode" />
+              <item name="agora" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-erp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="redux" type="462c0819:PsiDirectoryNode" />
+              <item name="constants" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-erp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="redux" type="462c0819:PsiDirectoryNode" />
+              <item name="reducers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-erp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="redux" type="462c0819:PsiDirectoryNode" />
+              <item name="reducers" type="462c0819:PsiDirectoryNode" />
+              <item name="agora" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -257,19 +280,19 @@
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/src/menu/agora/workRegister.js" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\react-erp\react-erp\public\static" />
+      <recent name="C:\Users\Administrator\Desktop\react-erp\react-erp\src\asset\img" />
+      <recent name="C:\Users\Administrator\Desktop\react-erp\react-erp\src\style\login" />
+      <recent name="C:\Users\Administrator\Desktop\react-erp\react-erp\public" />
+      <recent name="C:\Users\Administrator\Desktop\erp\src\asset\img" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\Desktop\react-erp\react-erp\src\menu\system" />
       <recent name="C:\Users\Administrator\Desktop\react-erp\react-erp\src\redux\reducers\system" />
       <recent name="C:\Users\Administrator\Desktop\react-erp\react-erp\public\static" />
       <recent name="C:\Users\Administrator\Desktop\react-erp\react-erp\public" />
       <recent name="C:\Users\Administrator\Desktop\erp\src\redux" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Administrator\Desktop\react-erp\react-erp\src\asset\img" />
-      <recent name="C:\Users\Administrator\Desktop\react-erp\react-erp\src\style\login" />
-      <recent name="C:\Users\Administrator\Desktop\react-erp\react-erp\public" />
-      <recent name="C:\Users\Administrator\Desktop\erp\src\asset\img" />
-      <recent name="C:\Users\Administrator\Desktop\erp\src\style" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -342,12 +365,12 @@
       <workItem from="1544435287131" duration="847000" />
       <workItem from="1544490411362" duration="26865000" />
       <workItem from="1544522879666" duration="985000" />
-      <workItem from="1544576568155" duration="7946000" />
+      <workItem from="1544576568155" duration="25826000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="614891000" />
+    <option name="totallyTimeSpent" value="632771000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
@@ -411,205 +434,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/menu/queto/achievement.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="25" column="3" lean-forward="false" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/queto/showProjectContAudit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/queto/excellentOpus.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/queto/showApplyList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/queto/showChangeList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="13" column="3" lean-forward="true" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/queto/showConProListByCom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="24" column="3" lean-forward="true" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/queto/showContractProjectList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/queto/showNoContract.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="17" column="16" lean-forward="true" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/queto/showNoContractByCom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/queto/showNoContractByDep.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/queto/showProjectAudit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="15" column="36" lean-forward="false" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/component/listItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/component/title.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="18" lean-forward="true" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/ev.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="138" column="19" lean-forward="true" selection-start-line="138" selection-start-column="19" selection-end-line="138" selection-end-column="19" />
-          <folding>
-            <element signature="e#214#240#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="63" lean-forward="true" selection-start-line="2" selection-start-column="63" selection-end-line="2" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/style/animate.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="149" column="0" lean-forward="true" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/page.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1159">
-          <caret line="104" column="54" lean-forward="true" selection-start-line="104" selection-start-column="54" selection-end-line="104" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app.js" />
-    <entry file="file://$PROJECT_DIR$/src/serviceWorker.js" />
-    <entry file="file://$PROJECT_DIR$/src/menu/agora/form/editForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/storage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/agora/form/applyPartForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="63" column="41" lean-forward="true" selection-start-line="63" selection-start-column="41" selection-end-line="63" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/agora/form/uselessForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="45" lean-forward="false" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/agora/form/uploadForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="208" column="28" lean-forward="true" selection-start-line="208" selection-start-column="28" selection-end-line="208" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/style/agora/projectDetail.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/login/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/agora/agoraList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/menu/agora/workRegister.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
@@ -617,31 +441,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/style/app.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="755">
-          <caret line="94" column="1" lean-forward="false" selection-start-line="94" selection-start-column="1" selection-end-line="94" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/style/aside.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/action/user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
           <caret line="97" column="37" lean-forward="true" selection-start-line="97" selection-start-column="37" selection-end-line="97" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/port.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="29" lean-forward="false" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -651,24 +454,6 @@
         <state relative-caret-position="-233">
           <caret line="29" column="15" lean-forward="true" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="15" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/system/nodeList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="755">
-          <caret line="224" column="5" lean-forward="true" selection-start-line="224" selection-start-column="5" selection-end-line="224" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/action/system/systemManage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="59" column="26" lean-forward="true" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#47#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -682,14 +467,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/action/agora/agora.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="122" column="0" lean-forward="true" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
@@ -698,32 +475,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/agora/myProject.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="401" column="53" lean-forward="true" selection-start-line="401" selection-start-column="53" selection-end-line="401" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/agora/uselessList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/menu/agora/table/roomInfo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="18" column="39" lean-forward="true" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -733,7 +490,7 @@
         <state relative-caret-position="209">
           <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -753,7 +510,7 @@
         <state relative-caret-position="475">
           <caret line="27" column="3" lean-forward="true" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -773,7 +530,7 @@
         <state relative-caret-position="266">
           <caret line="14" column="14" lean-forward="false" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -783,7 +540,7 @@
         <state relative-caret-position="266">
           <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -793,15 +550,302 @@
         <state relative-caret-position="304">
           <caret line="16" column="15" lean-forward="true" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
           <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/menu/agora/form/uselessForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="641">
+          <caret line="96" column="29" lean-forward="true" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/menu/system/userLoginList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="565">
+          <caret line="67" column="32" lean-forward="false" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/menu/system/treeList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/style/circle.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/style/title.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/common/aside.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="160" column="28" lean-forward="true" selection-start-line="160" selection-start-column="28" selection-end-line="160" selection-end-column="28" />
+        <state relative-caret-position="334">
+          <caret line="224" column="129" lean-forward="false" selection-start-line="224" selection-start-column="129" selection-end-line="224" selection-end-column="129" />
+          <folding>
+            <element signature="e#366#407#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/style/page/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-101">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/style/listItem.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/style/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/style/aside.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/style/header.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-442">
+          <caret line="7" column="19" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/menu/finance/accountManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="622">
+          <caret line="33" column="22" lean-forward="true" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/port.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="48" lean-forward="false" selection-start-line="1" selection-start-column="48" selection-end-line="1" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/reducers/system/systemManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/menu/system/nodeList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6518">
+          <caret line="390" column="37" lean-forward="true" selection-start-line="390" selection-start-column="37" selection-end-line="390" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/menu/agora/uselessList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="58" column="10" lean-forward="true" selection-start-line="58" selection-start-column="10" selection-end-line="58" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/menu/system/roleList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6265">
+          <caret line="368" column="34" lean-forward="false" selection-start-line="368" selection-start-column="34" selection-end-line="368" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/action/system/systemManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1083">
+          <caret line="59" column="26" lean-forward="true" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/template.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="132" column="0" lean-forward="true" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/style/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asset/img/prompt.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asset/img/pt1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asset/img/sell1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asset/img/sell2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asset/img/sell3.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asset/img/v11.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asset/img/11.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asset/img/1.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/style/login/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="603">
+          <caret line="271" column="62" lean-forward="false" selection-start-line="271" selection-start-column="62" selection-end-line="271" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/static/icon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/menu/agora/agoraList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/menu/agora/myProject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="238" column="72" lean-forward="false" selection-start-line="238" selection-start-column="72" selection-end-line="238" selection-end-column="72" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/menu/agora/form/editForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3378">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/constants/types.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="36" column="22" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/reducers/agora/agora.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="28" column="20" lean-forward="true" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/menu/agora/form/orderForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-741">
+          <caret line="19" column="25" lean-forward="true" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/action/agora/agora.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="157" column="24" lean-forward="false" selection-start-line="157" selection-start-column="13" selection-end-line="157" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/menu/agora/form/applyPartForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1425">
+          <caret line="79" column="27" lean-forward="true" selection-start-line="79" selection-start-column="27" selection-end-line="79" selection-end-column="27" />
           <folding />
         </state>
       </provider>

@@ -222,7 +222,7 @@ class Aside extends Component {
                 trigger={null}
                 width="252"
                 style={{
-                    overflow: 'auto', height: '100vh', paddingBottom: '10vh', position: 'fixed', left: 0, zIndex: 999,
+                    overflow: 'auto', height: '100vh', paddingBottom: '10vh', position: 'fixed', left: 0, zIndex: 999, top: '60px',
                     backgroundColor: "#1F2B35"
                 }}
             >

@@ -19,6 +19,7 @@ const {Content, Sider, Footer} = Layout;
 const TabPane = Tabs.TabPane;
 var panes = [];
 var current = '';
+
 class Template extends Component {
 
     constructor(props) {
@@ -48,7 +49,7 @@ class Template extends Component {
     }
 
     componentDidMount() {
-        this.eventEmitter = emitter.addListener("close",()=>{
+        this.eventEmitter = emitter.addListener("close", () => {
             this.setState({
                 ml: !this.state.ml
             })
@@ -67,7 +68,7 @@ class Template extends Component {
     // }
 
     onChange = (activeKey) => {
-        this.setState({ activeKey });
+        this.setState({activeKey});
         this.props.history.push('/' + activeKey)
     }
 
@@ -84,55 +85,64 @@ class Template extends Component {
                 lastIndex = i - 1;
             }
         });
-        const tabArr =  panes.filter(pane => pane.url !== targetKey && pane.url !== '/erp');
+        const tabArr = panes.filter(pane => pane.url !== targetKey && pane.url !== '/erp');
         if (lastIndex >= 0 && activeKey === targetKey) {
             activeKey = panes[lastIndex].url;
         }
         this.props.history.push('/' + activeKey)
-        sessionStorage.setItem('routes',JSON.stringify(tabArr))
+        sessionStorage.setItem('routes', JSON.stringify(tabArr))
         this.setState({
             activeKey: activeKey
         })
     }
 
 
-
     render() {
-        const { ml } = this.state
+        const {ml} = this.state
         return (
-            <Layout style={{ height:'100vh',marginLeft: (ml ? 252 : 0) + 'px'}}>
-                <HeaderComponent/>
-                <Layout style={{paddingTop: '60px'}}>
-                    <Aside sidebarData={this.props.user.sidebarData} rootSubmenuKeys={this.props.user.rootSubmenuKeys}
-                     getTitle={this.getTitle}
-                    />
-                    <Layout style={{padding: '30px', paddingBottom: 0, height: '100%'}}>
+            <Layout style={{marginLeft: (ml ? 252 : 0) + 'px'}}>
+                <Aside sidebarData={this.props.user.sidebarData} rootSubmenuKeys={this.props.user.rootSubmenuKeys}
+                       getTitle={this.getTitle}
+                />
 
-                        <Tabs type="editable-card" hideAdd  onChange={this.onChange}  activeKey={this.state.activeKey} onEdit={this.onEdit}>
+                <HeaderComponent/>
+                <Layout style={{paddingTop: '60px', position: 'relative', minHeight: '100vh'}}>
+
+
+                    <div style={{padding: '30px', paddingBottom: '70px'}}>
+
+
+                        <Tabs type="editable-card" hideAdd onChange={this.onChange} activeKey={this.state.activeKey}
+                              onEdit={this.onEdit}>
                             {
                                 panes && panes.map(item => {
-                                   return (
-                                       <TabPane tab={item.menu_name} key={item.url} closable={item.closable}>
-                                           {/*<div className="sub-nav">*/}
-                                               {/*<span>当前位置 > </span><span>{this.props.location.state ? this.props.location.state.menu_name : this.state.title }</span>*/}
-                                           {/*</div>*/}
-                                           {/*动态变化的部分,利用了react的props.children的特性*/}
-                                           <Content>
-                                               {this.props.children}
-                                           </Content>
-                                       </TabPane>
-                                   )
+                                    return (
+                                        <TabPane tab={item.menu_name} key={item.url} closable={item.closable}>
+                                            {/*<div className="sub-nav">*/}
+                                            {/*<span>当前位置 > </span><span>{this.props.location.state ? this.props.location.state.menu_name : this.state.title }</span>*/}
+                                            {/*</div>*/}
+
+                                            {/*动态变化的部分,利用了react的props.children的特性*/}
+                                            <Content>
+                                                {this.props.children}
+                                            </Content>
+                                        </TabPane>
+                                    )
                                 })
                             }
 
                         </Tabs>
 
-                        <Footer style={{textAlign: 'center',padding:30, fontSize: '16px'}}>
-                            当前版本<span style={{color: '#1890FF'}}>V2.0.0</span>©7搜网络版权所有
-                        </Footer>
 
-                    </Layout>
+                    </div>
+
+                    <Footer style={{textAlign: 'center', position: 'absolute', width: '100%', bottom: 0}}>
+                        当前版本<span style={{color: '#1890FF'}}>V2.0.0</span>©7搜网络版权所有
+                    </Footer>
+
+
                 </Layout>
+
             </Layout>
         )
     }
