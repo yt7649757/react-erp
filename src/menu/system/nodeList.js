@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import Template from '../../common/template'
-import {Table, Tag, Divider, Button, Modal, Form, Input, message, Row, Col, Radio, TreeSelect, InputNumber } from 'antd';
+import {Table, Tag, Button, Modal, Form, Input, message, Row, Col, Radio, TreeSelect, InputNumber } from 'antd';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as SystemManageActions from '../../redux/action/system/systemManage';
 import '../../style/agora/roleList.css';
-import storage from '../../utils/storage';
+// import storage from '../../utils/storage';
 
 const FormItem = Form.Item;
 const {TextArea} = Input;
@@ -137,7 +137,7 @@ class NodeList extends Component {
                     this.props.systemManageActions.addNode({
                         ...values
                     }).then(data => {
-                        if (data && data.status == 'Success') {
+                        if (data && data.status === 'Success') {
                             message.info('添加节点成功')
                             this.setState({
                                 visible: false,
@@ -163,7 +163,7 @@ class NodeList extends Component {
                     this.props.systemManageActions.editNode({
                         ...values
                     }).then(data => {
-                        if (data && data.status == 'Success') {
+                        if (data && data.status === 'Success') {
                             message.info('修改成功')
                             this.setState({
                                 visible: false,
@@ -210,7 +210,7 @@ class NodeList extends Component {
             // action: 'delete',
             guids: rows
         }).then(data => {
-            if (data && data.status == 'Success') {
+            if (data && data.status === 'Success') {
                 message.info('删除成功')
                 this.setState({
                     visible: false,
@@ -406,6 +406,7 @@ class NodeList extends Component {
                     okText="确定"
                     cancelText="取消"
                     width={900}
+                    centered={true}
                 >
                     <Form>
                         <Row>

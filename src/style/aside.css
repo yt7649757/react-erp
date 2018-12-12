@@ -1,3 +1,16 @@
-.ant-menu-item span {
-    vertical-align: middle;
+.ant-menu-item>img {
+    vertical-align: -8px;
 }
+
+.ant-menu-submenu-title>span img {
+    vertical-align: -8px;
+}
+
+/*侧边栏样式*/
+/*.ant-menu-item>span {*/
+    /*margin-left: 10px;*/
+ /*}*/
+
+/*.ant-menu-submenu-title>span span {*/
+    /*margin-left: 10px;*/
+/*}*/

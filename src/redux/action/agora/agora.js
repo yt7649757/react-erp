@@ -104,3 +104,34 @@ export const editRow = (url, params) => {
         })
     }
 }
+
+//添加附件
+
+export const addField = (url, params) => {
+    return dispatch => {
+        return axios.post(port + url, {
+            ...params
+        }).then(function (res) {
+            console.log(res);
+            return res.data
+        }).catch(error => {
+            console.log(error + '请求失败')
+        })
+    }
+}
+
+
+//删除
+
+export const deleteProject = (params) => {
+    return dispatch => {
+        return axios.delete(port + '/api/erp/project/delproject', {
+            params: params
+        }).then(function (res) {
+            console.log(res);
+            return res.data
+        }).catch(error => {
+            console.log(error + '请求失败')
+        })
+    }
+}

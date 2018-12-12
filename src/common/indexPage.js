@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import { config } from '../routes/config'
 import PrivateRoute from '../common/privateRoute';
 import { LocaleProvider } from 'antd';
@@ -24,51 +25,58 @@ class IndexPage extends Component {
 
 
     render() {
+        const location = this.props.location
+        console.log(location)
         return(
-            <LocaleProvider locale={zh_CN}>
-                <div>
-                <Switch>
-                    {config.map((route, index) => (
-                        !route.private ? (
-                            <Route
-                                key={index}
-                                path={route.path}
-                                exact={route.exact}
-                                component={route.component}
-                            />
-                        ) : (
-                            route.children && route.children.length >0 ? (
-                                route.children.map((subRoute,index) => {
-                                    return (
-                                        <PrivateRoute
+            <TransitionGroup>
+                <CSSTransition key={location.pathname} timeout={300} classNames="example"  appear={true} >
+                    <LocaleProvider locale={zh_CN}>
+                        <div>
+                            <Switch location={location}>
+                                {config.map((route, index) => (
+                                    !route.private ? (
+                                        <Route
                                             key={index}
-                                            path={subRoute.path}
-                                            exact={subRoute.exact}
-                                            component={subRoute.component}
-                                            replace
+                                            path={route.path}
+                                            exact={route.exact}
+                                            component={route.component}
                                         />
+                                    ) : (
+                                        route.children && route.children.length >0 ? (
+                                            route.children.map((subRoute,index) => {
+                                                return (
+                                                    <PrivateRoute
+                                                        key={index}
+                                                        path={subRoute.path}
+                                                        exact={subRoute.exact}
+                                                        component={subRoute.component}
+                                                        replace
+                                                    />
+                                                )
+                                            })
+                                        ): (
+                                            <PrivateRoute
+                                                key={index}
+                                                path={route.path}
+                                                exact={route.exact}
+                                                component={route.component}
+                                                replace
+                                            />
+                                        )
                                     )
-                                })
-                            ): (
-                                <PrivateRoute
-                                    key={index}
-                                    path={route.path}
-                                    exact={route.exact}
-                                    component={route.component}
-                                    replace
-                                />
-                            )
-                        )
 
-                    ))}
-                    <Route render={ () => {
-                        return (<p>这个页面还在开发中...</p>)
-                    } }/>
-                </Switch>
-            </div>
-            </LocaleProvider>
+                                ))}
+                                <Route render={ () => {
+                                    return (<p>这个页面还在开发中...</p>)
+                                } }/>
+                            </Switch>
+                        </div>
+                    </LocaleProvider>
+                </CSSTransition>
+            </TransitionGroup>
+
         )
     }
 }
 
-export default IndexPage
+export default withRouter(IndexPage)

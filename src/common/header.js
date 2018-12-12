@@ -7,7 +7,6 @@ import cookie from 'react-cookies'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as userActions from '../redux/action/user';
-import axios from 'axios';
 
 import '../style/header.css'
 
@@ -113,6 +112,7 @@ class HeaderComponent extends Component {
         cookie.remove('userInfo')
         message.success('注销成功', 1);
         this.props.history.push('/')
+        document.title = '装企云管家'
         // const { pathname } = this.props.location;
         // //动态改变标题
         // if(pathname === '/signOut') {
@@ -128,7 +128,6 @@ class HeaderComponent extends Component {
     render() {
         const menu = (
             <Menu>
-                {/*这里a标签要给/signOut，否则无法正常跳转*/}
                 <Menu.Item>
                     <a rel="noopener noreferrer" href="javascript:void(0);"
                        onClick={this.showModal}>修改密码</a>

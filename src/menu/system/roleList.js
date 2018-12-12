@@ -124,7 +124,7 @@ class RoleList extends Component {
                         role_name: values.role_name,
                         role_desc: values.role_remarks
                     }).then(data => {
-                        if (data && data.status == 'Success') {
+                        if (data && data.status === 'Success') {
                             message.info('添加成功')
                             this.setState({
                                 visible: false,
@@ -152,7 +152,7 @@ class RoleList extends Component {
                         role_name: values.role_name,
                         role_desc: values.role_remarks
                     }).then(data => {
-                        if (data && data.status == 'Success') {
+                        if (data && data.status === 'Success') {
                             message.info('修改成功')
                             this.setState({
                                 visible: false,
@@ -199,7 +199,7 @@ class RoleList extends Component {
             action: 'delete',
             guids: rows
         }).then(data => {
-            if (data && data.status == 'Success') {
+            if (data && data.status === 'Success') {
                 message.info('删除成功')
                 this.setState({
                     visible: false,
@@ -319,7 +319,7 @@ class RoleList extends Component {
             filterMultiple: false,
             dataIndex: 'status',
             render: function (text, record, index) {
-                return record.status == 1 ? <Tag color="#1890FF">正常</Tag> : <Tag color="red">已删除</Tag>
+                return record.status === 1 ? <Tag color="#1890FF">正常</Tag> : <Tag color="red">已删除</Tag>
             }
         }, {
             title: '创建时间',

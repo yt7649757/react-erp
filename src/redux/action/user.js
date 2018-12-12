@@ -94,7 +94,7 @@ export const getSider = () => {
             .then(function (res) {
                 res.data.unshift({
                     menu_id: "cccc123",
-                    icon: "http://localhost:3000/static/icon.png",
+                    icon: "../../../static/icon.png",
                     menu_name: " 首页",
                     pid: "12313123",
                     url: "erp",
@@ -107,7 +107,7 @@ export const getSider = () => {
                     rootSubmenuKeys: rootSubmenuKeys
                 })
             }).catch(error => {
-            console.log('error' + '请求失败!')
+            console.log(error + '请求失败!')
         })
     }
 }

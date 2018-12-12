@@ -1,7 +1,6 @@
 import * as types from '../../constants/types';
 import axios from '../../../utils/checkToken';
 import {port} from '../../../common/port';
-import {message} from 'antd';
 
 //获取用户登录情况
 export const getUserLogin = (page, size) => {
@@ -98,7 +97,6 @@ export const getTreeList = (url) => {
                 return Promise.resolve('ok')
             }).catch(error => {
                 return Promise.reject(error)
-                console.log(error + '请求失败')
             })
     }
 }

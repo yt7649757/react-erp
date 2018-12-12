@@ -1,0 +1,7 @@
+.project-info span:nth-child(1) {
+    font-weight: 600;
+}
+
+.project-info span:nth-child(2) {
+    margin-left: 10px;
+}

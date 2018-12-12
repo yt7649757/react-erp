@@ -12,7 +12,7 @@ class Title extends Component {
                  <b style={{background: `${this.props.color}`}}></b>
                  <h6>{this.props.title}</h6>
                  {
-                     this.props.more?( <a className="more" href="#">查看更多>></a>):(null)
+                     this.props.more?( <a className="more" href="javasript:void(0);">查看更多>></a>):(null)
                  }
              </div>
          )

@@ -12,14 +12,14 @@ import {connect} from 'react-redux';
 import * as userActions from '../redux/action/user';
 import '../style/aside.css'
 
-const {SubMenu, Item} = Menu;
+const {SubMenu } = Menu;
 const {Sider} = Layout;
 
-const IconFont = Icon.createFromIconfontCN({
-    scriptUrl: '//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js',
-});
+// const IconFont = Icon.createFromIconfontCN({
+//     scriptUrl: '//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js',
+// });
 
-var arr = []
+let arr = []
 
 class Aside extends Component {
 
@@ -143,7 +143,7 @@ class Aside extends Component {
     render() {
         const {openKeys, selectedKeys} = this.state;
         const {sidebarData} = this.props.user
-        const {collapsed, onCollapse} = this.props;
+        // const {collapsed, onCollapse} = this.props;
         const SideTree = sidebarData.map(item => (
             !item.menus ? (
                 <Menu.Item key={item.menu_id}
@@ -154,17 +154,17 @@ class Aside extends Component {
                                document.title = item.menu_name;
                            }}
                 >
-                    <img src={item.icon} alt="icon"/>
+                    <img src={item.icon ? item.icon : 'http://wechat.yzferp.com/static/erp/images/work_oa.png'} alt="icon"/>
                     <span>{item.menu_name}</span>
                     {/*出现url追加问题，在Link路径前加 '/' 代表根目录下的绝对路径 */}
-                    <Link to={{pathname: '/' + item.url, state: item}} replace></Link>
+                    <Link to={{pathname: '/' + item.url, state: item}}>{item.menu_name}</Link>
                 </Menu.Item>
             ) : (
                 <SubMenu
                     key={item.menu_id}
                     title={
                         <span>
-                            <img src={item.icon} alt="icon"/>
+                            <img src={item.icon ? item.icon : 'http://wechat.yzferp.com/static/erp/images/work_oa.png'} alt="icon"/>
                         <span>{item.menu_name}</span>
                     </span>
                     }>

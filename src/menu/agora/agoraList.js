@@ -5,9 +5,9 @@ import {connect} from 'react-redux';
 import * as AgoraActions from '../../redux/action/agora/agora';
 
 class AgoraList extends Component {
-    constructor(props) {
-        super(props)
-    }
+    // constructor(props) {
+    //     super(props)
+    // }
     render() {
         return (
             <Template>

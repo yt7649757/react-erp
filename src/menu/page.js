@@ -63,16 +63,15 @@ class Page extends Component {
 
 
     render() {
-        const {value} = this.state;
         const { user } = this.props
         return (
             <Template>
                 <div className="sell-box clearfix">
                     <ul className="sell-list">
-                        <li><a href="#"><img src={require('../asset/img/sell1.png')}/><div className="info"><p>Sales champion</p><p>销售月冠</p></div></a></li>
-                        <li><a href="#"><img src={require('../asset/img/sell2.png')}/><div className="info"><p>Design champion</p><p>设计月冠</p></div></a></li>
-                        <li><a href="#"><img src={require('../asset/img/sell3.png')}/><div className="info"><p>My business volume</p><p>我的业务量</p></div></a></li>
-                        <li><a href="#"><img src={require('../asset/img/sell4.png')}/><div className="info"><p>My design quantity</p><p>我的设计量</p></div></a></li>
+                        <li><a href="javascript:void(0);"><img src={require('../asset/img/sell1.png')}/><div className="info"><p>Sales champion</p><p>销售月冠</p></div></a></li>
+                        <li><a href="javascript:void(0);"><img src={require('../asset/img/sell2.png')}/><div className="info"><p>Design champion</p><p>设计月冠</p></div></a></li>
+                        <li><a href="javascript:void(0);"><img src={require('../asset/img/sell3.png')}/><div className="info"><p>My business volume</p><p>我的业务量</p></div></a></li>
+                        <li><a href="javascript:void(0);"><img src={require('../asset/img/sell4.png')}/><div className="info"><p>My design quantity</p><p>我的设计量</p></div></a></li>
                     </ul>
                 </div>
                 <div className="center-box clearfix">
@@ -108,13 +107,13 @@ class Page extends Component {
                         <Title title="今日提醒" color="#FF7A00" />
                         <div className="remind-list">
                              <ul>
-                                 <li><a href="#">预约</a><Badge count="1"/></li>
-                                 <li><a href="#">业务跟踪</a><Badge count="99"/></li>
-                                 <li><a href="#">验收提醒</a><Badge showZero={true} count="0" style={{backgroundColor: '#52c41a'}}></Badge></li>
-                                 <li><a href="#">维修投诉</a><Badge count="99"/></li>
-                                 <li><a href="#">今日提醒</a><Badge count="99"/></li>
-                                 <li><a href="#">超期提醒</a><Badge count="99"/></li>
-                                 <li><a href="#">收款提醒</a><Badge count="99"/></li>
+                                 <li><a href="javascript:void(0);">预约</a><Badge count="1"/></li>
+                                 <li><a href="javascript:void(0);">业务跟踪</a><Badge count="99"/></li>
+                                 <li><a href="javascript:void(0);">验收提醒</a><Badge showZero={true} count="0" style={{backgroundColor: '#52c41a'}}></Badge></li>
+                                 <li><a href="javascript:void(0);">维修投诉</a><Badge count="99"/></li>
+                                 <li><a href="javascript:void(0);">今日提醒</a><Badge count="99"/></li>
+                                 <li><a href="javascript:void(0);">超期提醒</a><Badge count="99"/></li>
+                                 <li><a href="javascript:void(0);">收款提醒</a><Badge count="99"/></li>
                              </ul>
                         </div>
                     </div>

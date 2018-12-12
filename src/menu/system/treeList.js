@@ -9,41 +9,41 @@ import storage from "../../utils/storage";
 
 const TreeNode = Tree.TreeNode;
 
-const treeData = [{
-    title: '0-0',
-    key: '0-0',
-    children: [{
-        title: '0-0-0',
-        key: '0-0-0',
-        children: [
-            { title: '0-0-0-0', key: '0-0-0-0' },
-            { title: '0-0-0-1', key: '0-0-0-1' },
-            { title: '0-0-0-2', key: '0-0-0-2' },
-        ],
-    }, {
-        title: '0-0-1',
-        key: '0-0-1',
-        children: [
-            { title: '0-0-1-0', key: '市场营销' },
-            { title: '市场营销11', key: '0-0-1-1' },
-            { title: '0-0-1-2', key: '0-0-1-2' },
-        ],
-    }, {
-        title: '0-0-2',
-        key: '0-0-2',
-    }],
-}, {
-    title: '0-1',
-    key: '0-1',
-    children: [
-        { title: '0-1-0-0', key: '0-1-0-0' },
-        { title: '0-1-0-1', key: '0-1-0-1' },
-        { title: '0-1-0-2', key: '0-1-0-2' },
-    ],
-}, {
-    title: '0-2',
-    key: '0-2',
-}];
+// const treeData = [{
+//     title: '0-0',
+//     key: '0-0',
+//     children: [{
+//         title: '0-0-0',
+//         key: '0-0-0',
+//         children: [
+//             { title: '0-0-0-0', key: '0-0-0-0' },
+//             { title: '0-0-0-1', key: '0-0-0-1' },
+//             { title: '0-0-0-2', key: '0-0-0-2' },
+//         ],
+//     }, {
+//         title: '0-0-1',
+//         key: '0-0-1',
+//         children: [
+//             { title: '0-0-1-0', key: '市场营销' },
+//             { title: '市场营销11', key: '0-0-1-1' },
+//             { title: '0-0-1-2', key: '0-0-1-2' },
+//         ],
+//     }, {
+//         title: '0-0-2',
+//         key: '0-0-2',
+//     }],
+// }, {
+//     title: '0-1',
+//     key: '0-1',
+//     children: [
+//         { title: '0-1-0-0', key: '0-1-0-0' },
+//         { title: '0-1-0-1', key: '0-1-0-1' },
+//         { title: '0-1-0-2', key: '0-1-0-2' },
+//     ],
+// }, {
+//     title: '0-2',
+//     key: '0-2',
+// }];
 
 class TreeList extends Component {
     state = {
@@ -101,7 +101,7 @@ class TreeList extends Component {
         if(phone) {
             let obj = {}
             checkedKeys.map(item => {
-                obj[item] = {is_mobile: 1}
+                return obj[item] = {is_mobile: 1}
             })
             this.props.systemManageActions.updateRoleTree(url,obj).then(function (data) {
                 if(data) {
@@ -148,12 +148,13 @@ class TreeList extends Component {
     componentWillMount() {
         const r = storage.get('routes')
         r.map(item => {
-            if(item.guid == 'jsqx') {
+            if(item.guid === 'jsqx') {
                 this.setState({
                     phone: item.phone,
                     edit: item.edit
                 })
             }
+            return true
         })
     }
 
