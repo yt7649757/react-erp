@@ -10,6 +10,12 @@ export const changeTitle = (params) => {
             return '申请转部';
         case 'UploadForm':
             return '上传附件';
+        case 'LinkPeopleForm':
+            return '添加联系人';
+        case 'LogForm':
+            return '添加日志';
+        case 'RemindForm':
+            return '设置提醒'
         default:
             return '添加数据'
     }

@@ -13,7 +13,7 @@ const Option = Select.Option;
 class EditForm extends Component {
 
     componentDidMount() {
-        const data = this.props.data[0]
+        const data = this.props.data
         this.props.form.setFieldsValue({
             // ...(this.props.data[0])
             project_name: data.project_name,

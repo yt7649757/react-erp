@@ -39,7 +39,6 @@ class TableComponent extends Component {
         })
 
         let res = await this.props.tableActions.getTableList(url,params,pagination.pageSize)
-        console.log(res);
 
         if(res) {
             pagination.total = res.data.total;
@@ -76,7 +75,6 @@ class TableComponent extends Component {
 
         if(this.props.table.tableList[url]) {
             data = this.props.table.tableList[url].data
-            console.log(data);
         }
 
         return (

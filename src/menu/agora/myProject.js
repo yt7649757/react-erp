@@ -87,7 +87,7 @@ class MyProject extends Component {
         pagination.showTotal = function (total) {
             return `总共有${total}条数据`
         }
-        console.log(columns)
+
         this.setState({
             pagination,
             loading: false,
@@ -114,7 +114,6 @@ class MyProject extends Component {
                     title: '装修档次',
                     dataIndex: 'decoration_grade',
                     render: (text, row, index) => {
-                        console.log(text)
                         return selectGroup['decoration_grade'][text]
                     }
                 }, {
@@ -209,7 +208,7 @@ class MyProject extends Component {
 
 
     onSelectChange = (selectedRowKeys, selectedRows) => {
-        console.log('selectedRowKeys changed: ', selectedRows);
+        // console.log('selectedRowKeys changed: ', selectedRows);
         this.setState({selectedRowKeys, selectedRows});
     }
 
@@ -532,7 +531,7 @@ class MyProject extends Component {
 
                     {
                         this.state.forms === 'EditForm' ? (
-                            <EditForm data={this.state.selectedRows} wrappedComponentRef={(form) => this.formRef = form}
+                            <EditForm data={this.state.selectedRows[0]} wrappedComponentRef={(form) => this.formRef = form}
                             />) : null
                     }
 

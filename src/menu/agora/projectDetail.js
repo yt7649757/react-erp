@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as AgoraActions from '../../redux/action/agora/agora';
-import {Divider, Row, Col, Button, Tabs, Modal} from 'antd';
+import {Divider, Row, Col, Button, Tabs, Modal, message} from 'antd';
 import Template from '../../common/template';
 import storage from '../../utils/storage';
 import '../../style/agora/projectDetail.css';
@@ -11,6 +11,9 @@ import RoomStructure from './table/roomStructure';
 import RoomInfo from './table/roomInfo';
 import {changeTitle} from "../../utils/changeTitle";
 import EditForm from './form/editForm';
+import LinkPeopleForm from './form/linkPeopleForm';
+import LogForm from'./form/logForm';
+import RemindForm from './form/remindForm';
 // import TrackingLog from './table/trackingLog';
 // import RemindInfo from './table/remindInfo';
 // import ProjectImg from './table/projectImg';
@@ -32,8 +35,10 @@ class ProjectDetail extends Component {
         super(props)
         this.state = {
             data: '',
-            settings: ['decoration_grade', 'decoration_style', 'decoration_type', 'color_orientation', 'customer_source', 'householder_relation'],
-            forms: ''
+            settings: ['decoration_grade', 'decoration_style', 'decoration_type', 'color_orientation', 'customer_source', 'householder_relation','sex'],
+            forms: '',
+            title: '',
+            url: ''
         }
     }
 
@@ -41,13 +46,14 @@ class ProjectDetail extends Component {
         //从本地存储中获取项目信息
         const arr = storage.get('routes')
         const data = arr.find(content)
+        const url = `/api/erp/project/showprojectofuser/guid/${data.content.guid}`
 
         this.setState({
-            data
+            data,
+            url
         })
 
         //接口获取
-        const url = `/api/erp/project/showprojectofuser/guid/${data.content.guid}`
         this.props.agoraActions.getProjectInfo(url)
 
         this.state.settings.map(item => {
@@ -57,10 +63,52 @@ class ProjectDetail extends Component {
     }
 
     //弹窗
-    showModal = (params) => {
+    showModal = (params,w) => {
+        const title = changeTitle(params)
         this.setState({
-            visible: params,
+            w,
+            title,
+            visible: true,
+            forms: params,
         });
+    }
+
+
+    hideModal = () => {
+        this.setState({
+            visible: false
+        })
+    }
+
+
+    //提交到后台
+    addEditRow = async () => {
+        const data = this.props.agora.projectInfo
+        let url = '';
+        if (this.state.forms === 'LinkPeopleForm') {
+            //添加联系人
+            url = `/api/erp/project/addcontactsdata/project_guid/${data.guid}`
+        }else if(this.state.forms === 'EditForm') {
+            url = `/api/erp/project/projectedit/guid/${data.guid}`
+        }
+
+        this.formRef.getItemsValue().then(val => {
+            if (val) {
+                this.formRef.submit(url, val).then(res => {
+                    if (res && res.status === 'Success') {
+                        message.info(res.message)
+                        this.setState({
+                            visible: false
+                        })
+                        //刷新界面
+                        this.props.agoraActions.getProjectInfo(this.state.url)
+                    }
+                })
+            }
+        }).catch(err => {
+            alert('发生错误了' + err)
+        })
+
     }
 
 
@@ -249,12 +297,12 @@ class ProjectDetail extends Component {
                         </Row>
                     </div>
                     <div style={{marginBottom: 30}}>
-                        <Button style={{marginLeft: 15}} onClick={() => this.showModal(true)}>修改项目信息</Button>
-                        <Button style={{marginLeft: 15}}>添加联系人</Button>
+                        <Button style={{marginLeft: 15}} onClick={this.showModal.bind(this,'EditForm',900)}>修改项目信息</Button>
+                        <Button style={{marginLeft: 15}} onClick={this.showModal.bind(this,'LinkPeopleForm',500)}>添加联系人</Button>
                         <Button style={{marginLeft: 15}}>更改房屋结构</Button>
                         <Button style={{marginLeft: 15}}>更改楼盘信息</Button>
-                        <Button style={{marginLeft: 15}}>添加日志</Button>
-                        <Button style={{marginLeft: 15}}>添加提醒</Button>
+                        <Button style={{marginLeft: 15}} onClick={this.showModal.bind(this,'LogForm',416)}>添加日志</Button>
+                        <Button style={{marginLeft: 15}} onClick={this.showModal.bind(this,'RemindForm',416)}>添加提醒</Button>
                     </div>
                     <Divider>项目其他</Divider>
                     <div style={{padding: 15}}>
@@ -284,10 +332,13 @@ class ProjectDetail extends Component {
                     </div>
                 </div>
                 <Modal
-                    title="Modal"
+                    title={this.state.title}
                     visible={this.state.visible}
-                    // onOk={this.hideModal}
-                    onCancel={() => this.showModal(false)}
+                    onOk={this.addEditRow}
+                    onCancel={this.hideModal}
+                    width={this.state.w}
+                    destroyOnClose={true}
+                    centered
                     okText="确认"
                     cancelText="取消"
                 >
@@ -296,6 +347,24 @@ class ProjectDetail extends Component {
                         this.state.forms === 'EditForm' ? (
                             <EditForm data={info} wrappedComponentRef={(form) => this.formRef = form}
                             />) : null
+                    }
+
+                    {
+                        this.state.forms === 'LinkPeopleForm' ? (
+                            <LinkPeopleForm selectGroup={selectGroup} wrappedComponentRef={(form) => this.formRef = form} />
+                        ): null
+                    }
+
+                    {
+                        this.state.forms === 'LogForm' ? (
+                            <LogForm data={info} wrappedComponentRef={(form) => this.formRef = form}  />
+                        ): null
+                    }
+
+                    {
+                        this.state.forms === 'RemindForm' ? (
+                            <RemindForm data={info} wrappedComponentRef={(form) => this.formRef = form} />
+                        ): null
                     }
 
 

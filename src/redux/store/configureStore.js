@@ -7,6 +7,7 @@ export const configureStore = () => {
          appReducer,
          compose(
              applyMiddleware(thunk, createLogger)
+             // applyMiddleware(thunk)
          )
      )
      return store

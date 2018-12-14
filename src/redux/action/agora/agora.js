@@ -200,3 +200,18 @@ export const getProjectInfo = (url) => {
         })
     }
 }
+
+
+// 添加联系人
+
+export const addLinkPeople = (url, params) => {
+    return dispatch => {
+        return axios.post(port + url, {
+            ...params
+        }).then(function (res) {
+            return res.data
+        }).catch(error => {
+            return error
+        })
+    }
+}

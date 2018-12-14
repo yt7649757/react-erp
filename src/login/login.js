@@ -41,7 +41,7 @@ class Login extends Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                // console.log('Received values of form: ', values);
                 //使用redux
                 this.props.userActions.login(values.userName, values.password, values.remember).then(val => {
                     if (val) {

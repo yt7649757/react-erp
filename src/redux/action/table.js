@@ -9,8 +9,6 @@ export const getTableList = (url,page = 1,size = 10,status = 1) => {
                 const group = getState().table.tableList;
                 group[url] = res.data
 
-                console.log(group)
-
                 dispatch({
                     type: types.TABLE_LIST,
                     tableList: group

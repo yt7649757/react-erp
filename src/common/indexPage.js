@@ -26,7 +26,6 @@ class IndexPage extends Component {
 
     render() {
         const location = this.props.location
-        console.log(location)
         return(
             <TransitionGroup>
                 <CSSTransition key={location.pathname} timeout={300} classNames="example"  appear={true} >

@@ -21,9 +21,9 @@
     "whatwg-fetch": "^3.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -36,10 +36,12 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "babel-plugin-import": "^1.11.0",
     "babel-polyfill": "^6.26.0",
     "classlist-polyfill": "^1.2.0",
     "core-js": "^2.5.7",
     "raf": "^3.4.1",
+    "react-app-rewired": "^1.6.2",
     "redux-logger": "^3.0.6"
   }
 }

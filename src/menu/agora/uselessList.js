@@ -67,7 +67,6 @@ class UselessList extends Component {
             pagination.showTotal = function (total) {
                 return `总共有${total}条数据`
             }
-            console.log(columns)
             this.setState({
                 pagination,
                 loading: false,
