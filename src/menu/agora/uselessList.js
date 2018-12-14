@@ -15,6 +15,7 @@ const columns = [{
 },{
     title: '申请说明',
     dataIndex: 'apply_desc',
+    width: '30%'
 },{
     title: '操作',
     render: () => {

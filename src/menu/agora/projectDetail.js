@@ -2,13 +2,15 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as AgoraActions from '../../redux/action/agora/agora';
-import {Divider, Row, Col, Button, Tabs} from 'antd';
+import {Divider, Row, Col, Button, Tabs, Modal} from 'antd';
 import Template from '../../common/template';
 import storage from '../../utils/storage';
 import '../../style/agora/projectDetail.css';
 import LinkPeople from './table/linkPeople';
 import RoomStructure from './table/roomStructure';
 import RoomInfo from './table/roomInfo';
+import {changeTitle} from "../../utils/changeTitle";
+import EditForm from './form/editForm';
 // import TrackingLog from './table/trackingLog';
 // import RemindInfo from './table/remindInfo';
 // import ProjectImg from './table/projectImg';
@@ -31,6 +33,7 @@ class ProjectDetail extends Component {
         this.state = {
             data: '',
             settings: ['decoration_grade', 'decoration_style', 'decoration_type', 'color_orientation', 'customer_source', 'householder_relation'],
+            forms: ''
         }
     }
 
@@ -52,6 +55,14 @@ class ProjectDetail extends Component {
         })
 
     }
+
+    //弹窗
+    showModal = (params) => {
+        this.setState({
+            visible: params,
+        });
+    }
+
 
     render() {
         // const info = this.state.data ? this.state.data.content : {};
@@ -238,7 +249,7 @@ class ProjectDetail extends Component {
                         </Row>
                     </div>
                     <div style={{marginBottom: 30}}>
-                        <Button style={{marginLeft: 15}}>修改项目信息</Button>
+                        <Button style={{marginLeft: 15}} onClick={() => this.showModal(true)}>修改项目信息</Button>
                         <Button style={{marginLeft: 15}}>添加联系人</Button>
                         <Button style={{marginLeft: 15}}>更改房屋结构</Button>
                         <Button style={{marginLeft: 15}}>更改楼盘信息</Button>
@@ -272,6 +283,23 @@ class ProjectDetail extends Component {
                         </Tabs>
                     </div>
                 </div>
+                <Modal
+                    title="Modal"
+                    visible={this.state.visible}
+                    // onOk={this.hideModal}
+                    onCancel={() => this.showModal(false)}
+                    okText="确认"
+                    cancelText="取消"
+                >
+
+                    {
+                        this.state.forms === 'EditForm' ? (
+                            <EditForm data={info} wrappedComponentRef={(form) => this.formRef = form}
+                            />) : null
+                    }
+
+
+                </Modal>
             </Template>
         )
     }

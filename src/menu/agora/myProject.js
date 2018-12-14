@@ -91,7 +91,9 @@ class MyProject extends Component {
         this.setState({
             pagination,
             loading: false,
-            columns: columns
+            columns: columns,
+            showMoreInfoText: true,
+            showCheckInfoText: true,
         })
     }
 

@@ -147,9 +147,9 @@ class HeaderComponent extends Component {
                     <span className="bread-nav" onClick={this.closeAside}></span>
                 </div>
                 <div className="userInfo">
-                    <Avatar size="large" icon="user"/>
-                    <Dropdown overlay={menu}>
-                        <a className="ant-dropdown-link">
+                    <Avatar size="large" icon="user" style={{verticalAlign: 'middle'}} />
+                    <Dropdown overlay={menu} >
+                        <a className="ant-dropdown-link" style={{verticalAlign: 'middle'}}>
                             {this.props.user.userInfo?this.props.user.userInfo.name:'加载中...'}  <Icon type="down"/>
                         </a>
                     </Dropdown>

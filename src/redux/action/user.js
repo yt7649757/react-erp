@@ -94,7 +94,7 @@ export const getSider = () => {
             .then(function (res) {
                 res.data.unshift({
                     menu_id: "cccc123",
-                    icon: "../../../static/icon.png",
+                    icon: "./static/icon.png",
                     menu_name: " 首页",
                     pid: "12313123",
                     url: "erp",
