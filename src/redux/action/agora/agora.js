@@ -33,7 +33,7 @@ export const addProject = (params) => {
 
 //我的业务
 
-export const getTables = (page= 1, size = 15, status = 1) => {
+export const getTables = (page = 1, size = 15, status = 1) => {
     return (dispatch) => {
         return axios.get(port + '/api/erp/project/showprojectuserlist?page=' + page + '&per_page=' + size + '&status=' + status)
             .then(function (res) {
@@ -60,8 +60,8 @@ export const getPayment = () => {
                     payment: res.data
                 });
             }).catch(error => {
-                console.log(error + '请求失败')
-            })
+            console.log(error + '请求失败')
+        })
     }
 }
 
@@ -138,18 +138,18 @@ export const deleteProject = (params) => {
 
 
 //获取废单列表
-export const getUselessList = (page= 1, size = 15, status = 1) => {
+export const getUselessList = (page = 1, size = 15, status = 1) => {
     return dispatch => {
-       return axios.get(port + `/api/erp/project/wasteapplylistcopy?page=${page}&per_page=${size}&status=${status}`)
+        return axios.get(port + `/api/erp/project/wasteapplylistcopy?page=${page}&per_page=${size}&status=${status}`)
             .then(res => {
-               dispatch({
-                   type: types.USELESS_LIST,
-                   useLessList: res.data
-               })
-               return res
+                dispatch({
+                    type: types.USELESS_LIST,
+                    useLessList: res.data
+                })
+                return res
             }).catch(error => {
                 alert(error + '请求失败')
-        })
+            })
     }
 }
 
@@ -171,8 +171,7 @@ export const getPartMent = () => {
 }
 
 
-
-export const changeParment = (url,params) => {
+export const changeParment = (url, params) => {
     return dispatch => {
         return axios.post(port + url, {
             into_department_id: params.into_department_id,
@@ -181,6 +180,23 @@ export const changeParment = (url,params) => {
             return res.data
         }).catch(error => {
             return error
+        })
+    }
+}
+
+
+//获取项目详情
+
+export const getProjectInfo = (url) => {
+    return dispatch => {
+        axios.get(port + url)
+            .then(function (res) {
+                dispatch({
+                    type: types.PROJECT_INFO,
+                    projectInfo: res.data
+                })
+            }).catch(err => {
+                alert(err)
         })
     }
 }

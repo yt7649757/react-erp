@@ -9,10 +9,13 @@ import '../../style/agora/projectDetail.css';
 import LinkPeople from './table/linkPeople';
 import RoomStructure from './table/roomStructure';
 import RoomInfo from './table/roomInfo';
-import TrackingLog from './table/trackingLog';
-import RemindInfo from './table/remindInfo';
-import ProjectImg from './table/projectImg';
-import ProjectPaper from './table/projectPaper';
+// import TrackingLog from './table/trackingLog';
+// import RemindInfo from './table/remindInfo';
+// import ProjectImg from './table/projectImg';
+// import ProjectPaper from './table/projectPaper';
+
+import TableComponent from '../../component/tableComponent';
+
 
 const TabPane = Tabs.TabPane;
 
@@ -27,17 +30,22 @@ class ProjectDetail extends Component {
         super(props)
         this.state = {
             data: '',
-            settings: ['decoration_grade', 'decoration_style', 'decoration_type', 'color_orientation', 'customer_source'],
+            settings: ['decoration_grade', 'decoration_style', 'decoration_type', 'color_orientation', 'customer_source', 'householder_relation'],
         }
     }
 
     componentDidMount() {
+        //从本地存储中获取项目信息
         const arr = storage.get('routes')
         const data = arr.find(content)
 
         this.setState({
             data
         })
+
+        //接口获取
+        const url = `/api/erp/project/showprojectofuser/guid/${data.content.guid}`
+        this.props.agoraActions.getProjectInfo(url)
 
         this.state.settings.map(item => {
             this.props.agoraActions.getSelects(item)
@@ -46,9 +54,104 @@ class ProjectDetail extends Component {
     }
 
     render() {
-        const info = this.state.data ? this.state.data.content : {};
+        // const info = this.state.data ? this.state.data.content : {};
+
+        const info = this.props.agora.projectInfo ? this.props.agora.projectInfo : {}
         const selectGroup = this.props.agora.selectGroup ? this.props.agora.selectGroup : {}
-        console.log(selectGroup);
+
+        const url = {
+            trackingLog: `/api/erp/project/showlog/project_guid/${info.guid}`,
+            remindInfo: `/api/erp/project/showremindtime/project_guid/${info.guid}`,
+            projectImg: `/api/erp/project/showphotolist/project_guid/${info.guid}`,
+            projectPaper: `/api/erp/project/showfieldlist/project_guid/${info.guid}`
+        }
+
+
+        const columns = [{
+            title: '图片名称',
+            dataIndex: 'photo_name',
+            key: 'photo_name',
+        }, {
+            title: '上传者',
+            dataIndex: 'uuid_name',
+            key: 'uuid_name',
+        }, {
+            title: '图片描述',
+            dataIndex: 'photo_desc',
+            key: 'photo_desc',
+        }, {
+            title: '操作',
+            render: () => {
+                return (
+                    <span>
+                  <a href="javascript:void (0);">预览</a>
+                  <Divider type="vertical"/>
+                  <a href="javascript:;">下载</a>
+                  <Divider type="verticla"/>
+                  <a href="javascript:;">删除</a>
+                 </span>
+                )
+            }
+        }];
+
+        const columns1 = [{
+            title: '文件名称',
+            dataIndex: 'field_name',
+            key: 'field_name',
+        }, {
+            title: '上传者',
+            dataIndex: 'uuid_name',
+            key: 'uuid_name',
+        }, {
+            title: '文件描述',
+            dataIndex: 'field_desc',
+            key: 'field_desc',
+        }, {
+            title: '操作',
+            render: () => {
+                return (
+                    <span>
+                  <a href="javascript:;">下载</a>
+                  <Divider type="verticla"/>
+                  <a href="javascript:;">删除</a>
+                 </span>
+                )
+            }
+        }];
+
+        const columns2 = [
+            {
+                title: '姓名',
+                dataIndex: 'user.username',
+            }, {
+                title: '部门',
+                dataIndex: 'department.department_name',
+            }, {
+                title: '职位',
+                dataIndex: 'jobs.jobs_name',
+            }, {
+                title: '跟踪内容',
+                dataIndex: 'log_content',
+                width: '30%',
+            }, {
+                title: '时间',
+                dataIndex: 'create_time',
+            }
+        ]
+
+        const columns3 = [{
+            title: '提醒时间',
+            dataIndex: 'remind_time',
+            key: 'remind_time',
+        }, {
+            title: '提醒内容',
+            dataIndex: 'remind_content',
+            key: 'remind_content',
+        }, {
+            title: '添加者',
+            dataIndex: 'name',
+            key: 'name',
+        }]
 
         return (
             <Template>
@@ -146,25 +249,25 @@ class ProjectDetail extends Component {
                     <div style={{padding: 15}}>
                         <Tabs>
                             <TabPane tab="联系人" key="1">
-                                <LinkPeople/>
+                                <LinkPeople data={info.contacts} selectGroup={selectGroup}/>
                             </TabPane>
                             <TabPane tab="房屋结构" key="2">
-                                <RoomStructure/>
+                                <RoomStructure data={info.structure}/>
                             </TabPane>
                             <TabPane tab="楼盘信息" key="3">
-                                <RoomInfo/>
+                                <RoomInfo data={info.building}/>
                             </TabPane>
                             <TabPane tab="跟踪日志" key="4">
-                                <TrackingLog/>
+                                <TableComponent url={url.trackingLog} columns={columns2}/>
                             </TabPane>
                             <TabPane tab="提醒信息" key="5">
-                                <RemindInfo/>
+                                <TableComponent url={url.remindInfo} columns={columns3}/>
                             </TabPane>
                             <TabPane tab="项目图片" key="6">
-                                <ProjectImg/>
+                                <TableComponent url={url.projectImg} columns={columns}/>
                             </TabPane>
                             <TabPane tab="项目文件" key="7">
-                                <ProjectPaper/>
+                                <TableComponent url={url.projectPaper} columns={columns1}/>
                             </TabPane>
                         </Tabs>
                     </div>

@@ -35,3 +35,9 @@ export const PAY_MENT = 'PAY_MENT';
 
 export const USELESS_LIST = 'USELESS_LIST';
 export const PART_MENT = 'PART_MENT';
+
+//表格模块
+export const TABLE_LIST = 'TABLE_LIST';
+
+//项目详情
+export const PROJECT_INFO = 'PROJECT_INFO';

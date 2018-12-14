@@ -41,12 +41,12 @@ export const config = [
         exact: true,
         component: WrappedNormalLoginForm,
     },
-    {
-        name: '版本检测',
-        path: '/install/update/checkUpdate',
-        component: TableComponent,
-        private: true,
-    },
+    // {
+    //     // name: '版本检测',
+    //     // path: '/install/update/checkUpdate',
+    //     // // component: TableComponent,
+    //     // private: true,
+    // },
     {
         path: '/erp',
         exact: true,

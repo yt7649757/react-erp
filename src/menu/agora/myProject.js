@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import Template from '../../common/template';
-import {Table, Divider, Button, Modal, message} from 'antd';
+import {Table, Divider, Button, Modal, message, Tag} from 'antd';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as AgoraActions from '../../redux/action/agora/agora';
-import { changeTitle } from "../../utils/changeTitle";
+import {changeTitle} from "../../utils/changeTitle";
 import storage from '../../utils/storage';
 import TableHoc from '../../component/tableHoc'
 import OrderForm from './form/orderForm';
@@ -12,22 +12,22 @@ import UselessForm from './form/uselessForm'
 import EditForm from './form/editForm';
 import ApplyPartForm from './form/applyPartForm';
 import UploadForm from './form/uploadForm';
-
+import TableComponent from '../../component/tableComponent';
 
 let columns = [];
 let current = [];
 
-function CreateTab(url,obj) {
+function CreateTab(url, obj) {
     this.url = url;
     this.obj = obj;
     this.r = storage.get('routes');
     CreateTab.prototype.create = function () {
-        if(JSON.stringify(this.r).indexOf(this.obj.guid) === -1) {
+        if (JSON.stringify(this.r).indexOf(this.obj.guid) === -1) {
             this.r.push(obj)
-        }else {
+        } else {
             const _this = this;
             this.r.map(item => {
-                if(item.guid === _this.obj.guid) {
+                if (item.guid === _this.obj.guid) {
                     item.menu_name = _this.obj.menu_name;
                     item.url = _this.url;
                     item.content = _this.obj.content;
@@ -35,7 +35,7 @@ function CreateTab(url,obj) {
             })
         }
         storage.set('routes', this.r);
-        sessionStorage.setItem('current', this.url );
+        sessionStorage.setItem('current', this.url);
     }
 }
 
@@ -56,11 +56,14 @@ class MyProject extends Component {
             selectedRowKeys: [],
             selectedRows: [],
             visible: false,
-            settings: ['decoration_grade','decoration_style','decoration_type','color_orientation','customer_source','waste_single_type','department_type'],
+            settings: ['decoration_grade', 'decoration_style', 'decoration_type', 'color_orientation', 'customer_source', 'waste_single_type', 'department_type'],
             forms: '',
             title: '',
             //当前行
-            row: {}
+            row: {},
+            modal2Visible: false,
+            //操作记录的guid
+            guid: ''
         }
     }
 
@@ -70,14 +73,14 @@ class MyProject extends Component {
         this.request(pagination.current)
     }
 
-    request = async(params = 1) => {
-        const pagination = { ...this.state.pagination };
+    request = async (params = 1) => {
+        const pagination = {...this.state.pagination};
         const status = this.state.status
         pagination.pageSize = 15
         this.setState({
             loading: true
         })
-        var res = await this.props.agoraActions.getTables(params,pagination.pageSize,status)
+        var res = await this.props.agoraActions.getTables(params, pagination.pageSize, status)
 
         pagination.total = res && res.data.total;
 
@@ -101,33 +104,33 @@ class MyProject extends Component {
     }
 
     showMoreInfo = () => {
-        const { columns } = this.state
-        const { selectGroup } = this.props.agora
-        if(this.state.showMoreInfoText) {
+        const {columns} = this.state
+        const {selectGroup} = this.props.agora
+        if (this.state.showMoreInfoText) {
             const more = [
                 {
                     title: '装修档次',
                     dataIndex: 'decoration_grade',
-                    render: (text,row,index) => {
-                      console.log(text)
-                      return selectGroup['decoration_grade'][text]
+                    render: (text, row, index) => {
+                        console.log(text)
+                        return selectGroup['decoration_grade'][text]
                     }
-                },{
+                }, {
                     title: '装修风格',
                     dataIndex: 'decoration_style',
-                    render: (text,row,index) => {
+                    render: (text, row, index) => {
                         return selectGroup['decoration_style'][text]
                     }
-                },{
+                }, {
                     title: '装修类型',
                     dataIndex: 'decoration_type',
-                    render: (text,row,index) => {
+                    render: (text, row, index) => {
                         return selectGroup['decoration_type'][text]
                     }
-                },{
+                }, {
                     title: '色彩取向',
                     dataIndex: 'color_orientation',
-                    render: (text,row,index) => {
+                    render: (text, row, index) => {
                         return selectGroup['color_orientation'][text]
                     }
                 }, {
@@ -136,14 +139,14 @@ class MyProject extends Component {
                 }
             ]
 
-            columns.splice(4,0,...more)
+            columns.splice(4, 0, ...more)
 
             this.setState({
                 showMoreInfoText: !this.state.showMoreInfoText
             })
-        }else {
+        } else {
 
-           columns.splice(4,5)
+            columns.splice(4, 5)
 
             this.setState({
                 showMoreInfoText: !this.state.showMoreInfoText
@@ -153,29 +156,49 @@ class MyProject extends Component {
 
     //显示更多审核信息
     showCheckInfo = () => {
-        const { columns } = this.state
-        if(this.state.showCheckInfoText) {
+        const {columns} = this.state
+        if (this.state.showCheckInfoText) {
             const check = [
                 {
                     title: '转部状态',
-                    dataIndex: 'transfer_status111',
-                },{
+                    dataIndex: 'project_audit.transfer_status',
+                    render: (text, record) => {
+                        const p = record.project_audit;
+                        if (p) {
+                            return p.transfer_status === '1' ? <Tag>转部中</Tag>
+                                : (p.transfer_status === '2' ? <Tag>已申请,未批准</Tag> : '')
+                        }
+                        return null
+                    }
+                }, {
                     title: '转部说明',
-                    dataIndex: 'transfer_status1',
-                },{
+                    dataIndex: 'project_audit.transfer_desc',
+                }, {
                     title: '审核状态',
-                    dataIndex: 'transfer_status2',
-                },{
+                    dataIndex: 'project_audit.examine_status',
+                    render: (text, record) => {
+                        const p = record.project_audit;
+                        if (p) {
+                            if (p.examine_status === "0" && p.transfer_status === "1") {
+                                return <Tag>等待审核</Tag>;
+                            }
+                            if (p.transfer_status === "-1" || p.examine_status === "-1") {
+                                return <Tag color="red">审核不通过</Tag>;
+                            }
+                        }
+                        return null
+                    }
+                }, {
                     title: '审核说明',
-                    dataIndex: 'examine_desc111',
+                    dataIndex: 'project_audit.examine_desc',
                 }
             ]
-            columns.splice(this.state.columns.length-1,0,...check)
+            columns.splice(this.state.columns.length - 1, 0, ...check)
             this.setState({
                 showCheckInfoText: !this.state.showCheckInfoText
             })
-        }else {
-            columns.splice(this.state.columns.length -5, 4)
+        } else {
+            columns.splice(this.state.columns.length - 5, 4)
             this.setState({
                 showCheckInfoText: !this.state.showCheckInfoText
             })
@@ -185,7 +208,7 @@ class MyProject extends Component {
 
     onSelectChange = (selectedRowKeys, selectedRows) => {
         console.log('selectedRowKeys changed: ', selectedRows);
-        this.setState({ selectedRowKeys, selectedRows });
+        this.setState({selectedRowKeys, selectedRows});
     }
 
 
@@ -194,17 +217,17 @@ class MyProject extends Component {
     }
 
 
-    showModal = (params,w) => {
-        const { selectedRows } = this.state
+    showModal = (params, w) => {
+        const {selectedRows} = this.state
         const title = changeTitle(params)
         // 如果w是对象，代表点击的是右边的操作选项
-        if((typeof w.guid !== 'string' && selectedRows.length < 1) || selectedRows.length > 1) {
+        if ((typeof w.guid !== 'string' && selectedRows.length < 1) || selectedRows.length > 1) {
             return message.info('请选择一行数据')
         }
         this.setState({
             visible: true,
             forms: params,
-            width: (typeof w ==='number'?w:540),   //修改框 宽度需要大一点
+            width: (typeof w === 'number' ? w : 540),   //修改框 宽度需要大一点
             title: title,
             row: (typeof w.guid === 'string' ? w : '')
         });
@@ -218,51 +241,51 @@ class MyProject extends Component {
 
 
     //提交到后台
-    addEditRow = async() => {
-      const { row } = this.state
-      // id存在（代表点击的是表格右边的操作按钮，自动传入guid）
-      const { guid } = row? row :this.state.selectedRows[0]
-      let url = ''
-      if(this.state.forms === 'OrderForm') {
-          //添加定金
-          url = `/api/erp/project_deposit/adddepositdata/guid/${guid}`
-      }else if(this.state.forms === 'UselessForm') {
-          //废单申请
-          url = `/api/erp/project/wasteapply/guid/${guid}`
-      }else if(this.state.forms === 'EditForm') {
-          url = `/api/erp/project/projectedit/guid/${guid}`
-      }else if(this.state.forms === 'UploadForm') {
-          //附件上传
-          url = `/api/erp/project/addfield/guid/${row.guid}`
-      }else if(this.state.forms === 'ApplyPartForm') {
-          //申请转部
-          url = `/api/erp/project/addprojectauditedit/${row.guid}/type/1`
-      }
+    addEditRow = async () => {
+        const {row} = this.state
+        // id存在（代表点击的是表格右边的操作按钮，自动传入guid）
+        const {guid} = row ? row : this.state.selectedRows[0]
+        let url = ''
+        if (this.state.forms === 'OrderForm') {
+            //添加定金
+            url = `/api/erp/project_deposit/adddepositdata/guid/${guid}`
+        } else if (this.state.forms === 'UselessForm') {
+            //废单申请
+            url = `/api/erp/project/wasteapply/guid/${guid}`
+        } else if (this.state.forms === 'EditForm') {
+            url = `/api/erp/project/projectedit/guid/${guid}`
+        } else if (this.state.forms === 'UploadForm') {
+            //附件上传
+            url = `/api/erp/project/addfield/guid/${row.guid}`
+        } else if (this.state.forms === 'ApplyPartForm') {
+            //申请转部
+            url = `/api/erp/project/addprojectauditedit/${row.guid}/type/1`
+        }
 
-      this.formRef.getItemsValue().then(val => {
-          if(val) {
-              this.formRef.submit(url,val).then(res => {
-                  if(res && res.status === 'Success') {
-                      message.info(res.message)
-                      this.setState({
-                          selectedRowKeys: [],
-                          selectedRows: [],
-                          visible: false
-                      })
-                      this.request(current)
-                  }
-              })
-          }
-      }).catch(err => {
-          alert('发生错误了'+ err)
-      })
+        this.formRef.getItemsValue().then(val => {
+            if (val) {
+                this.formRef.submit(url, val).then(res => {
+                    if (res && res.status === 'Success') {
+                        message.info(res.message)
+                        this.setState({
+                            selectedRowKeys: [],
+                            selectedRows: [],
+                            visible: false
+                        })
+                        this.request(current)
+                    }
+                })
+            }
+        }).catch(err => {
+            alert('发生错误了' + err)
+        })
 
     }
 
 
     look = (params) => {
         const url = `erp/project/showprojectofuser/guid/${params.guid}`;
-        new CreateTab(url,{
+        new CreateTab(url, {
             guid: 'xmmx',
             menu_name: `项目明细`,
             url: url,
@@ -278,7 +301,7 @@ class MyProject extends Component {
             status: -1,
             showMoreInfoText: true,
             showCheckInfoText: true,
-        },() => {
+        }, () => {
             this.request()
         })
     }
@@ -289,7 +312,7 @@ class MyProject extends Component {
             status: 1,
             showMoreInfoText: true,
             showCheckInfoText: true,
-        },() => {
+        }, () => {
             this.request()
         })
     }
@@ -319,11 +342,22 @@ class MyProject extends Component {
 
     }
 
+
+    //操作记录
+
+    setModal2Visible(modal2Visible, guid) {
+        this.setState({
+            modal2Visible,
+            guid
+        });
+    }
+
+
     render() {
         const {data} = this.props.agora.tableList;
-        const { selectGroup } = this.props.agora
-        const { selectedRowKeys } = this.state;
-        const { showConfirm } = this.props
+        const {selectGroup} = this.props.agora
+        const {selectedRowKeys, guid} = this.state;
+        const {showConfirm} = this.props
 
         columns = [{
             title: '项目名称',
@@ -337,26 +371,49 @@ class MyProject extends Component {
         }, {
             title: '预计总工期',
             dataIndex: 'expected_duration',
-        },{
+        }, {
             title: '客户来源',
             dataIndex: 'customer_source',
-            render: (text,row,index) => {
-                return (selectGroup['customer_source']?selectGroup['customer_source'][text]: '')
+            render: (text, row, index) => {
+                return (selectGroup['customer_source'] ? selectGroup['customer_source'][text] : '')
             }
-        },{
+        }, {
             title: '操作',
-            render: (text,record,index) => {
-                const { guid } = record;
+            render: (text, record, index) => {
+                const {guid} = record;
+                const p = record.project_audit;
+                const waste = record.waste_apply_count
                 return (
                     <span>
-          <a href="javascript:void (0);" onClick={this.look.bind(this,record)}>查看详细</a>
-          <Divider type="vertical"/>
-          <a href="javascript:;" onClick={this.showModal.bind(this,'ApplyPartForm',record)}>申请转部</a>
-          <Divider type="verticla"/>
-          <a href="javascript:;" onClick={this.showModal.bind(this,'UploadForm',record)}>添加附件</a>
-            <Divider type="verticla"/>
-          <a href="javascript:;">操作记录</a>
-        </span>
+                          <a href="javascript:void (0);" onClick={this.look.bind(this, record)}>查看详细</a>
+
+
+                        {
+                            waste ===0 && ( (p && ( p.transfer_status === '0' || p.transfer_status === '1')) || p === null )  ? (
+                                <span>
+                                       <Divider type="vertical"/>
+                                      <a href="javascript:;"
+                                         onClick={this.showModal.bind(this, 'ApplyPartForm', record)}>申请转部</a>
+                                </span>
+                            ) : null
+                        }
+
+                        {
+                            waste ===0 && p && p.examine_status === '-1' ? (
+                                <span>
+                                        <Divider type="vertical"/>
+                                        <a href="javascript:;"
+                                           onClick={this.showModal.bind(this, 'ApplyPartForm', record)}>再次申请转部</a>
+                                </span>
+
+                            ) : null
+                        }
+
+                        <Divider type="verticla"/>
+                          <a href="javascript:;" onClick={this.showModal.bind(this, 'UploadForm', record)}>添加附件</a>
+                            <Divider type="verticla"/>
+                          <a href="javascript:;" onClick={() => this.setModal2Visible(true, guid)}>操作记录</a>
+                 </span>
                 )
             }
         }];
@@ -367,6 +424,32 @@ class MyProject extends Component {
             onChange: this.onSelectChange,
         };
 
+
+        //操作记录
+
+        const columns1 = [
+            {
+                title: '姓名',
+                dataIndex: 'user.username',
+            }, {
+                title: '部门',
+                dataIndex: 'department.department_name',
+            }, {
+                title: '职位',
+                dataIndex: 'jobs.jobs_name',
+            }, {
+                title: '跟踪内容',
+                dataIndex: 'log_content',
+                width: '30%',
+                render: (text) => <span className="col-sql">{text}</span>,
+            }, {
+                title: '时间',
+                dataIndex: 'create_time',
+            }
+        ]
+
+        const url = `/api/erp/project/showlog/project_guid/${guid}`
+
         return (
             <Template>
 
@@ -374,28 +457,28 @@ class MyProject extends Component {
                     <Button type="primary" onClick={this.add} style={{marginRight: 5}}>
                         添加
                     </Button>
-                    <Button type="primary" onClick={this.showModal.bind(this,'OrderForm')} style={{marginRight: 5}}>
+                    <Button type="primary" onClick={this.showModal.bind(this, 'OrderForm')} style={{marginRight: 5}}>
                         添加定金单
                     </Button>
-                    <Button type="primary" onClick={this.showModal.bind(this,'UselessForm')} style={{marginRight: 5}}>
+                    <Button type="primary" onClick={this.showModal.bind(this, 'UselessForm')} style={{marginRight: 5}}>
                         废单申请
                     </Button>
-                    <Button type="dashed"  onClick={this.showModal.bind(this,'EditForm',900)} style={{marginRight: 5}}>
+                    <Button type="dashed" onClick={this.showModal.bind(this, 'EditForm', 900)} style={{marginRight: 5}}>
                         修改
                     </Button>
                     <Button type="danger" onClick={showConfirm} style={{marginRight: 5}}>
                         删除
                     </Button>
                     <Button type="default" onClick={this.showMoreInfo} style={{marginRight: 5}}>
-                        {this.state.showMoreInfoText? '显示更多信息' : '隐藏更多信息'}
+                        {this.state.showMoreInfoText ? '显示更多信息' : '隐藏更多信息'}
                     </Button>
                     <Button type="default" onClick={this.showCheckInfo} style={{marginRight: 5}}>
-                        {this.state.showCheckInfoText? '显示审核信息': '隐藏审核信息'}
+                        {this.state.showCheckInfoText ? '显示审核信息' : '隐藏审核信息'}
                     </Button>
-                    <Button type="dashed" icon="delete" onClick={this.changeStatus} style={{marginRight: 5}} >
+                    <Button type="dashed" icon="delete" onClick={this.changeStatus} style={{marginRight: 5}}>
                         回收站
                     </Button>
-                    <Button type="dashed"  onClick={this.showAll} >
+                    <Button type="dashed" onClick={this.showAll}>
                         显示全部
                     </Button>
                 </div>
@@ -405,7 +488,7 @@ class MyProject extends Component {
                     style={{backgroundColor: '#fff'}}
                     columns={this.state.columns}
                     dataSource={data}
-                    loading = {this.state.loading}
+                    loading={this.state.loading}
                     pagination={this.state.pagination}
                     onChange={this.handleTableChange}
                     size="middle"
@@ -439,16 +522,16 @@ class MyProject extends Component {
                     }
 
                     {
-                        this.state.forms === 'UselessForm'? (<UselessForm
+                        this.state.forms === 'UselessForm' ? (<UselessForm
                             data={this.state.selectedRows}
                             wrappedComponentRef={(form) => this.formRef = form}
                         />) : null
                     }
 
                     {
-                        this.state.forms === 'EditForm'? (
-                            <EditForm data={this.state.selectedRows}  wrappedComponentRef={(form) => this.formRef = form}
-                        />) : null
+                        this.state.forms === 'EditForm' ? (
+                            <EditForm data={this.state.selectedRows} wrappedComponentRef={(form) => this.formRef = form}
+                            />) : null
                     }
 
                     {
@@ -457,7 +540,7 @@ class MyProject extends Component {
                                 data={this.state.row}
                                 wrappedComponentRef={(form) => this.formRef = form}
                             />
-                        ): null
+                        ) : null
                     }
 
                     {
@@ -465,9 +548,25 @@ class MyProject extends Component {
                             <UploadForm
                                 wrappedComponentRef={(form) => this.formRef = form}
                             />
-                        ): null
+                        ) : null
                     }
 
+                </Modal>
+
+
+                {/*操作记录*/}
+
+                <Modal
+                    title="操作记录"
+                    centered
+                    visible={this.state.modal2Visible}
+                    // onOk={() => this.setModal2Visible(false)}
+                    onCancel={() => this.setModal2Visible(false)}
+                    footer={null}
+                    destroyOnClose={true}
+                    width={700}
+                >
+                    <TableComponent columns={columns1} url={url}/>
                 </Modal>
 
             </Template>

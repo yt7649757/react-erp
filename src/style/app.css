@@ -93,3 +93,12 @@ clearfix:before,.clearfix:after{
     opacity: 0.01;
     transition: opacity 300ms ease-in;
 }
+
+/*.ant-table td { white-space: nowrap; }*/
+.col-sql{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    width: 200px;
+}
