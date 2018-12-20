@@ -1,24 +1,17 @@
 import React, {Component} from 'react';
-import {Layout, Menu, Icon, Breadcrumb, Tabs} from 'antd';
+import {Layout, Tabs} from 'antd';
 import HeaderComponent from '../common/header';
 import Aside from '../common/aside'
-// import storage from '../utils/storage.js';
-// import axios from 'axios';
-// import {port} from '../common/port';
-// import cookie from 'react-cookies'
 import {withRouter} from 'react-router-dom';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as userActions from '../redux/action/user';
 import emitter from "./ev"
-// import { Link } from 'react-router-dom';
-// import '../style/app.css'
 
-const {SubMenu} = Menu;
-const {Content, Sider, Footer} = Layout;
+const {Content, Footer} = Layout;
 const TabPane = Tabs.TabPane;
-var panes = [];
-var current = '';
+let panes = [];
+let current = '';
 
 class Template extends Component {
 
@@ -35,11 +28,7 @@ class Template extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        // current = sessionStorage.getItem('current')
         panes = JSON.parse(sessionStorage.getItem('routes'))
-        // console.log('------------------------')
-        // console.log(current)
-        // console.log(nextProps.location.pathname.substring(1))
         this.setState({
             activeKey: nextProps.location.pathname.substring(1)
         })

@@ -2,11 +2,6 @@ import React, {Component} from 'react';
 import '../style/listItem.css'
 
 class ListItem extends Component {
-
-    // constructor(props) {
-    //     super(props)
-    // }
-
     render() {
         return (
             <ul className="news-list clearfix">
@@ -15,7 +10,7 @@ class ListItem extends Component {
                         this.props.data.map(item => {
                             return (
                                 <li key={item.id}>
-                                    <a href="javascript:void(0);" title={item.text}>
+                                    <a href='/' title={item.text}>
                                         <i>{item.id}</i>
                                         <p>{item.text}</p>
                                         <span className="datetime">{item.datetime}</span>

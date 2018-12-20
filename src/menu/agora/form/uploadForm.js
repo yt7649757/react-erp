@@ -3,10 +3,8 @@ import {Form, Icon, Tabs, Input, Button, Modal, Upload, message} from 'antd';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as AgoraActions from '../../../redux/action/agora/agora';
-// import Picture from './upload/picture';
 import '../../../style/agora/uploadForm.css';
 import {port} from '../../../common/port';
-// import axios from 'axios'
 import cookie from 'react-cookies';
 
 const FormItem = Form.Item;
@@ -46,6 +44,11 @@ class UploadForm extends Component {
             fileList: [],
             fieldNames: ['photo_name','photo_address','photo_desc','photo_m']
         }
+    }
+
+    componentDidMount() {
+        //必须在这里声明，所以 ref 回调可以引用它
+        this.props.onRef(this)
     }
 
 
@@ -178,7 +181,6 @@ class UploadForm extends Component {
 
 
     render() {
-
         const {getFieldDecorator} = this.props.form;
 
         const formItemLayout = {

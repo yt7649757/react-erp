@@ -45,7 +45,6 @@ class RoleList extends Component {
 
     // 页码改变的回调，参数是改变后的页码及每页条数 Function(page, pageSize)
     handleTableChange = (pagination) => {
-        //无法setState存取current,总是取不到值
         current = pagination.current
         this.request(pagination.current)
     }
@@ -192,9 +191,7 @@ class RoleList extends Component {
     deleteRow = () => {
         var rows = []
         let {selectedRows} = this.state;
-        selectedRows.map(val => {
-            rows.push(val.guid)
-        })
+        selectedRows.map(val => rows.push(val.guid))
         this.props.systemManageActions.deleteRole({
             action: 'delete',
             guids: rows

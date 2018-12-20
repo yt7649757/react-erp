@@ -262,7 +262,7 @@ class MyProject extends Component {
             //申请转部
             url = `/api/erp/project/addprojectauditedit/${row.guid}/type/1`
         }
-
+        console.log(this);
         this.formRef.getItemsValue().then(val => {
             if (val) {
                 this.formRef.submit(url, val).then(res => {

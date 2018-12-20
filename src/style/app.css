@@ -102,3 +102,11 @@ clearfix:before,.clearfix:after{
     display: inline-block;
     width: 200px;
 }
+
+.ant-table-pagination.ant-pagination {
+    margin-right: 10px!important;
+}
+
+.ant-pagination-options-quick-jumper {
+    vertical-align: baseline!important;
+}

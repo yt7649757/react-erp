@@ -39,10 +39,6 @@ class Page extends Component {
         this.props.userActions.getMessage()
     }
 
-    handleChange = (value) => {
-        this.setState({value});
-    }
-
 
     /*
      * @param pagination
@@ -57,6 +53,7 @@ class Page extends Component {
         this.setState({
             pagination: pager,
         },() => {
+            console.log(pagination)
             this.props.userActions.onlineUser( pagination.current,4)
         });
     }

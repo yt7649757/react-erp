@@ -9,7 +9,7 @@ import cookie from 'react-cookies'
 //私有路由，只有登录的用户才能访问
 class PrivateRoute extends React.Component{
     componentWillMount(){
-        let  isAuthenticated =  cookie.load("access_token") ? true :false;
+        let  isAuthenticated =  !!cookie.load("access_token")
         this.setState({isAuthenticated:isAuthenticated})
         if(!isAuthenticated){
             const {history} = this.props;

@@ -1,8 +1,26 @@
 import React, { Component } from 'react';
 import { Table } from 'antd';
+import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as tableActions from '../redux/action/table';
+
+/**
+ *
+ * @type {Array}
+ *
+ * url 请求的接口
+ * columns table表头
+ * size table大小
+ */
+
+function guid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random()*16|0, v = c === 'x' ? r : (r&0x3|0x8);
+        return v.toString(16);
+    });
+}
+
 
 let data = [];
 class TableComponent extends Component {
@@ -31,14 +49,19 @@ class TableComponent extends Component {
     request = async(params = 1) => {
         const pagination = { ...this.state.pagination };
 
-        const url = this.props.url;
+        const { url,testUrl } = this.props;
 
         pagination.pageSize = 10;
         this.setState({
             loading: true
         })
 
-        let res = await this.props.tableActions.getTableList(url,params,pagination.pageSize)
+        let res = ''
+        if(url) {
+            res = await this.props.tableActions.getTableList(url,params,pagination.pageSize)
+        }else if(testUrl) {
+            res = await this.props.tableActions.getEasyMock(testUrl)
+        }
 
         if(res) {
             pagination.total = res.data.total;
@@ -61,6 +84,11 @@ class TableComponent extends Component {
         this.request()
     }
 
+    componentWillUnmount() {
+        this.setState = (state,callback)=>{
+            return false
+        }
+    }
 
 
     onSelectChange = (selectedRowKeys) => {
@@ -70,26 +98,40 @@ class TableComponent extends Component {
 
     render() {
         const { loading } = this.state;
-        const { columns, url } = this.props;
+        const { columns, url, testUrl } = this.props;
 
 
-        if(this.props.table.tableList[url]) {
+        if(url && this.props.table.tableList[url]) {
             data = this.props.table.tableList[url].data
+        }else if(testUrl && this.props.table.tableList[testUrl]) {
+            data = this.props.table.tableList[testUrl].data
         }
 
         return (
             <Table
+                style={{backgroundColor:"#fff"}}
                 // rowSelection={rowSelection}
-                rowKey={record => record.id}
+                rowKey={record => record.id || record.guid || guid()}
                 columns={columns}
                 loading={loading}
                 dataSource={data}
                 pagination={this.state.pagination}
                 onChange={this.handleTableChange}
-                size='small'
+                size={this.props.size}
             />
         );
     }
+}
+
+TableComponent.defaultProps = {
+    size: 'small'
+}
+
+
+TableComponent.propTypes = {
+    columns: PropTypes.array,
+    url: PropTypes.string,
+    size: PropTypes.string
 }
 
 const mapStateToProps = (state) => {

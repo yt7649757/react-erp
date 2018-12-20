@@ -1,23 +1,15 @@
 import React, {Component} from 'react';
 import {Form, Icon, Input, Button, Checkbox, message} from 'antd';
-import storage from '../utils/storage.js';
-import {port} from '../common/port'
 import {withRouter} from 'react-router-dom';
-// import $ from 'jquery';
-// import 'whatwg-fetch';
-import axios from 'axios';
-import cookie from 'react-cookies'
-
+import cookie from 'react-cookies';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as userActions from '../redux/action/user';
-
-// import '../style/login.css';
-// import '../style/login/reset.css';
 import '../style/login/login.css';
 
 const FormItem = Form.Item;
 
+let lock = true
 class Login extends Component {
 
     constructor(props) {
@@ -28,32 +20,33 @@ class Login extends Component {
     }
 
     componentWillMount() {
-        // if(storage.get('access_token')) {
-        //     this.props.history.push('/erp')
-        // }
-        if (cookie.load('access_token') && this.props.user.status === 'success') {
+        if (cookie.load('access_token')) {
             this.props.history.push('/erp')
         }
     }
 
 
     handleSubmit = async (e) => {
-        e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                // console.log('Received values of form: ', values);
-                //使用redux
-                this.props.userActions.login(values.userName, values.password, values.remember).then(val => {
-                    if (val) {
-                        const {access_token, remember} = this.props.user
-                        cookie.save('access_token', access_token.access_token, {
-                            maxAge: access_token.expires_in  //token过期时间
-                        })
-                        this.props.history.push('/erp')
-                    }
-                })
-            }
-        });
+        if(lock) {
+            lock = false
+            this.props.form.validateFields((err, values) => {
+                if (!err) {
+                    // console.log('Received values of form: ', values);
+                    //使用redux
+                    this.props.userActions.login(values.userName, values.password, values.remember).then(val => {
+                        if (val) {
+                            const {access_token, remember} = this.props.user
+                            cookie.save('access_token', access_token.access_token, {
+                                maxAge: access_token.expires_in  //token过期时间
+                            })
+                            this.props.history.push('/erp')
+                        }
+                    }).catch(err => {
+                        lock = true
+                    })
+                }
+            });
+        }
     }
 
     loginType = () => {
@@ -124,10 +117,19 @@ class Login extends Component {
                                                 <a href="#">忘记密码?</a>
                                             </div>
                                             <div className="submit">
-                                                <Button type="primary" htmlType="submit" className="login-form-button"
-                                                        block>
-                                                    登录
-                                                </Button>
+                                                {
+                                                    this.props.user.status === 'loading'? (
+                                                        <Button type="primary" htmlType="button" className="login-form-button"
+                                                                 block>
+                                                            正在登录中...
+                                                        </Button>
+                                                    ): (
+                                                        <Button type="primary" htmlType="submit" className="login-form-button"
+                                                                block>
+                                                            登录
+                                                        </Button>
+                                                    )
+                                                }
                                             </div>
                                             <p className="apply-account"><a href="#">还没有账户，马上申请</a></p>
                                         </Form>

@@ -41,3 +41,6 @@ export const TABLE_LIST = 'TABLE_LIST';
 
 //项目详情
 export const PROJECT_INFO = 'PROJECT_INFO';
+
+//已转部业务
+export const TRANSFERRED_LIST = 'TRANSFERRED_LIST'

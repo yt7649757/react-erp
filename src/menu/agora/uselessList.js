@@ -3,29 +3,12 @@ import Template from '../../common/template';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as AgoraActions from '../../redux/action/agora/agora';
+import { Table,Modal, Form, Input, Select } from 'antd';
+const FormItem = Form.Item;
+const {TextArea} = Input;
 
-import { Table } from 'antd';
+const Option = Select.Option;
 
-const columns = [{
-    title: '项目名称',
-    dataIndex: 'project_name',
-}, {
-    title: '申请人',
-    dataIndex: 'name',
-},{
-    title: '申请说明',
-    dataIndex: 'apply_desc',
-    width: '30%'
-},{
-    title: '操作',
-    render: () => {
-        return (
-            <a href="javascript:void(0);">审核</a>
-        )
-    }
-}];
-
-let current = 1;
 
 class UselessList extends Component {
 
@@ -38,6 +21,7 @@ class UselessList extends Component {
             loading: false,
             columns: [],
             status: 1,
+            visible: false
         }
     }
 
@@ -45,9 +29,15 @@ class UselessList extends Component {
         this.request()
     }
 
+
+    componentWillUnmount() {
+        this.setState = (state,callback)=>{
+            return
+        }
+    }
+
+
     handleTableChange = (pagination) => {
-        //无法setState存取current,总是取不到值
-        current = pagination.current
         this.request(pagination.current)
     }
 
@@ -63,6 +53,7 @@ class UselessList extends Component {
 
         if(res) {
             pagination.total = res.data.total;
+            pagination.current = params
 
             pagination.showTotal = function (total) {
                 return `总共有${total}条数据`
@@ -77,11 +68,56 @@ class UselessList extends Component {
 
     }
 
+    showModal = () => {
+        this.setState({
+            visible: true,
+        });
+    }
+
+    hideModal = () => {
+        this.setState({
+            visible: false,
+        });
+    }
+
 
 
     render() {
 
+        const {getFieldDecorator} = this.props.form;
+
+        const formItemLayout = {
+            labelCol: {
+                sm: {span: 5},
+            },
+            wrapperCol: {
+                sm: {span: 15},
+            },
+        };
+
+
         const { data } = this.props.agora.useLessList
+
+        const columns = [{
+            title: '项目名称',
+            dataIndex: 'project_name',
+        }, {
+            title: '申请人',
+            dataIndex: 'name',
+        },{
+            title: '申请说明',
+            dataIndex: 'apply_desc',
+            width: '30%'
+        },{
+            title: '操作',
+            render: () => {
+                return (
+                    <a href="javascript:void(0);" onClick={this.showModal}>审核</a>
+                )
+            }
+        }];
+
+
 
         return (
             <Template>
@@ -95,6 +131,57 @@ class UselessList extends Component {
                     pagination={this.state.pagination}
                     onChange={this.handleTableChange}
                 />
+                <Modal
+                    title="废单审核"
+                    visible={this.state.visible}
+                    onOk={this.submitModal}
+                    onCancel={this.hideModal}
+                    okText="确认"
+                    cancelText="取消"
+                >
+                    <Form>
+                        <FormItem
+                            {...formItemLayout}
+                            label="项目名称"
+                        >
+                            {getFieldDecorator('payment_id', {
+                                initialValue: '',
+                                rules: [{
+                                    pattern: new RegExp(/\S/, "g"),
+                                    message: '不能为空',
+                                }],
+                            })(
+                                <Input/>
+                            )}
+                        </FormItem>
+                        <FormItem
+                            {...formItemLayout}
+                            label="审核"
+                        >
+                            {getFieldDecorator('payment_price', {
+                                initialValue: '',
+                                rules: [{
+                                    required: true, message: '请选择!',
+                                }],
+                            })(
+                                <Select>
+                                    <Option value="1">111</Option>
+                                </Select>
+                            )}
+                        </FormItem>
+                        <FormItem
+                            {...formItemLayout}
+                            label="审核说明"
+                        >
+                            {getFieldDecorator('payment_date', {
+                                initialValue: ''
+                            })(
+                                <TextArea/>
+                            )}
+                        </FormItem>
+                    </Form>
+                </Modal>
+
             </Template>
         )
     }
@@ -112,5 +199,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(UselessList)
+export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(UselessList))

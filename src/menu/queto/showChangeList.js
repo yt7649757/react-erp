@@ -19,11 +19,7 @@ const data = [];
 
 
 class ShowChangeList extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
+   render() {
         return (
             <Template>
                 <Table columns={columns} dataSource={data} />

@@ -34,6 +34,8 @@ import ShowCheckList from "../menu/queto/showCheckList";
 import ShowProjectContAudit from "../menu/queto/showProjectContAudit";
 import ExcellentOpus from "../menu/queto/excellentOpus";
 import Achievement from '../menu/queto/achievement';
+import TransferredList from '../menu/agora/transferredList';
+import WasteProjectApply from '../menu/agora/wasteProjectApply';
 
 export const config = [
     {
@@ -75,6 +77,12 @@ export const config = [
           },{
               path: '/erp/project/showprojectofuser/guid/:id',
               component: ProjectDetail
+          },{
+              path: '/erp/TransferredProject/showMarketUserProject',
+              component: TransferredList
+          },{
+              path: '/erp/WasteSingle/showWasteProjectApply',
+              component: WasteProjectApply
           }
       ]
     },

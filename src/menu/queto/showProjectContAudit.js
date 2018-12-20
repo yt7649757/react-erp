@@ -25,10 +25,6 @@ const data = [];
 
 
 class ShowProjectContAudit extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         return (
             <Template>

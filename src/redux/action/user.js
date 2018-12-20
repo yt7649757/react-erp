@@ -43,10 +43,14 @@ export const login = (username, password, remember) => {
 
 export const loginOut = () => {
      return (dispatch) => {
-         dispatch({
-             type: types.LOGIN_OUT,
-             status: 'exit'
-         })
+         return axios.get(port + '/api/auth/logout')
+             .then(function (res) {
+                 dispatch({
+                     type: types.LOGIN_OUT,
+                     status: 'exit'
+                 })
+                 return Promise.resolve(res)
+             })
      }
 }
 

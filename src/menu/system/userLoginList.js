@@ -5,33 +5,6 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as SystemManageActions from '../../redux/action/system/systemManage'
 
-const columns = [{
-    title: '用户昵称',
-    dataIndex: 'personnel_user.name',
-    sorter: true,
-    width: '20%',
-}, {
-    title: '用户登录情况',
-    dataIndex: 'desc',
-    filters: [
-        {text: '全部', value: '1'},
-        {text: '已删除', value: '2'},
-        {text: '禁用', value: '3'},
-        {text: '正常', value: '4'},
-    ],
-    filterMultiple: false,
-}, {
-    title: '状态',
-    dataIndex: 'status',
-    render: function (text, record, index) {
-        return record.status == 1 ? '正常' : '已刪除'
-    }
-}, {
-    title: '创建时间',
-    dataIndex: 'create_time'
-}];
-
-
 class UserLoginList extends Component {
 
     constructor(props) {
@@ -72,10 +45,13 @@ class UserLoginList extends Component {
         var res = await this.props.systemManageActions.getUserLogin(params,pagination.pageSize)
 
         pagination.total = res.data.total;
+        pagination.current = params;
 
         pagination.showTotal = function (total) {
             return `总共有${total}条数据`
         }
+
+        console.log(pagination);
 
         this.setState({
             pagination,
@@ -89,6 +65,44 @@ class UserLoginList extends Component {
     }
 
     render() {
+        const pagination = this.state.pagination.current ? this.state.pagination.current : 1
+        const pageSize = this.state.pagination.pageSize ? this.state.pagination.pageSize : 0
+        const columns = [{
+            title: '',
+            render:(text,record,index)=> {
+                return(
+                    <span>{(pagination-1)* pageSize + index + 1}</span>
+                )
+            },
+            key: 'key'
+
+        },{
+            title: '用户昵称',
+            dataIndex: 'personnel_user.name',
+            sorter: true,
+            width: '20%',
+        }, {
+            title: '用户登录情况',
+            dataIndex: 'desc',
+            filters: [
+                {text: '全部', value: '1'},
+                {text: '已删除', value: '2'},
+                {text: '禁用', value: '3'},
+                {text: '正常', value: '4'},
+            ],
+            filterMultiple: false,
+        }, {
+            title: '状态',
+            dataIndex: 'status',
+            render: function (text, record, index) {
+                return record.status == 1 ? '正常' : '已刪除'
+            }
+        }, {
+            title: '创建时间',
+            dataIndex: 'create_time'
+        }];
+
+
         const {data} = this.props.systemManage.userLoginList;
         return (
             <Template>

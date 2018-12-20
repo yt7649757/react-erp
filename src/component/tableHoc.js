@@ -3,7 +3,7 @@ import { Modal, message } from 'antd';
 
 const confirm = Modal.confirm;
 
-const TableHoc = (WrappedComponent,path) => class extends WrappedComponent {
+const TableHoc = (WrappedComponent) => class extends WrappedComponent {
 
     showConfirm = () => {
         const _this = this;

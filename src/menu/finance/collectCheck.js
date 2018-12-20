@@ -19,10 +19,6 @@ const columns = [{
 const data = [];
 
 class CollectCheck extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         return (
             <Template>

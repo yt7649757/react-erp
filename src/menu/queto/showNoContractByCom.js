@@ -19,10 +19,6 @@ const data = [];
 
 
 class ShowNoContractByCom extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         return (
             <Template>

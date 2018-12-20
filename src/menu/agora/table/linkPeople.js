@@ -8,11 +8,15 @@ class LinkPeople extends Component {
         super(props)
     }
 
-    componentDidMount() {
-        this.eventEmitter = emitter.addListener("LinkPeopleForm", () => {
-           this.request()
-        })
-    }
+    // componentDidMount() {
+    //     this.eventEmitter = emitter.addListener("LinkPeopleForm", () => {
+    //        this.request()
+    //     })
+    // }
+    //
+    // componentWillUnMount() {
+    //     emitter.removeListener(this.eventEmitter);
+    // }
 
     render() {
 

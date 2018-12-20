@@ -40,11 +40,7 @@ const data = [];
 
 
 class ShowProListByDep extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
+   render() {
         return (
             <Template>
                 <Table columns={columns} dataSource={data} />

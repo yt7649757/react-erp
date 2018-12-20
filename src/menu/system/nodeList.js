@@ -45,7 +45,7 @@ class NodeList extends Component {
     }
 
     handleTableChange = (pagination) => {
-        //无法setState存取current,总是取不到值
+        //变量存取current
         current = pagination.current
         this.request(pagination.current)
     }
@@ -64,6 +64,9 @@ class NodeList extends Component {
             pagination.showTotal = function (total) {
                 return `总共有${total}条数据`
             }
+
+            //使用state存取current
+            // pagination.current = params
 
             this.setState({
                 pagination,
@@ -203,9 +206,7 @@ class NodeList extends Component {
     deleteRow = () => {
         var rows = []
         let {selectedRows} = this.state;
-        selectedRows.map(val => {
-            rows.push(val.guid)
-        })
+        selectedRows.map(val => rows.push(val.guid))
         this.props.systemManageActions.deleteNode({
             // action: 'delete',
             guids: rows

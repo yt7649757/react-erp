@@ -7,13 +7,20 @@ window.lock = false;
 // http response 拦截器
 
 // axios每次请求接口都会发送两次请求，而且第一次请求看不到参数，相当于是options请求（这里请求的接口是跨域）
+// IE9不支持CORS，跨域header带不过去
 axios.interceptors.request.use(
     config => {
-        const token = cookie.load('access_token')
-        if (token) {
-            // config.headers.Authorization = 'Bearer11' + token;  //token无效
-            config.headers.Authorization = 'Bearer ' + token;
-        }
+        console.log(config);
+        new Promise(resolve => {
+            const token = cookie.load('access_token')
+            if(token) {
+                resolve(token)
+            }
+        }).then(token => {
+            if(token) {
+                config.headers.Authorization = 'Bearer ' + token;
+            }
+        })
         return config
     },
     error => {

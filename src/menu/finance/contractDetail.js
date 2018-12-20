@@ -18,10 +18,6 @@ const columns = [{
 const data = [];
 
 class ContractDetail extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         return (
             <Template>

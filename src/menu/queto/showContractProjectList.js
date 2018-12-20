@@ -28,10 +28,6 @@ const data = [];
 
 
 class ShowContractProjectList extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         return (
             <Template>

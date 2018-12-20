@@ -6,7 +6,8 @@ const initialState = {
     payment: [],
     partment: [],
     useLessList: [],
-    projectInfo: []
+    projectInfo: [],
+    transferredList: []
 }
 
 export const agora = (state = initialState, action) => {
@@ -40,6 +41,11 @@ export const agora = (state = initialState, action) => {
             return {
                 ...state,
                 projectInfo: action.projectInfo
+            }
+        case types.TRANSFERRED_LIST:
+            return {
+                ...state,
+                transferredList: action.transferredList
             }
         default:
             return state

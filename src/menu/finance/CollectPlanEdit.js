@@ -16,10 +16,6 @@ const data = [];
 
 
 class CollectPlanEdit extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         return (
             <Template>

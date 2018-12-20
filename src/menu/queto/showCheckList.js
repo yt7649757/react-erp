@@ -19,10 +19,6 @@ const data = [];
 
 
 class ShowCheckList extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         return (
             <Template>

@@ -11,6 +11,7 @@ import * as userActions from '../redux/action/user';
 import '../style/header.css'
 
 const {Header} = Layout;
+let lock = true
 
 class HeaderComponent extends Component {
 
@@ -105,14 +106,26 @@ class HeaderComponent extends Component {
 
     signOut = () => {
         // storage.remove('access_token')
-        this.props.userActions.loginOut()
-        sessionStorage.clear()
-        //本地直接打开是读不了cookie的，因为不是http协议的，是file协议的
-        cookie.remove('access_token')
-        cookie.remove('userInfo')
-        message.success('注销成功', 1);
-        this.props.history.push('/')
-        document.title = '装企云管家'
+        if(lock) {
+            lock= false
+            this.props.userActions.loginOut().then(res => {
+                if(res.data.message) {
+                    sessionStorage.clear()
+                    //本地直接打开是读不了cookie的，因为不是http协议的，是file协议的
+                    cookie.remove('access_token')
+                    cookie.remove('userInfo')
+                    message.success('注销成功', 1);
+                    this.props.history.push('/')
+                    document.title = '装企云管家'
+                    lock = true
+                }
+            }).catch(err => {
+                alert(err)
+                lock = true
+            })
+        }
+
+
         // const { pathname } = this.props.location;
         // //动态改变标题
         // if(pathname === '/signOut') {

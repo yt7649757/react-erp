@@ -24,10 +24,6 @@ const columns = [{
 const data = [];
 
 class PriceCheckList extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         return (
             <Template>

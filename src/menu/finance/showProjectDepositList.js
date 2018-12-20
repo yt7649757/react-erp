@@ -26,10 +26,6 @@ const data = [];
 
 
 class ShowProjectDepositList extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         return (
             <Template>

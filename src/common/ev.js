@@ -1,2 +1,4 @@
 import { EventEmitter } from "events";
-export default new EventEmitter();
+const emitter = new EventEmitter ()
+emitter.setMaxListeners(0)
+export default emitter;

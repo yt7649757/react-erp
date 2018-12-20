@@ -12,7 +12,7 @@ const columns = [{
     title: '操作',
     render: () => {
         return (
-            <a href="">删除</a>
+            <a href="javascript:;">删除</a>
         )
     }
 }];
@@ -20,10 +20,6 @@ const columns = [{
 const data = [];
 
 class ShowPayMentList extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         return (
             <Template>

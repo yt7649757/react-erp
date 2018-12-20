@@ -25,10 +25,6 @@ const data = [];
 
 
 class AccountManage extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         return (
             <Template>

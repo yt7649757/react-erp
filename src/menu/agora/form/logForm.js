@@ -59,13 +59,6 @@ class LogForm extends Component {
                     label="项目名称"
                 >
                     {getFieldDecorator('project_name', {
-                        // initialValue: '',
-                        // rules: [{
-                        //     pattern: new RegExp(/\S/, "g"),
-                        //     message: '不能为空',
-                        // }, {
-                        //     required: true, message: '请输入项目名称!',
-                        // }],
                     })(
                         <Input disabled/>
                     )}
@@ -76,13 +69,6 @@ class LogForm extends Component {
                     label="操作人"
                 >
                     {getFieldDecorator('username', {
-                        // initialValue: '',
-                        // rules: [{
-                        //     pattern: new RegExp(/\S/, "g"),
-                        //     message: '不能为空',
-                        // }, {
-                        //     required: true, message: '请输入项目名称!',
-                        // }],
                     })(
                         <Input disabled/>
                     )}
@@ -93,11 +79,9 @@ class LogForm extends Component {
                     label="跟踪内容"
                 >
                     {getFieldDecorator('apply_desc', {
-                        // rules: [{
-                        //     type: 'string', message: 'The input is not valid E-mail!',
-                        // }, {
-                        //     required: false, message: 'Please input your E-mail!',
-                        // }],
+                        rules: [ {
+                            required: true, message: '请输入跟踪内容',
+                        }],
                     })(
                         <TextArea rows={5} style={{resize: 'none'}}/>
                     )}

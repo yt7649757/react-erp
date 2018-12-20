@@ -215,3 +215,23 @@ export const addLinkPeople = (url, params) => {
         })
     }
 }
+
+
+//已转部业务
+export const getTransferredList = (page = 1, size = 15) => {
+    //port + `/api/erp/transferredproject/showmarketuserproject?page=${page}&per_page=${size}`
+    return dispatch => {
+        return axios.get('https://www.easy-mock.com/mock/5c185df39172fa10e61b63b3/erp/showmarketuserproject')
+            .then(res => {
+                console.log(res);
+                dispatch({
+                    type: types.TRANSFERRED_LIST,
+                    transferredList: res.data
+                })
+                return res
+            }).catch(error => {
+                alert(error + '请求失败')
+            })
+    }
+}
+

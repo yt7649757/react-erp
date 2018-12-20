@@ -49,7 +49,6 @@ class IndexPage extends Component {
                                                         path={subRoute.path}
                                                         exact={subRoute.exact}
                                                         component={subRoute.component}
-                                                        replace
                                                     />
                                                 )
                                             })
@@ -59,7 +58,6 @@ class IndexPage extends Component {
                                                 path={route.path}
                                                 exact={route.exact}
                                                 component={route.component}
-                                                replace
                                             />
                                         )
                                     )

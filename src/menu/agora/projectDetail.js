@@ -14,10 +14,8 @@ import EditForm from './form/editForm';
 import LinkPeopleForm from './form/linkPeopleForm';
 import LogForm from'./form/logForm';
 import RemindForm from './form/remindForm';
-// import TrackingLog from './table/trackingLog';
-// import RemindInfo from './table/remindInfo';
-// import ProjectImg from './table/projectImg';
-// import ProjectPaper from './table/projectPaper';
+import RoomStructureForm from './form/roomStructureForm';
+import RoomInfoForm from './form/roomInfoForm'
 
 import TableComponent from '../../component/tableComponent';
 
@@ -299,8 +297,8 @@ class ProjectDetail extends Component {
                     <div style={{marginBottom: 30}}>
                         <Button style={{marginLeft: 15}} onClick={this.showModal.bind(this,'EditForm',900)}>修改项目信息</Button>
                         <Button style={{marginLeft: 15}} onClick={this.showModal.bind(this,'LinkPeopleForm',500)}>添加联系人</Button>
-                        <Button style={{marginLeft: 15}}>更改房屋结构</Button>
-                        <Button style={{marginLeft: 15}}>更改楼盘信息</Button>
+                        <Button style={{marginLeft: 15}} onClick={this.showModal.bind(this,'RoomStructureForm',416)} >更改房屋结构</Button>
+                        <Button style={{marginLeft: 15}} onClick={this.showModal.bind(this,'RoomInfoForm',416)}>更改楼盘信息</Button>
                         <Button style={{marginLeft: 15}} onClick={this.showModal.bind(this,'LogForm',416)}>添加日志</Button>
                         <Button style={{marginLeft: 15}} onClick={this.showModal.bind(this,'RemindForm',416)}>添加提醒</Button>
                     </div>
@@ -367,6 +365,17 @@ class ProjectDetail extends Component {
                         ): null
                     }
 
+                    {
+                        this.state.forms === 'RoomStructureForm'? (
+                            <RoomStructureForm selectGroup={selectGroup} wrappedComponentRef={(form) => this.formRef = form} />
+                        ): null
+                    }
+
+                    {
+                        this.state.forms === 'RoomInfoForm' ? (
+                            <RoomInfoForm  selectGroup={selectGroup} wrappedComponentRef={(form) => this.formRef = form}  />
+                        ): null
+                    }
 
                 </Modal>
             </Template>

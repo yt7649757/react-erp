@@ -426,13 +426,11 @@ class WorkRegister extends Component {
                             >
                                 {getFieldDecorator('customer_qq', {
                                     initialValue: '',
-                                    // rules: [{
-                                    //     required:false,
-                                    //     pattern: new RegExp(/^[1-9]\d{4,10}$/, "g"),
-                                    //     message: '请输入正确格式的QQ',
-                                    // }, {
-                                    //     required: true, message: '请输入QQ!',
-                                    // }],
+                                    rules: [{
+                                        required:false,
+                                        pattern: new RegExp(/^[1-9]\d{4,10}$/, "g"),
+                                        message: '请输入正确格式的QQ',
+                                    }],
                                     // getValueFromEvent: (event) => {
                                     //     return event.target.value.replace(/\D/g,'')
                                     // }
@@ -448,11 +446,11 @@ class WorkRegister extends Component {
                             >
                                 {getFieldDecorator('customer_email', {
                                     initialValue: '',
-                                    // rules: [{
-                                    //     type: 'email', message: '邮箱格式错误!',
-                                    // }, {
-                                    //     required: true, message: '请输入你的邮箱!',
-                                    // }],
+                                    rules: [{
+                                        required:false,
+                                        pattern: new RegExp(/[a-zA-Z0-9_]+@[a-zA-Z0-9_]+(\.[a-zA-Z]+)+/, "g"),
+                                        message: '邮箱格式不正确',
+                                    }],
                                 })(
                                     <Input />
                                 )}
