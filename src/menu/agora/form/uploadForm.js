@@ -48,7 +48,7 @@ class UploadForm extends Component {
 
     componentDidMount() {
         //必须在这里声明，所以 ref 回调可以引用它
-        this.props.onRef(this)
+       this.props.onRef && this.props.onRef(this)
     }
 
 
@@ -257,12 +257,9 @@ class UploadForm extends Component {
                                 )}
                             </FormItem>
 
-                            <FormItem
-                            >
-                                <Button style={{marginLeft: '101px'}} onClick={this.showModal}><Icon type="upload"/>
-                                    上传图片
-                                </Button>
-                            </FormItem>
+                            <Button style={{marginLeft: '101px'}} onClick={this.showModal}><Icon type="upload"/>
+                                上传图片
+                            </Button>
 
                             <FormItem
                                 {...formItemLayout}
@@ -355,11 +352,10 @@ class UploadForm extends Component {
                                     <Input disabled/>
                                 )}
                             </FormItem>
-                            <FormItem>
-                                <Button style={{marginLeft: '101px'}} onClick={this.showFileModal}><Icon type="upload"/>
-                                    上传附件
-                                </Button>
-                            </FormItem>
+
+                            <Button style={{marginLeft: '101px'}} onClick={this.showFileModal}><Icon type="upload"/>
+                                上传附件
+                            </Button>
 
                             <FormItem
                                 {...formItemLayout}

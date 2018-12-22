@@ -108,7 +108,7 @@ class OrderForm extends Component {
                             required: true, message: '请选择日期!',
                         }],
                     })(
-                        <DatePicker onChange={this.onDateChange} />
+                        <DatePicker/>
                     )}
                 </FormItem>
             </Form>

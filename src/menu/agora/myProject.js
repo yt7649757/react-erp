@@ -3,9 +3,11 @@ import Template from '../../common/template';
 import {Table, Divider, Button, Modal, message, Tag} from 'antd';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import * as AgoraActions from '../../redux/action/agora/agora';
 import {changeTitle} from "../../utils/changeTitle";
-import storage from '../../utils/storage';
+// import storage from '../../utils/storage';
+import CreateTab from '../../utils/createTab';
 import TableHoc from '../../component/tableHoc'
 import OrderForm from './form/orderForm';
 import UselessForm from './form/uselessForm'
@@ -16,29 +18,6 @@ import TableComponent from '../../component/tableComponent';
 
 let columns = [];
 let current = [];
-
-function CreateTab(url, obj) {
-    this.url = url;
-    this.obj = obj;
-    this.r = storage.get('routes');
-    CreateTab.prototype.create = function () {
-        if (JSON.stringify(this.r).indexOf(this.obj.guid) === -1) {
-            this.r.push(obj)
-        } else {
-            const _this = this;
-            this.r.map(item => {
-                if (item.guid === _this.obj.guid) {
-                    item.menu_name = _this.obj.menu_name;
-                    item.url = _this.url;
-                    item.content = _this.obj.content;
-                }
-            })
-        }
-        storage.set('routes', this.r);
-        sessionStorage.setItem('current', this.url);
-    }
-}
-
 
 class MyProject extends Component {
 
@@ -293,7 +272,6 @@ class MyProject extends Component {
             content: params  //存取当前行信息
         }).create()
         this.props.history.push('/' + url)
-
     }
 
 
@@ -589,4 +567,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(TableHoc(MyProject))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(TableHoc(MyProject)))

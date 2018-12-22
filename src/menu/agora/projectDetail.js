@@ -23,9 +23,9 @@ import TableComponent from '../../component/tableComponent';
 const TabPane = Tabs.TabPane;
 
 
-const content = function (item) {
-    return item.content ? item : null
-}
+// const content = function (item) {
+//     return item.content ? item : null
+// }
 
 class ProjectDetail extends Component {
 
@@ -42,17 +42,19 @@ class ProjectDetail extends Component {
 
     componentDidMount() {
         //从本地存储中获取项目信息
-        const arr = storage.get('routes')
-        const data = arr.find(content)
-        const url = `/api/erp/project/showprojectofuser/guid/${data.content.guid}`
+        // const arr = storage.get('routes')
+        // const data = arr.find(content)
 
-        this.setState({
-            data,
-            url
-        })
+        const index = this.props.history.location.pathname.lastIndexOf('/') + 1
+        const guid = this.props.history.location.pathname.substring(index)
+        const url = `/api/erp/project/showprojectofuser/guid/${guid}`
 
         //接口获取
         this.props.agoraActions.getProjectInfo(url)
+
+        this.setState({
+            url
+        })
 
         this.state.settings.map(item => {
             this.props.agoraActions.getSelects(item)

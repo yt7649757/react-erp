@@ -9,7 +9,6 @@ import '../style/login/login.css';
 
 const FormItem = Form.Item;
 
-let lock = true
 class Login extends Component {
 
     constructor(props) {
@@ -26,27 +25,23 @@ class Login extends Component {
     }
 
 
-    handleSubmit = async (e) => {
-        if(lock) {
-            lock = false
-            this.props.form.validateFields((err, values) => {
-                if (!err) {
-                    // console.log('Received values of form: ', values);
-                    //使用redux
-                    this.props.userActions.login(values.userName, values.password, values.remember).then(val => {
-                        if (val) {
-                            const {access_token, remember} = this.props.user
-                            cookie.save('access_token', access_token.access_token, {
-                                maxAge: access_token.expires_in  //token过期时间
-                            })
-                            this.props.history.push('/erp')
-                        }
-                    }).catch(err => {
-                        lock = true
-                    })
-                }
-            });
-        }
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                this.props.userActions.login(values.userName, values.password, values.remember).then(val => {
+                    if (val) {
+                        const {access_token, remember} = this.props.user
+                        cookie.save('access_token', access_token.access_token, {
+                            maxAge: access_token.expires_in  //token过期时间
+                        })
+                        this.props.history.push('/erp')
+                    }
+                }).catch(err => {
+                    message.error('登录失败')
+                })
+            }
+        });
     }
 
     loginType = () => {
@@ -54,7 +49,6 @@ class Login extends Component {
             type: !this.state.type
         })
     }
-
 
     render() {
         const {getFieldDecorator} = this.props.form;
@@ -197,7 +191,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const WrappedNormalLoginForm = withRouter(Form.create()(Login))
+const WrappedNormalLoginForm = Form.create()(Login)
 
 export default connect(
     mapStateToProps,

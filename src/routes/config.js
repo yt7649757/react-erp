@@ -36,6 +36,9 @@ import ExcellentOpus from "../menu/queto/excellentOpus";
 import Achievement from '../menu/queto/achievement';
 import TransferredList from '../menu/agora/transferredList';
 import WasteProjectApply from '../menu/agora/wasteProjectApply';
+import PriceTable from '../menu/finance/priceTable';
+import ProjectProgress from "../menu/finance/projectProgress";
+import PayReceive from '../menu/finance/payReceive';
 
 export const config = [
     {
@@ -140,6 +143,17 @@ export const config = [
             }, {
                 path: '/erp/ProjectPayment/showPaymentList',
                 component: CollectCheck
+            },{
+                //报价表
+                path: '/erp/design/showbudgetbook/guid/:id',
+                component: PriceTable
+            },{
+                //设计进度
+                path: '/erp/design/showbudgethtml/guid/:id',
+                component: ProjectProgress
+            },{
+                path: '/erp/finance/collectionplan/guid/:id',
+                component: PayReceive
             }
         ]
     },

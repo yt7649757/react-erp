@@ -10,17 +10,11 @@ window.lock = false;
 // IE9不支持CORS，跨域header带不过去
 axios.interceptors.request.use(
     config => {
-        console.log(config);
-        new Promise(resolve => {
-            const token = cookie.load('access_token')
-            if(token) {
-                resolve(token)
-            }
-        }).then(token => {
-            if(token) {
-                config.headers.Authorization = 'Bearer ' + token;
-            }
-        })
+        const token = cookie.load('access_token')
+        if (token) {
+            // config.headers.Authorization = 'Bearer11' + token;  //token无效
+            config.headers.Authorization = 'Bearer ' + token;
+        }
         return config
     },
     error => {

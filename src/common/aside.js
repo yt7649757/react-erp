@@ -49,6 +49,7 @@ class Aside extends Component {
 
     componentWillUnmount() {
         arr = []
+        emitter.removeListener("close", this.expand);
     }
 
 
@@ -113,18 +114,20 @@ class Aside extends Component {
         });
     };
 
-    componentDidMount = async () => {
-        await this.props.userActions.getSider()
-        this.eventEmitter = emitter.addListener("close", () => {
-            this.setState({
-                collapsed: !this.state.collapsed
-            })
+
+    expand = () => {
+        this.setState({
+            collapsed: !this.state.collapsed
         })
     }
 
-    componentWillUnMount() {
-        emitter.removeListener(this.eventEmitter);
+    componentDidMount = async () => {
+        await this.props.userActions.getSider()
+        emitter.addListener("close", () => {
+           this.expand()
+        })
     }
+
 
     OpenChange = openKeys => {
         const latestOpenKey = openKeys.find(

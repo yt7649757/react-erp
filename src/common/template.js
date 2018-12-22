@@ -37,16 +37,22 @@ class Template extends Component {
     componentWillUpdate(nextProps) {
     }
 
-    componentDidMount() {
-        this.eventEmitter = emitter.addListener("close", () => {
-            this.setState({
-                ml: !this.state.ml
-            })
+
+    expand = () => {
+        this.setState({
+            ml: !this.state.ml
         })
     }
 
-    componentWillUnMount() {
-        emitter.removeListener(this.eventEmitter);
+
+    componentDidMount() {
+        emitter.addListener("close", () => {
+           this.expand()
+        })
+    }
+
+    componentWillUnmount(){
+        emitter.removeListener("close", this.expand);
     }
 
     //箭头函数的this总是和父级的上下文绑定在一起的

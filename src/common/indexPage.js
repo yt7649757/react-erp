@@ -76,4 +76,4 @@ class IndexPage extends Component {
     }
 }
 
-export default withRouter(IndexPage)
+export default IndexPage

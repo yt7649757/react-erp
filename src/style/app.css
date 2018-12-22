@@ -110,3 +110,12 @@ clearfix:before,.clearfix:after{
 .ant-pagination-options-quick-jumper {
     vertical-align: baseline!important;
 }
+
+.db {
+    display: inline-block;
+}
+
+.db-30 {
+    display: inline-block;
+    margin-left: 30px;
+}

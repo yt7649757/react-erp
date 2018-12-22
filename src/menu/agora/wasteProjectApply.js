@@ -79,31 +79,33 @@ class WasteProjectApply extends Component {
             <Template>
                 <TableComponent columns={columns} size="middle" testUrl="https://www.easy-mock.com/mock/5c185df39172fa10e61b63b3/erp/showwasteprojectapply"/>
                 <Layer ref="layer" title="申请审核" doSubmit={this.doSubmit} reset={this.reset}>
-                    <FormItem
-                        {...formItemLayout}
-                        label="审核"
-                    >
-                        {getFieldDecorator('examine_status', {
-                            initialValue: '',
-                            rules: [{
-                                required: true, message: '请选择!',
-                            }],
-                        })(
-                            <Select>
-                                <Option value="1">1111111111</Option>
-                            </Select>
-                        )}
-                    </FormItem>
-                    <FormItem
-                        {...formItemLayout}
-                        label="审核说明"
-                    >
-                        {getFieldDecorator('examine_desc', {
-                            initialValue: ''
-                        })(
-                            <TextArea style={{resize: "none"}} rows={3} />
-                        )}
-                    </FormItem>
+                    <Form>
+                        <FormItem
+                            {...formItemLayout}
+                            label="审核"
+                        >
+                            {getFieldDecorator('examine_status', {
+                                initialValue: '',
+                                rules: [{
+                                    required: true, message: '请选择!',
+                                }],
+                            })(
+                                <Select>
+                                    <Option value="1">1111111111</Option>
+                                </Select>
+                            )}
+                        </FormItem>
+                        <FormItem
+                            {...formItemLayout}
+                            label="审核说明"
+                        >
+                            {getFieldDecorator('examine_desc', {
+                                initialValue: ''
+                            })(
+                                <TextArea style={{resize: "none"}} rows={3} />
+                            )}
+                        </FormItem>
+                    </Form>
                 </Layer>
             </Template>
         )
