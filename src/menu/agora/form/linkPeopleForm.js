@@ -51,7 +51,7 @@ class LinkPeopleForm extends Component {
                 sm: {span: 5},
             },
             wrapperCol: {
-                sm: {span: 19},
+                sm: {span: 17},
             },
         };
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Template from '../../common/template';
 import { Table } from 'antd';
+import TableComponent from '../../component/tableComponent';
 
 const columns = [{
     title: '账号',
@@ -28,7 +29,11 @@ class AccountManage extends Component {
     render() {
         return (
             <Template>
-                <Table columns={columns} dataSource={data} />
+                <TableComponent
+                    columns={columns}
+                    size="middle"
+                    url="/api/erp/finance/showbanklist"
+                />
             </Template>
         )
     }

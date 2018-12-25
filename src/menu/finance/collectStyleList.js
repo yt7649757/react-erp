@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Template from '../../common/template';
-
+import TableComponent from '../../component/tableComponent';
 import { Table } from 'antd';
 
 const columns = [{
@@ -24,7 +24,11 @@ class CollectStyleList extends Component {
     render() {
         return (
             <Template>
-                <Table columns={columns} dataSource={data} />
+                <TableComponent
+                    columns={columns}
+                    size="middle"
+                    url="/api/erp/finance/collectstylelist"
+                />
             </Template>
         )
     }

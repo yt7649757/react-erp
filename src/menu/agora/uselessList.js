@@ -49,7 +49,11 @@ class UselessList extends Component {
             loading: true
         })
 
-        var res = await this.props.agoraActions.getUselessList(params,pagination.pageSize,status)
+        let res = await this.props.agoraActions.getUselessList({
+            page: params,
+            per_page: pagination.pageSize,
+            status: status
+        })
 
         if(res) {
             pagination.total = res.data.total;

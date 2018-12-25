@@ -101,10 +101,10 @@ class Template extends Component {
                 />
 
                 <HeaderComponent/>
-                <Layout style={{paddingTop: '60px', position: 'relative', minHeight: '100vh'}}>
+                <Layout style={{ paddingTop: '60px', position: 'relative', minHeight: '100vh', backgroundColor: '#fff'}}>
 
 
-                    <div style={{padding: '30px', paddingBottom: '70px'}}>
+                    <div style={{ padding: '25px'}}>
 
 
                         <Tabs type="editable-card" hideAdd onChange={this.onChange} activeKey={this.state.activeKey}
@@ -118,7 +118,7 @@ class Template extends Component {
                                             {/*</div>*/}
 
                                             {/*动态变化的部分,利用了react的props.children的特性*/}
-                                            <Content>
+                                            <Content style={{padding: '0 5px',paddingBottom: '60px'}}>
                                                 {this.props.children}
                                             </Content>
                                         </TabPane>
@@ -131,7 +131,7 @@ class Template extends Component {
 
                     </div>
 
-                    <Footer style={{textAlign: 'center', position: 'absolute', width: '100%', bottom: 0}}>
+                    <Footer style={{textAlign: 'center', position: 'absolute', width: '100%', bottom: 0, backgroundColor: '#FAFAFA', padding: '10px 50px'}}>
                         当前版本<span style={{color: '#1890FF'}}>V2.0.0</span>©7搜网络版权所有
                     </Footer>
 

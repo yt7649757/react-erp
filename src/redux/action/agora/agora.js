@@ -138,10 +138,15 @@ export const deleteProject = (params) => {
 
 
 //获取废单列表
-export const getUselessList = (page = 1, size = 15, status = 1) => {
+export const getUselessList = (obj) => {
     return dispatch => {
-        return axios.get(port + `/api/erp/project/wasteapplylistcopy?page=${page}&per_page=${size}&status=${status}`)
-            .then(res => {
+        return axios.get(`${port}/api/erp/project/wasteapplylistcopy`, {
+            params: {
+                page: obj.page,
+                per_page: obj.per_page,
+                status: obj.status
+            }
+        }).then(res => {
                 dispatch({
                     type: types.USELESS_LIST,
                     useLessList: res.data

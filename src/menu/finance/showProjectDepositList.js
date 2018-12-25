@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Template from '../../common/template';
 import { Table } from 'antd';
+import TableComponent from '../../component/tableComponent';
 
 const columns = [{
     title: '项目名称',
@@ -29,7 +30,10 @@ class ShowProjectDepositList extends Component {
     render() {
         return (
             <Template>
-                <Table columns={columns} dataSource={data} />
+                <TableComponent
+                    columns={columns}
+                    size="midddle"
+                />
             </Template>
         )
     }

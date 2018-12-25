@@ -251,7 +251,7 @@ class NodeList extends Component {
                     </TreeNode>
                 );
             }
-            return <TreeNode value={item.title} {...item} key={item.guid} />;
+            return <TreeNode value={item.id} {...item} key={item.guid} />;
         });
     }
 
@@ -363,6 +363,7 @@ class NodeList extends Component {
         ];
 
         const {roleTree} = this.props.systemManage
+        console.log(roleTree)
 
         return (
             <Template>

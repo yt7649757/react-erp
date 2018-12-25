@@ -1,16 +1,50 @@
-.ant-menu-item>img {
+.ant-menu-item > img {
     vertical-align: -8px;
 }
 
-.ant-menu-submenu-title>span img {
+.ant-menu-submenu-title > span img {
     vertical-align: -8px;
 }
 
 /*侧边栏样式*/
 /*.ant-menu-item>span {*/
-    /*margin-left: 10px;*/
- /*}*/
+/*margin-left: 10px;*/
+/*}*/
 
 /*.ant-menu-submenu-title>span span {*/
-    /*margin-left: 10px;*/
+/*margin-left: 10px;*/
 /*}*/
+
+/*.scrollbar::-webkit-scrollbar {*/
+    /*width: 0;*/
+    /*height: 0;*/
+/*}*/
+
+/*.scrollbar::-webkit-scrollbar-button {*/
+    /*width: 0;*/
+    /*height: 0;*/
+/*}*/
+
+/*.scrollbar::-webkit-scrollbar-track {*/
+    /*background: transparent;*/
+    /*border-radius: 20px;*/
+
+/*}*/
+
+/*.scrollbar::-webkit-scrollbar-track-piece {*/
+    /*background: transparent;*/
+    /*border-radius: 20px;*/
+/*}*/
+
+/*.scrollbar::-webkit-scrollbar-thumb {*/
+    /*background: transparent;*/
+    /*border-radius: 50px;*/
+/*}*/
+
+/*.scrollbar::-webkit-scrollbar-corner {*/
+    /*background: transparent;*/
+/*}*/
+
+.scrollbar::-webkit-scrollbar {
+    display: none;
+}

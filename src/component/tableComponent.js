@@ -12,6 +12,8 @@ import * as tableActions from '../redux/action/table';
  * url 请求的接口
  * columns table表头
  * size table大小
+ * checkbox 是否需要选择框
+ * getRowSelection 获取选中的值
  */
 
 function guid() {
@@ -96,6 +98,7 @@ class TableComponent extends Component {
         this.setState({ selectedRowKeys });
     }
 
+
     render() {
         const { loading } = this.state;
         const { columns, url, testUrl } = this.props;
@@ -107,6 +110,14 @@ class TableComponent extends Component {
             data = this.props.table.tableList[testUrl].data
         }
 
+
+        const rowSelection  = {
+            onChange: (selectedRowKeys, selectedRows) => {
+                 this.props.getRowSelection(selectedRowKeys, selectedRows)
+            }
+        }
+
+
         return (
             <Table
                 style={{backgroundColor:"#fff"}}
@@ -115,6 +126,7 @@ class TableComponent extends Component {
                 columns={columns}
                 loading={loading}
                 dataSource={data}
+                rowSelection={this.props.checkbox? rowSelection: null}
                 pagination={this.state.pagination}
                 onChange={this.handleTableChange}
                 size={this.props.size}
@@ -131,7 +143,8 @@ TableComponent.defaultProps = {
 TableComponent.propTypes = {
     columns: PropTypes.array,
     url: PropTypes.string,
-    size: PropTypes.string
+    size: PropTypes.string,
+    checkbox: PropTypes.bool
 }
 
 const mapStateToProps = (state) => {

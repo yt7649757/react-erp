@@ -46,6 +46,9 @@ class ShowContractProjectList extends Component {
         this.props.history.push('/' + url)
     }
 
+    getRowSelection = (selectedRowKeys, selectedRows) => {
+        console.log(selectedRows);
+    }
 
     render() {
 
@@ -107,7 +110,10 @@ class ShowContractProjectList extends Component {
                 <TableComponent
                     columns={columns}
                     size="middle"
-                    testUrl="https://www.easy-mock.com/mock/5c185df39172fa10e61b63b3/erp/showContractProjectList"
+                    checkbox={true}
+                    getRowSelection ={this.getRowSelection}
+                    // testUrl="https://www.easy-mock.com/mock/5c185df39172fa10e61b63b3/erp/showContractProjectList"
+                    url="/api/erp/finance/showcontractprojectlist"
                 />
             </Template>
         )

@@ -119,3 +119,7 @@ clearfix:before,.clearfix:after{
     display: inline-block;
     margin-left: 30px;
 }
+
+.ant-tabs-bar.ant-tabs-top-bar.ant-tabs-card-bar{
+    margin-left: 5px;
+}

@@ -44,3 +44,7 @@ export const PROJECT_INFO = 'PROJECT_INFO';
 
 //已转部业务
 export const TRANSFERRED_LIST = 'TRANSFERRED_LIST'
+
+
+//财务管理
+export const PAYMENT_LIST = 'PAYMENT_LIST'
