@@ -48,3 +48,5 @@ export const TRANSFERRED_LIST = 'TRANSFERRED_LIST'
 
 //财务管理
 export const PAYMENT_LIST = 'PAYMENT_LIST'
+
+export const PROJECT_PROGRESS = 'PROJECT_PROGRESS'

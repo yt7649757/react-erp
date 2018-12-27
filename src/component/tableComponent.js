@@ -10,6 +10,7 @@ import * as tableActions from '../redux/action/table';
  * @type {Array}
  *
  * url 请求的接口
+ * testUrl 测试的接口
  * columns table表头
  * size table大小
  * checkbox 是否需要选择框
@@ -53,7 +54,7 @@ class TableComponent extends Component {
 
         const { url,testUrl } = this.props;
 
-        pagination.pageSize = 10;
+        pagination.pageSize = this.props.pageSize ||  10;
         this.setState({
             loading: true
         })
@@ -83,7 +84,9 @@ class TableComponent extends Component {
 
 
     componentDidMount() {
-        this.request()
+        if(this.props.url || this.props.testUrl) {
+            this.request()
+        }
     }
 
     componentWillUnmount() {
@@ -103,11 +106,12 @@ class TableComponent extends Component {
         const { loading } = this.state;
         const { columns, url, testUrl } = this.props;
 
-
         if(url && this.props.table.tableList[url]) {
             data = this.props.table.tableList[url].data
         }else if(testUrl && this.props.table.tableList[testUrl]) {
             data = this.props.table.tableList[testUrl].data
+        }else {
+            data = []
         }
 
 

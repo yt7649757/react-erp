@@ -26,6 +26,9 @@ class Layer extends Component {
     }
 
     hideModal = (e) => {
+        if(typeof this.props.reset === 'function') {
+            this.props.reset()
+        }
         this.setState({
             visible: false,
         });
@@ -37,6 +40,9 @@ class Layer extends Component {
             this.props.doSubmit().then(values => {
                 if(values) {
                     // 提交到后台
+                   const url = this.props.url
+                   if(!url) return alert('沒有提交接口url')
+                   this.props.tableActions.addLayerInfo(url, values)
                 }
             })
         }else {
@@ -57,13 +63,15 @@ class Layer extends Component {
 
     render() {
         const title = this.props.title? this.props.title: '添加数据'
+        const w = this.props.width? this.props.width : 416
         return (
             <Modal
                 title= {title}
                 visible={this.state.visible}
                 onOk={this.handleOk}
                 onCancel={this.hideModal}
-                destroyOnClose={true}
+                width={w}
+                centered
             >
                 {
                     !this.props.hasState? (

@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import Template from '../../common/template';
-import {Col, Row, Button, Form, Input, Select, DatePicker} from 'antd';
-import TableComponent from '../../component/tableComponent';
+import {Col, Row, Button, Form, Input, Select, DatePicker, Table} from 'antd';
+// import TableComponent from '../../component/tableComponent';
 import Layer from '../../component/layer';
+import { getId } from '../../utils/getId';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as FinanceActions from '../../redux/action/finance/finance';
@@ -13,6 +14,17 @@ const Option = Select.Option;
 
 
 class ProjectProgress extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            loading: false,
+            pagination: {
+
+            }
+        }
+    }
+
 
     add = () => {
         this.refs.layer.getWrappedInstance().showModal()
@@ -27,6 +39,49 @@ class ProjectProgress extends Component {
                 }
             })
         })
+    }
+
+    reset = () => {
+        this.props.form.resetFields()
+    }
+
+    componentDidMount() {
+        this.request()
+    }
+
+
+    handleTableChange = (pagination) => {
+        this.request(pagination.current)
+    }
+
+    request = async (params = 1) => {
+        const pagination = {...this.state.pagination};
+        const url = '/api/erp/design/showbudgetlist/guid/' + getId(this.props.history.location.pathname)
+        const status = this.state.status
+        pagination.pageSize = 10
+        this.setState({
+            loading: true
+        })
+        var res = await this.props.financeActions.getProjectProgress({
+            url: url,
+            page: params,
+            size: pagination.pageSize,
+            status: status
+        })
+        if (res) {
+            pagination.total = res.data.total - 1;
+
+            pagination.showTotal = function (total) {
+                return `总共有${total}条数据`
+            }
+
+            this.setState({
+                pagination,
+                loading: false
+            })
+        } else {
+            alert('加载出错!')
+        }
     }
 
 
@@ -70,21 +125,25 @@ class ProjectProgress extends Component {
 
         const formItemLayout = {
             labelCol: {
-                sm: {span: 5},
+                sm: {span: 6},
             },
             wrapperCol: {
-                sm: {span: 15},
+                sm: {span: 16},
             },
         };
 
+        let res  = this.props.finance.projectProgress.data ? this.props.finance.projectProgress.data : []
+        const project = res[res.length -1] ? res[res.length - 1] : {}
+        const data = res ? res.slice(0, res.length -1) : []
+        const url = '/api/erp/design/saveaddbudgetdata/guid/' + getId(this.props.history.location.pathname)
 
         return (
             <Template>
                 <div style={{height: '50px', lineHeight: '50px'}}>
                     <Row type="flex" justify="space-between">
                         <Col>
-                            <p className="project-info db"><span>项目编号:</span><span>123</span></p>
-                            <p className="project-info db-30"><span>项目名称:</span><span>123</span></p>
+                            <p className="project-info db"><span>项目编号:</span><span>{project['project_name']}</span></p>
+                            <p className="project-info db-30"><span>项目名称:</span><span>{project['guid']}</span></p>
                         </Col>
                         <Col>
                             <Button onClick={this.add}>新增进度</Button>
@@ -92,13 +151,18 @@ class ProjectProgress extends Component {
                     </Row>
                 </div>
 
-                <TableComponent
-                    size="middle"
+                <Table
+                    style={{backgroundColor: '#fff'}}
+                    rowKey={record => record.guid}
                     columns={columns}
-                    testUrl="https://www.easy-mock.com/mock/5c185df39172fa10e61b63b3/erp/erp/design/showbudgethtml"
+                    dataSource={data}
+                    loading={this.state.loading}
+                    pagination={this.state.pagination}
+                    onChange={this.handleTableChange}
+                    size="middle"
                 />
 
-                <Layer ref="layer" title="新增进度" doSubmit={this.doSubmit}>
+                <Layer ref="layer" title="新增进度" doSubmit={this.doSubmit} reset={this.reset} width={416} url={url}>
 
                     <Form>
                         <FormItem

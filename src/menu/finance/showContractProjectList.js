@@ -7,7 +7,7 @@ import { Table,Divider } from 'antd';
 class ShowContractProjectList extends Component {
 
     look = (params) => {
-        const url = `erp/design/showbudgetbook/guid/${params.guid}`;
+        const url = `erp/design/showbudgetbook/guid/${params.project_id}`;
         new CreateTab(url,{
             guid: `llys`,
             menu_name: '报价表',
@@ -17,7 +17,7 @@ class ShowContractProjectList extends Component {
     }
 
     lookProgress = (params) => {
-        const url = `erp/design/showbudgethtml/guid/${params.guid}`;
+        const url = `erp/design/showbudgethtml/guid/${params.project_id}`;
         new CreateTab(url,{
             guid: `sjjd`,
             menu_name: '设计进度',
@@ -39,7 +39,7 @@ class ShowContractProjectList extends Component {
     lookPay = (params) => {
         const url = `erp/finance/collectionplan/guid/${params}`;
         new CreateTab(url, {
-            guid: 'xmmx',
+            guid: 'xmsk',
             menu_name: `收款`,
             url: url
         }).create()

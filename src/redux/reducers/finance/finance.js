@@ -1,7 +1,8 @@
 import * as types from  '../../constants/types';
 
 const initialState = {
-    paymentList: []
+    paymentList: [],
+    projectProgress: []
 }
 
 export const finance = (state = initialState, action) => {
@@ -10,6 +11,11 @@ export const finance = (state = initialState, action) => {
             return {
                 ...state,
                 paymentList: action.paymentList
+            }
+        case types.PROJECT_PROGRESS:
+            return {
+                ...state,
+                projectProgress: action.projectProgress
             }
         default:
             return state

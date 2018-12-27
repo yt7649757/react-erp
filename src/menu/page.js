@@ -6,8 +6,8 @@ import {Table, Badge} from 'antd';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as userActions from '../redux/action/user';
-import Title from '../component/title'
-import ListItem from '../component/listItem'
+import Title from '../component/title';
+import ListItem from '../component/listItem';
 
 const columns = [{
     title: '姓名',
@@ -29,33 +29,48 @@ class Page extends Component {
         super(props)
         this.state = {
             value: 3,
-            pagination: {},
+            pagination: {
+                pageSize: 4
+            },
+            loading: false
         };
     }
 
     componentDidMount() {
-        this.props.userActions.onlineUser(1, 4)
+        this.getOnlineUser()
         this.props.userActions.getUserWork()
         this.props.userActions.getMessage()
     }
 
 
-    /*
-     * @param pagination
-     *
-     * pagination 分页的配置项
-     * pageSize   每页条数
-     * current    当前页数
-     */
-    handleTableChange = (pagination) => {
-        const pager = {...this.state.pagination};
-        pager.current = pagination.current;
+    getOnlineUser = (page = 1,size = 4) => {
+        const pagination = {...this.state.pagination};
         this.setState({
-            pagination: pager,
-        }, () => {
-            console.log(pagination)
-            this.props.userActions.onlineUser(pagination.current, 4)
-        });
+            loading: true
+        })
+        this.props.userActions.onlineUser(page, size).then(res => {
+            if(res) {
+                pagination.total = res.data.total;
+
+                pagination.showTotal = function (total) {
+                    return `总共有${total}条数据`
+                }
+
+                //使用state存取current
+                // pagination.current = params
+                console.log(pagination)
+
+                this.setState({
+                    pagination,
+                    loading: false
+                })
+            }
+        })
+    }
+
+
+    handleTableChange = (pagination) => {
+       this.getOnlineUser(pagination.current, 4)
     }
 
 
@@ -104,6 +119,7 @@ class Page extends Component {
                             dataSource={user.onlineUser}
                             pagination={this.state.pagination}
                             onChange={this.handleTableChange}
+                            loading={this.state.loading}
                         />
                     </div>
                 </div>

@@ -180,7 +180,7 @@ class UselessList extends Component {
                             {getFieldDecorator('payment_date', {
                                 initialValue: ''
                             })(
-                                <TextArea/>
+                                <TextArea rows={3} style={{resize: 'none'}}/>
                             )}
                         </FormItem>
                     </Form>

@@ -38,3 +38,17 @@ export const getEasyMock = (url) => {
             })
     }
 }
+
+
+export const addLayerInfo = (url, params) => {
+    return dispatch => {
+        return axios.post(port + url, {
+            ...params
+        }).then(function (res) {
+            console.log(res);
+            return res.data
+        }).catch(error => {
+            alert(error + '提交失败')
+        })
+    }
+}

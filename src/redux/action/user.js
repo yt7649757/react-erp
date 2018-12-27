@@ -118,7 +118,7 @@ export const getSider = () => {
 
 export const onlineUser = (page,size) => {
     return(dispatch) => {
-        axios.get(port + '/api/erp/index/getuseronline?page=' + page + '&per_page=' + size)
+       return axios.get(port + '/api/erp/index/getuseronline?page=' + page + '&per_page=' + size)
             .then(function (res) {
                 dispatch({
                     type: types.ONLINE_USER,

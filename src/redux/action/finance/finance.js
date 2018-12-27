@@ -16,3 +16,20 @@ export const getTableList = (params) => {
         })
     }
 }
+
+export const getProjectProgress = (params) => {
+    return dispatch => {
+      return  axios.get(port + params.url, {
+            params : {
+                page: params.page,
+                per_page: params.size
+            }
+        }).then(res => {
+           dispatch({
+               type: types.PROJECT_PROGRESS,
+               projectProgress: res.data
+           })
+           return res
+        })
+    }
+}

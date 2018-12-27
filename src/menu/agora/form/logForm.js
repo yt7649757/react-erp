@@ -54,23 +54,23 @@ class LogForm extends Component {
 
         return (
             <Form>
-                <FormItem
+                <FormItem  style={{marginBottom: 0}}
                     {...formItemLayout}
                     label="项目名称"
                 >
                     {getFieldDecorator('project_name', {
                     })(
-                        <Input disabled/>
+                        <Input className="input-text" disabled/>
                     )}
                 </FormItem>
 
-                <FormItem
+                <FormItem style={{marginBottom: '10px' }}
                     {...formItemLayout}
                     label="操作人"
                 >
                     {getFieldDecorator('username', {
                     })(
-                        <Input disabled/>
+                        <Input className="input-text" disabled/>
                     )}
                 </FormItem>
 
@@ -83,7 +83,7 @@ class LogForm extends Component {
                             required: true, message: '请输入跟踪内容',
                         }],
                     })(
-                        <TextArea rows={5} style={{resize: 'none'}}/>
+                        <TextArea rows={3} style={{resize: 'none'}}/>
                     )}
                 </FormItem>
             </Form>

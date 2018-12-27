@@ -288,7 +288,7 @@ class RoleList extends Component {
                 sm: {span: 5},
             },
             wrapperCol: {
-                sm: {span: 15},
+                sm: {span: 17},
             },
         };
 
@@ -379,6 +379,7 @@ class RoleList extends Component {
                     destroyOnClose={true}
                     okText="确定"
                     cancelText="取消"
+                    width={416}
                 >
                     <Form>
                         <FormItem

@@ -5,6 +5,7 @@ import * as AgoraActions from '../../redux/action/agora/agora';
 import {Divider, Row, Col, Button, Tabs, Modal, message} from 'antd';
 import Template from '../../common/template';
 import storage from '../../utils/storage';
+import { getId } from "../../utils/getId";
 import '../../style/agora/projectDetail.css';
 import LinkPeople from './table/linkPeople';
 import RoomStructure from './table/roomStructure';
@@ -15,7 +16,7 @@ import LinkPeopleForm from './form/linkPeopleForm';
 import LogForm from'./form/logForm';
 import RemindForm from './form/remindForm';
 import RoomStructureForm from './form/roomStructureForm';
-import RoomInfoForm from './form/roomInfoForm'
+import RoomInfoForm from './form/roomInfoForm';
 
 import TableComponent from '../../component/tableComponent';
 
@@ -45,8 +46,7 @@ class ProjectDetail extends Component {
         // const arr = storage.get('routes')
         // const data = arr.find(content)
 
-        const index = this.props.history.location.pathname.lastIndexOf('/') + 1
-        const guid = this.props.history.location.pathname.substring(index)
+        const guid = getId(this.props.history.location.pathname)
         const url = `/api/erp/project/showprojectofuser/guid/${guid}`
 
         //接口获取

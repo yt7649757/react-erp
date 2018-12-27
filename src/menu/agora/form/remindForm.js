@@ -54,36 +54,26 @@ class RemindForm extends Component {
         return (
             <Form>
                 <FormItem
+                    style={{marginBottom: 0}}
                     {...formItemLayout}
                     label="项目名称"
                 >
                     {getFieldDecorator('project_name', {
-                        // initialValue: '',
-                        // rules: [{
-                        //     pattern: new RegExp(/\S/, "g"),
-                        //     message: '不能为空',
-                        // }, {
-                        //     required: true, message: '请输入项目名称!',
-                        // }],
+
                     })(
-                        <Input disabled/>
+                        <Input className="input-text" disabled/>
                     )}
                 </FormItem>
 
                 <FormItem
+                    style={{marginBottom: '10px' }}
                     {...formItemLayout}
                     label="操作人"
                 >
                     {getFieldDecorator('username', {
-                        // initialValue: '',
-                        // rules: [{
-                        //     pattern: new RegExp(/\S/, "g"),
-                        //     message: '不能为空',
-                        // }, {
-                        //     required: true, message: '请输入项目名称!',
-                        // }],
+
                     })(
-                        <Input disabled/>
+                        <Input className="input-text" disabled/>
                     )}
                 </FormItem>
 
@@ -111,7 +101,7 @@ class RemindForm extends Component {
                         //     required: false, message: 'Please input your E-mail!',
                         // }],
                     })(
-                        <TextArea size="small" rows={5} style={{resize: 'none'}}/>
+                        <TextArea size="small" rows={3} style={{resize: 'none'}}/>
                     )}
                 </FormItem>
             </Form>

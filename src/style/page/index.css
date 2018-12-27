@@ -213,3 +213,14 @@
 .priceTable table {
     border-collapse: separate;
 }
+
+.ml-23 {
+    margin-bottom:  23px;
+    margin-left: 23px;
+}
+
+.input-text {
+    border: none;
+    background-color: #fff;
+    color: #666;
+}
