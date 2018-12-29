@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Template from '../../common/template';
-import { Table } from 'antd';
+// import { Table } from 'antd';
+import TableComponent from '../../component/tableComponent';
 
 
 const columns = [{
@@ -22,7 +23,10 @@ class CollectCheck extends Component {
     render() {
         return (
             <Template>
-                <Table columns={columns} dataSource={data} />
+                <TableComponent
+                    columns={columns}
+                    size="middle"
+                />
             </Template>
         )
     }

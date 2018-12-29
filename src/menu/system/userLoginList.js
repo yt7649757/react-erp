@@ -26,7 +26,6 @@ class UserLoginList extends Component {
          })
     }
 
-    // 页码改变的回调，参数是改变后的页码及每页条数 Function(page, pageSize)
     handleTableChange = (pagination) => {
         const pager = {...this.state.pagination};
         pager.current = pagination.current;

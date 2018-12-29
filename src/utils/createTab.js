@@ -1,11 +1,5 @@
 import storage from './storage';
 
-/**
- * @param url   路由url
- * @param obj   存储的对象信息
- * @constructor
- */
-
 function CreateTab(url, obj) {
     this.url = url;
     this.obj = obj;

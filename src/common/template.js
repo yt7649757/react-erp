@@ -55,13 +55,6 @@ class Template extends Component {
         emitter.removeListener("close", this.expand);
     }
 
-    //箭头函数的this总是和父级的上下文绑定在一起的
-    // getTitle = (val) => {
-    //    this.setState({
-    //        title: val
-    //    })
-    // }
-
     onChange = (activeKey) => {
         this.setState({activeKey});
         this.props.history.push('/' + activeKey)
@@ -113,11 +106,6 @@ class Template extends Component {
                                 panes && panes.map(item => {
                                     return (
                                         <TabPane tab={item.menu_name} key={item.url} closable={item.closable}>
-                                            {/*<div className="sub-nav">*/}
-                                            {/*<span>当前位置 > </span><span>{this.props.location.state ? this.props.location.state.menu_name : this.state.title }</span>*/}
-                                            {/*</div>*/}
-
-                                            {/*动态变化的部分,利用了react的props.children的特性*/}
                                             <Content style={{padding: '0 5px',paddingBottom: '60px'}}>
                                                 {this.props.children}
                                             </Content>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../style/circle.css'
 
-var rotate = ''
+let rotate = ''
 
 export default class Circle extends Component {
 

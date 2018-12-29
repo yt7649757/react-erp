@@ -18,11 +18,6 @@ class UselessFrom extends Component {
         })
     }
 
-    // getItemsValue = ()=>{    //3、自定义方法，用来传递数据（需要在父组件中调用获取数据）
-    //     const value= this.props.form.getFieldsValue();       //4、getFieldsValue：获取一组输入控件的值，如不传入参数，则获取全部组件的值
-    //     console.log(value)
-    //     return value;
-    // }
 
     getItemsValue = ()=>{
         const { form } = this.props

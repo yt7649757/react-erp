@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, withRouter } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import { config } from '../routes/config'
 import PrivateRoute from '../common/privateRoute';

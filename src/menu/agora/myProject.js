@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import * as AgoraActions from '../../redux/action/agora/agora';
 import {changeTitle} from "../../utils/changeTitle";
-// import storage from '../../utils/storage';
 import CreateTab from '../../utils/createTab';
 import TableHoc from '../../component/tableHoc'
 import OrderForm from './form/orderForm';
@@ -47,7 +46,6 @@ class MyProject extends Component {
     }
 
     handleTableChange = (pagination) => {
-        //无法setState存取current,总是取不到值
         current = pagination.current
         this.request(pagination.current)
     }
@@ -269,7 +267,7 @@ class MyProject extends Component {
             guid: 'xmmx',
             menu_name: `项目明细`,
             url: url,
-            content: params  //存取当前行信息
+            content: params
         }).create()
         this.props.history.push('/' + url)
     }
@@ -298,7 +296,7 @@ class MyProject extends Component {
 
 
     deleteRow = () => {
-        var rows = []
+        let rows = []
         let {selectedRows} = this.state;
         selectedRows.map(val => {
             rows.push(val.guid)

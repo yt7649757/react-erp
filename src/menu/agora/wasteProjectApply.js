@@ -12,13 +12,8 @@ const {TextArea} = Input;
 const Option = Select.Option;
 
 class WasteProjectApply extends Component {
-    // constructor(props) {
-    //     super(props)
-    // }
-
 
     doApply = () => {
-        // redux方法获取refs
         this.refs.layer.getWrappedInstance().showModal()
     }
 
@@ -27,7 +22,6 @@ class WasteProjectApply extends Component {
     }
 
 
-    //验证表单
     doSubmit = () => {
         const form = this.props.form
         return new Promise(function (resolve,reject) {

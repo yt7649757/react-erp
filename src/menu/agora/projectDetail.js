@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import * as AgoraActions from '../../redux/action/agora/agora';
 import {Divider, Row, Col, Button, Tabs, Modal, message} from 'antd';
 import Template from '../../common/template';
-import storage from '../../utils/storage';
 import { getId } from "../../utils/getId";
 import '../../style/agora/projectDetail.css';
 import LinkPeople from './table/linkPeople';

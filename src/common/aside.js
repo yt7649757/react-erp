@@ -1,12 +1,8 @@
 import React, {Component} from 'react';
 import {Layout, Menu, Icon} from 'antd';
 import {Link} from 'react-router-dom';
-// import { sidebarData, groupKey } from '../test/data'
 import {withRouter} from 'react-router-dom';
 import emitter from "./ev"
-// import storage from '../utils/storage.js';
-// import axios from 'axios';
-// import { port } from '../common/port';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as userActions from '../redux/action/user';
@@ -15,17 +11,12 @@ import '../style/aside.css'
 const {SubMenu } = Menu;
 const {Sider} = Layout;
 
-// const IconFont = Icon.createFromIconfontCN({
-//     scriptUrl: '//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js',
-// });
-
 let arr = []
 
 class Aside extends Component {
 
     constructor(props) {
         super(props)
-        // 初始化置空可以在遍历不到的时候应用默认值
         this.state = {
             openKeys: [''],
             selectedKeys: [''],
@@ -67,25 +58,16 @@ class Aside extends Component {
     }
 
 
-    //等待修改，目前是三级目录
-    /**
-     *  selectedKeys   // 当前展开的 SubMenu 菜单项 key 数组
-     *  openKeys       // 当前选中的菜单项 key 数组
-     */
     setDefaultActiveItem = ({location}) => {
         const {pathname} = location;
         this.state.sidebarData && this.state.sidebarData.map(item => {
-            //从一级目录开始查找
             if (pathname === ('/' + item.url)) {
                 this.setState({
                     selectedKeys: [item.menu_id]
                 });
                 document.title = item.menu_name
                 this.setRoutes(item)
-                // sessionStorage.setItem('current', item.url)
-                //一级目录没有找到，判断一级目录中是否存在二级菜单
             } else if (item.menus && item.menus.length > 0) {
-                // 在二级目录中开始查找
                 item.menus.map(childItem => {
                     if (pathname === ('/' + childItem.url)) {
                         this.setState({
@@ -94,18 +76,15 @@ class Aside extends Component {
                         });
                         document.title = childItem.menu_name
                         this.setRoutes(childItem)
-                        // sessionStorage.setItem('current', childItem.url)
-                        //二级目录也没有，就查询三级目录
                     } else if (childItem.menus && childItem.menus.length > 0) {
                         childItem.menus.map(subItem => {
                             if (pathname === ('/' + subItem.url)) {
                                 this.setState({
-                                    openKeys: [item.menu_id, childItem.menu_id],   //当前是三级菜单，所以需要同时展开二级和一级目录
+                                    openKeys: [item.menu_id, childItem.menu_id],
                                     selectedKeys: [subItem.menu_id]
                                 });
                                 document.title = subItem.menu_name
                                 this.setRoutes(subItem)
-                                // sessionStorage.setItem('current', subItem.url)
                             }
                         })
                     }
@@ -146,20 +125,16 @@ class Aside extends Component {
     render() {
         const {openKeys, selectedKeys} = this.state;
         const {sidebarData} = this.props.user
-        // const {collapsed, onCollapse} = this.props;
         const SideTree = sidebarData.map(item => (
             !item.menus ? (
                 <Menu.Item key={item.menu_id}
                            onClick={() => {
-                               // 设置高亮的item
                                this.setState({selectedKeys: [item.menu_id]});
-                               // 设置文档标题
                                document.title = item.menu_name;
                            }}
                 >
                     <img src={item.icon ? item.icon : 'http://wechat.yzferp.com/static/erp/images/work_oa.png'} alt="icon"/>
                     <span>{item.menu_name}</span>
-                    {/*出现url追加问题，在Link路径前加 '/' 代表根目录下的绝对路径 */}
                     <Link to={{pathname: '/' + item.url, state: item}}>{item.menu_name}</Link>
                 </Menu.Item>
             ) : (
@@ -179,9 +154,7 @@ class Aside extends Component {
                                     menuItem.menus.map(subItem => (
                                         <Menu.Item key={subItem.menu_id}
                                                    onClick={() => {
-                                                       // 设置高亮的item
                                                        this.setState({selectedKeys: [subItem.menu_id]});
-                                                       // 设置文档标题
                                                        document.title = subItem.menu_name;
                                                    }}
                                         >
@@ -198,9 +171,7 @@ class Aside extends Component {
                             <Menu.Item
                                 key={menuItem.menu_id}
                                 onClick={() => {
-                                    // 设置高亮的item
                                     this.setState({selectedKeys: [menuItem.menu_id]});
-                                    // 设置文档标题
                                     document.title = menuItem.menu_name;
                                 }}>
                                 <Link to={{pathname: '/' + menuItem.url, state: menuItem}}> {menuItem.menu_name} </Link>

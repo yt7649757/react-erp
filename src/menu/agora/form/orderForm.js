@@ -23,13 +23,6 @@ class OrderForm extends Component {
          return new Promise(function (resolve) {
              form.validateFields((err,values) => {
                  if(!err) {
-                     // const value= this.props.form.getFieldsValue();
-                     //时间类组件的 value 类型为 moment 对象，所以在提交服务器前需要预处理。
-                     // const v = {
-                     //     ...value,
-                     //     'payment_date': value['payment_date'].format('YYYY-MM-DD'),
-                     // }
-                     // return v;
                     resolve(values)
                  }
              })

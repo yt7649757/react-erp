@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Form, Row, Col, Input, Button, Select, message } from 'antd';
 import Template from '../../common/template';
 import '../../style/agora/workRegister.css'
-// import RegisterSelect from '../../component/registerSelect'
 
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
@@ -10,7 +9,6 @@ import * as AgoraActions from '../../redux/action/agora/agora';
 
 const FormItem = Form.Item;
 const Option = Select.Option;
-// const { TextArea } = Input;
 
 const formItemLayout = {
     labelCol: {
@@ -128,10 +126,7 @@ class WorkRegister extends Component {
                                         message: '请输入数字',
                                     }, {
                                         required: true, message: '请输入装修面积!',
-                                    }],
-                                    // getValueFromEvent: (event) => {
-                                    //     return event.target.value.replace(/\D/g,'')
-                                    // }
+                                    }]
                                 })(
                                     <Input />
                                 )}
@@ -245,9 +240,6 @@ class WorkRegister extends Component {
                             >
                                 {getFieldDecorator('decoration_type', {
                                     initialValue: '',
-                                    // rules: [
-                                    //     { required: true, message: '请选择装修类型!' },
-                                    // ],
                                 })(
                                     <Select  onFocus={this.requestSelect.bind(this,'decoration_type')} onChange={this.handleChange.bind(this,'decoration_type')}>
                                         {
@@ -271,9 +263,6 @@ class WorkRegister extends Component {
                             >
                                 {getFieldDecorator('color_orientation', {
                                     initialValue: '',
-                                    // rules: [
-                                    //     { required: true, message: '请选择色彩取向!' },
-                                    // ],
                                 })(
                                     <Select  onFocus={this.requestSelect.bind(this,'color_orientation')} onChange={this.handleChange.bind(this,'color_orientation')}>
                                         {
@@ -297,9 +286,6 @@ class WorkRegister extends Component {
                             >
                                 {getFieldDecorator('customer_source', {
                                     initialValue: '',
-                                    // rules: [
-                                    //     { required: true, message: '请选择客户来源!' },
-                                    // ],
                                 })(
                                     <Select onFocus={this.requestSelect.bind(this,'customer_source')} onChange={this.handleChange.bind(this,'customer_source')}>
                                         {
@@ -324,11 +310,6 @@ class WorkRegister extends Component {
                             >
                                 {getFieldDecorator('project_description', {
                                     initialValue: '',
-                                    // rules: [{
-                                    //     validator: this.validFunction
-                                    // },
-                                    //     { required: true, message: '请输入项目要求!' },
-                                    // ],
                                 })(
                                    <Input.TextArea rows={3} cols={10} style={{resize: 'none'}} />
                                 )}
@@ -341,9 +322,6 @@ class WorkRegister extends Component {
                             >
                                 {getFieldDecorator('project_address', {
                                     initialValue: '',
-                                    // rules: [
-                                    //     { required: true, message: '请选择工程地址!' },
-                                    // ],
                                 })(
                                     <Input />
                                 )}

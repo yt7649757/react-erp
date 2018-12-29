@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Form, Icon, Input, Button, Checkbox, message} from 'antd';
-import {withRouter} from 'react-router-dom';
+// import {withRouter} from 'react-router-dom';
 import cookie from 'react-cookies';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
@@ -33,7 +33,7 @@ class Login extends Component {
                     if (val) {
                         const {access_token, remember} = this.props.user
                         cookie.save('access_token', access_token.access_token, {
-                            maxAge: access_token.expires_in  //token过期时间
+                            maxAge: access_token.expires_in
                         })
                         this.props.history.push('/erp')
                     }
@@ -48,6 +48,11 @@ class Login extends Component {
         this.setState({
             type: !this.state.type
         })
+    }
+
+    //下载客户端
+    download = () => {
+        this.refs.ifile.src = 'http://wechat.yzferp.com/center/Client/Download'
     }
 
     render() {
@@ -107,7 +112,7 @@ class Login extends Component {
                                             </div>
                                             <div className="extra">
                                                 <label><input name="Fruit" type="checkbox" value=""/>记住密码</label>
-                                                <a className="download" href="#">客户端下载</a>
+                                                <a className="download" onClick={this.download} href="#">客户端下载</a><iframe ref="ifile" style={{display: 'none'}}></iframe>
                                                 <a href="#">忘记密码?</a>
                                             </div>
                                             <div className="submit">

@@ -3,7 +3,7 @@ import Template from '../../common/template';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as AgoraActions from '../../redux/action/agora/agora';
-import {Table, Divider, Modal} from 'antd';
+import {Table, Divider} from 'antd';
 import Layer from '../../component/layer';
 import UploadForm from './form/uploadForm';
 
@@ -28,7 +28,6 @@ class TransferredList extends Component {
     }
 
     handleTableChange = (pagination) => {
-        //无法setState存取current,总是取不到值
         current = pagination.current
         this.request(pagination.current)
     }
@@ -41,7 +40,7 @@ class TransferredList extends Component {
             loading: true
         })
 
-        var res = await this.props.agoraActions.getTransferredList(params, pagination.pageSize, status)
+        let res = await this.props.agoraActions.getTransferredList(params, pagination.pageSize, status)
 
         if (res) {
             pagination.total = res.data.total;
@@ -61,7 +60,6 @@ class TransferredList extends Component {
 
 
     doApply = () => {
-        // redux方法获取refs
         this.refs.layer.getWrappedInstance().showModal()
         console.log(this.formRef)
     }

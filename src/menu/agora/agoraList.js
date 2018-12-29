@@ -8,6 +8,12 @@ import { Input, Button } from 'antd';
 const Search = Input.Search;
 
 class AgoraList extends Component {
+
+    search = (value) => {
+        console.log(value)
+    }
+
+
     render() {
         const url = `/api/erp/statistics/marketdatanowmonth`
 
@@ -39,10 +45,11 @@ class AgoraList extends Component {
                 <div style={{marginBottom: '10px'}}>
                     <Search
                         placeholder="请输入姓名"
-                        onSearch={value => console.log(value)}
+                        onSearch={this.search}
                         style={{ width: 200 }}
+                        enterButton
                     />
-                    <Button>显示全部</Button>
+                    <Button style={{marginLeft: '10px', verticalAlign: 'top'}}>显示全部</Button>
                 </div>
                 <TableComponent columns={columns} url={url} size="middle" />
             </Template>

@@ -23,7 +23,6 @@ class PriceTable extends Component {
 
 
     componentDidMount() {
-        // ./ ../等路径是相对public的index.html，而不是从当前的文件开始
         // axios.get('./static/price.json')
         //     .then(res => {
         //         this.setState({

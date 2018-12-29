@@ -3,9 +3,9 @@ import { Modal } from 'antd';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as tableActions from '../redux/action/table';
+import Protypes from 'prop-types';
 
 /**
- *   this.props.children属性。它表示组件的所有子节点
  *   @param:
  *   title   弹窗标题
  *
@@ -39,14 +39,12 @@ class Layer extends Component {
         if(!this.props.hasState) {
             this.props.doSubmit().then(values => {
                 if(values) {
-                    // 提交到后台
                    const url = this.props.url
                    if(!url) return alert('沒有提交接口url')
                    this.props.tableActions.addLayerInfo(url, values)
                 }
             })
         }else {
-            //附件上次 单独处理
             this.child.getItemsValue().then(val => {
                 if(val) {
                     console.log(val);
@@ -55,7 +53,6 @@ class Layer extends Component {
         }
     }
 
-    //获取子组件的方法
     onRef = (ref) => {
         this.child = ref
     }
@@ -70,6 +67,7 @@ class Layer extends Component {
                 visible={this.state.visible}
                 onOk={this.handleOk}
                 onCancel={this.hideModal}
+                footer={this.props.footer}
                 width={w}
                 centered
             >
@@ -99,6 +97,10 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-//http://www.cnblogs.com/muamaker/p/9768150.html
-// 由于 redux是无状态的，所以当我们在子组件中使用了 redux的时候，再父组件中，使用  ref 来获取子组件的state时，发现为一个空对象
+Layer.Protypes = {
+    title: Protypes.string,
+    width: Protypes.number,
+    footer: Protypes.object
+}
+
 export default connect(mapStateToProps, mapDispatchToProps,null,{withRef: true})(Layer);

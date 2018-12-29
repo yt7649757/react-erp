@@ -11,7 +11,6 @@ const FormItem = Form.Item;
 const {TextArea} = Input;
 const confirm = Modal.confirm;
 
-//当前页数
 let current = 1;
 class RoleList extends Component {
 
@@ -43,7 +42,6 @@ class RoleList extends Component {
         })
     }
 
-    // 页码改变的回调，参数是改变后的页码及每页条数 Function(page, pageSize)
     handleTableChange = (pagination) => {
         current = pagination.current
         this.request(pagination.current)
@@ -220,19 +218,24 @@ class RoleList extends Component {
     }
 
     //权限
-    authority = (phone,edit) => {
+    authority = (guid,phone,edit) => {
+        if(this.state.status === -1) return
         const {selectedRows} = this.state;
-        if (selectedRows.length === 0 || selectedRows.length > 1 ) {
+        if ( typeof guid === 'undefined' && (selectedRows.length === 0 || selectedRows.length > 1) ) {
              message.info('请选择一行数据')
         }else {
             let r = storage.get('routes');
-            let p,e = null;
+            let p,e,url = null;
             phone? p = true : p = false;
             edit? e = true : e = false;
-            const url = `erp/system/getrolenodelist/role_id/${selectedRows[0].guid}/is_mobile/0`;
+            if(guid) {
+                url = `erp/system/getrolenodelist/role_id/${guid}/is_mobile/0`;
+            }else {
+                url = `erp/system/getrolenodelist/role_id/${selectedRows[0].guid}/is_mobile/0`;
+            }
             const obj = {
                 guid: `jsqx`,
-                menu_name: `${selectedRows[0].role_name}的权限`,
+                menu_name: '权限编辑',
                 url: url,
                 phone: p,
                 edit: e
@@ -243,7 +246,6 @@ class RoleList extends Component {
             }else {
                 r.map(item => {
                     if(item.guid === 'jsqx') {
-                        item.menu_name = selectedRows[0].role_name + '的权限';
                         item.url = url
                         item.phone = p
                         item.edit = e
@@ -323,13 +325,13 @@ class RoleList extends Component {
             dataIndex: 'create_time'
         }, {
             title: '操作',
-            render: () => (
+            render: (text) => (
                 <span>
-          <a href="javascript:void (0);" onClick={() => this.authority()}>查看</a>
+          <a href="javascript:void (0);" onClick={() => this.authority(text.guid)}>查看</a>
           <Divider type="vertical"/>
-          <a href="javascript:;" onClick={() => this.authority('', true)} >编辑PC</a>
+          <a href="javascript:;" onClick={() => this.authority(text.guid,'', true)} >编辑PC</a>
           <Divider type="verticla"/>
-          <a href="javascript:;" onClick={() => this.authority(true,true)} >编辑手机</a>
+          <a href="javascript:;" onClick={() => this.authority(text.guid,true,true)} >编辑手机</a>
          </span>
             )
         }

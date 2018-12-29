@@ -24,7 +24,7 @@ function guid() {
     });
 }
 
-
+let i = 0
 let data = [];
 class TableComponent extends Component {
     constructor(props) {
@@ -39,7 +39,6 @@ class TableComponent extends Component {
     }
 
 
-    // 页码改变的回调，参数是改变后的页码及每页条数 Function(page, pageSize)
     handleTableChange = (pagination) => {
         const pager = {...this.state.pagination};
         pager.current = pagination.current;
@@ -103,6 +102,7 @@ class TableComponent extends Component {
 
 
     render() {
+        console.log(i++);
         const { loading } = this.state;
         const { columns, url, testUrl } = this.props;
 
@@ -134,6 +134,7 @@ class TableComponent extends Component {
                 pagination={this.state.pagination}
                 onChange={this.handleTableChange}
                 size={this.props.size}
+                title={this.props.title}
             />
         );
     }
@@ -148,7 +149,8 @@ TableComponent.propTypes = {
     columns: PropTypes.array,
     url: PropTypes.string,
     size: PropTypes.string,
-    checkbox: PropTypes.bool
+    checkbox: PropTypes.bool,
+    title: PropTypes.func
 }
 
 const mapStateToProps = (state) => {

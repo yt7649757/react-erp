@@ -39,6 +39,11 @@ import WasteProjectApply from '../menu/agora/wasteProjectApply';
 import PriceTable from '../menu/finance/priceTable';
 import ProjectProgress from "../menu/finance/projectProgress";
 import PayReceive from '../menu/finance/payReceive';
+import ProjectReceipt from '../menu/finance/contractDetail/projectReceipt';
+import Engineering from "../menu/finance/priceCheckList/engineering";
+import EngineeringDetail from "../menu/finance/priceCheckList/engineeringDetail";
+import Contractprintlook from "../menu/finance/priceCheckList/contractprintlook";
+import TransationRecord from "../menu/finance/accountManage/transactionRecord";
 
 export const config = [
     {
@@ -154,6 +159,25 @@ export const config = [
             },{
                 path: '/erp/finance/collectionplan/guid/:id',
                 component: PayReceive
+            }, {
+                path: '/erp/finance_project_price/lookprojectmore/guid/:id',
+                component: ProjectReceipt
+            },{
+                //项目工程
+                path: '/erp/finance/lookbuildfinance/guid/:id',
+                component: Engineering
+            }, {
+                //工程明细
+                path: '/erp/finance/lookbuilddetailed/pro_id/:id/id/:id',
+                component: EngineeringDetail
+            }, {
+                //发包预算浏览
+                path: '/erp/finance/contractprintlook/pro_id/:id',
+                component: Contractprintlook
+            }, {
+                //交易记录
+                path: '/erp/finance/lookbanklog/guid/:id',
+                component: TransationRecord
             }
         ]
     },

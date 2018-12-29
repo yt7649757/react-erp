@@ -105,13 +105,11 @@ class HeaderComponent extends Component {
     }
 
     signOut = () => {
-        // storage.remove('access_token')
         if(lock) {
             lock= false
             this.props.userActions.loginOut().then(res => {
                 if(res.data.message) {
                     sessionStorage.clear()
-                    //本地直接打开是读不了cookie的，因为不是http协议的，是file协议的
                     cookie.remove('access_token')
                     cookie.remove('userInfo')
                     message.success('注销成功', 1);
@@ -124,13 +122,6 @@ class HeaderComponent extends Component {
                 lock = true
             })
         }
-
-
-        // const { pathname } = this.props.location;
-        // //动态改变标题
-        // if(pathname === '/signOut') {
-        //     document.title = '登录'
-        // }
     }
 
     closeAside = () => {

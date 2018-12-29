@@ -47,7 +47,6 @@ class UploadForm extends Component {
     }
 
     componentDidMount() {
-        //必须在这里声明，所以 ref 回调可以引用它
        this.props.onRef && this.props.onRef(this)
     }
 

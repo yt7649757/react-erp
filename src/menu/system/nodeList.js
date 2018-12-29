@@ -5,7 +5,6 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as SystemManageActions from '../../redux/action/system/systemManage';
 import '../../style/agora/roleList.css';
-// import storage from '../../utils/storage';
 
 const FormItem = Form.Item;
 const {TextArea} = Input;
@@ -45,7 +44,6 @@ class NodeList extends Component {
     }
 
     handleTableChange = (pagination) => {
-        //变量存取current
         current = pagination.current
         this.request(pagination.current)
     }
@@ -85,11 +83,6 @@ class NodeList extends Component {
                     visible: true,
                     update: selectedRows[0].guid  //guid
                 }, () => {
-                    // delete selectedRows[0].update_time
-                    // delete selectedRows[0].id
-                    // delete selectedRows[0].parent_node
-                    // delete selectedRows[0].is_mobile
-                    // delete selectedRows[0].create_time
                     this.props.form.setFieldsValue({
                         // ...selectedRows[0],
                         is_menu: selectedRows[0].is_menu + '',

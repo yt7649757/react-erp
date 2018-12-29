@@ -13,17 +13,12 @@ const {TextArea} = Input;
 
 class WasteSingleList extends Component {
 
-    // constructor(props) {
-    //     super(props)
-    // }
 
     doApply = () => {
-      // redux方法获取refs
       this.refs.layer.getWrappedInstance().showModal()
     }
 
 
-    //验证表单
     doSubmit = () => {
         const form = this.props.form
         return new Promise(function (resolve,reject) {
