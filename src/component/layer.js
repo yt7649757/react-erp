@@ -8,7 +8,7 @@ import Protypes from 'prop-types';
 /**
  *   @param:
  *   title   弹窗标题
- *
+ *   width   弹窗宽度
  */
 
 class Layer extends Component {

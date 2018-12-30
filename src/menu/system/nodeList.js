@@ -71,7 +71,7 @@ class NodeList extends Component {
                 loading: false
             })
         } else {
-            alert('加载出错!')
+            message.error('加载出错!')
         }
     }
 
@@ -99,7 +99,7 @@ class NodeList extends Component {
                     })
                 });
             } else {
-                message.info('请选择一行数据编辑')
+                message.error('请选择一行数据编辑')
             }
         } else {
             this.setState({
@@ -181,7 +181,7 @@ class NodeList extends Component {
         const _this = this;
         const {selectedRows} = this.state;
         if (selectedRows.length === 0) {
-            return message.info('请至少选择一行数据')
+            return message.error('请至少选择一行数据')
         }
         confirm({
             title: '你确定要删除吗?',

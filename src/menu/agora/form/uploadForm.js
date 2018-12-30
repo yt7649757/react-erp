@@ -187,7 +187,7 @@ class UploadForm extends Component {
                 sm: {span: 5},
             },
             wrapperCol: {
-                sm: {span: 17},
+                sm: {span: 19},
             },
         };
 

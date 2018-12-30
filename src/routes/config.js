@@ -1,5 +1,4 @@
 import WrappedNormalLoginForm  from '../login/login'
-import TableComponent from '../component/tableComponent';
 import Page from '../menu/page';
 import UserLoginList from '../menu/system/userLoginList';
 import WorkRegister from '../menu/agora/workRegister';
@@ -52,10 +51,10 @@ export const config = [
         component: WrappedNormalLoginForm,
     },
     // {
-    //     // name: '版本检测',
-    //     // path: '/install/update/checkUpdate',
-    //     // // component: TableComponent,
-    //     // private: true,
+    //     name: '版本检测',
+    //     path: '/install/update/checkUpdate',
+    //     component: Test,
+    //     private: true,
     // },
     {
         path: '/erp',

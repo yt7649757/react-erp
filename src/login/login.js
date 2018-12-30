@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Form, Icon, Input, Button, Checkbox, message} from 'antd';
-// import {withRouter} from 'react-router-dom';
 import cookie from 'react-cookies';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';

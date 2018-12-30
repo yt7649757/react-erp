@@ -123,3 +123,7 @@ clearfix:before,.clearfix:after{
 .ant-tabs-bar.ant-tabs-top-bar.ant-tabs-card-bar{
     margin-left: 5px;
 }
+
+.btn-group {
+    margin-right: 5px;
+}

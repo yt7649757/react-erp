@@ -24,7 +24,6 @@ function guid() {
     });
 }
 
-let i = 0
 let data = [];
 class TableComponent extends Component {
     constructor(props) {
@@ -86,6 +85,7 @@ class TableComponent extends Component {
         if(this.props.url || this.props.testUrl) {
             this.request()
         }
+        this.props.onRef && this.props.onRef(this)
     }
 
     componentWillUnmount() {
@@ -102,7 +102,6 @@ class TableComponent extends Component {
 
 
     render() {
-        console.log(i++);
         const { loading } = this.state;
         const { columns, url, testUrl } = this.props;
 

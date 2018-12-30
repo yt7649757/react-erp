@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Template from '../../common/template';
 import TableComponent from '../../component/tableComponent';
 import CreateTab from '../../utils/createTab';
-import { Table,Divider } from 'antd';
+import Layer from '../../component/layer';
+import Log from '../../component/log';
+import { Divider } from 'antd';
 
 class ShowContractProjectList extends Component {
 
@@ -44,6 +46,10 @@ class ShowContractProjectList extends Component {
             url: url
         }).create()
         this.props.history.push('/' + url)
+    }
+
+    lookLog = () => {
+        this.refs.layer.getWrappedInstance().showModal()
     }
 
     getRowSelection = (selectedRowKeys, selectedRows) => {
@@ -90,18 +96,10 @@ class ShowContractProjectList extends Component {
                         <Divider type="verticla"/>
                           <a href="javascript:;" onClick={() => this.lookPay(text.guid)}>收付款</a>
                             <Divider type="verticla"/>
-                          <a href="javascript:;">项目日志</a>
+                          <a href="javascript:;" onClick={this.lookLog}>项目日志</a>
                     </span>
                 )
             }
-        }];
-
-        const data = [{
-            book_number: '123',
-            project_name: '测试',
-            tracking_name: '',
-            design_schedule: '100%',
-            budget: 10000,
         }];
 
 
@@ -115,6 +113,9 @@ class ShowContractProjectList extends Component {
                     // testUrl="https://www.easy-mock.com/mock/5c185df39172fa10e61b63b3/erp/showContractProjectList"
                     url="/api/erp/finance/showcontractprojectlist"
                 />
+                <Layer ref="layer" title="项目日志" footer={null} width={600} >
+                    <Log/>
+                </Layer>
             </Template>
         )
     }

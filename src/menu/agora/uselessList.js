@@ -95,7 +95,7 @@ class UselessList extends Component {
                 sm: {span: 5},
             },
             wrapperCol: {
-                sm: {span: 15},
+                sm: {span: 19},
             },
         };
 
@@ -142,6 +142,7 @@ class UselessList extends Component {
                     onCancel={this.hideModal}
                     okText="确认"
                     cancelText="取消"
+                    width={416}
                 >
                     <Form>
                         <FormItem

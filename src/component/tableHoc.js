@@ -5,11 +5,10 @@ const confirm = Modal.confirm;
 
 const TableHoc = (WrappedComponent) => class extends WrappedComponent {
 
-    showConfirm = () => {
+    showConfirm = (param) => {
         const _this = this;
-        console.log(this.instanceComponent);
-        const {selectedRows} = this.instanceComponent.state;
-        if (selectedRows.length === 0) {
+        const {selectedRows, nochecked } = this.instanceComponent.state;
+        if (!nochecked && selectedRows.length === 0) {
             return message.info('请至少选择一行数据')
         }
         confirm({
@@ -18,7 +17,7 @@ const TableHoc = (WrappedComponent) => class extends WrappedComponent {
             okText: '确认',
             cancelText: '取消',
             onOk() {
-                _this.instanceComponent.deleteRow()
+                _this.instanceComponent.deleteRow(param)
             },
             onCancel() {
             },

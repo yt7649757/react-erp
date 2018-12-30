@@ -47,7 +47,7 @@ class ApplyPartForm extends Component {
                 sm: {span: 5},
             },
             wrapperCol: {
-                sm: {span: 15},
+                sm: {span: 19},
             },
         };
 

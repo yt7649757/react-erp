@@ -205,7 +205,7 @@ class MyProject extends Component {
         this.setState({
             visible: true,
             forms: params,
-            width: (typeof w === 'number' ? w : 540),   //修改框 宽度需要大一点
+            width: (typeof w === 'number' ? w : 416),   //修改框 宽度需要大一点
             title: title,
             row: (typeof w.guid === 'string' ? w : '')
         });

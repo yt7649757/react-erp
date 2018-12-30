@@ -85,7 +85,7 @@ class RoleList extends Component {
                     })
                 });
             }else {
-                message.info('请选择一行数据编辑')
+                message.error('请选择一行数据编辑')
             }
         }else {
             this.setState({
@@ -171,7 +171,7 @@ class RoleList extends Component {
         const _this = this;
         const {selectedRows} = this.state;
         if (selectedRows.length === 0) {
-            return message.info('请至少选择一行数据')
+            return message.error('请至少选择一行数据')
         }
         confirm({
             title: '你确定要删除吗?',
@@ -222,7 +222,7 @@ class RoleList extends Component {
         if(this.state.status === -1) return
         const {selectedRows} = this.state;
         if ( typeof guid === 'undefined' && (selectedRows.length === 0 || selectedRows.length > 1) ) {
-             message.info('请选择一行数据')
+             message.error('请选择一行数据')
         }else {
             let r = storage.get('routes');
             let p,e,url = null;
@@ -290,7 +290,7 @@ class RoleList extends Component {
                 sm: {span: 5},
             },
             wrapperCol: {
-                sm: {span: 17},
+                sm: {span: 19},
             },
         };
 

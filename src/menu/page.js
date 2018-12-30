@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 import * as userActions from '../redux/action/user';
 import Title from '../component/title';
 import ListItem from '../component/listItem';
-let i = 0
+
 const columns = [{
     title: '姓名',
     dataIndex: 'name',
