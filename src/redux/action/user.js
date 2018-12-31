@@ -122,7 +122,7 @@ export const onlineUser = (page,size) => {
             .then(function (res) {
                 dispatch({
                     type: types.ONLINE_USER,
-                    onlineUser: res.data.data
+                    onlineUser: res.data
                 })
                 return res
             }).catch(error => {

@@ -1,5 +1,6 @@
 import WrappedNormalLoginForm  from '../login/login'
 import Page from '../menu/page';
+
 import UserLoginList from '../menu/system/userLoginList';
 import WorkRegister from '../menu/agora/workRegister';
 import RoleList from '../menu/system/roleList';
@@ -10,16 +11,9 @@ import UselessList from '../menu/agora/uselessList';
 import AgoraList from '../menu/agora/agoraList';
 import WasteSingleList from '../menu/agora/wasteSingleList';
 import ProjectDetail from "../menu/agora/projectDetail";
-import ShowPayMentList from '../menu/finance/showPayMentList';
-import ShowProjectDepositList from '../menu/finance/showProjectDepositList';
-import CollectStyleList from '../menu/finance/collectStyleList';
-import ShowContractProjectList from '../menu/finance/showContractProjectList';
-import AccountManage from "../menu/finance/accountManage";
-import ContractDetail from "../menu/finance/contractDetail";
-import CollectPlanEdit from "../menu/finance/CollectPlanEdit";
-import PriceCheckList from "../menu/finance/priceCheckList";
-import CollectRevokeCheck from "../menu/finance/collectRevokeCheck";
-import CollectCheck from "../menu/finance/collectCheck";
+import TransferredList from '../menu/agora/transferredList';
+import WasteProjectApply from '../menu/agora/wasteProjectApply';
+
 import ShowProListByUser from "../menu/queto/showProListByUser";
 import ShowNoContract from "../menu/queto/showNoContract";
 import ShowConProListByCom from "../menu/queto/showConProListByCom";
@@ -33,8 +27,18 @@ import ShowCheckList from "../menu/queto/showCheckList";
 import ShowProjectContAudit from "../menu/queto/showProjectContAudit";
 import ExcellentOpus from "../menu/queto/excellentOpus";
 import Achievement from '../menu/queto/achievement';
-import TransferredList from '../menu/agora/transferredList';
-import WasteProjectApply from '../menu/agora/wasteProjectApply';
+import MyContractProject from "../menu/queto/myContractProject";
+
+import ShowPayMentList from '../menu/finance/showPayMentList';
+import ShowProjectDepositList from '../menu/finance/showProjectDepositList';
+import CollectStyleList from '../menu/finance/collectStyleList';
+import ShowContractProjectList from '../menu/finance/showContractProjectList';
+import AccountManage from "../menu/finance/accountManage";
+import ContractDetail from "../menu/finance/contractDetail";
+import CollectPlanEdit from "../menu/finance/CollectPlanEdit";
+import PriceCheckList from "../menu/finance/priceCheckList";
+import CollectRevokeCheck from "../menu/finance/collectRevokeCheck";
+import CollectCheck from "../menu/finance/collectCheck";
 import PriceTable from '../menu/finance/priceTable';
 import ProjectProgress from "../menu/finance/projectProgress";
 import PayReceive from '../menu/finance/payReceive';
@@ -43,6 +47,62 @@ import Engineering from "../menu/finance/priceCheckList/engineering";
 import EngineeringDetail from "../menu/finance/priceCheckList/engineeringDetail";
 import Contractprintlook from "../menu/finance/priceCheckList/contractprintlook";
 import TransationRecord from "../menu/finance/accountManage/transactionRecord";
+import Currentaccount from "../menu/finance/currentaccount";
+import ShowGeneralExpense from "../menu/finance/showGeneralExpense";
+
+
+import NoticeListByDep from "../menu/oawork/noticeListByDep";
+import NoticeList from "../menu/oawork/noticeList";
+import AddLeave from "../menu/oawork/addLeave";
+import LeavePermit from "../menu/oawork/leavePermit";
+import MyLeavePermit from "../menu/oawork/myLeavePermit";
+import AddWorkPlan from "../menu/oawork/addWorkPlan";
+import MyWorkPlan from "../menu/oawork/myWorkPlan";
+import AllWorkPlan from "../menu/oawork/allWorkPlan";
+import WorkPlanByDep from "../menu/oawork/workPlanByDep";
+import ManagerMailbox from "../menu/oawork/managerMailbox";
+import RepairEntering from "../menu/oawork/repairEntering";
+import RepairEnteringManage from "../menu/oawork/repairEnteringManage";
+import MyRepairEntering from "../menu/oawork/myRepairEntering";
+import MyAddRepairEntering from "../menu/oawork/myAddRepairEntering";
+import AddressList from "../menu/oawork/addressList";
+import MySignIn from "../menu/oawork/mySignIn";
+import SignInRecord from "../menu/oawork/signInRecord";
+import CurrentMonthSignIn from "../menu/oawork/curentMonthRegister";
+import NoticeIssue from "../menu/oawork/notcieIssue";
+import ApplyUseCar from "../menu/oawork/applyUseCar";
+import Applysupplies from "../menu/oawork/applysupplies";
+import EmployeePower from "../menu/ceo/employeePower";
+import ShowRateItemList from "../menu/ceo/showRateItemList";
+import ShowDefaultRate from "../menu/ceo/showDefaultRate";
+import ShowRateItemClothesList from "../menu/ceo/showRateItemClothesList";
+import ShowRateItemPackageList from "../menu/ceo/showRateItemPackageList";
+import ShowEditBudgetStyle from "../menu/ceo/showEditBudgetStyle";
+import Showdatastylelist from "../menu/ceo/showdatastylelist";
+import Showdatastyleclotheslist from "../menu/ceo/showdatastyleclotheslist";
+import Showdatatypepackagelist from "../menu/ceo/showdatatypepackagelist";
+import ShowContractEdit from "../menu/ceo/showContractEdit";
+import Showtemplatestylelist from "../menu/ceo/showtemplatestylelist";
+import ShowTemplateBudget from "../menu/ceo/showTemplateBudget";
+import ShowRolePowerList from "../menu/ceo/showRolePowerList";
+import AgoraAchievement from "../menu/ceo/agoraAchievement";
+import ServiceAchievement from "../menu/ceo/serviceAchievement";
+import ShowMarketingTarget from "../menu/ceo/showMarketingTarget";
+import ShowServerTarget from "../menu/ceo/showServerTarget";
+import UserInput from "../menu/ceo/userInput";
+import UserList from "../menu/ceo/userList";
+import CompanySetup from "../menu/ceo/companySetup";
+import CompanyDepartment from "../menu/ceo/companyDepartment";
+import JobList from "../menu/ceo/jobList";
+import ProjectsumList from "../menu/ceo/projectsumList";
+import SetuserroleList from "../menu/ceo/setuserroleList";
+import ShowProjectComList from "../menu/ceo/showProjectComList";
+import ShowProjectSevComList from "../menu/ceo/showProjectSevComList";
+import ShowFundsList from "../menu/ceo/showFundsList";
+import MyEmail from "../menu/ceo/myEmail";
+import ShowRefundPriceProject from "../menu/ceo/showRefundPriceProject";
+import DesignAchievement from "../menu/ceo/designAchievement";
+import ShowProListByCom from "../menu/ceo/showProListByCom";
 
 export const config = [
     {
@@ -177,6 +237,12 @@ export const config = [
                 //交易记录
                 path: '/erp/finance/lookbanklog/guid/:id',
                 component: TransationRecord
+            },{
+                path: '/erp/finance/showcurrentaccount',
+                component: Currentaccount
+            },{
+                path: '/erp/finance/showgeneralexpense',
+                component: ShowGeneralExpense
             }
         ]
     },
@@ -192,7 +258,7 @@ export const config = [
                 component: ShowNoContract
             },{
                 path: '/erp/DesignExtract/showContractProjectList',
-                component: ShowContractProjectList
+                component: MyContractProject
             },{
                 path: '/erp/DesignExtract/showConProListByCom',
                 component: ShowConProListByCom
@@ -228,6 +294,172 @@ export const config = [
                 component: Achievement
             }
         ]
+    },{
+        name:'OA办公',
+        private: true,
+        children: [
+            {
+                path: '/erp/work/shownoticelist',
+                component: NoticeList
+            },{
+                path: '/erp/work/shownoticelistbydep',
+                component: NoticeListByDep
+            },{
+                path: '/erp/System/showAddLeave',
+                component: AddLeave
+            },{
+                path: '/erp/System/leaveList',
+                component: LeavePermit
+            },{
+                path: '/erp/Work/showMyLeave',
+                component: MyLeavePermit
+            },{
+                path: '/erp/System/showWorkPlan',
+                component: AddWorkPlan
+            },{
+                path: '/erp/System/workuserList',
+                component: MyWorkPlan
+            },{
+                path: '/erp/Work/showAllPlanList',
+                component: AllWorkPlan
+            },{
+                path: '/erp/Work/showDepPlanList',
+                component: WorkPlanByDep
+            },{
+                path: '/erp/Work/showAddManagerLine',
+                component: ManagerMailbox
+            },{
+                path: '/erp/Work/showComplaint',
+                component: RepairEntering
+            },{
+                path: '/erp/Work/showComplaintList',
+                component: RepairEnteringManage
+            },{
+                path: '/erp/Work/showComplaintUserAdd',
+                component: MyAddRepairEntering
+            },{
+                path: '/erp/Work/showComplaintUserHave',
+                component: MyRepairEntering
+            },{
+                path: '/erp/User/userByRole',
+                component: AddressList
+            },{
+                path: '/erp/Sign/showUserSign',
+                component: MySignIn
+            },{
+                path: '/erp/Sign/showUserList',
+                component: SignInRecord
+            },{
+                path: '/erp/Sign/showPersonnelSign',
+                component: CurrentMonthSignIn
+            },{
+                path: '/erp/work/showNotice',
+                component: NoticeIssue
+            },{
+                path: '/erp/OfficeVehicle/showVehicleList',
+                component: ApplyUseCar
+            },{
+                path: '/erp/OfficeSupplies/showSuppliesList',
+                component: Applysupplies
+            }
+        ]
+    },{
+        name: 'CEO管理',
+        private: true,
+        children: [{
+            path: '/erp/Work/showNoRoleByUser',
+            component: EmployeePower
+        },{
+            path: '/erp/Material/showRateItemList',
+            component: ShowRateItemList
+        },{
+            path: '/erp/Design/showDefaultRate',
+            component: ShowDefaultRate
+        },{
+            path: '/erp/Material/showRateItemClothesList',
+            component: ShowRateItemClothesList
+        },{
+            path: '/erp/Material/showRateItemPackageList',
+            component: ShowRateItemPackageList
+        },{
+            path: '/erp/Material/showEditBudgetStyle',
+            component: ShowEditBudgetStyle
+        },{
+            path: '/erp/Material/showdatastylelist',
+            component: Showdatastylelist
+        },{
+            path: '/erp/Material/showdatastyleclotheslist',
+            component: Showdatastyleclotheslist
+        },{
+            path: '/erp/Material/showdatatypepackagelist',
+            component: Showdatatypepackagelist
+        },{
+            path: '/erp/Contract/showContractEdit',
+            component: ShowContractEdit
+        },{
+            path: '/erp/Material/showtemplatestylelist',
+            component: Showtemplatestylelist
+        },{
+            path: '/erp/Material/showTemplateBudget',
+            component: ShowTemplateBudget
+        },{
+            path: '/erp/User/showRoleList',
+            component: ShowRolePowerList
+        },{
+            path: '/erp/WorkTarget/showMarketingTarget',
+            component: ShowMarketingTarget
+        },{
+            path: '/erp/WorkTarget/showServerTarget',
+            component: ShowServerTarget
+        },{
+            path: '/erp/System/showStaff',
+            component: UserInput
+        },{
+            path: '/erp/System/userList',
+            component: UserList
+        },{
+            path: '/erp/System/companyList',
+            component: CompanySetup
+        },{
+            path: '/erp/System/departmentList',
+            component: CompanyDepartment
+        },{
+            path: '/erp/System/jobsList',
+            component: JobList
+        },{
+            path: '/erp/System/projectsumList',
+            component: ProjectsumList
+        },{
+            path: '/erp/System/setuserroleList',
+            component: SetuserroleList
+        },{
+            path: '/erp/Project/showProjectComList',
+            component: ShowProjectComList
+        },{
+            path: '/erp/Design/showProListByCom',
+            component: ShowProListByCom
+        },{
+            path: '/erp/Project/showProjectSevComList',
+            component: ShowProjectSevComList
+        },{
+            path: '/erp/FundsSum/showFundsList',
+            component: ShowFundsList
+        },{
+            path: '/erp/Work/showManagerList',
+            component: MyEmail
+        },{
+            path: '/erp/ProjectDeposit/showRefundPriceProject',
+            component: ShowRefundPriceProject
+        },{
+            path: '/erp/Statistics/showMarketData',
+            component: AgoraAchievement
+        },{
+            path: '/erp/Statistics/showServiceData',
+            component: ServiceAchievement
+        },{
+            path: '/erp/Statistics/showDesignData',
+            component: DesignAchievement
+        }]
     }
 ]
 

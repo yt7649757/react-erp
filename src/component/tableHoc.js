@@ -9,7 +9,7 @@ const TableHoc = (WrappedComponent) => class extends WrappedComponent {
         const _this = this;
         const {selectedRows, nochecked } = this.instanceComponent.state;
         if (!nochecked && selectedRows.length === 0) {
-            return message.info('请至少选择一行数据')
+            return message.error('请至少选择一行数据')
         }
         confirm({
             title: '你确定要删除吗?',

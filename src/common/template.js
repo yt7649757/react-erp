@@ -17,13 +17,10 @@ class Template extends Component {
 
     constructor(props) {
         super(props)
-        panes = JSON.parse(sessionStorage.getItem('routes'))
-        current = sessionStorage.getItem('current')
         this.state = {
             title: '加载中...',
             ml: true,
-            tabs: [],
-            activeKey: current && current,
+            activeKey: current,
         }
     }
 
@@ -32,9 +29,6 @@ class Template extends Component {
         this.setState({
             activeKey: nextProps.location.pathname.substring(1)
         })
-    }
-
-    componentWillUpdate(nextProps) {
     }
 
 
@@ -46,6 +40,8 @@ class Template extends Component {
 
 
     componentDidMount() {
+        panes = JSON.parse(sessionStorage.getItem('routes'))
+        current = sessionStorage.getItem('current')
         emitter.addListener("close", () => {
            this.expand()
         })
@@ -100,7 +96,7 @@ class Template extends Component {
                     <div style={{ padding: '25px'}}>
 
 
-                        <Tabs type="editable-card" hideAdd onChange={this.onChange} activeKey={this.state.activeKey}
+                        <Tabs type="editable-card" hideAdd onChange={this.onChange} activeKey={this.state.activeKey} animated={false}
                               onEdit={this.onEdit}>
                             {
                                 panes && panes.map(item => {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Template from '../../common/template';
-import { Table } from 'antd';
+import { Table,Button } from 'antd';
 
 const columns = [{
     title: '项目名称',
@@ -34,6 +34,14 @@ class ShowProListByUser extends Component {
     render() {
         return (
             <Template>
+                <div className="operate">
+                    <Button type="primary">添加预算</Button>
+                    <Button type="primary">添加定金单</Button>
+                    <Button>显示更多信息</Button>
+                    <Button>隐藏更多信息</Button>
+                    <Button>显示转部信息</Button>
+                    <Button>隐藏转部信息</Button>
+                </div>
                 <Table columns={columns} dataSource={data} />
             </Template>
         )

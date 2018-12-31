@@ -200,7 +200,7 @@ class MyProject extends Component {
         const title = changeTitle(params)
         // 如果w是对象，代表点击的是右边的操作选项
         if ((typeof w.guid !== 'string' && selectedRows.length < 1) || selectedRows.length > 1) {
-            return message.info('请选择一行数据')
+            return message.error('请选择一行数据')
         }
         this.setState({
             visible: true,

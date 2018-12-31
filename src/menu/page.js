@@ -2,28 +2,12 @@ import React, {Component} from 'react';
 import Template from '../common/template'
 import '../style/page/index.css'
 import Circle from '../component/circle'
-import {Table, Badge} from 'antd';
+import {Table, Badge, Spin  } from 'antd';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as userActions from '../redux/action/user';
 import Title from '../component/title';
 import ListItem from '../component/listItem';
-
-const columns = [{
-    title: '姓名',
-    dataIndex: 'name',
-}, {
-    title: '部门',
-    dataIndex: 'department.department_name',
-}, {
-    title: '职位',
-    dataIndex: 'jobs.jobs_name',
-}, {
-    title: '电话',
-    dataIndex: 'mobile'
-}];
-
-
 class Page extends Component {
     constructor(props) {
         super(props)
@@ -32,7 +16,9 @@ class Page extends Component {
             pagination: {
                 pageSize: 4
             },
-            loading: false
+            locale: {
+                emptyText: '加载中'
+            }
         };
     }
 
@@ -45,24 +31,19 @@ class Page extends Component {
 
     getOnlineUser = (page = 1,size = 4) => {
         const pagination = {...this.state.pagination};
-        this.setState({
-            loading: true
-        })
         this.props.userActions.onlineUser(page, size).then(res => {
             if(res) {
+                console.log(res);
                 pagination.total = res.data.total;
 
-                pagination.showTotal = function (total) {
-                    return `总共有${total}条数据`
-                }
+                // pagination.showTotal = function (total) {
+                //     return `总共有${total}条数据`
+                // }
 
                 //使用state存取current
                 // pagination.current = params
-                console.log(pagination)
-
                 this.setState({
-                    pagination,
-                    loading: false
+                    pagination
                 })
             }
         })
@@ -76,6 +57,22 @@ class Page extends Component {
 
     render() {
         const {user} = this.props
+        const data = user.onlineUser.data ? user.onlineUser.data : []
+
+        const columns = [{
+            title: '姓名',
+            dataIndex: 'name',
+        }, {
+            title: '部门',
+            dataIndex: 'department.department_name',
+        }, {
+            title: '职位',
+            dataIndex: 'jobs.jobs_name',
+        }, {
+            title: '电话',
+            dataIndex: 'mobile'
+        }];
+
         return (
             <Template>
                 <div className="sell-box clearfix">
@@ -111,15 +108,16 @@ class Page extends Component {
                         <div className="sub-title">
                             <b></b>
                             <span>在线人数</span>
-                            <p><span>人数:</span><span>{this.props.user.onlineUser.length}</span></p>
+                            <p><span>人数:</span><span>{this.props.user.onlineUser.total}</span></p>
                         </div>
                         <Table
                             columns={columns}
                             rowKey={record => record.uuid}
-                            dataSource={user.onlineUser}
+                            dataSource={data}
                             pagination={this.state.pagination}
                             onChange={this.handleTableChange}
-                            loading={this.state.loading}
+                            locale={this.state.locale}
+                            // loading={this.state.loading}
                         />
                     </div>
                 </div>

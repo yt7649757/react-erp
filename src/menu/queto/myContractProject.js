@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Template from '../../common/template';
-import { Table, Divider } from 'antd';
+import { Table, Divider, Button } from 'antd';
 
 
-class ShowContractProjectList extends Component {
+class MyContractProject extends Component {
     render() {
         const columns = [{
             title: '预算书编号',
@@ -57,4 +57,4 @@ class ShowContractProjectList extends Component {
     }
 }
 
-export default ShowContractProjectList
+export default MyContractProject
