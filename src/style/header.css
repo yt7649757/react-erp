@@ -10,17 +10,13 @@
     left: 0;
     z-index: 999;
     border-bottom: 1px solid #cccccc;
-    box-shadow:0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    box-shadow:0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
 
 .header .logo {
-    transition: all .5s;
     cursor: pointer;
-    /*filter: grayscale(100%);*/
-    vertical-align: middle;
     width: 177px;
-    height: 40px;
-    margin-top: 10px;
+    position: relative;
     float: left;
 }
 
@@ -32,40 +28,66 @@
     vertical-align: middle;
     margin-left: 57px;
     transition: all .5s;
-    /*margin: 21px 0 0 10px;*/
+    cursor: pointer;
+}
+
+.header .logo:before {
+    content: '';
+    width: 30px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: -250px;
+    background: linear-gradient(0deg,rgba(255,255,255,0),rgba(255,255,255,.2) 50%,rgba(255,255,255,.5));
+    transform: skew(-25deg);
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    transition: all 1s;
+    -webkit-animation: move 1s 1;
+    -moz-animation: move 1s 1;
+    animation: move 1s 1;
 }
 
 @keyframes move {
-    0% {
-        transform: scale(1);
-        transform: scale(1)
+    from {
+        left: -250px;
     }
-
-    10%,20% {
-        transform: scale(0.9) rotate(-3deg);
-        transform: scale(0.9) rotate(-3deg)
-    }
-
-    30%,50%,70%,90% {
-        transform: scale(1.1) rotate(3deg);
-        transform: scale(1.1) rotate(3deg)
-    }
-
-    40%,60%,80% {
-        transform: scale(1.1) rotate(-3deg);
-        transform: scale(1.1) rotate(-3deg)
-    }
-
-    100% {
-        transform: scale(1) rotate(0);
-        transform: scale(1) rotate(0)
+    to {
+        left: 177px;
     }
 }
 
-.bread-nav:hover {
-    animation: move 1s infinite;
-}
+/*@keyframes move {*/
+    /*0% {*/
+        /*transform: scale(1);*/
+        /*transform: scale(1)*/
+    /*}*/
 
-.header .logo:hover {
-    filter: none;
-}
+    /*10%,20% {*/
+        /*transform: scale(0.9) rotate(-3deg);*/
+        /*transform: scale(0.9) rotate(-3deg)*/
+    /*}*/
+
+    /*30%,50%,70%,90% {*/
+        /*transform: scale(1.1) rotate(3deg);*/
+        /*transform: scale(1.1) rotate(3deg)*/
+    /*}*/
+
+    /*40%,60%,80% {*/
+        /*transform: scale(1.1) rotate(-3deg);*/
+        /*transform: scale(1.1) rotate(-3deg)*/
+    /*}*/
+
+    /*100% {*/
+        /*transform: scale(1) rotate(0);*/
+        /*transform: scale(1) rotate(0)*/
+    /*}*/
+/*}*/
+
+/*.bread-nav:hover {*/
+    /*animation: move 1s infinite;*/
+/*}*/
+
+/*.header .logo:hover {*/
+    /*filter: none;*/
+/*}*/

@@ -347,16 +347,16 @@ class RoleList extends Component {
                     <Button type="default" onClick={() => this.showModal('update')} style={{marginRight: 5}}>
                         编辑
                     </Button>
-                    <Button type="dashed" icon="redo" onClick={this.request} style={{marginRight: 5}}>
+                    <Button icon="redo" onClick={this.request} style={{marginRight: 5}}>
                         刷新
                     </Button>
                     <Button type="danger" onClick={this.showConfirm} style={{marginRight: 5}}>
                         删除
                     </Button>
-                    <Button type="dashed" icon="delete" onClick={this.changeStatus} style={{marginRight: 5}} >
+                    <Button icon="delete" onClick={this.changeStatus} style={{marginRight: 5}} >
                         回收站
                     </Button>
-                    <Button type="dashed"  onClick={this.showAll} >
+                    <Button onClick={this.showAll} >
                         显示全部
                     </Button>
                 </div>

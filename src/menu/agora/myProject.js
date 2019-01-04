@@ -440,22 +440,22 @@ class MyProject extends Component {
                     <Button type="primary" onClick={this.showModal.bind(this, 'UselessForm')} style={{marginRight: 5}}>
                         废单申请
                     </Button>
-                    <Button type="dashed" onClick={this.showModal.bind(this, 'EditForm', 900)} style={{marginRight: 5}}>
+                    <Button onClick={this.showModal.bind(this, 'EditForm', 900)} style={{marginRight: 5}}>
                         修改
                     </Button>
                     <Button type="danger" onClick={showConfirm} style={{marginRight: 5}}>
                         删除
                     </Button>
-                    <Button type="default" onClick={this.showMoreInfo} style={{marginRight: 5}}>
+                    <Button onClick={this.showMoreInfo} style={{marginRight: 5}}>
                         {this.state.showMoreInfoText ? '显示更多信息' : '隐藏更多信息'}
                     </Button>
-                    <Button type="default" onClick={this.showCheckInfo} style={{marginRight: 5}}>
+                    <Button onClick={this.showCheckInfo} style={{marginRight: 5}}>
                         {this.state.showCheckInfoText ? '显示审核信息' : '隐藏审核信息'}
                     </Button>
-                    <Button type="dashed" icon="delete" onClick={this.changeStatus} style={{marginRight: 5}}>
+                    <Button icon="delete" onClick={this.changeStatus} style={{marginRight: 5}}>
                         回收站
                     </Button>
-                    <Button type="dashed" onClick={this.showAll}>
+                    <Button onClick={this.showAll}>
                         显示全部
                     </Button>
                 </div>

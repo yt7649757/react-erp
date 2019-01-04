@@ -25,7 +25,7 @@ axios.interceptors.response.use(
         if (error.response) {
             switch (error.response.status) {
                 case 401:
-                if(!window.lock) {
+                if(!window.lock && window.location.hash !== '#/') {
                     window.lock = true
                     sessionStorage.clear()
                     message.error('你的身份已过期，请重新登录');

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Template from '../common/template'
 import '../style/page/index.css'
 import Circle from '../component/circle'
-import {Table, Badge, Spin  } from 'antd';
+import {Table, Badge } from 'antd';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as userActions from '../redux/action/user';
@@ -18,7 +18,8 @@ class Page extends Component {
             },
             locale: {
                 emptyText: '加载中'
-            }
+            },
+            isSaved: false
         };
     }
 
@@ -27,7 +28,6 @@ class Page extends Component {
         this.props.userActions.getUserWork()
         this.props.userActions.getMessage()
     }
-
 
     getOnlineUser = (page = 1,size = 4) => {
         const pagination = {...this.state.pagination};

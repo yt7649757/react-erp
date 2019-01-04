@@ -103,20 +103,97 @@ import MyEmail from "../menu/ceo/myEmail";
 import ShowRefundPriceProject from "../menu/ceo/showRefundPriceProject";
 import DesignAchievement from "../menu/ceo/designAchievement";
 import ShowProListByCom from "../menu/ceo/showProListByCom";
+import CpDepartmentManage from "../menu/personnel/cpDepartmentManage";
+import CpJobManage from "../menu/personnel/cpJobManage";
+import CheckLeaveList from "../menu/personnel/checkLeaveList";
+import CheckPlan from "../menu/personnel/checkPlan";
+import CheckSpecial from "../menu/personnel/checkSpecial";
+import CheckCarApply from "../menu/personnel/checkCarApply";
+import CheckSuppliesApply from "../menu/personnel/checkSuppliesApply";
+import CpUserAdd from "../menu/personnel/cpUserAdd";
+import PasswordReset from "../menu/personnel/passwordReset";
+import UserwxList from "../menu/personnel/userwxList";
+import PersonalRecord from "../menu/personnel/personalRecord";
+import CustomerEntry from "../menu/personnel/customerEntry";
+import MyEntryList from "../menu/personnel/myEntryList";
+import ShowServiceDepList from "../menu/personnel/showServiceDepList";
+import CpWasteApplyList from "../menu/personnel/cpWasteApplyList";
+import CpServicerAchievement from "../menu/personnel/cpServicerAchievement";
+import ShowseverUserProject from "../menu/personnel/showSeverUserProject";
+import ShowWasteSingleListCopy from "../menu/personnel/showWasteSingleListCopy";
+import ShowWasteProjectApplyCopy from "../menu/personnel/showWasteProjectApplyCopy";
+import AddOfficeSupplies from "../menu/personnel/addOfficeSupplies";
+import CpSuppliesList from "../menu/personnel/CpSuppliesList";
+import AddOfficeVehicle from "../menu/personnel/addOfficeVehicle";
+import CpCarList from "../menu/personnel/cpCarList";
+import AddMaterialSupplier from "../menu/material/addMaterialSupplier";
+import SupplierList from "../menu/material/supplierList";
+import CpMaterialCategory from "../menu/material/cpMaterialCategory";
+import PrimaryMaterialEntry from "../menu/material/primaryMaterialEntry";
+import PrimaryMaterialList from "../menu/material/primaryMaterialList";
+import AuxiliaryMaterialList from "../menu/material/auxiliaryMaterialList";
+import ShowEnginProject from "../menu/material/showEnginProject";
+import ProjectMaterialApply from "../menu/material/projectMaterialApply";
+import CheckMaterialPurchase from "../menu/material/checkMaterialPurchase";
+import AcceptanceMaterial from "../menu/material/acceptanceMaterial";
+import ShowProjectMaterialAudit from "../menu/project/showProjectMaterialAudit";
+import ProjectAcceptance from "../menu/project/projectAcceptance";
+import ProjectCompleteAccept from "../menu/project/projectCompleteAccept";
+import ProjectUnderConstruction from "../menu/project/projectUnderConstruction";
+import ShowProjectPayment from "../menu/project/showProjectPayment";
+import ShowProjectSuccess from "../menu/project/showProjectSuccess";
+import ProjectReady from "../menu/project/projectReady";
+import MyConstructionProject from "../menu/project/MyConstructionProject";
+import SystemStatus from "../menu/system/systemStatus";
+import PhoneMenu from "../menu/system/phoneMenu";
+import WxMenu from "../menu/system/wxMenu";
+import Version from "../menu/other/version";
+import ExcellentTeam from "../menu/other/excellentTeam";
+import ProjectExample from "../menu/other/projectExample";
+import AuxiliaryMaterialmall from "../menu/other/auxiliaryMaterialmall";
+import PrimaryMaterialmall from "../menu/other/primaryMaterialmall";
 
 export const config = [
     {
         path: '/',
         exact: true,
-        component: WrappedNormalLoginForm,
+        component: WrappedNormalLoginForm
     },
-    // {
-    //     name: '版本检测',
-    //     path: '/install/update/checkUpdate',
-    //     component: Test,
-    //     private: true,
-    // },
     {
+        name: '版本检测',
+        path: '/install/update/checkUpdate',
+        component: Version,
+        private: true,
+        exact: true
+    },
+    {
+        name: '优秀团队',
+        path: '/erp/Index/team',
+        component: ExcellentTeam,
+        private: true,
+        exact: true
+    },{
+        name: '精美案例',
+        path: '/erp/Index/electron',
+        component: ProjectExample,
+        private: true,
+        exact: true
+    },{
+        name: '主材商城',
+        path: '/erp/index/material',
+        private: true,
+        component: PrimaryMaterialmall,
+        exact: true
+    },
+    {
+        name: '辅材商城',
+        path: '/erp/index/material_auxiliary',
+        private: true,
+        component: AuxiliaryMaterialmall,
+        exact: true
+    },
+    {
+        name: '主页',
         path: '/erp',
         exact: true,
         component: Page,
@@ -170,6 +247,15 @@ export const config = [
             {
                 path: '/erp/System/nodeList',
                 component: NodeList
+            },{
+                path: '/erp/System/trackstatuslist',
+                component: SystemStatus
+            },{
+                path: '/erp/System/nodeMobileList',
+                component: PhoneMenu
+            },{
+                path: '/erp/System/weMenuList',
+                component: WxMenu
             }
         ]
     },
@@ -459,6 +545,141 @@ export const config = [
         },{
             path: '/erp/Statistics/showDesignData',
             component: DesignAchievement
+        }]
+    },{
+        name: '行政人事',
+        private: true,
+        children: [{
+            path: '/erp/work/department',
+            component: CpDepartmentManage
+        },{
+            path: '/erp/work/jobs',
+            component: CpJobManage
+        },{
+            path: '/erp/System/leavenotList',
+            component: CheckLeaveList
+        },{
+            path: '/erp/System/workexamineList',
+            component: CheckPlan
+        },{
+            path: '/erp/Work/showManagerStatus',
+            component: CheckSpecial
+        },{
+            path: '/erp/OfficeVehicle/showApplyVehicleList',
+            component: CheckCarApply
+        },{
+            path: '/erp/OfficeSupplies/showSuppliesApply',
+            component: CheckSuppliesApply
+        },{
+            path: '/erp/User/showUserAdd',
+            component: CpUserAdd
+        },{
+            path: '/erp/work/showUserPassword',
+            component: PasswordReset
+        },{
+            path: '/erp/User/showUserWX',
+            component: UserwxList
+        },{
+            path: '/erp/User/showUserFiles',
+            component: PersonalRecord
+        },{
+            path: '/erp/Project/showProjectEntryCopy',
+            component: CustomerEntry
+        },{
+            path: '/erp/Project/showProjectUserListCopy',
+            component: MyEntryList
+        },{
+            path: '/erp/Project/showServiceDepList',
+            component: ShowServiceDepList
+        },{
+            path: '/erp/Project/wasteApplyList',
+            component: CpWasteApplyList
+        },{
+            path: '/erp/Statistics/serviceData',
+            component: CpServicerAchievement
+        },{
+            path: '/erp/TransferredProject/showSeverUserProject',
+            component: ShowseverUserProject
+        },{
+            path: '/erp/WasteSingle/showWasteSingleListCopy',
+            component: ShowWasteSingleListCopy
+        },{
+            path: '/erp/WasteSingle/showWasteProjectApplyCopy',
+            component: ShowWasteProjectApplyCopy
+        },{
+            path: '/erp/OfficeSupplies/addOfficeSupplies',
+            component: AddOfficeSupplies
+        },{
+            path: '/erp/OfficeSupplies/officeSuppliesList',
+            component: CpSuppliesList
+        },{
+            path: '/erp/OfficeVehicle/addOfficeVehicle',
+            component: AddOfficeVehicle
+        },{
+            path: '/erp/OfficeVehicle/showCarList',
+            component: CpCarList
+        }]
+    },{
+        name: '材料管理',
+        private: true,
+        children: [{
+            path: '/erp/Material/showMaterialSupplier',
+            component: AddMaterialSupplier
+        },{
+            path: '/erp/Material/showSupplierList',
+            component: SupplierList
+        },{
+            path: '/erp/Material/showMaterialCategory',
+            component: CpMaterialCategory
+        },{
+            path: '/erp/Material/showMaterialAdd',
+            component: PrimaryMaterialEntry
+        },{
+            path: '/erp/Material/materiallist',
+            component: PrimaryMaterialList
+        },{
+            path: '/erp/Material/materialAuxiliaryList',
+            component: AuxiliaryMaterialList
+        },{
+            path: '/erp/engin/showEnginProject',
+            component: ShowEnginProject
+        },{
+            path: '/erp/Engin/showProjectMaterialList',
+            component: ProjectMaterialApply
+        },{
+            path: '/erp/Engin/showProjectBuyMaterial',
+            component: CheckMaterialPurchase
+        },{
+            path: '/erp/Engin/showAcceptanceMaterial',
+            component: AcceptanceMaterial
+        }]
+    },{
+        name: '工程管理',
+        private: true,
+        children: [{
+            path: '/erp/Engin/showProjectMaterialAudit',
+            component: ShowProjectMaterialAudit
+        },{
+            path: '/erp/EnginProject/showBuildApplyProject',
+            component: ProjectAcceptance
+        },{
+            path: '/erp/EnginProject/showProjectCompletionList',
+            component: ProjectCompleteAccept
+        },{
+            path: '/erp/EnginProject/showProjectOfUser',
+            component: ProjectUnderConstruction
+        },{
+            path: '/erp/ProjectPayment/showProjectPayment',
+            component: ShowProjectPayment
+        },{
+            path: '/erp/EnginProject/showProjectSuccess',
+            component: ShowProjectSuccess
+        },{
+            path: '/erp/BuildNone/showBuildProjectList',
+            component: ProjectReady
+        },{
+            path: '/erp/BuildNone/showBuildProjectOfMy',
+            component: MyConstructionProject
         }]
     }
 ]

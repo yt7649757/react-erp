@@ -55,7 +55,7 @@ class NodeList extends Component {
         this.setState({
             loading: true
         })
-        var res = await this.props.systemManageActions.getNodeList(params, pagination.pageSize, status)
+        let res = await this.props.systemManageActions.getNodeList(params, pagination.pageSize, status)
         if (res) {
             pagination.total = res.data.total;
 
@@ -361,22 +361,22 @@ class NodeList extends Component {
         return (
             <Template>
                 <div className="operate">
-                    <Button type="primary" onClick={this.showModal} style={{marginRight: 5}}>
+                    <Button onClick={this.showModal} style={{marginRight: 5}}>
                         添加
                     </Button>
                     <Button type="default" onClick={() => this.showModal('update')} style={{marginRight: 5}}>
                         编辑
                     </Button>
-                    <Button type="dashed" icon="redo" onClick={this.request} style={{marginRight: 5}}>
+                    <Button icon="redo" onClick={this.request} style={{marginRight: 5}}>
                         刷新
                     </Button>
                     <Button type="danger" onClick={this.showConfirm} style={{marginRight: 5}}>
                         删除
                     </Button>
-                    <Button type="dashed" icon="delete" onClick={this.changeStatus} style={{marginRight: 5}} >
+                    <Button icon="delete" onClick={this.changeStatus} style={{marginRight: 5}} >
                         回收站
                     </Button>
-                    <Button type="dashed"  onClick={this.showAll} >
+                    <Button onClick={this.showAll} >
                         显示全部
                     </Button>
                 </div>

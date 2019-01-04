@@ -1,6 +1,5 @@
 import * as types from '../constants/types';
 
-//页面刷新redux的初始状态
 const initialState = {
     access_token: '',
     status: '',

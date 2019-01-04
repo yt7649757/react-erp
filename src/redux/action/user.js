@@ -1,13 +1,8 @@
 import * as types from '../constants/types';
-// import axios from 'axios';
 import cookie from 'react-cookies';
 import {port} from '../../common/port'
 import { message } from 'antd'
 import axios  from '../../utils/checkToken'
-
-// const token = cookie.load('access_token')
-//全局设置请求头(在请求头中携带token,这样下面的请求url无需写token了)
-// axios.defaults.headers.common['Authorization'] = 'Bearer' + token;
 
 export const login = (username, password, remember) => {
     return (dispatch) => {
