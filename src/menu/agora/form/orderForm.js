@@ -5,8 +5,6 @@ import {connect} from 'react-redux';
 import * as AgoraActions from '../../../redux/action/agora/agora';
 
 const FormItem = Form.Item;
-const {TextArea} = Input;
-
 const Option = Select.Option;
 
 

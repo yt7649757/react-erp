@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Template from '../../common/template';
-import { Table, Divider, Form, Input, Select } from 'antd';
+import { Divider, Form, Input, Select } from 'antd';
 import Layer from '../../component/layer';
 import CreateTab from '../../utils/createTab';
 import TableComponent from '../../component/tableComponent';

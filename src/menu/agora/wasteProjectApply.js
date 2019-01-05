@@ -3,7 +3,7 @@ import Template from '../../common/template';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as AgoraActions from '../../redux/action/agora/agora';
-import { Divider, Form, Input, Select } from 'antd';
+import { Form, Input, Select } from 'antd';
 import TableComponent from '../../component/tableComponent';
 import Layer from '../../component/layer';
 const FormItem = Form.Item;

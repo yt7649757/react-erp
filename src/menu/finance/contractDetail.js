@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Template from '../../common/template';
-import { Table, Input, Button } from 'antd';
+import { Input, Button } from 'antd';
 import CreateTab from '../../utils/createTab';
 import TableComponent from '../../component/tableComponent';
 const Search = Input.Search;

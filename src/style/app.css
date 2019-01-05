@@ -1,8 +1,7 @@
 /*@import '~antd/dist/antd.css';*/
 
 body {
-    /*min-width: 1360px;*/
-    /*overflow-x: scroll;*/
+
 }
 
 .header {
@@ -59,7 +58,7 @@ body {
 }
 
 
-clearfix:before,.clearfix:after{
+.clearfix:before,.clearfix:after{
     content:"";
     display:table;
 }

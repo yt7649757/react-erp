@@ -94,7 +94,7 @@ class UserLoginList extends Component {
             title: '状态',
             dataIndex: 'status',
             render: function (text, record, index) {
-                return record.status == 1 ? '正常' : '已刪除'
+                return record.status === 1 ? '正常' : '已刪除'
             }
         }, {
             title: '创建时间',

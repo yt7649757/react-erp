@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {Form, Input, Select } from 'antd';
+import {Form, Select } from 'antd';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as AgoraActions from '../../../redux/action/agora/agora';
-import RoomStructure from "../table/roomStructure";
+// import RoomStructure from "../table/roomStructure";
 
 const FormItem = Form.Item;
 // const {TextArea} = Input;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 import {
     Table, Input, InputNumber, Popconfirm, Form, Button
 } from 'antd';
@@ -150,7 +151,9 @@ class ShowPayMentList extends Component {
     }
 
     edit(key) {
-        this.setState({ editingKey: key });
+        this.setState({ editingKey: key },() => {
+            $('#name').focus()
+        });
     }
 
     handleAdd = (row) => {

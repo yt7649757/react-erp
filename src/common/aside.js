@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Layout, Menu, Icon} from 'antd';
+import {Layout, Menu } from 'antd';
 import {Link} from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 import emitter from "./ev"

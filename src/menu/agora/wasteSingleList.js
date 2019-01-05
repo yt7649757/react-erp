@@ -3,7 +3,7 @@ import Template from '../../common/template';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as AgoraActions from '../../redux/action/agora/agora';
-import { Divider, Modal, Form, Input } from 'antd';
+import { Divider, Form, Input } from 'antd';
 import TableComponent from '../../component/tableComponent';
 import Layer from '../../component/layer';
 

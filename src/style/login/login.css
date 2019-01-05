@@ -114,7 +114,8 @@ ol, ul {
 .form-title i {
     width: 6px;
     height: 25px;
-    float: left;
+    display: inline-block;
+    vertical-align: text-bottom;
     margin-right: 10px;
     background: url(../../asset/img/square.png) no-repeat center;
 }
@@ -124,6 +125,7 @@ ol, ul {
     font-family:SourceHanSansCN-Regular;
     font-weight:400;
     color:rgba(85,85,85,1);
+    display: inline-block;
 }
 
 .login-bx {

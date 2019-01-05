@@ -54,6 +54,11 @@ class Page extends Component {
        this.getOnlineUser(pagination.current, 4)
     }
 
+    componentWillUnmount() {
+        this.setState = (state,callback)=>{
+            return false
+        }
+    }
 
     render() {
         const {user} = this.props

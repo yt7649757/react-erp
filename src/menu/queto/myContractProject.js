@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Template from '../../common/template';
-import { Table, Divider, Button } from 'antd';
+import { Table, Divider } from 'antd';
 
 
 class MyContractProject extends Component {
