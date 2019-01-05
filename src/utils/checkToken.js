@@ -1,11 +1,14 @@
 import axios from 'axios';
 import cookie from 'react-cookies';
-import { message } from 'antd';
+import  message from '../common/message';
 import { createHashHistory } from 'history';
 
 window.lock = false;
 axios.interceptors.request.use(
     config => {
+        if(!window.navigator.onLine) {
+            message.error('请检查你的网络状态')
+        }
         const token = cookie.load('access_token')
         if (token) {
             config.headers.Authorization = 'Bearer ' + token;

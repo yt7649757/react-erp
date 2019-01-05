@@ -186,7 +186,7 @@ class WorkRegister extends Component {
                                     //     required: true, message: '请输入装修档次!',
                                     // }],
                                 })(
-                                    <Select  onFocus={this.requestSelect.bind(this,'decoration_grade')} onChange={this.handleChange.bind(this,'decoration_grade')}>
+                                    <Select notFoundContent="加载中"  onFocus={this.requestSelect.bind(this,'decoration_grade')} onChange={this.handleChange.bind(this,'decoration_grade')}>
                                         {
                                             selectGroup['decoration_grade'] ? (
                                                 Object.keys(selectGroup['decoration_grade']).map(key => {
@@ -216,7 +216,7 @@ class WorkRegister extends Component {
                                     //     required: true, message: '请输入装修风格!',
                                     // }],
                                 })(
-                                    <Select  onFocus={this.requestSelect.bind(this,'decoration_style')} onChange={this.handleChange.bind(this,'decoration_style')}>
+                                    <Select notFoundContent="加载中" onFocus={this.requestSelect.bind(this,'decoration_style')} onChange={this.handleChange.bind(this,'decoration_style')}>
                                         {
                                             selectGroup['decoration_style'] ? (
                                                 Object.keys(selectGroup['decoration_style']).map(key => {
@@ -241,7 +241,7 @@ class WorkRegister extends Component {
                                 {getFieldDecorator('decoration_type', {
                                     initialValue: '',
                                 })(
-                                    <Select  onFocus={this.requestSelect.bind(this,'decoration_type')} onChange={this.handleChange.bind(this,'decoration_type')}>
+                                    <Select notFoundContent="加载中" onFocus={this.requestSelect.bind(this,'decoration_type')} onChange={this.handleChange.bind(this,'decoration_type')}>
                                         {
                                             selectGroup['decoration_type'] ? (
                                                 Object.keys(selectGroup['decoration_type']).map(key => {
@@ -264,7 +264,7 @@ class WorkRegister extends Component {
                                 {getFieldDecorator('color_orientation', {
                                     initialValue: '',
                                 })(
-                                    <Select  onFocus={this.requestSelect.bind(this,'color_orientation')} onChange={this.handleChange.bind(this,'color_orientation')}>
+                                    <Select notFoundContent="加载中" onFocus={this.requestSelect.bind(this,'color_orientation')} onChange={this.handleChange.bind(this,'color_orientation')}>
                                         {
                                             selectGroup['color_orientation'] ? (
                                                 Object.keys(selectGroup['color_orientation']).map(key => {
@@ -287,7 +287,7 @@ class WorkRegister extends Component {
                                 {getFieldDecorator('customer_source', {
                                     initialValue: '',
                                 })(
-                                    <Select onFocus={this.requestSelect.bind(this,'customer_source')} onChange={this.handleChange.bind(this,'customer_source')}>
+                                    <Select notFoundContent="加载中"  onFocus={this.requestSelect.bind(this,'customer_source')} onChange={this.handleChange.bind(this,'customer_source')}>
                                         {
                                             selectGroup['customer_source'] ? (
                                                 Object.keys(selectGroup['customer_source']).map(key => {
@@ -381,7 +381,7 @@ class WorkRegister extends Component {
                                         { required: true, message: '请选择!' },
                                     ],
                                 })(
-                                    <Select onFocus={this.requestSelect.bind(this,'sex')} onChange={this.handleChange.bind(this,'sex')}>
+                                    <Select notFoundContent="加载中" onFocus={this.requestSelect.bind(this,'sex')} onChange={this.handleChange.bind(this,'sex')}>
                                         {
                                             selectGroup['sex'] ? (
                                                 Object.keys(selectGroup['sex']).map(key => {
@@ -449,7 +449,7 @@ class WorkRegister extends Component {
                                         required: true, message: '请选择!',
                                     }],
                                 })(
-                                    <Select onFocus={this.requestSelect.bind(this,'householder_relation')} onChange={this.handleChange.bind(this,'householder_relation')}>
+                                    <Select notFoundContent="加载中" onFocus={this.requestSelect.bind(this,'householder_relation')} onChange={this.handleChange.bind(this,'householder_relation')}>
                                         {
                                             selectGroup['householder_relation'] ? (
                                                 Object.keys(selectGroup['householder_relation']).map(key => {
