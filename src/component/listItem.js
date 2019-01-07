@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import '../style/listItem.css';
 
-class ListItem extends Component {
+class ListItem extends PureComponent {
     render() {
         return (
             <ul className="news-list clearfix">

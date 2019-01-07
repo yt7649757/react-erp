@@ -1,7 +1,7 @@
 /*@import '~antd/dist/antd.css';*/
 
 body {
-
+    min-width: 1280px;
 }
 
 .header {

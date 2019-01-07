@@ -18,6 +18,7 @@
     width: 177px;
     position: relative;
     float: left;
+    height: 64px;
 }
 
 .header .bread-nav {
@@ -25,7 +26,7 @@
     display: inline-block;
     width: 24px;
     height: 19px;
-    vertical-align: middle;
+    vertical-align: -8px;
     margin-left: 57px;
     transition: all .5s;
     cursor: pointer;
@@ -46,6 +47,14 @@
     -webkit-animation: move 1s 1;
     -moz-animation: move 1s 1;
     animation: move 1s 1;
+}
+
+.header .logo:after {
+    content: '';
+    height: 100%;
+    width: 0;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 @keyframes move {

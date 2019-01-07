@@ -147,7 +147,7 @@ class HeaderComponent extends Component {
         return (
             <Header className="header">
                 <div style={{float: 'left'}}>
-                    <div className="logo"><img src={require('../asset/img/logo.png')} alt="logo"/></div>
+                    <div className="logo"><img src={require('../asset/img/logo1.png')} alt="logo"/></div>
                     <span className="bread-nav" onClick={this.closeAside}></span>
                 </div>
                 <div className="userInfo">

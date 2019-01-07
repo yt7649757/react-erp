@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as userActions from '../redux/action/user';
 import '../style/login/login.css';
+import '../test/input';
 
 const FormItem = Form.Item;
 
@@ -62,7 +63,7 @@ class Login extends Component {
                     <div className="bx">
                         <div className="logo">
                             <a href="#">
-                                <img src={require('../asset/img/login-logo.png')} alt="logo"/>
+                                <img src={require('../asset/img/logo1.png')} alt="logo"/>
                             </a>
                         </div>
                         <div className="apply-use">
