@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 import { Table, Divider } from 'antd';
 
 
@@ -50,9 +50,9 @@ class MyContractProject extends Component {
 
 
         return (
-            <Template>
+            <div>
                 <Table columns={columns} dataSource={data} />
-            </Template>
+            </div>
         )
     }
 }

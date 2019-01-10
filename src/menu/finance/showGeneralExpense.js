@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 import { Divider, Tabs } from 'antd';
 import CollectApply from './payReceive/collectApply';
 import PayMentApply from './payReceive/paymentApply';
@@ -15,7 +15,7 @@ class ShowGeneralExpense extends Component {
     // }
     render() {
         return(
-            <Template>
+            <div>
                 <Divider orientation="left">收款</Divider>
                 <Tabs defaultActiveKey="1">
                     <TabPane tab="收款申请" key="1">
@@ -37,7 +37,7 @@ class ShowGeneralExpense extends Component {
                         <ActualRefund/>
                     </TabPane>
                 </Tabs>
-            </Template>
+            </div>
         )
     }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 import TableComponent from '../../component/tableComponent';
 import CreateTab from '../../utils/createTab';
 import Layer from '../../component/layer';
@@ -104,7 +104,7 @@ class ShowContractProjectList extends Component {
 
 
         return (
-            <Template>
+            <div>
                 <TableComponent
                     columns={columns}
                     size="middle"
@@ -116,7 +116,7 @@ class ShowContractProjectList extends Component {
                 <Layer ref="layer" title="项目日志" footer={null} width={600} >
                     <Log/>
                 </Layer>
-            </Template>
+            </div>
         )
     }
 }

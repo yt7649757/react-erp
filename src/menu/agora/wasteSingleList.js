@@ -69,7 +69,7 @@ class WasteSingleList extends Component {
         }]
 
         return (
-            <Template>
+            <div>
                 <TableComponent columns={columns} size="middle" testUrl="https://www.easy-mock.com/mock/5c185df39172fa10e61b63b3/erp/showWasteSingleList" />
                 <Layer ref="layer" title="申请跟踪" doSubmit={this.doSubmit} reset={this.reset}>
                     <Form>
@@ -89,7 +89,7 @@ class WasteSingleList extends Component {
                     </Form>
 
                 </Layer>
-            </Template>
+            </div>
         )
     }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 import { Divider, Form, Input, Select } from 'antd';
 import Layer from '../../component/layer';
 import CreateTab from '../../utils/createTab';
@@ -113,7 +113,7 @@ class AccountManage extends Component {
         }];
 
         return (
-            <Template>
+            <div>
                 <TableComponent
                     columns={columns}
                     size="middle"
@@ -225,7 +225,7 @@ class AccountManage extends Component {
                         ):null
                     }
                 </Layer>
-            </Template>
+            </div>
         )
     }
 }

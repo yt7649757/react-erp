@@ -359,7 +359,7 @@ class NodeList extends Component {
         console.log(roleTree)
 
         return (
-            <Template>
+            <div>
                 <div className="operate">
                     <Button onClick={this.showModal} style={{marginRight: 5}}>
                         添加
@@ -598,7 +598,7 @@ class NodeList extends Component {
                     </Form>
 
                 </Modal>
-            </Template>
+            </div>
         )
     }
 }

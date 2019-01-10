@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 
 class NoticeIssue extends Component {
     render() {
         return(
-            <Template>
+            <div>
                 <div>132</div>
-            </Template>
+            </div>
         )
     }
 }

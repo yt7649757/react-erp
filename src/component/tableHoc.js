@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { Modal, message } from 'antd';
 
 const confirm = Modal.confirm;
 
-const TableHoc = (WrappedComponent) => class extends WrappedComponent {
+const TableHoc = (WrappedComponent) => class extends React.Component {
 
     showConfirm = (param) => {
         const _this = this;

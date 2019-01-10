@@ -1,8 +1,8 @@
 import * as types from '../constants/types';
 import cookie from 'react-cookies';
-import {port} from '../../common/port'
-import { message } from 'antd'
-import axios  from '../../utils/checkToken'
+import {port} from '../../common/port';
+import { message } from 'antd';
+import axios  from '../../utils/checkToken';
 
 export const login = (username, password, remember) => {
     return (dispatch) => {
@@ -66,7 +66,6 @@ export const getUserInfo = () => {
 }
 
 export const updatePas = (pas,newpas,newpas1) => {
-    //直接返回,无需传入reducer
     return (dispatch) => {
            return axios.put(port + '/api/erp/system/setpersonnelpassword', {
                 password: pas,
@@ -92,7 +91,7 @@ export const getSider = () => {
         axios.get( port + '/api/erp/index/getmenujson')
             .then(function (res) {
                 res.data.unshift({
-                    menu_id: "cccc123",
+                    menu_id: "indexPage",
                     icon: "./static/icon.png",
                     menu_name: " 首页",
                     pid: "12313123",
@@ -141,17 +140,17 @@ export const getUserWork = () => {
 }
 
 
-export const getMessage = () => {
-    return(dispatch) => {
-        axios.get('./static/news.json')
-            .then(function (res) {
-              dispatch({
-                  type: types.COMPAYN_MESSAGE,
-                  companyMessage: res.data
-              })
-            }).catch(error => {
-            console.log(error + '获取失败')
-        })
-    }
-}
-
+// export const getMessage = () => {
+//     return(dispatch) => {
+//         axios.get('./static/news.json')
+//             .then(function (res) {
+//               dispatch({
+//                   type: types.COMPAYN_MESSAGE,
+//                   companyMessage: res.data
+//               })
+//             }).catch(error => {
+//             console.log(error + '获取失败')
+//         })
+//     }
+// }
+//

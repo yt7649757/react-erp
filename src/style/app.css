@@ -126,3 +126,10 @@ body {
 .btn-group {
     margin-right: 5px;
 }
+
+.long-text {
+    width: 500px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap
+}

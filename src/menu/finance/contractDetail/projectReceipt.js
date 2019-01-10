@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Divider, Row, Col,Tabs } from 'antd';
-import Template from '../../../common/template';
+// import Template from '../../../common/template';
 import PayTable from './payTable';
 const TabPane = Tabs.TabPane;
 
@@ -22,7 +22,7 @@ class ProjectReceipt extends Component {
         }]
 
         return (
-            <Template>
+            <div>
                 <div style={{'backgroundColor': '#fff', paddingTop: 10}}>
                     <Divider>项目详情</Divider>
                     <div style={{padding: 20}}>
@@ -86,7 +86,7 @@ class ProjectReceipt extends Component {
 
 
                 </div>
-            </Template>
+            </div>
         )
     }
 }

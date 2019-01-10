@@ -104,7 +104,7 @@ class UserLoginList extends Component {
 
         const {data} = this.props.systemManage.userLoginList;
         return (
-            <Template>
+            <div>
                 <Table
                     rowKey={record => record.id}
                     style={{backgroundColor: '#fff'}}
@@ -115,7 +115,7 @@ class UserLoginList extends Component {
                     onChange={this.handleTableChange}
                     size="middle"
                 />
-            </Template>
+            </div>
         )
     }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 import TableComponent from '../../component/tableComponent';
 import TableHOC from '../../component/tableHoc';
 // import { Table } from 'antd';
@@ -34,13 +34,13 @@ class CollectStyleList extends Component {
         }];
 
         return (
-            <Template>
+            <div>
                 <TableComponent
                     columns={columns}
                     size="middle"
                     url="/api/erp/finance/collectstylelist"
                 />
-            </Template>
+            </div>
         )
     }
 }

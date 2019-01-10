@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 import TableComponent from '../../component/tableComponent';
 import { Input } from 'antd';
 import CreateTab from '../../utils/createTab';
@@ -46,7 +46,7 @@ class PriceCheckList extends Component {
 
 
         return (
-            <Template>
+            <div>
                 <div style={{marginBottom: '20px'}}>
                     <span style={{marginRight: '10px'}}>搜索条件:</span>
                     <span style={{marginRight: '10px'}}>项目名称:</span>
@@ -61,7 +61,7 @@ class PriceCheckList extends Component {
                     size="middle"
                     testUrl="https://www.easy-mock.com/mock/5c185df39172fa10e61b63b3/erp/erp/Finance/showProjectPriceCheck"
                 />
-            </Template>
+            </div>
         )
     }
 }

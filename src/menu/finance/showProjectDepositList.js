@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 import { Button, message, Form, Select, DatePicker, Input } from 'antd';
 import Layer from '../../component/layer';
 import TableComponent from '../../component/tableComponent';
@@ -103,7 +103,7 @@ class ShowProjectDepositList extends Component {
         };
 
         return (
-            <Template>
+            <div>
                 <div style={{marginBottom: '20px'}}>
                     <Button type="primary" className="btn-group" onClick={this.checkout}>审核</Button>
                     <Button className="btn-group" onClick={this.reload}>刷新</Button>
@@ -208,7 +208,7 @@ class ShowProjectDepositList extends Component {
 
                     </Form>
                 </Layer>
-            </Template>
+            </div>
         )
     }
 }

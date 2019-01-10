@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 import {Col, Row, Button, Form, Input, Select, DatePicker, Table} from 'antd';
 // import TableComponent from '../../component/tableComponent';
 import Layer from '../../component/layer';
@@ -138,7 +138,7 @@ class ProjectProgress extends Component {
         const url = '/api/erp/design/saveaddbudgetdata/guid/' + getId(this.props.history.location.pathname)
 
         return (
-            <Template>
+            <div>
                 <div style={{height: '50px', lineHeight: '50px'}}>
                     <Row type="flex" justify="space-between">
                         <Col>
@@ -237,7 +237,7 @@ class ProjectProgress extends Component {
 
                 </Layer>
 
-            </Template>
+            </div>
 
         )
     }

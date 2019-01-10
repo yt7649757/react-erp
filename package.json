@@ -9,6 +9,7 @@
     "events": "^3.0.0",
     "jquery": "^3.3.1",
     "prop-types": "^15.6.2",
+    "qs": "^6.6.0",
     "react": "^16.6.1",
     "react-cookies": "^0.1.0",
     "react-dom": "^16.6.1",
@@ -36,7 +37,9 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.2.3",
     "babel-plugin-import": "^1.11.0",
+    "babel-preset-env": "^1.7.0",
     "react-app-rewired": "^1.6.2",
     "redux-logger": "^3.0.6"
   }

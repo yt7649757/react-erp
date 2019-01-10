@@ -48,7 +48,7 @@ const data = [{
 class ExcellentTeam extends Component {
     render() {
         return(
-            <Template>
+          <Template>
                 <div className="teamContainer">
                     {
                        data.map((item,index) => {
@@ -68,7 +68,7 @@ class ExcellentTeam extends Component {
                 <div className="paging">
                     <Pagination defaultCurrent={6} total={500} />
                 </div>
-            </Template>
+          </Template>
         )
     }
 }

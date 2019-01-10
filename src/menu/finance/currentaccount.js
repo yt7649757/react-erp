@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 import { Button, DatePicker } from 'antd';
 import TableComponent from '../../component/tableComponent';
 
@@ -67,7 +67,7 @@ class Currentaccount extends Component {
         }]
 
         return(
-            <Template>
+            <div>
                 <div style={{marginBottom: 20}}>
                     <Button type="primary">新增收付款(日常)</Button>
                     <span style={{marginRight: '10px',marginLeft: '10px'}}>搜索条件:</span>
@@ -80,7 +80,7 @@ class Currentaccount extends Component {
                     columns={columns}
                     size="middle"
                 />
-            </Template>
+            </div>
         )
     }
 }

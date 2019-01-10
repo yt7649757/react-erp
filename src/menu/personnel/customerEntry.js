@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 
 class CustomerEntry extends Component {
     render() {
         return (
-            <Template>
+            <div>
                 <div>正在加载中...</div>
-            </Template>
+            </div>
         )
     }
 }

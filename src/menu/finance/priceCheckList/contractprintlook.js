@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Template from '../../../common/template';
+// import Template from '../../../common/template';
 import TableComponent from '../../../component/tableComponent';
 
 class Contractprintlook extends Component {
@@ -27,12 +27,12 @@ class Contractprintlook extends Component {
             dataIndex: 'desc'
         }]
         return (
-            <Template>
+            <div>
                 <TableComponent
                     columns={columns}
                     size="middle"
                 />
-            </Template>
+            </div>
         )
     }
 }

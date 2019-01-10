@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 import { Input, Button } from 'antd';
 import CreateTab from '../../utils/createTab';
 import TableComponent from '../../component/tableComponent';
@@ -40,7 +40,7 @@ class ContractDetail extends Component {
         }];
 
         return (
-            <Template>
+            <div>
                 <div style={{marginBottom: '10px'}}>
                     <Search
                         placeholder="请输入编号"
@@ -55,7 +55,7 @@ class ContractDetail extends Component {
                     size="middle"
                     testUrl="https://www.easy-mock.com/mock/5c185df39172fa10e61b63b3/erp/erp/FinanceProjectPrice/showProjectList"
                 />
-            </Template>
+            </div>
         )
     }
 }

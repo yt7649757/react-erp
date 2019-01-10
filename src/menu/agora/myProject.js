@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
+import emitter from "../../common/ev";
 import {Table, Divider, Button, Modal, message, Tag} from 'antd';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
@@ -7,7 +8,7 @@ import {withRouter} from 'react-router-dom';
 import * as AgoraActions from '../../redux/action/agora/agora';
 import {changeTitle} from "../../utils/changeTitle";
 import CreateTab from '../../utils/createTab';
-import TableHoc from '../../component/tableHoc'
+import TableHoc from '../../component/tableHoc';
 import OrderForm from './form/orderForm';
 import UselessForm from './form/uselessForm'
 import EditForm from './form/editForm';
@@ -18,10 +19,13 @@ import TableComponent from '../../component/tableComponent';
 let columns = [];
 let current = [];
 
+@TableHoc
 class MyProject extends Component {
 
     constructor(props) {
         super(props)
+        console.log(this.props)
+        console.log(props)
         this.state = {
             data: [],
             pagination: {
@@ -57,7 +61,7 @@ class MyProject extends Component {
         this.setState({
             loading: true
         })
-        var res = await this.props.agoraActions.getTables(params, pagination.pageSize, status)
+        let res = await this.props.agoraActions.getTables(params, pagination.pageSize, status)
 
         pagination.total = res && res.data.total;
 
@@ -80,6 +84,13 @@ class MyProject extends Component {
         this.state.settings.map(item => {
             this.props.agoraActions.getSelects(item)
         })
+        emitter.addListener('addProject',() => {
+            this.request()
+        })
+    }
+
+    componentWillUnmount() {
+        emitter.removeListener('addProject',this.request)
     }
 
     showMoreInfo = () => {
@@ -192,6 +203,7 @@ class MyProject extends Component {
 
     add = () => {
         this.props.history.push('/erp/Project/showProjectEntry')
+        emitter.emit('changeSelect')
     }
 
 
@@ -329,7 +341,6 @@ class MyProject extends Component {
         });
     }
 
-
     render() {
         const {data} = this.props.agora.tableList;
         const {selectGroup} = this.props.agora
@@ -428,8 +439,7 @@ class MyProject extends Component {
         const url = `/api/erp/project/showlog/project_guid/${guid}`
 
         return (
-            <Template>
-
+            <div>
                 <div className="operate">
                     <Button type="primary" onClick={this.add} style={{marginRight: 5}}>
                         添加
@@ -546,7 +556,7 @@ class MyProject extends Component {
                     <TableComponent columns={columns1} url={url}/>
                 </Modal>
 
-            </Template>
+            </div>
         )
     }
 }
@@ -565,4 +575,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(TableHoc(MyProject)))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MyProject))

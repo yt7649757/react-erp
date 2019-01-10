@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Template from '../../common/template'
+// import Template from '../../common/template'
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as SystemManageActions from '../../redux/action/system/systemManage';
@@ -144,7 +144,7 @@ class TreeList extends Component {
     render() {
         const { roleTree, checkedKeys } = this.state;
         return (
-            <Template>
+            <div>
                 <div className="role-tree">
                     <Tree
                         showLine={true}
@@ -171,7 +171,7 @@ class TreeList extends Component {
                         ): null
                     }
                 </div>
-            </Template>
+            </div>
         )
     }
 }

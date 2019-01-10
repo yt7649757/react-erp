@@ -107,7 +107,7 @@ class TransferredList extends Component {
 
 
         return (
-            <Template>
+            <div>
                 <Table
                     style={{backgroundColor: '#fff'}}
                     rowKey={record => record.guid }
@@ -121,7 +121,7 @@ class TransferredList extends Component {
                 <Layer ref="layer" title="添加附件" hasState >
                     <UploadForm/>
                 </Layer>
-            </Template>
+            </div>
         )
     }
 }

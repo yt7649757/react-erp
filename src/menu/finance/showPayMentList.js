@@ -3,7 +3,7 @@ import $ from 'jquery';
 import {
     Table, Input, InputNumber, Popconfirm, Form, Button
 } from 'antd';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as FinanceActions from '../../redux/action/finance/finance';
@@ -213,7 +213,7 @@ class ShowPayMentList extends Component {
         });
 
         return (
-            <Template>
+            <div>
                 <Button onClick={this.handleAdd} type="primary" style={{ marginBottom: 16 }}>
                     新增
                 </Button>
@@ -227,7 +227,7 @@ class ShowPayMentList extends Component {
                     rowClassName="editable-row"
                     size="middle"
                 />
-            </Template>
+            </div>
         );
     }
 

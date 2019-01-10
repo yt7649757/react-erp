@@ -111,7 +111,9 @@ class UselessList extends Component {
         },{
             title: '申请说明',
             dataIndex: 'apply_desc',
-            width: '30%'
+            render: (text) => (
+                <div className="long-text" title={text}>{text}</div>
+            )
         },{
             title: '操作',
             render: () => {
@@ -124,7 +126,7 @@ class UselessList extends Component {
 
 
         return (
-            <Template>
+            <div>
                 <Table
                     style={{backgroundColor: '#fff'}}
                     rowKey={record => record.guid}
@@ -187,7 +189,7 @@ class UselessList extends Component {
                     </Form>
                 </Modal>
 
-            </Template>
+            </div>
         )
     }
 }

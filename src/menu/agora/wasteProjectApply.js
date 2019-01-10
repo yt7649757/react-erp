@@ -70,7 +70,7 @@ class WasteProjectApply extends Component {
 
 
         return (
-            <Template>
+            <div>
                 <TableComponent columns={columns} size="middle" testUrl="https://www.easy-mock.com/mock/5c185df39172fa10e61b63b3/erp/showwasteprojectapply"/>
                 <Layer ref="layer" title="申请审核" doSubmit={this.doSubmit} reset={this.reset}>
                     <Form>
@@ -101,7 +101,7 @@ class WasteProjectApply extends Component {
                         </FormItem>
                     </Form>
                 </Layer>
-            </Template>
+            </div>
         )
     }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Template from '../../../common/template';
+// import Template from '../../../common/template';
 import TableComponent from '../../../component/tableComponent';
 
 class EngineeringDetail extends Component {
@@ -29,13 +29,13 @@ class EngineeringDetail extends Component {
         }]
 
         return (
-            <Template>
+            <div>
                 <TableComponent
                     title={() => '标题'}
                     columns={columns}
                     size="middle"
                 />
-            </Template>
+            </div>
         )
     }
 }

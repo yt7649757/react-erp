@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Template from '../../../common/template';
+// import Template from '../../../common/template';
 import TableComponent from '../../../component/tableComponent';
 import Layer from '../../../component/layer';
 import { getId } from "../../../utils/getId";
@@ -102,7 +102,7 @@ class Engineering extends Component {
         }]
 
         return (
-            <Template>
+            <div>
                 <Divider orientation="left">项目工程</Divider>
                 <div style={{marginBottom: '20px'}}>
                     <Button>合同预算浏览</Button>
@@ -125,7 +125,7 @@ class Engineering extends Component {
                         size="middle"
                     />
                 </Layer>
-            </Template>
+            </div>
         )
     }
 }

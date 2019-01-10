@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 // import { Table } from 'antd';
 import TableComponent from '../../component/tableComponent';
 
@@ -22,12 +22,12 @@ const data = [];
 class CollectCheck extends Component {
     render() {
         return (
-            <Template>
+            <div>
                 <TableComponent
                     columns={columns}
                     size="middle"
                 />
-            </Template>
+            </div>
         )
     }
 }

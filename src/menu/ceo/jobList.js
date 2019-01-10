@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 
 class JobList extends Component {
     render() {
         return (
-            <Template>
+            <div>
                 <div>123</div>
-            </Template>
+            </div>
         )
     }
 }

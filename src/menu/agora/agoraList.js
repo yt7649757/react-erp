@@ -41,7 +41,7 @@ class AgoraList extends Component {
         }];
 
         return (
-            <Template>
+            <div>
                 <div style={{marginBottom: '10px'}}>
                     <Search
                         placeholder="请输入姓名"
@@ -52,7 +52,7 @@ class AgoraList extends Component {
                     <Button style={{marginLeft: '10px', verticalAlign: 'top'}}>显示全部</Button>
                 </div>
                 <TableComponent columns={columns} url={url} size="middle" />
-            </Template>
+            </div>
         )
     }
 }

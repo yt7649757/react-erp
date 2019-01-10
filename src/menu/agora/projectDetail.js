@@ -212,7 +212,7 @@ class ProjectDetail extends Component {
         }]
 
         return (
-            <Template>
+            <div>
                 <div style={{'backgroundColor': '#fff', paddingTop: 10}}>
                     <Divider>项目详情</Divider>
                     <div style={{padding: 20}}>
@@ -379,7 +379,7 @@ class ProjectDetail extends Component {
                     }
 
                 </Modal>
-            </Template>
+            </div>
         )
     }
 }

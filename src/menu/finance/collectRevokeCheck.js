@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 import { Table } from 'antd';
 
 const columns = [{
@@ -20,9 +20,9 @@ const data = [];
 class CollectRevokeCheck extends Component {
     render() {
         return (
-            <Template>
+            <div>
                 <Table columns={columns} dataSource={data} />
-            </Template>
+            </div>
         )
     }
 }

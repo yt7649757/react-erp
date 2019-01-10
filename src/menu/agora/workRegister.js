@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Row, Col, Input, Button, Select, message } from 'antd';
-import Template from '../../common/template';
+// import Template from '../../common/template';
+import emitter from "../../common/ev";
 import '../../style/agora/workRegister.css'
 
 import {bindActionCreators} from 'redux';
@@ -12,12 +13,12 @@ const Option = Select.Option;
 
 const formItemLayout = {
     labelCol: {
-        xs: { span: 24 },
-        sm: { span: 8 },
+        xs: { span: 7 },
+        sm: { span: 7 },
     },
     wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 16 },
+        xs: { span: 17 },
+        sm: { span: 17 },
     },
 };
 
@@ -51,6 +52,7 @@ class WorkRegister extends Component {
                         this.setState({
                             loading: false
                         },() => {
+                            emitter.emit('addProject')
                             this.reset()
                             message.info('提交成功')
                         })
@@ -89,7 +91,7 @@ class WorkRegister extends Component {
         const { getFieldDecorator } = this.props.form;
         const { selectGroup } = this.props.agora
         return (
-            <Template>
+            <div>
             <form className="project-info" onSubmit={this.handleSubmit} onReset={this.reset} >
                 <div className="top shadow">
                     <div className="project-title">
@@ -472,7 +474,7 @@ class WorkRegister extends Component {
                     <Button type="default" htmlType="reset">重置</Button>
                 </FormItem>
             </form>
-            </Template>
+            </div>
         )
     }
 

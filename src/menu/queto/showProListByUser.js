@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 import { Table,Button } from 'antd';
 
 const columns = [{
@@ -33,7 +33,7 @@ const data = [];
 class ShowProListByUser extends Component {
     render() {
         return (
-            <Template>
+            <div>
                 <div className="operate">
                     <Button type="primary">添加预算</Button>
                     <Button type="primary">添加定金单</Button>
@@ -43,7 +43,7 @@ class ShowProListByUser extends Component {
                     <Button>隐藏转部信息</Button>
                 </div>
                 <Table columns={columns} dataSource={data} />
-            </Template>
+            </div>
         )
     }
 }

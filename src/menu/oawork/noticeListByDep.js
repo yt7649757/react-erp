@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 import { Button } from 'antd';
 import TableComponent from '../../component/tableComponent';
 
@@ -28,7 +28,7 @@ class NoticeListByDep extends Component {
         }]
 
         return(
-            <Template>
+            <div>
                 <div className="operate">
                     <Button type="danger">删除公告</Button>
                     <Button>刷新</Button>
@@ -40,7 +40,7 @@ class NoticeListByDep extends Component {
                     checkbox={true}
                     size="middle"
                 />
-            </Template>
+            </div>
         )
     }
 }

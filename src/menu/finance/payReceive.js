@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import { Divider,Row, Col, Button, Tabs } from 'antd';
@@ -24,7 +24,7 @@ class PayReceive extends Component {
 
     render() {
         return(
-            <Template>
+            <div>
                 <div style={{backgroundColor: '#fff'}}>
                     <Divider>收款</Divider>
                     <Row type="flex">
@@ -108,7 +108,7 @@ class PayReceive extends Component {
                     </TabPane>
                 </Tabs>
 
-            </Template>
+            </div>
         )
     }
 }

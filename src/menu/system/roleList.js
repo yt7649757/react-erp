@@ -339,7 +339,7 @@ class RoleList extends Component {
 
 
         return (
-            <Template>
+            <div>
                 <div className="operate">
                     <Button type="primary" onClick={this.showModal} style={{marginRight: 5}}>
                         添加
@@ -416,7 +416,7 @@ class RoleList extends Component {
                     </Form>
 
                 </Modal>
-            </Template>
+            </div>
         )
     }
 }

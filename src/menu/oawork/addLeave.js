@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 import { Divider, Form, Input, Select, DatePicker, Button } from 'antd';
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -20,7 +20,7 @@ class AddLeave extends Component {
         };
 
         return(
-            <Template>
+            <div>
                 <Divider>请假申请</Divider>
                 <Form>
                     <FormItem
@@ -114,7 +114,7 @@ class AddLeave extends Component {
                         </div>
                     </FormItem>
                 </Form>
-            </Template>
+            </div>
         )
     }
 }

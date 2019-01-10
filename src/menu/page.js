@@ -26,7 +26,7 @@ class Page extends Component {
     componentDidMount() {
         this.getOnlineUser()
         this.props.userActions.getUserWork()
-        this.props.userActions.getMessage()
+        // this.props.userActions.getMessage()
     }
 
     getOnlineUser = (page = 1,size = 4) => {
@@ -145,7 +145,7 @@ class Page extends Component {
                     </div>
                     <div>
                         <Title title="公司公告" color="#1890FF" more={true}/>
-                        <ListItem data={this.props.user.companyMessage}/>
+                        {/*<ListItem data={this.props.user.companyMessage}/>*/}
                     </div>
                     <div>
                         <Title title="部门公告" color="#B5BE00" more={true}/>

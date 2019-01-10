@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 import axios from 'axios';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
@@ -76,7 +76,7 @@ class PriceTable extends Component {
         // const book = data.book ? data.book : []
         // const foot = data.foot ? data.foot : []
         return (
-            <Template>
+            <div>
                 <div className="priceTable"
                      style={{fontSize: "14px", fontFamily: 'Microsoft Yahei', color: "#474747", backgroundColor: '#fff',
                      backgroundImage: 'url("http://www.yzferp.com/static/erp/images/ERP.png")'}}
@@ -342,7 +342,7 @@ class PriceTable extends Component {
                     {/*}*/}
 
                 {/*</div>*/}
-            </Template>
+            </div>
         );
     }
 }

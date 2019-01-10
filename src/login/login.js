@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Form, Icon, Input, Button, Checkbox, message} from 'antd';
+import storage from '../utils/storage';
 import cookie from 'react-cookies';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
@@ -35,6 +36,14 @@ class Login extends Component {
                         cookie.save('access_token', access_token.access_token, {
                             maxAge: access_token.expires_in
                         })
+                        storage.set('routes',[{
+                            menu_id: "indexPage",
+                            icon: "./static/icon.png",
+                            menu_name: " 首页",
+                            pid: "12313123",
+                            url: "erp",
+                            closable: false
+                        }])
                         this.props.history.push('/erp')
                     }
                 }).catch(err => {

@@ -2,8 +2,12 @@ import axios from 'axios';
 import cookie from 'react-cookies';
 import  message from '../common/message';
 import { createHashHistory } from 'history';
+// import Qs from 'qs';
+// axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+// axios.defaults.transformRequest = [obj => Qs.stringify(obj)]
 
 window.lock = false;
+
 axios.interceptors.request.use(
     config => {
         if(!window.navigator.onLine) {
@@ -13,6 +17,9 @@ axios.interceptors.request.use(
         if (token) {
             config.headers.Authorization = 'Bearer ' + token;
         }
+        // if (config.method === 'post') {
+        //     config.data = Qs.stringify(config.data)
+        // }
         return config
     },
     error => {

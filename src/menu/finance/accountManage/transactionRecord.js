@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Template from '../../../common/template';
+// import Template from '../../../common/template';
 import { Divider } from 'antd';
 import PayTable from '../contractDetail/payTable';
 
@@ -30,13 +30,13 @@ class TransationRecord  extends Component {
         }]
 
         return (
-            <Template>
+            <div>
                 <Divider orientation="left">交易记录列表</Divider>
                 <PayTable
                     columns={columns}
                     size="middle"
                 />
-            </Template>
+            </div>
         )
     }
 }

@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {Layout, Menu } from 'antd';
 import {Link} from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
-import emitter from "./ev"
+import emitter from "./ev";
+import storage from '../utils/storage';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as userActions from '../redux/action/user';
@@ -34,13 +35,15 @@ class Aside extends Component {
             }, () => {
                 this.setDefaultActiveItem(this.props.history)
             })
-
         }
     }
 
     componentWillUnmount() {
         arr = []
         emitter.removeListener("close", this.expand);
+        // this.setState = (state,callback)=>{
+        //     return;
+        // };
     }
 
 
@@ -54,7 +57,7 @@ class Aside extends Component {
         } else {
             arr.push(obj)
         }
-        sessionStorage.setItem('routes', JSON.stringify(arr))
+        storage.set('routes', arr)
     }
 
 
@@ -66,7 +69,7 @@ class Aside extends Component {
                     selectedKeys: [item.menu_id]
                 });
                 document.title = item.menu_name
-                this.setRoutes(item)
+                // this.setRoutes(item)
             } else if (item.menus && item.menus.length > 0) {
                 item.menus.map(childItem => {
                     if (pathname === ('/' + childItem.url)) {
@@ -75,7 +78,7 @@ class Aside extends Component {
                             selectedKeys: [childItem.menu_id]
                         });
                         document.title = childItem.menu_name
-                        this.setRoutes(childItem)
+                        // this.setRoutes(childItem)
                     } else if (childItem.menus && childItem.menus.length > 0) {
                         childItem.menus.map(subItem => {
                             if (pathname === ('/' + subItem.url)) {
@@ -84,7 +87,7 @@ class Aside extends Component {
                                     selectedKeys: [subItem.menu_id]
                                 });
                                 document.title = subItem.menu_name
-                                this.setRoutes(subItem)
+                                // this.setRoutes(subItem)
                             }
                         })
                     }
@@ -100,10 +103,13 @@ class Aside extends Component {
         })
     }
 
-    componentDidMount = async () => {
-        await this.props.userActions.getSider()
+    componentDidMount = () => {
+        this.props.userActions.getSider()
         emitter.addListener("close", () => {
            this.expand()
+        })
+        emitter.addListener('changeSelect', () => {
+            this.setDefaultActiveItem(this.props.history)
         })
     }
 
@@ -131,6 +137,7 @@ class Aside extends Component {
                            onClick={() => {
                                this.setState({selectedKeys: [item.menu_id]});
                                document.title = item.menu_name;
+                               this.setRoutes(item)
                            }}
                 >
                     <img src={item.icon ? item.icon : 'http://wechat.yzferp.com/static/erp/images/work_oa.png'} alt="icon"/>
@@ -156,6 +163,7 @@ class Aside extends Component {
                                                    onClick={() => {
                                                        this.setState({selectedKeys: [subItem.menu_id]});
                                                        document.title = subItem.menu_name;
+                                                       this.setRoutes(subItem)
                                                    }}
                                         >
                                             <Link to={{
@@ -173,6 +181,7 @@ class Aside extends Component {
                                 onClick={() => {
                                     this.setState({selectedKeys: [menuItem.menu_id]});
                                     document.title = menuItem.menu_name;
+                                    this.setRoutes(menuItem)
                                 }}>
                                 <Link to={{pathname: '/' + menuItem.url, state: menuItem}}> {menuItem.menu_name} </Link>
                             </Menu.Item> )
