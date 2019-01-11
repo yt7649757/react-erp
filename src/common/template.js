@@ -33,9 +33,11 @@ class Template extends Component {
     componentWillReceiveProps(nextProps) {
         panes = JSON.parse(sessionStorage.getItem('routes'))
         current = sessionStorage.getItem('current')
-        this.setState({
-            activeKey: nextProps.location.pathname.substring(1)
-        })
+        if(this.props.location.pathname !== nextProps.location.pathname ) {
+            this.setState({
+                activeKey: nextProps.location.pathname.substring(1)
+            })
+        }
     }
 
 
@@ -49,6 +51,9 @@ class Template extends Component {
     componentDidMount() {
         emitter.addListener("close", () => {
             this.expand()
+        })
+        this.setState({
+            activeKey: this.props.location.pathname.substring(1)
         })
     }
 
@@ -121,7 +126,6 @@ class Template extends Component {
                                                 <TabPane tab={item.menu_name} key={item.url} closable={item.closable}>
                                                     <Content style={{padding: '0 5px', paddingBottom: '60px'}}>
                                                         {this.props.children}
-                                                        {/*{renderRoutes(this.props.route.routes)}*/}
                                                     </Content>
                                                 </TabPane>
                                             )

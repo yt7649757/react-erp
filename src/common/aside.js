@@ -29,21 +29,15 @@ class Aside extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        console.log(nextProps.sidebarData)
         if (nextProps.sidebarData.length > 0) {
-            this.setState({
-                sidebarData: nextProps.sidebarData
-            }, () => {
-                this.setDefaultActiveItem(this.props.history)
-            })
+            this.setDefaultActiveItem(nextProps.history, nextProps.sidebarData)
         }
     }
 
     componentWillUnmount() {
         arr = []
         emitter.removeListener("close", this.expand);
-        // this.setState = (state,callback)=>{
-        //     return;
-        // };
     }
 
 
@@ -61,15 +55,16 @@ class Aside extends Component {
     }
 
 
-    setDefaultActiveItem = ({location}) => {
+    setDefaultActiveItem = ({location},data) => {
         const {pathname} = location;
-        this.state.sidebarData && this.state.sidebarData.map(item => {
+        const sidebarData = data ? data : this.props.user.sidebarData
+        sidebarData && sidebarData.map(item => {
             if (pathname === ('/' + item.url)) {
                 this.setState({
                     selectedKeys: [item.menu_id]
                 });
                 document.title = item.menu_name
-                // this.setRoutes(item)
+                this.setRoutes(item)
             } else if (item.menus && item.menus.length > 0) {
                 item.menus.map(childItem => {
                     if (pathname === ('/' + childItem.url)) {
@@ -78,7 +73,7 @@ class Aside extends Component {
                             selectedKeys: [childItem.menu_id]
                         });
                         document.title = childItem.menu_name
-                        // this.setRoutes(childItem)
+                        this.setRoutes(childItem)
                     } else if (childItem.menus && childItem.menus.length > 0) {
                         childItem.menus.map(subItem => {
                             if (pathname === ('/' + subItem.url)) {
@@ -87,7 +82,7 @@ class Aside extends Component {
                                     selectedKeys: [subItem.menu_id]
                                 });
                                 document.title = subItem.menu_name
-                                // this.setRoutes(subItem)
+                                this.setRoutes(subItem)
                             }
                         })
                     }

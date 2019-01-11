@@ -55,9 +55,7 @@ class Page extends Component {
     }
 
     componentWillUnmount() {
-        this.setState = (state,callback)=>{
-            return false
-        }
+
     }
 
     render() {
