@@ -33,7 +33,6 @@ class Template extends Component {
         panes = JSON.parse(sessionStorage.getItem('routes'))
         current = sessionStorage.getItem('current')
         if(this.props.location.pathname !== nextProps.location.pathname) {
-            // alert('template开始setState')
             this.setState({
                 activeKey: nextProps.location.pathname.substring(1)
             })

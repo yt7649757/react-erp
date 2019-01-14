@@ -30,18 +30,11 @@ class Aside extends Component {
 
     componentWillReceiveProps(nextProps) {
         if(nextProps.sidebarData.length > 0) {
-            // alert('进来了?')
-            // alert('加载aside')
             this.setDefaultActiveItem(nextProps.history, nextProps.sidebarData)
         }
     }
 
-    // componentDidUpdate(prevProps) {
-    //     alert(prevProps.location.pathname)
-    // }
-
     componentDidMount = () => {
-        // alert('aside组件加载')
         this.props.userActions.getSider()
         emitter.addListener("close", () => {
             this.expand()
@@ -53,7 +46,6 @@ class Aside extends Component {
 
 
     componentWillUnmount() {
-        // alert('卸载')
         arr = []
         emitter.removeListener("close", this.expand);
         emitter.removeListener("changeSelect",this.setDefaultActiveItem)

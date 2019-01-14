@@ -7,8 +7,8 @@ function Auth(WrappedComponent,hocProps){
         throw new Error("缺少组件参数");
         return false;
     }
-    //withRouter 也是一个高阶组件 传递 history
-    return withRouter( class extends React.PureComponent{
+
+    return withRouter( class extends React.Component{
 
         constructor(props) {
             super(props)

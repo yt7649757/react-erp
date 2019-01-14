@@ -52,7 +52,6 @@ export const loginOut = () => {
 
 export const getUserInfo = () => {
     return (dispatch) => {
-        console.log(dispatch)
         axios.get(port + '/api/auth/me')
             .then(function (res) {
                 dispatch({
@@ -78,8 +77,8 @@ export const updatePas = (pas,newpas,newpas1) => {
             })
             .catch(function (error) {
                 //错误信息 error.response
-                message.info(error.response.data.errors.password[0])
-                console.log('出错了' + error)
+               console.log(error)
+               return error
             });
     }
 }
