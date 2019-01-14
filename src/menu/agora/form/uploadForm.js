@@ -233,7 +233,7 @@ class UploadForm extends Component {
                                         pattern: new RegExp(/\S/, "g"),
                                         message: '不能为空',
                                     }, {
-                                        required: true, message: '请选择付款方式!',
+                                        required: true, message: '请填写图片名称!',
                                     }],
                                 })(
                                     <Input/>
@@ -329,7 +329,7 @@ class UploadForm extends Component {
                                         pattern: new RegExp(/\S/, "g"),
                                         message: '不能为空',
                                     }, {
-                                        required: true, message: '请选择付款方式!',
+                                        required: true, message: '请填写文件名称!',
                                     }],
                                 })(
                                     <Input/>

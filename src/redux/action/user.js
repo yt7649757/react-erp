@@ -52,6 +52,7 @@ export const loginOut = () => {
 
 export const getUserInfo = () => {
     return (dispatch) => {
+        console.log(dispatch)
         axios.get(port + '/api/auth/me')
             .then(function (res) {
                 dispatch({

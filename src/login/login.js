@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Form, Icon, Input, Button, Checkbox, message} from 'antd';
+import { WithRouter } from 'react-router-dom';
 import storage from '../utils/storage';
 import cookie from 'react-cookies';
 import {bindActionCreators} from 'redux';
@@ -102,7 +103,7 @@ class Login extends Component {
                                                     {getFieldDecorator('userName', {
                                                         rules: [{required: true, message: '请输入用户名!'}],
                                                     })(
-                                                        <Input prefix={<Icon type="user"
+                                                        <Input autoComplete="off" prefix={<Icon type="user"
                                                                              style={{color: 'rgba(0,0,0,.25)'}}/>}
                                                                placeholder="用户名"/>
                                                     )}
@@ -113,9 +114,9 @@ class Login extends Component {
                                                     {getFieldDecorator('password', {
                                                         rules: [{required: true, message: '请输入密码!'}],
                                                     })(
-                                                        <Input prefix={<Icon type="lock"
+                                                        <Input type="password" prefix={<Icon type="lock"
                                                                              style={{color: 'rgba(0,0,0,.25)'}}/>}
-                                                               type="password" placeholder="密码"/>
+                                                                           placeholder="密码"/>
                                                     )}
                                                 </FormItem>
                                             </div>

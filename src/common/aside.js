@@ -29,15 +29,34 @@ class Aside extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps.sidebarData)
-        if (nextProps.sidebarData.length > 0) {
+        if(nextProps.sidebarData.length > 0) {
+            // alert('进来了?')
+            // alert('加载aside')
             this.setDefaultActiveItem(nextProps.history, nextProps.sidebarData)
         }
     }
 
+    // componentDidUpdate(prevProps) {
+    //     alert(prevProps.location.pathname)
+    // }
+
+    componentDidMount = () => {
+        // alert('aside组件加载')
+        this.props.userActions.getSider()
+        emitter.addListener("close", () => {
+            this.expand()
+        })
+        emitter.addListener('changeSelect', () => {
+            this.setDefaultActiveItem(this.props.history)
+        })
+    }
+
+
     componentWillUnmount() {
+        // alert('卸载')
         arr = []
         emitter.removeListener("close", this.expand);
+        emitter.removeListener("changeSelect",this.setDefaultActiveItem)
     }
 
 
@@ -61,7 +80,8 @@ class Aside extends Component {
         sidebarData && sidebarData.map(item => {
             if (pathname === ('/' + item.url)) {
                 this.setState({
-                    selectedKeys: [item.menu_id]
+                    selectedKeys: [item.menu_id],
+                    openKeys: [item.menu_id]
                 });
                 document.title = item.menu_name
                 this.setRoutes(item)
@@ -95,16 +115,6 @@ class Aside extends Component {
     expand = () => {
         this.setState({
             collapsed: !this.state.collapsed
-        })
-    }
-
-    componentDidMount = () => {
-        this.props.userActions.getSider()
-        emitter.addListener("close", () => {
-           this.expand()
-        })
-        emitter.addListener('changeSelect', () => {
-            this.setDefaultActiveItem(this.props.history)
         })
     }
 
@@ -238,5 +248,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Aside))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Aside))

@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {Layout, Tabs} from 'antd';
 import HeaderComponent from '../common/header';
-import Aside from '../common/aside'
-import {withRouter} from 'react-router-dom';
-import {bindActionCreators} from 'redux';
+import Aside from '../common/aside';
+import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux';
 import storage from '../utils/storage';
 import * as userActions from '../redux/action/user';
@@ -12,7 +11,6 @@ import {LocaleProvider} from 'antd';
 import zh_CN from 'antd/lib/locale-provider/zh_CN';
 import 'moment/locale/zh-cn';
 import PotentialError from '../component/potentialError';
-// import { renderRoutes } from 'react-router-config'
 
 const {Content, Footer} = Layout;
 const TabPane = Tabs.TabPane;
@@ -30,23 +28,23 @@ class Template extends Component {
         }
     }
 
+
     componentWillReceiveProps(nextProps) {
         panes = JSON.parse(sessionStorage.getItem('routes'))
         current = sessionStorage.getItem('current')
-        if(this.props.location.pathname !== nextProps.location.pathname ) {
+        if(this.props.location.pathname !== nextProps.location.pathname) {
+            // alert('template开始setState')
             this.setState({
                 activeKey: nextProps.location.pathname.substring(1)
             })
         }
     }
 
-
     expand = () => {
         this.setState({
             ml: !this.state.ml
         })
     }
-
 
     componentDidMount() {
         emitter.addListener("close", () => {
@@ -134,7 +132,6 @@ class Template extends Component {
 
                                 </Tabs>
 
-
                             </div>
 
                             <Footer style={{
@@ -147,7 +144,6 @@ class Template extends Component {
                             }}>
                                 当前版本<span style={{color: '#1890FF'}}>V2.0.0</span>©7搜网络版权所有
                             </Footer>
-
 
                         </Layout>
 
@@ -172,5 +168,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-//高阶组件
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Template))
+export default connect(mapStateToProps, mapDispatchToProps)(Template)

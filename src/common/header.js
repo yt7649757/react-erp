@@ -208,4 +208,4 @@ const style = {
 
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(withRouter(HeaderComponent));
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(HeaderComponent));

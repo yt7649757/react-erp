@@ -8,24 +8,52 @@ import {withRouter} from 'react-router-dom';
 import * as AgoraActions from '../../redux/action/agora/agora';
 import {changeTitle} from "../../utils/changeTitle";
 import CreateTab from '../../utils/createTab';
-import TableHoc from '../../component/tableHoc';
-import OrderForm from './form/orderForm';
-import UselessForm from './form/uselessForm'
-import EditForm from './form/editForm';
-import ApplyPartForm from './form/applyPartForm';
-import UploadForm from './form/uploadForm';
+import TablePrompt from '../../component/tablePrompt';
 import TableComponent from '../../component/tableComponent';
+import Loadable from 'react-loadable';
 
 let columns = [];
 let current = [];
 
-@TableHoc
+function MyLoadingComponent({error}) {
+    if (error) {
+        return <div>Error!</div>;
+    } else {
+        return <div>Loading...</div>;
+    }
+}
+
+const LoadableOrderForm=  Loadable({
+    loader: () => import('./form/orderForm'),
+    loading: MyLoadingComponent,
+});
+
+const LoadableUselessForm=  Loadable({
+    loader: () => import('./form/uselessForm'),
+    loading: MyLoadingComponent
+});
+
+const LoadableEditForm=  Loadable({
+    loader: () => import('./form/editForm'),
+    loading: MyLoadingComponent
+});
+
+const LoadableApplyPartForm=  Loadable({
+    loader: () => import('./form/applyPartForm'),
+    loading: MyLoadingComponent
+});
+
+const LoadableUploadForm=  Loadable({
+    loader: () => import('./form/uploadForm'),
+    loading: MyLoadingComponent
+});
+
+
+@TablePrompt
 class MyProject extends Component {
 
     constructor(props) {
         super(props)
-        console.log(this.props)
-        console.log(props)
         this.state = {
             data: [],
             pagination: {
@@ -503,13 +531,13 @@ class MyProject extends Component {
                     centered={true}
                 >
                     {
-                        this.state.forms === 'OrderForm' ? (<OrderForm
+                        this.state.forms === 'OrderForm' ? (<LoadableOrderForm
                             wrappedComponentRef={(form) => this.formRef = form}
                         />) : null
                     }
 
                     {
-                        this.state.forms === 'UselessForm' ? (<UselessForm
+                        this.state.forms === 'UselessForm' ? (<LoadableUselessForm
                             data={this.state.selectedRows}
                             wrappedComponentRef={(form) => this.formRef = form}
                         />) : null
@@ -517,13 +545,13 @@ class MyProject extends Component {
 
                     {
                         this.state.forms === 'EditForm' ? (
-                            <EditForm data={this.state.selectedRows[0]} wrappedComponentRef={(form) => this.formRef = form}
+                            <LoadableEditForm  data={this.state.selectedRows[0]} wrappedComponentRef={(form) => this.formRef = form}
                             />) : null
                     }
 
                     {
                         this.state.forms === 'ApplyPartForm' ? (
-                            <ApplyPartForm
+                            <LoadableApplyPartForm
                                 data={this.state.row}
                                 wrappedComponentRef={(form) => this.formRef = form}
                             />
@@ -532,7 +560,7 @@ class MyProject extends Component {
 
                     {
                         this.state.forms === 'UploadForm' ? (
-                            <UploadForm
+                            <LoadableUploadForm
                                 wrappedComponentRef={(form) => this.formRef = form}
                             />
                         ) : null
@@ -575,4 +603,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MyProject))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MyProject))

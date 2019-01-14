@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import Template from '../../common/template';
 import TableComponent from '../../component/tableComponent';
-import TableHOC from '../../component/tableHoc';
+import TablePrompt from '../../component/tablePrompt';
 // import { Table } from 'antd';
 
 class CollectStyleList extends Component {
@@ -45,4 +45,4 @@ class CollectStyleList extends Component {
     }
 }
 
-export default TableHOC(CollectStyleList)
+export default TablePrompt(CollectStyleList)

@@ -9,7 +9,6 @@ const {TextArea} = Input;
 
 const Option = Select.Option;
 
-
 class EditForm extends Component {
 
     componentDidMount() {

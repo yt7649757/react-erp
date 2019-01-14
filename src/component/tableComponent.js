@@ -82,16 +82,15 @@ class TableComponent extends Component {
 
 
     componentDidMount() {
+        this._isMount = true
         if(this.props.url || this.props.testUrl) {
-            this.request()
+            this._isMount && this.request()
         }
         this.props.onRef && this.props.onRef(this)
     }
 
     componentWillUnmount() {
-        this.setState = (state,callback)=>{
-            return false
-        }
+        this._isMount = false
     }
 
 

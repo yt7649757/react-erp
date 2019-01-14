@@ -3,8 +3,23 @@ import React, { Component } from 'react';
 import TableComponent from '../../component/tableComponent';
 import CreateTab from '../../utils/createTab';
 import Layer from '../../component/layer';
-import Log from '../../component/log';
+// import Log from '../../component/log';
 import { Divider } from 'antd';
+import Loadable from 'react-loadable';
+
+function MyLoadingComponent({error}) {
+    if (error) {
+        return <div>Error!</div>;
+    } else {
+        return '<div>Loading...</div>';
+    }
+}
+
+const LoadableAnotherComponent =  Loadable({
+    loader: () => import('../../component/log'),
+    loading: MyLoadingComponent,
+});
+
 
 class ShowContractProjectList extends Component {
 
@@ -114,7 +129,7 @@ class ShowContractProjectList extends Component {
                     url="/api/erp/finance/showcontractprojectlist"
                 />
                 <Layer ref="layer" title="项目日志" footer={null} width={600} >
-                    <Log/>
+                    <LoadableAnotherComponent/>
                 </Layer>
             </div>
         )

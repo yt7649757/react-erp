@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import Template from '../../common/template'
+import emitter from "../../common/ev";
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as SystemManageActions from '../../redux/action/system/systemManage';
@@ -90,50 +91,52 @@ class TreeList extends Component {
     }
 
     request = () => {
-        const { phone } = this.state;
-        const treeUrl = '/api/erp/system/shownodejson/top/1/is_mobile/0';
-        const phoneTreeUrl = '/api/erp/system/shownodejson/top/1/is_mobile/1';
-        let url = this.props.location.pathname
-        url = url.substring(0, url.length-1) + '1';
-        if(phone) {
-           this.props.systemManageActions.getTreeList(phoneTreeUrl).then(res => {
-               if(res === 'ok') {
-                   this.props.systemManageActions.getCheckedTree(url)
-               }
-           })
-        }else {
-           this.props.systemManageActions.getTreeList(treeUrl).then(res => {
-               if(res === 'ok') {
-                   this.props.systemManageActions.getCheckedTree(this.props.location.pathname)
-               }
-           })
-        }
-    }
-
-    componentWillMount() {
+        if(!this._isMount) return false
         const r = storage.get('routes')
-        r.map(item => {
-            if(item.guid === 'jsqx') {
-                this.setState({
-                    phone: item.phone,
-                    edit: item.edit
+        const item = r.find(item => {
+            return item.guid === 'jsqx'
+        })
+
+        this.setState({
+            phone: item.phone,
+            edit: item.edit
+        },() => {
+            const phone = this.state.phone
+            const treeUrl = '/api/erp/system/shownodejson/top/1/is_mobile/0';
+            const phoneTreeUrl = '/api/erp/system/shownodejson/top/1/is_mobile/1';
+            let url = this.props.location.pathname
+            url = url.substring(0, url.length-1) + '1';
+            if(phone) {
+                this.props.systemManageActions.getTreeList(phoneTreeUrl).then(res => {
+                    if(res === 'ok') {
+                        this.props.systemManageActions.getCheckedTree(url)
+                    }
+                })
+            }else {
+                this.props.systemManageActions.getTreeList(treeUrl).then(res => {
+                    if(res === 'ok') {
+                        this.props.systemManageActions.getCheckedTree(this.props.location.pathname)
+                    }
                 })
             }
-            return true
         })
     }
 
-    componentWillUnMount() {
-
+    componentWillUnmount() {
+        this._isMount = false
     }
 
 
     componentDidMount() {
+        this._isMount = true
         this.request()
+        emitter.addListener('phone',() => {
+            this.request()
+        })
     }
 
     componentWillReceiveProps(nextProps) {
-        if(nextProps) {
+        if(nextProps.systemManage.checkedTree !== this.props.systemManage.checkedTree) {
             this.setState({
                 checkedKeys: nextProps.systemManage.checkedTree,
                 roleTree: nextProps.systemManage.roleTree

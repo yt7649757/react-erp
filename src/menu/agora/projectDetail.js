@@ -3,25 +3,38 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as AgoraActions from '../../redux/action/agora/agora';
 import {Divider, Row, Col, Button, Tabs, Modal, message} from 'antd';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 import { getId } from "../../utils/getId";
 import '../../style/agora/projectDetail.css';
 import LinkPeople from './table/linkPeople';
 import RoomStructure from './table/roomStructure';
 import RoomInfo from './table/roomInfo';
 import {changeTitle} from "../../utils/changeTitle";
-import EditForm from './form/editForm';
+// import EditForm from './form/editForm';
 import LinkPeopleForm from './form/linkPeopleForm';
 import LogForm from'./form/logForm';
 import RemindForm from './form/remindForm';
 import RoomStructureForm from './form/roomStructureForm';
 import RoomInfoForm from './form/roomInfoForm';
+import Loadable from 'react-loadable';
 
 import TableComponent from '../../component/tableComponent';
 
 
 const TabPane = Tabs.TabPane;
 
+function MyLoadingComponent({error}) {
+    if (error) {
+        return <div>Error!</div>;
+    } else {
+        return <div>Loading...</div>;
+    }
+}
+
+const LoadableEditForm=  Loadable({
+    loader: () => import('./form/editForm'),
+    loading: MyLoadingComponent
+});
 
 // const content = function (item) {
 //     return item.content ? item : null
@@ -344,7 +357,7 @@ class ProjectDetail extends Component {
 
                     {
                         this.state.forms === 'EditForm' ? (
-                            <EditForm data={info} wrappedComponentRef={(form) => this.formRef = form}
+                            <LoadableEditForm data={info} wrappedComponentRef={(form) => this.formRef = form}
                             />) : null
                     }
 

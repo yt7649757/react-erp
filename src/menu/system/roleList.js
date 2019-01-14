@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import Template from '../../common/template'
+// import Template from '../../common/template';
+import emitter from "../../common/ev";
 import {Table, Tag, Divider, Button, Modal, Form, Input, message} from 'antd';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
@@ -54,7 +55,7 @@ class RoleList extends Component {
         this.setState({
             loading: true
         })
-        var res = await this.props.systemManageActions.getRoleList(params, pagination.pageSize, status)
+        let res = await this.props.systemManageActions.getRoleList(params, pagination.pageSize, status)
         if (res) {
             pagination.total = res.data.total;
 
@@ -187,7 +188,7 @@ class RoleList extends Component {
     }
 
     deleteRow = () => {
-        var rows = []
+        let rows = []
         let {selectedRows} = this.state;
         selectedRows.map(val => rows.push(val.guid))
         this.props.systemManageActions.deleteRole({
@@ -256,6 +257,7 @@ class RoleList extends Component {
             storage.set('routes', r)
             this.props.history.push('/' + url)
             sessionStorage.setItem('current', url )
+            emitter.emit('phone')
 
         }
     }

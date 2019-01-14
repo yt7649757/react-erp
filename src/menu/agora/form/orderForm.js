@@ -7,7 +7,6 @@ import * as AgoraActions from '../../../redux/action/agora/agora';
 const FormItem = Form.Item;
 const Option = Select.Option;
 
-
 class OrderForm extends Component {
 
     componentDidMount() {

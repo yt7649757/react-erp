@@ -1,12 +1,9 @@
 import React from 'react';
-import {Route,Redirect,withRouter} from 'react-router-dom';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import * as userActions from '../redux/action/user';
+import {Route,Redirect} from 'react-router-dom'
 import PropTypes from 'prop-types';
 import cookie from 'react-cookies'
 
-class PrivateRoute extends React.Component{
+class PrivateRoute extends React.PureComponent{
     constructor(props) {
         super(props)
         this.state = {
@@ -15,7 +12,6 @@ class PrivateRoute extends React.Component{
     }
 
     componentWillMount(){
-        // const status = this.props.user.status
         let  isAuthenticated = cookie.load("access_token")
         this.setState({isAuthenticated:isAuthenticated})
         if(!isAuthenticated){
@@ -25,13 +21,18 @@ class PrivateRoute extends React.Component{
             }, 1000)
         }
     }
+
     render(){
         let { component: Component,path="/",exact=false,strict=false} = this.props;
+        // console.log(Component)
         return this.state.isAuthenticated ?  (
-            <Route  path={path} exact={exact}  strict={strict}  render={(props)=>( <Component {...props} /> )} />
+            <Route  path={path} exact={exact}  strict={strict}  render={(props)=>{
+                return <Component {...props} />
+            }} />
         ) : (<Redirect to ="/" />);
     }
 }
+
 PrivateRoute.propTypes  ={
     path:PropTypes.string.isRequired,
     exact:PropTypes.bool,
@@ -39,17 +40,5 @@ PrivateRoute.propTypes  ={
     component:PropTypes.func.isRequired
 }
 
-const mapStateToProps = (state) => {
-    return {
-        user: state.user,
-    }
-}
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        userActions: bindActionCreators(userActions, dispatch)
-    }
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(withRouter(PrivateRoute));
-
+export default PrivateRoute

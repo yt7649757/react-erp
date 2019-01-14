@@ -88,7 +88,6 @@ class WorkRegister extends Component {
     }
 
     render() {
-        console.log('abc');
         const { getFieldDecorator } = this.props.form;
         const { selectGroup } = this.props.agora
         return (

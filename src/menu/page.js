@@ -77,7 +77,7 @@ class Page extends Component {
         }];
 
         return (
-            <Template>
+            <div>
                 <div className="sell-box clearfix">
                     <ul className="sell-list">
                         <li><a href="javascript:void(0);"><img src={require('../asset/img/sell1.png')}/>
@@ -154,7 +154,7 @@ class Page extends Component {
                         <ListItem/>
                     </div>
                 </div>
-            </Template>
+            </div>
         )
     }
 }

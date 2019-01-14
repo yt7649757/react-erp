@@ -1,5 +1,8 @@
-import WrappedNormalLoginForm  from '../login/login'
 import Page from '../menu/page';
+import ExcellentTeam from "../menu/other/excellentTeam";
+import ProjectExample from "../menu/other/projectExample";
+import AuxiliaryMaterialmall from "../menu/other/auxiliaryMaterialmall";
+import PrimaryMaterialmall from "../menu/other/primaryMaterialmall";
 
 import UserLoginList from '../menu/system/userLoginList';
 import WorkRegister from '../menu/agora/workRegister';
@@ -147,578 +150,60 @@ import MyConstructionProject from "../menu/project/MyConstructionProject";
 import SystemStatus from "../menu/system/systemStatus";
 import PhoneMenu from "../menu/system/phoneMenu";
 import WxMenu from "../menu/system/wxMenu";
-import Version from "../menu/other/version";
-import ExcellentTeam from "../menu/other/excellentTeam";
-import ProjectExample from "../menu/other/projectExample";
-import AuxiliaryMaterialmall from "../menu/other/auxiliaryMaterialmall";
-import PrimaryMaterialmall from "../menu/other/primaryMaterialmall";
-
-// export const config = [
-//     {
-//         path: '/',
-//         exact: true,
-//         component: WrappedNormalLoginForm
-//     },
-//     {
-//         name: '版本检测',
-//         path: '/install/update/checkUpdate',
-//         component: Version,
-//         private: true,
-//         exact: true
-//     },
-//     {
-//         name: '优秀团队',
-//         path: '/erp/Index/team',
-//         component: ExcellentTeam,
-//         private: true,
-//         exact: true
-//     },{
-//         name: '精美案例',
-//         path: '/erp/Index/electron',
-//         component: ProjectExample,
-//         private: true,
-//         exact: true
-//     },{
-//         name: '主材商城',
-//         path: '/erp/index/material',
-//         private: true,
-//         component: PrimaryMaterialmall,
-//         exact: true
-//     },
-//     {
-//         name: '辅材商城',
-//         path: '/erp/index/material_auxiliary',
-//         private: true,
-//         component: AuxiliaryMaterialmall,
-//         exact: true
-//     },
-//     {
-//         name: '主页',
-//         path: '/erp',
-//         exact: true,
-//         component: Page,
-//         private: true,
-//     },
-//     {
-//       name:'市场营销',
-//       private: true,
-//       children: [
-//           {
-//               path:'/erp/Project/showProjectEntry',
-//               component: WorkRegister,
-//           },{
-//               path: '/erp/Project/showProjectUserList',
-//               component: MyProject
-//           },{
-//               path: '/erp/Project/wasteApplyListCopy',
-//               component: UselessList
-//           },{
-//               path: '/erp/Statistics/marketData',
-//               component: AgoraList
-//           },{
-//               path: '/erp/WasteSingle/showWasteSingleList',
-//               component: WasteSingleList
-//           },{
-//               path: '/erp/project/showprojectofuser/guid/:id',
-//               component: ProjectDetail
-//           },{
-//               path: '/erp/TransferredProject/showMarketUserProject',
-//               component: TransferredList
-//           },{
-//               path: '/erp/WasteSingle/showWasteProjectApply',
-//               component: WasteProjectApply
-//           }
-//       ]
-//     },
-//     {
-//         name: '系统管理',
-//         private: true,
-//         children: [
-//             {
-//                 path: '/erp/System/messageList',
-//                 component: UserLoginList,
-//             },{
-//                 path: '/erp/System/roleList',
-//                 component: RoleList
-//             }, {
-//                 path: '/erp/system/getrolenodelist/role_id/:id/is_mobile/0',
-//                 component: TreeList
-//             },
-//             {
-//                 path: '/erp/System/nodeList',
-//                 component: NodeList
-//             },{
-//                 path: '/erp/System/trackstatuslist',
-//                 component: SystemStatus
-//             },{
-//                 path: '/erp/System/nodeMobileList',
-//                 component: PhoneMenu
-//             },{
-//                 path: '/erp/System/weMenuList',
-//                 component: WxMenu
-//             }
-//         ]
-//     },
-//     {
-//         name: '财务管理',
-//         private: true,
-//         children: [
-//             {
-//                 path: '/erp/finance/showpaymentlist',
-//                 component: ShowPayMentList
-//             },{
-//                 path: '/erp/ProjectDeposit/showProjectDepositList',
-//                 component: ShowProjectDepositList
-//             },{
-//                 path: '/erp/Finance/collectStyleList',
-//                 component: CollectStyleList
-//             },{
-//                 path: '/erp/Finance/showContractProjectList',
-//                 component: ShowContractProjectList
-//             },{
-//                 path: '/erp/Finance/showBankList',
-//                 component: AccountManage
-//             },{
-//                 path: '/erp/FinanceProjectPrice/showProjectList',
-//                 component: ContractDetail
-//             }, {
-//                 path: '/erp/Finance/collectPlanList',
-//                 component: CollectPlanEdit
-//             }, {
-//                 path: '/erp/Finance/showProjectPriceCheck',
-//                 component: PriceCheckList
-//             }, {
-//                 path: '/erp/FinanceRevoke/showRevokeList',
-//                 component: CollectRevokeCheck
-//             }, {
-//                 path: '/erp/ProjectPayment/showPaymentList',
-//                 component: CollectCheck
-//             },{
-//                 //报价表
-//                 path: '/erp/design/showbudgetbook/guid/:id',
-//                 component: PriceTable
-//             },{
-//                 //设计进度
-//                 path: '/erp/design/showbudgethtml/guid/:id',
-//                 component: ProjectProgress
-//             },{
-//                 path: '/erp/finance/collectionplan/guid/:id',
-//                 component: PayReceive
-//             }, {
-//                 path: '/erp/finance_project_price/lookprojectmore/guid/:id',
-//                 component: ProjectReceipt
-//             },{
-//                 //项目工程
-//                 path: '/erp/finance/lookbuildfinance/guid/:id',
-//                 component: Engineering
-//             }, {
-//                 //工程明细
-//                 path: '/erp/finance/lookbuilddetailed/pro_id/:id/id/:id',
-//                 component: EngineeringDetail
-//             }, {
-//                 //发包预算浏览
-//                 path: '/erp/finance/contractprintlook/pro_id/:id',
-//                 component: Contractprintlook
-//             }, {
-//                 //交易记录
-//                 path: '/erp/finance/lookbanklog/guid/:id',
-//                 component: TransationRecord
-//             },{
-//                 path: '/erp/finance/showcurrentaccount',
-//                 component: Currentaccount
-//             },{
-//                 path: '/erp/finance/showgeneralexpense',
-//                 component: ShowGeneralExpense
-//             }
-//         ]
-//     },
-//     {
-//         name: '预算报价',
-//         private: true,
-//         children: [
-//             {
-//                 path: '/erp/Design/showProListByUser',
-//                 component: ShowProListByUser
-//             },{
-//                 path: '/erp/DesignExtract/showNoContract',
-//                 component: ShowNoContract
-//             },{
-//                 path: '/erp/DesignExtract/showContractProjectList',
-//                 component: MyContractProject
-//             },{
-//                 path: '/erp/DesignExtract/showConProListByCom',
-//                 component: ShowConProListByCom
-//             },{
-//                 path: '/erp/Design/showProListByDep',
-//                 component: ShowProListByDep
-//             }, {
-//                 path: '/erp/DesignExtract/showNoContractByDep',
-//                 component: ShowNoContractByDep
-//             }, {
-//                 path: '/erp/DesignExtract/showNoContractByCom',
-//                 component: ShowNoContractByCom
-//             }, {
-//                 path: '/erp/Project/showProjectAudit',
-//                 component: ShowProjectAudit
-//             }, {
-//                 path: '/erp/designExtract/showApplyList',
-//                 component: ShowApplyList
-//             },{
-//                 path: '/erp/DesignExtract/showChangeList',
-//                 component: ShowChangeList
-//             },{
-//                 path: '/erp/Design/showCheckList',
-//                 component: ShowCheckList
-//             }, {
-//                 path: '/erp/DesignExtract/showProjectContAudit',
-//                 component: ShowProjectContAudit
-//             },{
-//                 path: '/erp/user/excellentOpus',
-//                 component: ExcellentOpus
-//             },{
-//                 path: '/erp/Statistics/designData',
-//                 component: Achievement
-//             }
-//         ]
-//     },{
-//         name:'OA办公',
-//         private: true,
-//         children: [
-//             {
-//                 path: '/erp/work/shownoticelist',
-//                 component: NoticeList
-//             },{
-//                 path: '/erp/work/shownoticelistbydep',
-//                 component: NoticeListByDep
-//             },{
-//                 path: '/erp/System/showAddLeave',
-//                 component: AddLeave
-//             },{
-//                 path: '/erp/System/leaveList',
-//                 component: LeavePermit
-//             },{
-//                 path: '/erp/Work/showMyLeave',
-//                 component: MyLeavePermit
-//             },{
-//                 path: '/erp/System/showWorkPlan',
-//                 component: AddWorkPlan
-//             },{
-//                 path: '/erp/System/workuserList',
-//                 component: MyWorkPlan
-//             },{
-//                 path: '/erp/Work/showAllPlanList',
-//                 component: AllWorkPlan
-//             },{
-//                 path: '/erp/Work/showDepPlanList',
-//                 component: WorkPlanByDep
-//             },{
-//                 path: '/erp/Work/showAddManagerLine',
-//                 component: ManagerMailbox
-//             },{
-//                 path: '/erp/Work/showComplaint',
-//                 component: RepairEntering
-//             },{
-//                 path: '/erp/Work/showComplaintList',
-//                 component: RepairEnteringManage
-//             },{
-//                 path: '/erp/Work/showComplaintUserAdd',
-//                 component: MyAddRepairEntering
-//             },{
-//                 path: '/erp/Work/showComplaintUserHave',
-//                 component: MyRepairEntering
-//             },{
-//                 path: '/erp/User/userByRole',
-//                 component: AddressList
-//             },{
-//                 path: '/erp/Sign/showUserSign',
-//                 component: MySignIn
-//             },{
-//                 path: '/erp/Sign/showUserList',
-//                 component: SignInRecord
-//             },{
-//                 path: '/erp/Sign/showPersonnelSign',
-//                 component: CurrentMonthSignIn
-//             },{
-//                 path: '/erp/work/showNotice',
-//                 component: NoticeIssue
-//             },{
-//                 path: '/erp/OfficeVehicle/showVehicleList',
-//                 component: ApplyUseCar
-//             },{
-//                 path: '/erp/OfficeSupplies/showSuppliesList',
-//                 component: Applysupplies
-//             }
-//         ]
-//     },{
-//         name: 'CEO管理',
-//         private: true,
-//         children: [{
-//             path: '/erp/Work/showNoRoleByUser',
-//             component: EmployeePower
-//         },{
-//             path: '/erp/Material/showRateItemList',
-//             component: ShowRateItemList
-//         },{
-//             path: '/erp/Design/showDefaultRate',
-//             component: ShowDefaultRate
-//         },{
-//             path: '/erp/Material/showRateItemClothesList',
-//             component: ShowRateItemClothesList
-//         },{
-//             path: '/erp/Material/showRateItemPackageList',
-//             component: ShowRateItemPackageList
-//         },{
-//             path: '/erp/Material/showEditBudgetStyle',
-//             component: ShowEditBudgetStyle
-//         },{
-//             path: '/erp/Material/showdatastylelist',
-//             component: Showdatastylelist
-//         },{
-//             path: '/erp/Material/showdatastyleclotheslist',
-//             component: Showdatastyleclotheslist
-//         },{
-//             path: '/erp/Material/showdatatypepackagelist',
-//             component: Showdatatypepackagelist
-//         },{
-//             path: '/erp/Contract/showContractEdit',
-//             component: ShowContractEdit
-//         },{
-//             path: '/erp/Material/showtemplatestylelist',
-//             component: Showtemplatestylelist
-//         },{
-//             path: '/erp/Material/showTemplateBudget',
-//             component: ShowTemplateBudget
-//         },{
-//             path: '/erp/User/showRoleList',
-//             component: ShowRolePowerList
-//         },{
-//             path: '/erp/WorkTarget/showMarketingTarget',
-//             component: ShowMarketingTarget
-//         },{
-//             path: '/erp/WorkTarget/showServerTarget',
-//             component: ShowServerTarget
-//         },{
-//             path: '/erp/System/showStaff',
-//             component: UserInput
-//         },{
-//             path: '/erp/System/userList',
-//             component: UserList
-//         },{
-//             path: '/erp/System/companyList',
-//             component: CompanySetup
-//         },{
-//             path: '/erp/System/departmentList',
-//             component: CompanyDepartment
-//         },{
-//             path: '/erp/System/jobsList',
-//             component: JobList
-//         },{
-//             path: '/erp/System/projectsumList',
-//             component: ProjectsumList
-//         },{
-//             path: '/erp/System/setuserroleList',
-//             component: SetuserroleList
-//         },{
-//             path: '/erp/Project/showProjectComList',
-//             component: ShowProjectComList
-//         },{
-//             path: '/erp/Design/showProListByCom',
-//             component: ShowProListByCom
-//         },{
-//             path: '/erp/Project/showProjectSevComList',
-//             component: ShowProjectSevComList
-//         },{
-//             path: '/erp/FundsSum/showFundsList',
-//             component: ShowFundsList
-//         },{
-//             path: '/erp/Work/showManagerList',
-//             component: MyEmail
-//         },{
-//             path: '/erp/ProjectDeposit/showRefundPriceProject',
-//             component: ShowRefundPriceProject
-//         },{
-//             path: '/erp/Statistics/showMarketData',
-//             component: AgoraAchievement
-//         },{
-//             path: '/erp/Statistics/showServiceData',
-//             component: ServiceAchievement
-//         },{
-//             path: '/erp/Statistics/showDesignData',
-//             component: DesignAchievement
-//         }]
-//     },{
-//         name: '行政人事',
-//         private: true,
-//         children: [{
-//             path: '/erp/work/department',
-//             component: CpDepartmentManage
-//         },{
-//             path: '/erp/work/jobs',
-//             component: CpJobManage
-//         },{
-//             path: '/erp/System/leavenotList',
-//             component: CheckLeaveList
-//         },{
-//             path: '/erp/System/workexamineList',
-//             component: CheckPlan
-//         },{
-//             path: '/erp/Work/showManagerStatus',
-//             component: CheckSpecial
-//         },{
-//             path: '/erp/OfficeVehicle/showApplyVehicleList',
-//             component: CheckCarApply
-//         },{
-//             path: '/erp/OfficeSupplies/showSuppliesApply',
-//             component: CheckSuppliesApply
-//         },{
-//             path: '/erp/User/showUserAdd',
-//             component: CpUserAdd
-//         },{
-//             path: '/erp/work/showUserPassword',
-//             component: PasswordReset
-//         },{
-//             path: '/erp/User/showUserWX',
-//             component: UserwxList
-//         },{
-//             path: '/erp/User/showUserFiles',
-//             component: PersonalRecord
-//         },{
-//             path: '/erp/Project/showProjectEntryCopy',
-//             component: CustomerEntry
-//         },{
-//             path: '/erp/Project/showProjectUserListCopy',
-//             component: MyEntryList
-//         },{
-//             path: '/erp/Project/showServiceDepList',
-//             component: ShowServiceDepList
-//         },{
-//             path: '/erp/Project/wasteApplyList',
-//             component: CpWasteApplyList
-//         },{
-//             path: '/erp/Statistics/serviceData',
-//             component: CpServicerAchievement
-//         },{
-//             path: '/erp/TransferredProject/showSeverUserProject',
-//             component: ShowseverUserProject
-//         },{
-//             path: '/erp/WasteSingle/showWasteSingleListCopy',
-//             component: ShowWasteSingleListCopy
-//         },{
-//             path: '/erp/WasteSingle/showWasteProjectApplyCopy',
-//             component: ShowWasteProjectApplyCopy
-//         },{
-//             path: '/erp/OfficeSupplies/addOfficeSupplies',
-//             component: AddOfficeSupplies
-//         },{
-//             path: '/erp/OfficeSupplies/officeSuppliesList',
-//             component: CpSuppliesList
-//         },{
-//             path: '/erp/OfficeVehicle/addOfficeVehicle',
-//             component: AddOfficeVehicle
-//         },{
-//             path: '/erp/OfficeVehicle/showCarList',
-//             component: CpCarList
-//         }]
-//     },{
-//         name: '材料管理',
-//         private: true,
-//         children: [{
-//             path: '/erp/Material/showMaterialSupplier',
-//             component: AddMaterialSupplier
-//         },{
-//             path: '/erp/Material/showSupplierList',
-//             component: SupplierList
-//         },{
-//             path: '/erp/Material/showMaterialCategory',
-//             component: CpMaterialCategory
-//         },{
-//             path: '/erp/Material/showMaterialAdd',
-//             component: PrimaryMaterialEntry
-//         },{
-//             path: '/erp/Material/materiallist',
-//             component: PrimaryMaterialList
-//         },{
-//             path: '/erp/Material/materialAuxiliaryList',
-//             component: AuxiliaryMaterialList
-//         },{
-//             path: '/erp/engin/showEnginProject',
-//             component: ShowEnginProject
-//         },{
-//             path: '/erp/Engin/showProjectMaterialList',
-//             component: ProjectMaterialApply
-//         },{
-//             path: '/erp/Engin/showProjectBuyMaterial',
-//             component: CheckMaterialPurchase
-//         },{
-//             path: '/erp/Engin/showAcceptanceMaterial',
-//             component: AcceptanceMaterial
-//         }]
-//     },{
-//         name: '工程管理',
-//         private: true,
-//         children: [{
-//             path: '/erp/Engin/showProjectMaterialAudit',
-//             component: ShowProjectMaterialAudit
-//         },{
-//             path: '/erp/EnginProject/showBuildApplyProject',
-//             component: ProjectAcceptance
-//         },{
-//             path: '/erp/EnginProject/showProjectCompletionList',
-//             component: ProjectCompleteAccept
-//         },{
-//             path: '/erp/EnginProject/showProjectOfUser',
-//             component: ProjectUnderConstruction
-//         },{
-//             path: '/erp/ProjectPayment/showProjectPayment',
-//             component: ShowProjectPayment
-//         },{
-//             path: '/erp/EnginProject/showProjectSuccess',
-//             component: ShowProjectSuccess
-//         },{
-//             path: '/erp/BuildNone/showBuildProjectList',
-//             component: ProjectReady
-//         },{
-//             path: '/erp/BuildNone/showBuildProjectOfMy',
-//             component: MyConstructionProject
-//         }]
-//     }
-// ]
-
 
 export const config = [
     {
         path: '/erp',
+        exact: true,
         component: Page
     },
     {
-      name:'市场营销',
-      children: [
-          {
-              path:'/erp/Project/showProjectEntry',
-              component: WorkRegister,
-          },{
-              path: '/erp/Project/showProjectUserList',
-              component: MyProject
-          },{
-              path: '/erp/Project/wasteApplyListCopy',
-              component: UselessList
-          },{
-              path: '/erp/Statistics/marketData',
-              component: AgoraList
-          },{
-              path: '/erp/WasteSingle/showWasteSingleList',
-              component: WasteSingleList
-          },{
-              path: '/erp/project/showprojectofuser/guid/:id',
-              component: ProjectDetail
-          },{
-              path: '/erp/TransferredProject/showMarketUserProject',
-              component: TransferredList
-          },{
-              path: '/erp/WasteSingle/showWasteProjectApply',
-              component: WasteProjectApply
-          }
-      ]
+        path: '/erp/index/material',
+        exact: true,
+        component: PrimaryMaterialmall
+    },
+    {
+        path: '/erp/Index/electron',
+        exact: true,
+        component: ProjectExample
+    }, {
+        path: '/erp/index/material_auxiliary',
+        exact: true,
+        component: AuxiliaryMaterialmall
+    }, {
+        path: '/erp/Index/team',
+        exact: true,
+        component: ExcellentTeam
+    },
+    {
+        name: '市场营销',
+        children: [
+            {
+                path: '/erp/Project/showProjectEntry',
+                component: WorkRegister,
+            }, {
+                path: '/erp/Project/showProjectUserList',
+                component: MyProject
+            }, {
+                path: '/erp/Project/wasteApplyListCopy',
+                component: UselessList
+            }, {
+                path: '/erp/Statistics/marketData',
+                component: AgoraList
+            }, {
+                path: '/erp/WasteSingle/showWasteSingleList',
+                component: WasteSingleList
+            }, {
+                path: '/erp/project/showprojectofuser/guid/:id',
+                component: ProjectDetail
+            }, {
+                path: '/erp/TransferredProject/showMarketUserProject',
+                component: TransferredList
+            }, {
+                path: '/erp/WasteSingle/showWasteProjectApply',
+                component: WasteProjectApply
+            }
+        ]
     },
     {
         name: '系统管理',
@@ -726,7 +211,7 @@ export const config = [
             {
                 path: '/erp/System/messageList',
                 component: UserLoginList,
-            },{
+            }, {
                 path: '/erp/System/roleList',
                 component: RoleList
             }, {
@@ -736,13 +221,13 @@ export const config = [
             {
                 path: '/erp/System/nodeList',
                 component: NodeList
-            },{
+            }, {
                 path: '/erp/System/trackstatuslist',
                 component: SystemStatus
-            },{
+            }, {
                 path: '/erp/System/nodeMobileList',
                 component: PhoneMenu
-            },{
+            }, {
                 path: '/erp/System/weMenuList',
                 component: WxMenu
             }
@@ -754,19 +239,19 @@ export const config = [
             {
                 path: '/erp/finance/showpaymentlist',
                 component: ShowPayMentList
-            },{
+            }, {
                 path: '/erp/ProjectDeposit/showProjectDepositList',
                 component: ShowProjectDepositList
-            },{
+            }, {
                 path: '/erp/Finance/collectStyleList',
                 component: CollectStyleList
-            },{
+            }, {
                 path: '/erp/Finance/showContractProjectList',
                 component: ShowContractProjectList
-            },{
+            }, {
                 path: '/erp/Finance/showBankList',
                 component: AccountManage
-            },{
+            }, {
                 path: '/erp/FinanceProjectPrice/showProjectList',
                 component: ContractDetail
             }, {
@@ -781,21 +266,21 @@ export const config = [
             }, {
                 path: '/erp/ProjectPayment/showPaymentList',
                 component: CollectCheck
-            },{
+            }, {
                 //报价表
                 path: '/erp/design/showbudgetbook/guid/:id',
                 component: PriceTable
-            },{
+            }, {
                 //设计进度
                 path: '/erp/design/showbudgethtml/guid/:id',
                 component: ProjectProgress
-            },{
+            }, {
                 path: '/erp/finance/collectionplan/guid/:id',
                 component: PayReceive
             }, {
                 path: '/erp/finance_project_price/lookprojectmore/guid/:id',
                 component: ProjectReceipt
-            },{
+            }, {
                 //项目工程
                 path: '/erp/finance/lookbuildfinance/guid/:id',
                 component: Engineering
@@ -811,10 +296,10 @@ export const config = [
                 //交易记录
                 path: '/erp/finance/lookbanklog/guid/:id',
                 component: TransationRecord
-            },{
+            }, {
                 path: '/erp/finance/showcurrentaccount',
                 component: Currentaccount
-            },{
+            }, {
                 path: '/erp/finance/showgeneralexpense',
                 component: ShowGeneralExpense
             }
@@ -826,16 +311,16 @@ export const config = [
             {
                 path: '/erp/Design/showProListByUser',
                 component: ShowProListByUser
-            },{
+            }, {
                 path: '/erp/DesignExtract/showNoContract',
                 component: ShowNoContract
-            },{
+            }, {
                 path: '/erp/DesignExtract/showContractProjectList',
                 component: MyContractProject
-            },{
+            }, {
                 path: '/erp/DesignExtract/showConProListByCom',
                 component: ShowConProListByCom
-            },{
+            }, {
                 path: '/erp/Design/showProListByDep',
                 component: ShowProListByDep
             }, {
@@ -850,316 +335,316 @@ export const config = [
             }, {
                 path: '/erp/designExtract/showApplyList',
                 component: ShowApplyList
-            },{
+            }, {
                 path: '/erp/DesignExtract/showChangeList',
                 component: ShowChangeList
-            },{
+            }, {
                 path: '/erp/Design/showCheckList',
                 component: ShowCheckList
             }, {
                 path: '/erp/DesignExtract/showProjectContAudit',
                 component: ShowProjectContAudit
-            },{
+            }, {
                 path: '/erp/user/excellentOpus',
                 component: ExcellentOpus
-            },{
+            }, {
                 path: '/erp/Statistics/designData',
                 component: Achievement
             }
         ]
-    },{
-        name:'OA办公',
+    }, {
+        name: 'OA办公',
         children: [
             {
                 path: '/erp/work/shownoticelist',
                 component: NoticeList
-            },{
+            }, {
                 path: '/erp/work/shownoticelistbydep',
                 component: NoticeListByDep
-            },{
+            }, {
                 path: '/erp/System/showAddLeave',
                 component: AddLeave
-            },{
+            }, {
                 path: '/erp/System/leaveList',
                 component: LeavePermit
-            },{
+            }, {
                 path: '/erp/Work/showMyLeave',
                 component: MyLeavePermit
-            },{
+            }, {
                 path: '/erp/System/showWorkPlan',
                 component: AddWorkPlan
-            },{
+            }, {
                 path: '/erp/System/workuserList',
                 component: MyWorkPlan
-            },{
+            }, {
                 path: '/erp/Work/showAllPlanList',
                 component: AllWorkPlan
-            },{
+            }, {
                 path: '/erp/Work/showDepPlanList',
                 component: WorkPlanByDep
-            },{
+            }, {
                 path: '/erp/Work/showAddManagerLine',
                 component: ManagerMailbox
-            },{
+            }, {
                 path: '/erp/Work/showComplaint',
                 component: RepairEntering
-            },{
+            }, {
                 path: '/erp/Work/showComplaintList',
                 component: RepairEnteringManage
-            },{
+            }, {
                 path: '/erp/Work/showComplaintUserAdd',
                 component: MyAddRepairEntering
-            },{
+            }, {
                 path: '/erp/Work/showComplaintUserHave',
                 component: MyRepairEntering
-            },{
+            }, {
                 path: '/erp/User/userByRole',
                 component: AddressList
-            },{
+            }, {
                 path: '/erp/Sign/showUserSign',
                 component: MySignIn
-            },{
+            }, {
                 path: '/erp/Sign/showUserList',
                 component: SignInRecord
-            },{
+            }, {
                 path: '/erp/Sign/showPersonnelSign',
                 component: CurrentMonthSignIn
-            },{
+            }, {
                 path: '/erp/work/showNotice',
                 component: NoticeIssue
-            },{
+            }, {
                 path: '/erp/OfficeVehicle/showVehicleList',
                 component: ApplyUseCar
-            },{
+            }, {
                 path: '/erp/OfficeSupplies/showSuppliesList',
                 component: Applysupplies
             }
         ]
-    },{
+    }, {
         name: 'CEO管理',
         children: [{
             path: '/erp/Work/showNoRoleByUser',
             component: EmployeePower
-        },{
+        }, {
             path: '/erp/Material/showRateItemList',
             component: ShowRateItemList
-        },{
+        }, {
             path: '/erp/Design/showDefaultRate',
             component: ShowDefaultRate
-        },{
+        }, {
             path: '/erp/Material/showRateItemClothesList',
             component: ShowRateItemClothesList
-        },{
+        }, {
             path: '/erp/Material/showRateItemPackageList',
             component: ShowRateItemPackageList
-        },{
+        }, {
             path: '/erp/Material/showEditBudgetStyle',
             component: ShowEditBudgetStyle
-        },{
+        }, {
             path: '/erp/Material/showdatastylelist',
             component: Showdatastylelist
-        },{
+        }, {
             path: '/erp/Material/showdatastyleclotheslist',
             component: Showdatastyleclotheslist
-        },{
+        }, {
             path: '/erp/Material/showdatatypepackagelist',
             component: Showdatatypepackagelist
-        },{
+        }, {
             path: '/erp/Contract/showContractEdit',
             component: ShowContractEdit
-        },{
+        }, {
             path: '/erp/Material/showtemplatestylelist',
             component: Showtemplatestylelist
-        },{
+        }, {
             path: '/erp/Material/showTemplateBudget',
             component: ShowTemplateBudget
-        },{
+        }, {
             path: '/erp/User/showRoleList',
             component: ShowRolePowerList
-        },{
+        }, {
             path: '/erp/WorkTarget/showMarketingTarget',
             component: ShowMarketingTarget
-        },{
+        }, {
             path: '/erp/WorkTarget/showServerTarget',
             component: ShowServerTarget
-        },{
+        }, {
             path: '/erp/System/showStaff',
             component: UserInput
-        },{
+        }, {
             path: '/erp/System/userList',
             component: UserList
-        },{
+        }, {
             path: '/erp/System/companyList',
             component: CompanySetup
-        },{
+        }, {
             path: '/erp/System/departmentList',
             component: CompanyDepartment
-        },{
+        }, {
             path: '/erp/System/jobsList',
             component: JobList
-        },{
+        }, {
             path: '/erp/System/projectsumList',
             component: ProjectsumList
-        },{
+        }, {
             path: '/erp/System/setuserroleList',
             component: SetuserroleList
-        },{
+        }, {
             path: '/erp/Project/showProjectComList',
             component: ShowProjectComList
-        },{
+        }, {
             path: '/erp/Design/showProListByCom',
             component: ShowProListByCom
-        },{
+        }, {
             path: '/erp/Project/showProjectSevComList',
             component: ShowProjectSevComList
-        },{
+        }, {
             path: '/erp/FundsSum/showFundsList',
             component: ShowFundsList
-        },{
+        }, {
             path: '/erp/Work/showManagerList',
             component: MyEmail
-        },{
+        }, {
             path: '/erp/ProjectDeposit/showRefundPriceProject',
             component: ShowRefundPriceProject
-        },{
+        }, {
             path: '/erp/Statistics/showMarketData',
             component: AgoraAchievement
-        },{
+        }, {
             path: '/erp/Statistics/showServiceData',
             component: ServiceAchievement
-        },{
+        }, {
             path: '/erp/Statistics/showDesignData',
             component: DesignAchievement
         }]
-    },{
+    }, {
         name: '行政人事',
         children: [{
             path: '/erp/work/department',
             component: CpDepartmentManage
-        },{
+        }, {
             path: '/erp/work/jobs',
             component: CpJobManage
-        },{
+        }, {
             path: '/erp/System/leavenotList',
             component: CheckLeaveList
-        },{
+        }, {
             path: '/erp/System/workexamineList',
             component: CheckPlan
-        },{
+        }, {
             path: '/erp/Work/showManagerStatus',
             component: CheckSpecial
-        },{
+        }, {
             path: '/erp/OfficeVehicle/showApplyVehicleList',
             component: CheckCarApply
-        },{
+        }, {
             path: '/erp/OfficeSupplies/showSuppliesApply',
             component: CheckSuppliesApply
-        },{
+        }, {
             path: '/erp/User/showUserAdd',
             component: CpUserAdd
-        },{
+        }, {
             path: '/erp/work/showUserPassword',
             component: PasswordReset
-        },{
+        }, {
             path: '/erp/User/showUserWX',
             component: UserwxList
-        },{
+        }, {
             path: '/erp/User/showUserFiles',
             component: PersonalRecord
-        },{
+        }, {
             path: '/erp/Project/showProjectEntryCopy',
             component: CustomerEntry
-        },{
+        }, {
             path: '/erp/Project/showProjectUserListCopy',
             component: MyEntryList
-        },{
+        }, {
             path: '/erp/Project/showServiceDepList',
             component: ShowServiceDepList
-        },{
+        }, {
             path: '/erp/Project/wasteApplyList',
             component: CpWasteApplyList
-        },{
+        }, {
             path: '/erp/Statistics/serviceData',
             component: CpServicerAchievement
-        },{
+        }, {
             path: '/erp/TransferredProject/showSeverUserProject',
             component: ShowseverUserProject
-        },{
+        }, {
             path: '/erp/WasteSingle/showWasteSingleListCopy',
             component: ShowWasteSingleListCopy
-        },{
+        }, {
             path: '/erp/WasteSingle/showWasteProjectApplyCopy',
             component: ShowWasteProjectApplyCopy
-        },{
+        }, {
             path: '/erp/OfficeSupplies/addOfficeSupplies',
             component: AddOfficeSupplies
-        },{
+        }, {
             path: '/erp/OfficeSupplies/officeSuppliesList',
             component: CpSuppliesList
-        },{
+        }, {
             path: '/erp/OfficeVehicle/addOfficeVehicle',
             component: AddOfficeVehicle
-        },{
+        }, {
             path: '/erp/OfficeVehicle/showCarList',
             component: CpCarList
         }]
-    },{
+    }, {
         name: '材料管理',
         children: [{
             path: '/erp/Material/showMaterialSupplier',
             component: AddMaterialSupplier
-        },{
+        }, {
             path: '/erp/Material/showSupplierList',
             component: SupplierList
-        },{
+        }, {
             path: '/erp/Material/showMaterialCategory',
             component: CpMaterialCategory
-        },{
+        }, {
             path: '/erp/Material/showMaterialAdd',
             component: PrimaryMaterialEntry
-        },{
+        }, {
             path: '/erp/Material/materiallist',
             component: PrimaryMaterialList
-        },{
+        }, {
             path: '/erp/Material/materialAuxiliaryList',
             component: AuxiliaryMaterialList
-        },{
+        }, {
             path: '/erp/engin/showEnginProject',
             component: ShowEnginProject
-        },{
+        }, {
             path: '/erp/Engin/showProjectMaterialList',
             component: ProjectMaterialApply
-        },{
+        }, {
             path: '/erp/Engin/showProjectBuyMaterial',
             component: CheckMaterialPurchase
-        },{
+        }, {
             path: '/erp/Engin/showAcceptanceMaterial',
             component: AcceptanceMaterial
         }]
-    },{
+    }, {
         name: '工程管理',
         children: [{
             path: '/erp/Engin/showProjectMaterialAudit',
             component: ShowProjectMaterialAudit
-        },{
+        }, {
             path: '/erp/EnginProject/showBuildApplyProject',
             component: ProjectAcceptance
-        },{
+        }, {
             path: '/erp/EnginProject/showProjectCompletionList',
             component: ProjectCompleteAccept
-        },{
+        }, {
             path: '/erp/EnginProject/showProjectOfUser',
             component: ProjectUnderConstruction
-        },{
+        }, {
             path: '/erp/ProjectPayment/showProjectPayment',
             component: ShowProjectPayment
-        },{
+        }, {
             path: '/erp/EnginProject/showProjectSuccess',
             component: ShowProjectSuccess
-        },{
+        }, {
             path: '/erp/BuildNone/showBuildProjectList',
             component: ProjectReady
-        },{
+        }, {
             path: '/erp/BuildNone/showBuildProjectOfMy',
             component: MyConstructionProject
         }]
@@ -1167,23 +652,40 @@ export const config = [
 ]
 
 // import Template from '../common/template';
-//
-// export const routes = [
+
+// export const config = [
 //     {
-//         path: '/',
-//         exact: true,
-//         component: WrappedNormalLoginForm
-//     },
-//     {
-//         path: '/erp',
-//         container: Template,
+//         component: Template,
 //         routes: [
 //             {
-//                 path: '/erp/Project/showProjectEntry',
-//                 component: WorkRegister
+//                 path: '/erp',
+//                 exact: true,
+//                 component: Page
+//             },
+//             {
+//                 path:'/erp/Project/showProjectEntry',
+//                 component: WorkRegister,
 //             },{
 //                 path: '/erp/Project/showProjectUserList',
 //                 component: MyProject
+//             },{
+//                 path: '/erp/Project/wasteApplyListCopy',
+//                 component: UselessList
+//             },{
+//                 path: '/erp/Statistics/marketData',
+//                 component: AgoraList
+//             },{
+//                 path: '/erp/WasteSingle/showWasteSingleList',
+//                 component: WasteSingleList
+//             },{
+//                 path: '/erp/project/showprojectofuser/guid/:id',
+//                 component: ProjectDetail
+//             },{
+//                 path: '/erp/TransferredProject/showMarketUserProject',
+//                 component: TransferredList
+//             },{
+//                 path: '/erp/WasteSingle/showWasteProjectApply',
+//                 component: WasteProjectApply
 //             }
 //         ]
 //     }

@@ -3,7 +3,7 @@ import { Modal, message } from 'antd';
 
 const confirm = Modal.confirm;
 
-const TableHoc = (WrappedComponent) => class extends React.Component {
+const TablePrompt = (WrappedComponent) => class extends React.Component {
 
     showConfirm = (param) => {
         const _this = this;
@@ -35,4 +35,4 @@ const TableHoc = (WrappedComponent) => class extends React.Component {
 }
 
 
-export default TableHoc
+export default TablePrompt

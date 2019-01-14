@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as AgoraActions from '../../redux/action/agora/agora';
@@ -12,7 +12,6 @@ const {TextArea} = Input;
 
 
 class WasteSingleList extends Component {
-
 
     doApply = () => {
       this.refs.layer.getWrappedInstance().showModal()

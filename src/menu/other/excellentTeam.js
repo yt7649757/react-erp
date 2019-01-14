@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Template from '../../common/template';
+// import Template from '../../common/template';
 import { Button, Pagination } from 'antd';
 import '../../style/other/excellentTeam.css';
 
@@ -48,7 +48,7 @@ const data = [{
 class ExcellentTeam extends Component {
     render() {
         return(
-          <Template>
+          <div>
                 <div className="teamContainer">
                     {
                        data.map((item,index) => {
@@ -68,7 +68,7 @@ class ExcellentTeam extends Component {
                 <div className="paging">
                     <Pagination defaultCurrent={6} total={500} />
                 </div>
-          </Template>
+          </div>
         )
     }
 }

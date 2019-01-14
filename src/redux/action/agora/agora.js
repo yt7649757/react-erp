@@ -153,7 +153,7 @@ export const getUselessList = (obj) => {
                 })
                 return res
             }).catch(error => {
-                alert(error + '请求失败')
+                return error
             })
     }
 }
@@ -170,7 +170,7 @@ export const getPartMent = () => {
                     partment: res.data
                 });
             }).catch(error => {
-            console.log(error + '请求失败')
+             return error
         })
     }
 }
@@ -201,7 +201,7 @@ export const getProjectInfo = (url) => {
                     projectInfo: res.data
                 })
             }).catch(err => {
-                alert(err)
+               return err
         })
     }
 }
@@ -228,14 +228,13 @@ export const getTransferredList = (page = 1, size = 15) => {
     return dispatch => {
         return axios.get('https://www.easy-mock.com/mock/5c185df39172fa10e61b63b3/erp/showmarketuserproject')
             .then(res => {
-                console.log(res);
                 dispatch({
                     type: types.TRANSFERRED_LIST,
                     transferredList: res.data
                 })
                 return res
             }).catch(error => {
-                alert(error + '请求失败')
+                return error
             })
     }
 }
